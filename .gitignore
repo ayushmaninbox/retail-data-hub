@@ -1,0 +1,47 @@
+# ─── Python ───────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+*.whl
+
+# ─── Virtual Environments ─────────────────────────────
+venv/
+.venv/
+env/
+ENV/
+
+# ─── Data Files (large, generated) ────────────────────
+data/raw/*.csv
+data/raw/*.json
+data/raw/*.xlsx
+data/bronze/**/*.parquet
+data/silver/**/*.parquet
+data/gold/**/*.parquet
+
+# ─── Quality Reports ──────────────────────────────────
+data_quality_report.json
+
+# ─── IDE / Editor ─────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# ─── Jupyter Notebooks ───────────────────────────────
+.ipynb_checkpoints/
+
+# ─── Streamlit ────────────────────────────────────────
+.streamlit/secrets.toml
+
+# ─── Misc ─────────────────────────────────────────────
+*.log
+*.tmp
+.env
