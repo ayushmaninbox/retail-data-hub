@@ -1,27 +1,27 @@
 # 📁 src/analytics/
 
 ## Purpose
-KPI computation scripts that query the **Gold Layer** using DuckDB to produce business insights. These power the Streamlit dashboard and serve as standalone deliverables.
+KPI computation scripts that run on Gold layer star schema data using DuckDB.
+Each script outputs a JSON file to `data/analytics/` for dashboard consumption.
 
-## Scripts That Will Go Here
+## Scripts
 
-| Script | KPI Category | Metrics |
+| Script | KPIs | Output |
 |---|---|---|
-| `commercial_kpis.py` | 📈 Commercial | Daily/monthly revenue, city-wise sales, top 10 products, channel mix (POS vs Web) |
-| `operations_kpis.py` | 📦 Operations | Inventory turnover ratio, avg delivery time, stockout rate, seasonal demand heatmap |
-| `customer_kpis.py` | 👥 Customer | New vs returning shoppers, Customer Lifetime Value (CLV), RFM segmentation |
-| `market_basket.py` | 🛒 AI/ML | Market basket analysis using Apriori algorithm — finds items frequently bought together |
+| `commercial_kpis.py` | Revenue, city sales, top products, channel mix, festive analysis | `commercial_kpis.json` |
+| `operations_kpis.py` | Inventory turnover, stockouts, delivery times, seasonal demand | `operations_kpis.json` |
+| `customer_kpis.py` | CLV, RFM segmentation, new vs returning, repeat rate | `customer_kpis.json` |
+| `market_basket.py` | Apriori association rules, cross-channel analysis, category baskets | `market_basket.json` |
 
-## How They Work
-- Each script reads gold Parquet files via **DuckDB** (in-process SQL engine)
-- Returns pandas DataFrames that the dashboard consumes
-- Can also be run standalone to print results to console
+## How to Run
 
-## Key Formulas
-- **Inventory Turnover** = Cost of Goods Sold / Average Inventory
-- **CLV** = Total revenue per customer over entire history
-- **RFM** = Recency (days since last order) × Frequency (order count) × Monetary (total spend)
-- **Market Basket** = Apriori algorithm with `min_support=0.02`, `min_confidence=0.5`
+```bash
+python src/analytics/commercial_kpis.py
+python src/analytics/operations_kpis.py
+python src/analytics/customer_kpis.py
+python src/analytics/market_basket.py
+```
 
-## Dependencies
-- `duckdb`, `pandas`, `mlxtend` (for Apriori)
+## SQL Queries
+
+Pure SQL versions of all KPIs are in `sql/kpi_queries.sql`, runnable via DuckDB.
