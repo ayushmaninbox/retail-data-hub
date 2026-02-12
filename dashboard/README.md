@@ -1,17 +1,20 @@
 # 📁 dashboard/
 
 ## Purpose
-Interactive **Streamlit** dashboard that visualizes all KPIs and data quality metrics. This is the primary demo artifact for the hackathon — what judges will see.
+Interactive **Next.js** web application that visualizes all KPIs and data quality metrics. This is the primary demo artifact for the hackathon — what judges will see.
 
-## Files That Will Go Here
+## Tech Stack
 
-| File | What It Does |
+| Layer | Technology |
 |---|---|
-| `app.py` | Main Streamlit application with 7 tabs |
+| Framework | Next.js (React) |
+| Charts | Recharts / Chart.js / Plotly.js |
+| Styling | Tailwind CSS |
+| Data Source | FastAPI backend → DuckDB → Gold Parquet files |
 
-## Dashboard Tabs
+## Dashboard Pages
 
-| # | Tab | Contents | Chart Types |
+| # | Page | Contents | Chart Types |
 |---|---|---|---|
 | 1 | 🏠 **Overview** | Total revenue, orders, customers (KPI cards) + revenue trend | KPI cards, line chart |
 | 2 | 📊 **Sales Analytics** | City-wise sales, top products, channel mix, daily trends | Bar, pie/donut, line |
@@ -21,14 +24,24 @@ Interactive **Streamlit** dashboard that visualizes all KPIs and data quality me
 | 6 | 🛒 **Market Basket** | Item associations, confidence scores, recommendation pairs | Table, network graph |
 | 7 | ✅ **Data Quality** | Pipeline health, row counts, quality check pass/fail | Status cards, bar chart |
 
-## Tech
-- **Streamlit** for the app framework
-- **Plotly** for interactive charts
-- **DuckDB** for querying gold Parquet files
-- Deployable for free on **Streamlit Community Cloud**
+## Data Flow
+
+```
+Gold Parquet files (data/gold/)
+        │
+        ▼
+FastAPI backend (Python) ── DuckDB queries ── JSON responses
+        │
+        ▼
+Next.js frontend (this folder) ── fetch() ── render charts
+```
 
 ## How to Run
+
 ```bash
-cd retail-data-hub
-streamlit run dashboard/app.py
+cd dashboard
+npm install
+npm run dev
 ```
+
+The dashboard expects the FastAPI backend to be running at `http://localhost:8000`.

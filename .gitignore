@@ -45,8 +45,12 @@ data_quality_report.json
 # ─── Jupyter Notebooks ───────────────────────────────
 .ipynb_checkpoints/
 
-# ─── Streamlit ────────────────────────────────────────
-.streamlit/secrets.toml
+# ─── Node.js / Next.js (Dashboard) ────────────────────
+node_modules/
+.next/
+out/
+dashboard/.env.local
+package-lock.json
 
 # ─── Misc ─────────────────────────────────────────────
 *.log
