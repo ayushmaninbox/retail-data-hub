@@ -1,17 +1,9 @@
-# 📁 docs/
+# 📁 Documentation
 
-## Purpose
-Written documentation deliverables for the hackathon submission. These demonstrate architectural thinking, security awareness, and data quality methodology.
+Architecture, storage, security, and data quality documentation for the Retail Data Hub.
 
-## Files That Will Go Here
-
-| File | Contents |
+| Document | Description |
 |---|---|
-| `storage_security_plan.md` | Partitioning strategy explanation + RBAC access control design + encryption + audit logging |
-| `data_quality_doc.md` | Full documentation of all automated DQ checks, logic, thresholds, and sample evidence |
-| `architecture_notes.md` | Detailed explanation of the Medallion Architecture, design decisions, and technology choices |
-
-## What Judges Expect
-- **Storage plan**: Why Parquet? Why partition by year/month? How does it reduce query cost?
-- **Security plan**: Who can access what? How is PII protected? What does RBAC look like?
-- **Data quality**: What checks run? What happens to bad data? Show evidence (report JSON)
+| [architecture.md](architecture.md) | System architecture, Mermaid data flow, star schema ERD, design decisions |
+| [storage_security_plan.md](storage_security_plan.md) | Parquet partitioning strategy, RBAC roles, PII handling, audit trail |
+| [data_quality.md](data_quality.md) | 7 automated DQ rules, report format, injected quality issues evidence |
