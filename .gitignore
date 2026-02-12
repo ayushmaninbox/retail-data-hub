@@ -16,13 +16,20 @@ venv/
 env/
 ENV/
 
-# ─── Data Files (large, generated) ────────────────────
+# ─── Generated Data (raw sources) ────────────────────
 data/raw/*.csv
 data/raw/*.json
 data/raw/*.xlsx
+
+# ─── Medallion Layer Outputs (Parquet) ────────────────
 data/bronze/**/*.parquet
 data/silver/**/*.parquet
 data/gold/**/*.parquet
+
+# ─── Ingestion / Pipeline Logs ────────────────────────
+data/logs/
+data/bronze/*.json
+data/bronze/*.jsonl
 
 # ─── Quality Reports ──────────────────────────────────
 data_quality_report.json
