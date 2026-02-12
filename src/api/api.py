@@ -25,7 +25,7 @@ from fastapi.middleware.cors import CORSMiddleware
 # ── paths ───────────────────────────────────────────────────────────
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 ANALYTICS_DIR = os.path.join(ROOT_DIR, "data", "analytics")
-QUALITY_REPORT = os.path.join(ROOT_DIR, "data_quality_report.json")
+QUALITY_REPORT = os.path.join(ROOT_DIR, "data", "data_quality_report.json")
 
 app = FastAPI(
     title="Retail Data Hub API",

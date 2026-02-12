@@ -1,5 +1,7 @@
 "use client";
 
+import { useApi } from "@/hooks/useApi";
+import { PageSkeleton } from "@/components/Skeleton";
 import { Users, Heart, UserPlus, Star } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import KpiCard from "@/components/KpiCard";
@@ -12,171 +14,98 @@ import {
     CartesianGrid,
     Tooltip,
     ResponsiveContainer,
-    ScatterChart,
-    Scatter,
-    ZAxis,
     Cell,
 } from "recharts";
 
-// --- Dummy Data ---
-const newVsReturning = [
-    { month: "Jul", new: 180, returning: 420 },
-    { month: "Aug", new: 210, returning: 450 },
-    { month: "Sep", new: 195, returning: 480 },
-    { month: "Oct", new: 240, returning: 510 },
-    { month: "Nov", new: 280, returning: 540 },
-    { month: "Dec", new: 320, returning: 580 },
-    { month: "Jan", new: 260, returning: 550 },
-    { month: "Feb", new: 230, returning: 520 },
-];
-
-const clvDistribution = [
-    { range: "₹0-1K", count: 820 },
-    { range: "₹1K-3K", count: 1240 },
-    { range: "₹3K-5K", count: 680 },
-    { range: "₹5K-10K", count: 290 },
-    { range: "₹10K-20K", count: 98 },
-    { range: "₹20K+", count: 28 },
-];
-
-const rfmSegments = [
-    { recency: 5, frequency: 82, monetary: 45000, segment: "Champions", color: "#8b5cf6" },
-    { recency: 12, frequency: 45, monetary: 28000, segment: "Loyal", color: "#3b82f6" },
-    { recency: 8, frequency: 60, monetary: 35000, segment: "Loyal", color: "#3b82f6" },
-    { recency: 30, frequency: 20, monetary: 12000, segment: "At Risk", color: "#f97316" },
-    { recency: 45, frequency: 10, monetary: 5000, segment: "Hibernating", color: "#ef4444" },
-    { recency: 3, frequency: 90, monetary: 52000, segment: "Champions", color: "#8b5cf6" },
-    { recency: 15, frequency: 35, monetary: 22000, segment: "Potential", color: "#14b8a6" },
-    { recency: 60, frequency: 5, monetary: 3000, segment: "Lost", color: "#6b7280" },
-    { recency: 20, frequency: 28, monetary: 18000, segment: "Potential", color: "#14b8a6" },
-    { recency: 7, frequency: 70, monetary: 40000, segment: "Champions", color: "#8b5cf6" },
-    { recency: 25, frequency: 15, monetary: 9000, segment: "At Risk", color: "#f97316" },
-    { recency: 35, frequency: 8, monetary: 4200, segment: "Hibernating", color: "#ef4444" },
-    { recency: 10, frequency: 55, monetary: 32000, segment: "Loyal", color: "#3b82f6" },
-    { recency: 50, frequency: 3, monetary: 1800, segment: "Lost", color: "#6b7280" },
-    { recency: 6, frequency: 75, monetary: 42000, segment: "Champions", color: "#8b5cf6" },
-];
-
-const segmentSummary = [
-    { segment: "Champions", count: 420, pct: "13.3%", color: "#8b5cf6", description: "High value, recent buyers" },
-    { segment: "Loyal", count: 680, pct: "21.5%", color: "#3b82f6", description: "Consistent repeat buyers" },
-    { segment: "Potential", count: 540, pct: "17.1%", color: "#14b8a6", description: "Growing engagement" },
-    { segment: "At Risk", count: 890, pct: "28.2%", color: "#f97316", description: "Declining activity" },
-    { segment: "Hibernating", count: 380, pct: "12.0%", color: "#ef4444", description: "Long inactive" },
-    { segment: "Lost", count: 246, pct: "7.8%", color: "#6b7280", description: "No recent activity" },
-];
+const segmentColors: Record<string, string> = {
+    Champions: "#8b5cf6",
+    "Loyal Customers": "#3b82f6",
+    "Potential Loyalist": "#14b8a6",
+    "At Risk": "#f97316",
+    "Need Attention": "#eab308",
+    "New Customers": "#06b6d4",
+    Lost: "#6b7280",
+};
 
 const RFMTooltip = ({ active, payload }: any) => {
     if (active && payload && payload.length) {
-        const data = payload[0].payload;
+        const d = payload[0].payload;
         return (
             <div className="glass-card-static p-3 border border-white/10">
-                <p className="text-xs font-bold text-white mb-1">{data.segment}</p>
-                <p className="text-xs text-slate-400">Recency: {data.recency} days</p>
-                <p className="text-xs text-slate-400">Frequency: {data.frequency} orders</p>
-                <p className="text-xs text-slate-400">Monetary: ₹{(data.monetary / 1000).toFixed(0)}K</p>
+                <p className="text-xs font-bold text-white mb-1">{d.segment}</p>
+                <p className="text-xs text-slate-400">{d.count} customers</p>
+                <p className="text-xs text-slate-400">Avg Spend: {fmt(d.avg_monetary || 0)}</p>
             </div>
         );
     }
     return null;
 };
 
+function fmt(n: number): string {
+    if (n >= 10000000) return `₹${(n / 10000000).toFixed(2)} Cr`;
+    if (n >= 100000) return `₹${(n / 100000).toFixed(1)}L`;
+    if (n >= 1000) return `₹${(n / 1000).toFixed(0)}K`;
+    return `₹${n.toLocaleString("en-IN")}`;
+}
+
 export default function CustomersPage() {
+    const { data, loading } = useApi<any>("/api/customers");
+
+    if (loading || !data) return <PageSkeleton />;
+
+    const summary = data.new_vs_returning?.summary || {};
+    const monthlyNR = (data.new_vs_returning?.monthly_trend || []).map((m: any) => ({
+        month: m.year_month,
+        new: m.new_customers,
+        returning: m.returning_customers,
+    }));
+
+    const clvStats = data.clv?.stats || {};
+    // CLV segments is a dict like { platinum: 395, gold: 592, silver: 986, bronze: 1973 }
+    const clvSegmentsRaw = data.clv?.segments || {};
+    const clvSegments = typeof clvSegmentsRaw === "object" && !Array.isArray(clvSegmentsRaw)
+        ? Object.entries(clvSegmentsRaw).map(([seg, count]) => ({
+            range: seg.charAt(0).toUpperCase() + seg.slice(1),
+            count: count as number,
+        }))
+        : (clvSegmentsRaw as any[]).map((s: any) => ({ range: s.segment, count: s.count }));
+
+    // RFM segments is a list
+    const rfmSegments = (data.rfm?.segments || []).map((s: any) => ({
+        segment: s.segment,
+        count: s.count,
+        avg_monetary: s.avg_monetary,
+        avg_recency: s.avg_recency,
+        avg_frequency: s.avg_frequency,
+        color: segmentColors[s.segment] || "#64748b",
+    }));
+
+    const champCount = rfmSegments.find((s: any) => s.segment === "Champions")?.count || 0;
+    const totalCustomers = summary.total_unique_customers || 0;
+    const champPct = totalCustomers > 0 ? ((champCount / totalCustomers) * 100).toFixed(1) : "0";
+
     return (
         <div className="space-y-6">
-            <PageHeader
-                icon={Users}
-                title="Customer Analytics"
-                subtitle="Customer lifetime value, RFM segmentation & retention analysis"
-            />
+            <PageHeader icon={Users} title="Customer Analytics" subtitle="Customer lifetime value, RFM segmentation & retention analysis" />
 
-            {/* KPI Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 animate-slide-up">
-                <KpiCard
-                    icon={UserPlus}
-                    title="New Customers"
-                    value="230"
-                    change="+15%"
-                    trend="up"
-                    accentColor="from-accent-purple to-accent-blue"
-                    subtitle="This month"
-                />
-                <KpiCard
-                    icon={Users}
-                    title="Returning Customers"
-                    value="520"
-                    change="+8.3%"
-                    trend="up"
-                    accentColor="from-accent-blue to-accent-teal"
-                    subtitle="This month"
-                />
-                <KpiCard
-                    icon={Heart}
-                    title="Avg CLV"
-                    value="₹4,280"
-                    change="+₹320"
-                    trend="up"
-                    accentColor="from-accent-teal to-emerald-400"
-                    subtitle="Customer lifetime value"
-                />
-                <KpiCard
-                    icon={Star}
-                    title="Champions"
-                    value="13.3%"
-                    change="+2.1%"
-                    trend="up"
-                    accentColor="from-accent-pink to-accent-purple"
-                    subtitle="Top RFM segment"
-                />
+                <KpiCard icon={UserPlus} title="Unique Customers" value={totalCustomers.toLocaleString()} change={`${summary.repeat_rate_pct || 0}% repeat`} trend="up" accentColor="from-accent-purple to-accent-blue" subtitle="All time" />
+                <KpiCard icon={Users} title="Repeat Rate" value={`${summary.repeat_rate_pct || 0}%`} change={`${(summary.repeat_buyers || 0).toLocaleString()} buyers`} trend="up" accentColor="from-accent-blue to-accent-teal" subtitle="Multi-purchase customers" />
+                <KpiCard icon={Heart} title="Avg CLV" value={fmt(clvStats.avg_clv || 0)} change={`Median: ${fmt(clvStats.median_clv || 0)}`} trend="up" accentColor="from-accent-teal to-emerald-400" subtitle="Customer lifetime value" />
+                <KpiCard icon={Star} title="Champions" value={`${champPct}%`} change={`${champCount} customers`} trend="up" accentColor="from-accent-pink to-accent-purple" subtitle="Top RFM segment" />
             </div>
 
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-                {/* New vs Returning */}
-                <ChartCard
-                    title="New vs Returning Customers"
-                    subtitle="Monthly breakdown over the last 8 months"
-                    className="animate-slide-up"
-                >
+                <ChartCard title="New vs Returning Customers" subtitle="Monthly breakdown" className="animate-slide-up">
                     <div className="h-72">
                         <ResponsiveContainer width="100%" height="100%">
-                            <BarChart data={newVsReturning}>
+                            <BarChart data={monthlyNR}>
                                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                                <XAxis
-                                    dataKey="month"
-                                    axisLine={false}
-                                    tickLine={false}
-                                    tick={{ fill: "#64748b", fontSize: 11 }}
-                                />
-                                <YAxis
-                                    axisLine={false}
-                                    tickLine={false}
-                                    tick={{ fill: "#64748b", fontSize: 11 }}
-                                />
-                                <Tooltip
-                                    contentStyle={{
-                                        background: "rgba(15,15,35,0.95)",
-                                        border: "1px solid rgba(255,255,255,0.1)",
-                                        borderRadius: "12px",
-                                        color: "#fff",
-                                        fontSize: "12px",
-                                    }}
-                                />
-                                <Bar
-                                    dataKey="returning"
-                                    name="Returning"
-                                    stackId="a"
-                                    fill="#8b5cf6"
-                                    radius={[0, 0, 0, 0]}
-                                    barSize={28}
-                                />
-                                <Bar
-                                    dataKey="new"
-                                    name="New"
-                                    stackId="a"
-                                    fill="#14b8a6"
-                                    radius={[6, 6, 0, 0]}
-                                    barSize={28}
-                                />
+                                <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 11 }} />
+                                <YAxis axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 11 }} />
+                                <Tooltip contentStyle={{ background: "rgba(15,15,35,0.95)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", color: "#fff", fontSize: "12px" }} />
+                                <Bar dataKey="returning" name="Returning" stackId="a" fill="#8b5cf6" radius={[0, 0, 0, 0]} barSize={28} />
+                                <Bar dataKey="new" name="New" stackId="a" fill="#14b8a6" radius={[6, 6, 0, 0]} barSize={28} />
                             </BarChart>
                         </ResponsiveContainer>
                     </div>
@@ -192,36 +121,14 @@ export default function CustomersPage() {
                     </div>
                 </ChartCard>
 
-                {/* CLV Distribution */}
-                <ChartCard
-                    title="CLV Distribution"
-                    subtitle="Customer count by lifetime value range"
-                    className="animate-slide-up"
-                >
+                <ChartCard title="CLV Distribution" subtitle="Customer count by lifetime value tier" className="animate-slide-up">
                     <div className="h-72">
                         <ResponsiveContainer width="100%" height="100%">
-                            <BarChart data={clvDistribution}>
+                            <BarChart data={clvSegments}>
                                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                                <XAxis
-                                    dataKey="range"
-                                    axisLine={false}
-                                    tickLine={false}
-                                    tick={{ fill: "#64748b", fontSize: 10 }}
-                                />
-                                <YAxis
-                                    axisLine={false}
-                                    tickLine={false}
-                                    tick={{ fill: "#64748b", fontSize: 11 }}
-                                />
-                                <Tooltip
-                                    contentStyle={{
-                                        background: "rgba(15,15,35,0.95)",
-                                        border: "1px solid rgba(255,255,255,0.1)",
-                                        borderRadius: "12px",
-                                        color: "#fff",
-                                        fontSize: "12px",
-                                    }}
-                                />
+                                <XAxis dataKey="range" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} />
+                                <YAxis axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 11 }} />
+                                <Tooltip contentStyle={{ background: "rgba(15,15,35,0.95)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", color: "#fff", fontSize: "12px" }} />
                                 <Bar dataKey="count" radius={[6, 6, 0, 0]} fill="url(#clvGrad)" barSize={32} />
                                 <defs>
                                     <linearGradient id="clvGrad" x1="0" y1="0" x2="0" y2="1">
@@ -235,64 +142,35 @@ export default function CustomersPage() {
                 </ChartCard>
             </div>
 
-            {/* RFM Scatter Plot */}
-            <ChartCard
-                title="RFM Segmentation"
-                subtitle="Recency vs Frequency — bubble size = monetary value"
-                className="animate-slide-up"
-            >
+            <ChartCard title="RFM Segmentation" subtitle="Customer segments by Recency, Frequency & Monetary value" className="animate-slide-up">
                 <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
                     <div className="xl:col-span-2 h-72">
                         <ResponsiveContainer width="100%" height="100%">
-                            <ScatterChart>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                                <XAxis
-                                    dataKey="recency"
-                                    name="Recency (days)"
-                                    axisLine={false}
-                                    tickLine={false}
-                                    tick={{ fill: "#64748b", fontSize: 11 }}
-                                    label={{ value: "Recency (days ago)", position: "bottom", fill: "#64748b", fontSize: 11 }}
-                                />
-                                <YAxis
-                                    dataKey="frequency"
-                                    name="Frequency"
-                                    axisLine={false}
-                                    tickLine={false}
-                                    tick={{ fill: "#64748b", fontSize: 11 }}
-                                    label={{ value: "Frequency", angle: -90, position: "insideLeft", fill: "#64748b", fontSize: 11 }}
-                                />
-                                <ZAxis dataKey="monetary" range={[50, 400]} />
+                            <BarChart data={rfmSegments} layout="vertical" margin={{ left: 20 }}>
+                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" horizontal={false} />
+                                <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 11 }} />
+                                <YAxis dataKey="segment" type="category" axisLine={false} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 11 }} width={130} />
                                 <Tooltip content={<RFMTooltip />} />
-                                <Scatter data={rfmSegments}>
-                                    {rfmSegments.map((entry, index) => (
-                                        <Cell key={index} fill={entry.color} fillOpacity={0.7} />
+                                <Bar dataKey="count" radius={[0, 6, 6, 0]} barSize={20}>
+                                    {rfmSegments.map((entry: any, index: number) => (
+                                        <Cell key={index} fill={entry.color} />
                                     ))}
-                                </Scatter>
-                            </ScatterChart>
+                                </Bar>
+                            </BarChart>
                         </ResponsiveContainer>
                     </div>
 
-                    {/* Segment Summary */}
                     <div className="space-y-2">
-                        <p className="text-xs font-medium text-slate-500 uppercase tracking-wider mb-3">
-                            Segment Breakdown
-                        </p>
-                        {segmentSummary.map((seg) => (
-                            <div
-                                key={seg.segment}
-                                className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-white/[0.03] transition-colors"
-                            >
-                                <div
-                                    className="w-2.5 h-2.5 rounded-full flex-shrink-0"
-                                    style={{ background: seg.color }}
-                                />
+                        <p className="text-xs font-medium text-slate-500 uppercase tracking-wider mb-3">Segment Breakdown</p>
+                        {rfmSegments.map((seg: any) => (
+                            <div key={seg.segment} className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-white/[0.03] transition-colors">
+                                <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: seg.color }} />
                                 <div className="flex-1 min-w-0">
                                     <div className="flex items-center justify-between">
                                         <span className="text-sm font-medium text-white">{seg.segment}</span>
-                                        <span className="text-xs font-bold text-slate-300">{seg.pct}</span>
+                                        <span className="text-xs font-bold text-slate-300">{seg.count}</span>
                                     </div>
-                                    <p className="text-[10px] text-slate-500">{seg.description}</p>
+                                    <p className="text-[10px] text-slate-500">Avg Spend: {fmt(seg.avg_monetary || 0)}</p>
                                 </div>
                             </div>
                         ))}
