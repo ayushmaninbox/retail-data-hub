@@ -1,0 +1,317 @@
+{
+  "computed_at": "2026-02-13T03:57:46.877962",
+  "standard_basket": {
+    "itemsets": [
+      {
+        "items": [
+          "Black Pepper 100g"
+        ],
+        "support": 0.0234
+      },
+      {
+        "items": [
+          "Nail Polish Set 6pc"
+        ],
+        "support": 0.023
+      },
+      {
+        "items": [
+          "Ethnic Dupatta"
+        ],
+        "support": 0.0228
+      },
+      {
+        "items": [
+          "Cable Organiser Box"
+        ],
+        "support": 0.0227
+      },
+      {
+        "items": [
+          "Winter Sweater"
+        ],
+        "support": 0.0226
+      },
+      {
+        "items": [
+          "Pickle Mango 500g"
+        ],
+        "support": 0.0225
+      },
+      {
+        "items": [
+          "Glass Storage Set"
+        ],
+        "support": 0.0225
+      },
+      {
+        "items": [
+          "Nerf Blaster"
+        ],
+        "support": 0.0224
+      },
+      {
+        "items": [
+          "Track Pants"
+        ],
+        "support": 0.0224
+      },
+      {
+        "items": [
+          "Conditioner Keratin 200ml"
+        ],
+        "support": 0.0223
+      },
+      {
+        "items": [
+          "Cumin Seeds 100g"
+        ],
+        "support": 0.0222
+      },
+      {
+        "items": [
+          "Remote Control Car"
+        ],
+        "support": 0.0219
+      },
+      {
+        "items": [
+          "Pull-Up Bar Doorway"
+        ],
+        "support": 0.0218
+      },
+      {
+        "items": [
+          "Hoodie Zip-Up"
+        ],
+        "support": 0.0217
+      },
+      {
+        "items": [
+          "Thinking Fast and Slow"
+        ],
+        "support": 0.0216
+      },
+      {
+        "items": [
+          "Cotton Bedsheet King"
+        ],
+        "support": 0.0216
+      },
+      {
+        "items": [
+          "Bermuda Shorts"
+        ],
+        "support": 0.0216
+      },
+      {
+        "items": [
+          "Basmati Rice 5kg"
+        ],
+        "support": 0.0216
+      },
+      {
+        "items": [
+          "Card Game UNO"
+        ],
+        "support": 0.0216
+      },
+      {
+        "items": [
+          "Mixed Dry Fruits 500g"
+        ],
+        "support": 0.0215
+      }
+    ],
+    "rules": [],
+    "stats": {
+      "total_transactions": 26920,
+      "multi_item_baskets": 9937,
+      "frequent_itemsets_found": 200,
+      "association_rules_found": 0
+    }
+  },
+  "cross_channel": {
+    "rules": [],
+    "stats": {
+      "total_customers": 4343,
+      "cross_channel_customers": 3788,
+      "frequent_itemsets": 400,
+      "cross_channel_rules": 0
+    }
+  },
+  "category_basket": {
+    "rules": [
+      {
+        "if_category": [
+          "Electronics"
+        ],
+        "then_category": [
+          "Groceries"
+        ],
+        "support": 0.2146,
+        "confidence": 0.4475,
+        "lift": 0.9474
+      },
+      {
+        "if_category": [
+          "Groceries"
+        ],
+        "then_category": [
+          "Electronics"
+        ],
+        "support": 0.2146,
+        "confidence": 0.4542,
+        "lift": 0.9474
+      },
+      {
+        "if_category": [
+          "Home & Kitchen"
+        ],
+        "then_category": [
+          "Groceries"
+        ],
+        "support": 0.1841,
+        "confidence": 0.442,
+        "lift": 0.9356
+      },
+      {
+        "if_category": [
+          "Groceries"
+        ],
+        "then_category": [
+          "Home & Kitchen"
+        ],
+        "support": 0.1841,
+        "confidence": 0.3897,
+        "lift": 0.9356
+      },
+      {
+        "if_category": [
+          "Sports"
+        ],
+        "then_category": [
+          "Electronics"
+        ],
+        "support": 0.1541,
+        "confidence": 0.4473,
+        "lift": 0.933
+      },
+      {
+        "if_category": [
+          "Electronics"
+        ],
+        "then_category": [
+          "Sports"
+        ],
+        "support": 0.1541,
+        "confidence": 0.3214,
+        "lift": 0.933
+      },
+      {
+        "if_category": [
+          "Beauty"
+        ],
+        "then_category": [
+          "Clothing"
+        ],
+        "support": 0.1816,
+        "confidence": 0.4402,
+        "lift": 0.9322
+      },
+      {
+        "if_category": [
+          "Clothing"
+        ],
+        "then_category": [
+          "Beauty"
+        ],
+        "support": 0.1816,
+        "confidence": 0.3846,
+        "lift": 0.9322
+      },
+      {
+        "if_category": [
+          "Sports"
+        ],
+        "then_category": [
+          "Clothing"
+        ],
+        "support": 0.1515,
+        "confidence": 0.4398,
+        "lift": 0.9314
+      },
+      {
+        "if_category": [
+          "Clothing"
+        ],
+        "then_category": [
+          "Sports"
+        ],
+        "support": 0.1515,
+        "confidence": 0.3209,
+        "lift": 0.9314
+      },
+      {
+        "if_category": [
+          "Clothing"
+        ],
+        "then_category": [
+          "Home & Kitchen"
+        ],
+        "support": 0.1832,
+        "confidence": 0.3879,
+        "lift": 0.9313
+      },
+      {
+        "if_category": [
+          "Home & Kitchen"
+        ],
+        "then_category": [
+          "Clothing"
+        ],
+        "support": 0.1832,
+        "confidence": 0.4397,
+        "lift": 0.9313
+      },
+      {
+        "if_category": [
+          "Groceries"
+        ],
+        "then_category": [
+          "Clothing"
+        ],
+        "support": 0.2076,
+        "confidence": 0.4395,
+        "lift": 0.9308
+      },
+      {
+        "if_category": [
+          "Clothing"
+        ],
+        "then_category": [
+          "Groceries"
+        ],
+        "support": 0.2076,
+        "confidence": 0.4397,
+        "lift": 0.9308
+      },
+      {
+        "if_category": [
+          "Groceries"
+        ],
+        "then_category": [
+          "Beauty"
+        ],
+        "support": 0.1809,
+        "confidence": 0.3829,
+        "lift": 0.928
+      }
+    ],
+    "stats": {
+      "multi_category_baskets": 9642,
+      "frequent_itemsets": 92,
+      "rules_found": 372
+    }
+  }
+}
