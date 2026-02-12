@@ -1,5 +1,5 @@
 {
-  "computed_at": "2026-02-13T03:52:25.432598",
+  "computed_at": "2026-02-13T04:44:53.004649",
   "revenue": {
     "summary": {
       "total_revenue": 1629752241.1099818,
@@ -5786,11 +5786,11 @@
         "transactions": 306
       },
       {
-        "product_name": "Ethnic Dupatta",
-        "category": "Clothing",
+        "product_name": "Body Lotion 400ml",
+        "category": "Beauty",
         "quantity_sold": 1511.0,
-        "revenue": 848044.0000000006,
-        "transactions": 307
+        "revenue": 6266756.550000003,
+        "transactions": 288
       }
     ]
   },

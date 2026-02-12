@@ -31,8 +31,12 @@ data/logs/
 data/bronze/*.json
 data/bronze/*.jsonl
 
+# ─── Analytics Outputs (KPI JSONs) ───────────────────
+data/analytics/*.json
+
 # ─── Quality Reports ──────────────────────────────────
 data_quality_report.json
+data/data_quality_report.json
 
 # ─── IDE / Editor ─────────────────────────────────────
 .vscode/

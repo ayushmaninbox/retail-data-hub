@@ -1,5 +1,5 @@
 {
-  "computed_at": "2026-02-13T03:52:32.017258",
+  "computed_at": "2026-02-13T04:44:53.304959",
   "inventory_turnover": {
     "by_category": [
       {
@@ -262,10 +262,10 @@
         "stockout_pct": 8.6
       },
       {
-        "product_name": "Knife Set 6pc",
+        "product_name": "Table Lamp Ceramic",
         "category": "Home & Kitchen",
-        "total_snapshots": 256,
-        "zero_stock_snapshots": 22.0,
+        "total_snapshots": 233,
+        "zero_stock_snapshots": 20.0,
         "stockout_pct": 8.6
       },
       {
@@ -276,10 +276,10 @@
         "stockout_pct": 8.6
       },
       {
-        "product_name": "Table Lamp Ceramic",
+        "product_name": "Knife Set 6pc",
         "category": "Home & Kitchen",
-        "total_snapshots": 233,
-        "zero_stock_snapshots": 20.0,
+        "total_snapshots": 256,
+        "zero_stock_snapshots": 22.0,
         "stockout_pct": 8.6
       },
       {
@@ -297,17 +297,17 @@
         "stockout_pct": 8.0
       },
       {
-        "product_name": "Power Bank 20000mAh",
-        "category": "Electronics",
-        "total_snapshots": 239,
-        "zero_stock_snapshots": 19.0,
-        "stockout_pct": 7.9
-      },
-      {
         "product_name": "Smart Plug WiFi",
         "category": "Electronics",
         "total_snapshots": 253,
         "zero_stock_snapshots": 20.0,
+        "stockout_pct": 7.9
+      },
+      {
+        "product_name": "Power Bank 20000mAh",
+        "category": "Electronics",
+        "total_snapshots": 239,
+        "zero_stock_snapshots": 19.0,
         "stockout_pct": 7.9
       },
       {
@@ -325,17 +325,17 @@
         "stockout_pct": 7.5
       },
       {
-        "product_name": "Hair Gel Strong Hold",
-        "category": "Beauty",
-        "total_snapshots": 256,
+        "product_name": "Olive Oil 500ml",
+        "category": "Groceries",
+        "total_snapshots": 258,
         "zero_stock_snapshots": 19.0,
         "stockout_pct": 7.4
       },
       {
-        "product_name": "Deep Work",
-        "category": "Books",
-        "total_snapshots": 269,
-        "zero_stock_snapshots": 20.0,
+        "product_name": "Hair Gel Strong Hold",
+        "category": "Beauty",
+        "total_snapshots": 256,
+        "zero_stock_snapshots": 19.0,
         "stockout_pct": 7.4
       }
     ]
@@ -368,10 +368,10 @@
         "delay_pct": 3.0
       },
       {
-        "carrier": "Delhivery",
-        "shipments": 1152,
+        "carrier": "DTDC",
+        "shipments": 1151,
         "avg_days": 4.2,
-        "delivered": 1020.0,
+        "delivered": 1027.0,
         "delayed": 38.0,
         "delay_pct": 3.3
       },
@@ -384,20 +384,12 @@
         "delay_pct": 4.2
       },
       {
-        "carrier": "DTDC",
-        "shipments": 1151,
+        "carrier": "Delhivery",
+        "shipments": 1152,
         "avg_days": 4.2,
-        "delivered": 1027.0,
+        "delivered": 1020.0,
         "delayed": 38.0,
         "delay_pct": 3.3
-      },
-      {
-        "carrier": "India Post",
-        "shipments": 1098,
-        "avg_days": 4.3,
-        "delivered": 1005.0,
-        "delayed": 31.0,
-        "delay_pct": 2.8
       },
       {
         "carrier": "Shadowfax",
@@ -406,6 +398,14 @@
         "delivered": 1070.0,
         "delayed": 36.0,
         "delay_pct": 3.0
+      },
+      {
+        "carrier": "India Post",
+        "shipments": 1098,
+        "avg_days": 4.3,
+        "delivered": 1005.0,
+        "delayed": 31.0,
+        "delay_pct": 2.8
       }
     ],
     "by_destination": [
@@ -417,6 +417,13 @@
         "bottleneck_pct": 17.8
       },
       {
+        "destination_city": "Hyderabad",
+        "shipments": 828,
+        "avg_days": 4.2,
+        "bottleneck_shipments": 114.0,
+        "bottleneck_pct": 13.8
+      },
+      {
         "destination_city": "Jaipur",
         "shipments": 785,
         "avg_days": 4.2,
@@ -424,11 +431,11 @@
         "bottleneck_pct": 14.4
       },
       {
-        "destination_city": "Hyderabad",
-        "shipments": 828,
+        "destination_city": "Pune",
+        "shipments": 789,
         "avg_days": 4.2,
-        "bottleneck_shipments": 114.0,
-        "bottleneck_pct": 13.8
+        "bottleneck_shipments": 122.0,
+        "bottleneck_pct": 15.5
       },
       {
         "destination_city": "Ahmedabad",
@@ -452,11 +459,11 @@
         "bottleneck_pct": 15.2
       },
       {
-        "destination_city": "Pune",
-        "shipments": 789,
-        "avg_days": 4.2,
-        "bottleneck_shipments": 122.0,
-        "bottleneck_pct": 15.5
+        "destination_city": "Delhi",
+        "shipments": 780,
+        "avg_days": 4.1,
+        "bottleneck_shipments": 107.0,
+        "bottleneck_pct": 13.7
       },
       {
         "destination_city": "Bangalore",
@@ -464,13 +471,6 @@
         "avg_days": 4.1,
         "bottleneck_shipments": 118.0,
         "bottleneck_pct": 14.6
-      },
-      {
-        "destination_city": "Delhi",
-        "shipments": 780,
-        "avg_days": 4.1,
-        "bottleneck_shipments": 107.0,
-        "bottleneck_pct": 13.7
       },
       {
         "destination_city": "Chennai",

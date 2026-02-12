@@ -1,5 +1,5 @@
 {
-  "computed_at": "2026-02-13T03:57:46.877962",
+  "computed_at": "2026-02-13T04:45:24.162485",
   "standard_basket": {
     "itemsets": [
       {
@@ -166,17 +166,6 @@
       },
       {
         "if_category": [
-          "Home & Kitchen"
-        ],
-        "then_category": [
-          "Groceries"
-        ],
-        "support": 0.1841,
-        "confidence": 0.442,
-        "lift": 0.9356
-      },
-      {
-        "if_category": [
           "Groceries"
         ],
         "then_category": [
@@ -184,6 +173,17 @@
         ],
         "support": 0.1841,
         "confidence": 0.3897,
+        "lift": 0.9356
+      },
+      {
+        "if_category": [
+          "Home & Kitchen"
+        ],
+        "then_category": [
+          "Groceries"
+        ],
+        "support": 0.1841,
+        "confidence": 0.442,
         "lift": 0.9356
       },
       {
