@@ -28,35 +28,7 @@
 
 ## 🏗️ Architecture
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        DATA SOURCES                             │
-│  POS Sales (CSV)  ·  Web Orders (JSON)  ·  Warehouse (CSV)     │
-└──────────────┬──────────────┬──────────────┬────────────────────┘
-               │              │              │
-               ▼              ▼              ▼
-┌─────────────────────────────────────────────────────────────────┐
-│  🥉 BRONZE — Raw Parquet (schema-validated, append-only)        │
-└──────────────────────────────┬──────────────────────────────────┘
-                               │  clean · deduplicate · merge
-                               ▼
-┌─────────────────────────────────────────────────────────────────┐
-│  🥈 SILVER — Cleaned & unified sales data                       │
-└──────────────────────────────┬──────────────────────────────────┘
-                               │  star schema · SCD2 · surrogate keys
-                               ▼
-┌─────────────────────────────────────────────────────────────────┐
-│  🥇 GOLD — Star Schema (facts + dimensions, partitioned)        │
-│  dim_date · dim_product · dim_store · dim_customer · fact_sales │
-└──────────────────────────────┬──────────────────────────────────┘
-                               │
-               ┌───────────────┼───────────────┐
-               ▼               ▼               ▼
-       📈 KPI Scripts    🚀 FastAPI       📊 Next.js
-        (Python)        (REST API)        Dashboard
-                             │
-                             └──── serves JSON ────▶ 🖥️ Dashboard
-```
+![Retail Data Hub Architecture](/Users/ayushmaninbox/.gemini/antigravity/brain/ec357741-fe32-45ad-9dd7-17720c70ff90/retail_data_hub_architecture_v2_1770974777549.png)
 
 ---
 
@@ -65,84 +37,37 @@
 ```
 retail-data-hub/
 │
-├── data/                              # All data layers
-│   ├── raw/                           # Source files (CSV, JSON)
-│   ├── bronze/                        # Ingested Parquet (schema-validated)
-│   ├── silver/                        # Cleaned & merged Parquet
-│   ├── gold/                          # Star schema Parquet (partitioned)
-│   ├── analytics/                     # KPI output (JSON files)
-│   └── logs/                          # Pipeline execution logs
+├── data/                              # All data layers (ignored by git)
+│   ├── raw/                           #   Source files (CSV, JSON)
+│   ├── bronze/                        #   Ingested Parquet (schema-validated)
+│   ├── silver/                        #   Cleaned & merged Parquet
+│   ├── gold/                          #   Star schema Parquet (fact/dims)
+│   ├── analytics/                     #   KPI and ML Forecast output (JSON)
+│   └── logs/                          #   Pipeline execution logs
 │
-├── src/                               # All pipeline & analytics code
-│   ├── data_generation/               # Synthetic data generators
-│   │   ├── generate_pos.py            #   POS sales (Faker, 10 Indian cities)
-│   │   ├── generate_web_orders.py     #   Web orders (JSON)
-│   │   └── generate_warehouse.py      #   Warehouse inventory (CSV)
-│   │
-│   ├── ingestion/                     # Raw → Bronze layer
-│   │   ├── ingest_batch.py            #   Batch CSV ingestion
-│   │   ├── ingest_realtime.py         #   Near real-time JSON ingestion
-│   │   └── schema_validator.py        #   Schema validation & enforcement
-│   │
-│   ├── transformation/                # Bronze → Silver → Gold
-│   │   ├── bronze_to_silver.py        #   Cleaning, dedup, merging
-│   │   ├── silver_to_gold.py          #   Star schema construction
-│   │   └── scd_handler.py             #   SCD Type 2 implementation
-│   │
-│   ├── quality/                       # Data Quality framework
-│   │   └── quality_checks.py          #   7 automated DQ checks + JSON report
-│   │
-│   ├── analytics/                     # KPI computation scripts
-│   │   ├── commercial_kpis.py         #   Revenue, cities, products, channels
-│   │   ├── operations_kpis.py         #   Inventory, delivery, stockouts
-│   │   ├── customer_kpis.py           #   CLV, RFM, new vs returning
-│   │   └── market_basket.py           #   Apriori association rules
-│   │
-│   └── api/                           # REST API backend
-│       └── api.py                     #   FastAPI serving KPI JSON to dashboard
+├── src/                               # All core logic
+│   ├── data_generation/               #   Realistic synthetic generators
+│   ├── ingestion/                     #   Raw → Bronze layer
+│   ├── transformation/                #   Bronze → Silver → Gold
+│   ├── quality/                       #   Data Quality framework
+│   ├── analytics/                     #   KPI computation scripts
+│   ├── ml/                            #   🧠 LSTM Demand Forecasting (PyTorch)
+│   └── api/                           #   FastAPI backend
 │
-├── sql/                               # Standalone SQL queries
-│   └── kpi_queries.sql                #   All KPI queries (DuckDB SQL)
+├── dashboard/                         # Next.js 14 Dashboard
+│   ├── src/app/forecast/              #   🧠 AI Forecast page
+│   └── ...                            #   Other analytics pages
 │
-├── dashboard/                         # Next.js 14 dashboard frontend
-│   ├── src/
-│   │   ├── app/                       #   App Router pages (7 routes)
-│   │   │   ├── page.tsx               #     🏠 Overview (home)
-│   │   │   ├── sales/                 #     📊 Sales Analytics
-│   │   │   ├── inventory/             #     📦 Inventory Health
-│   │   │   ├── logistics/             #     🚚 Logistics
-│   │   │   ├── customers/             #     👥 Customer Intelligence
-│   │   │   ├── market-basket/         #     🛒 Market Basket Analysis
-│   │   │   └── data-quality/          #     ✅ Data Quality
-│   │   └── components/                #   Reusable UI components
-│   │       ├── Sidebar.tsx            #     Navigation sidebar
-│   │       ├── KpiCard.tsx            #     Metric display cards
-│   │       ├── ChartCard.tsx          #     Chart wrapper
-│   │       ├── PageHeader.tsx         #     Page titles
-│   │       └── Skeleton.tsx           #     Loading skeletons
-│   ├── package.json
-│   └── tailwind.config.ts
-│
-├── scripts/                           # One-click automation scripts
-│   ├── installation.sh                #   Full setup (venv + pip + npm)
-│   ├── generation.sh                  #   Generate synthetic data
-│   ├── ingestion.sh                   #   Ingest Raw → Bronze
-│   ├── transform.sh                   #   Transform Bronze → Silver → Gold
-│   ├── kpi_analysis.sh                #   Run all KPI analytics
-│   ├── quality_checks.sh              #   Run data quality checks
-│   ├── api.sh                         #   Start FastAPI server
-│   └── dashboard.sh                   #   Start Next.js dev server
-│
-├── docs/                              # Architecture & design documentation
-│   ├── architecture.md                #   Medallion Architecture deep-dive
-│   ├── architecture_diagram.png       #   Visual architecture diagram
-│   ├── data_quality.md                #   DQ rule catalog & thresholds
-│   ├── storage_security_plan.md       #   Partitioning, RBAC, encryption
-│   └── STORAGE_AND_SECURITY.md        #   Security & compliance plan
-│
-├── requirements.txt                   # Python dependencies
-├── .gitignore
-└── README.md                          # ← You are here
+├── scripts/                           # One-click automation
+│   ├── cleanup.sh                     #   🧹 Reset demo state
+│   ├── forecast.sh                    #   🧠 Run LSTM training
+│   ├── generation.sh                  #   Generate raw data
+│   ├── ingestion.sh                   #   Load Bronze parquets
+│   ├── transform.sh                   #   Build Gold star schema
+│   ├── kpi_analysis.sh                #   Compute JSON analytics
+│   ├── quality_checks.sh              #   Verify data firewall
+│   ├── api.sh                         #   Launch backend
+│   └── dashboard.sh                   #   Launch frontend
 ```
 
 ---
@@ -160,47 +85,72 @@ retail-data-hub/
 ```bash
 git clone https://github.com/ayushmaninbox/retail-data-hub.git
 cd retail-data-hub
+```
+
+**macOS / Linux:**
+```bash
+chmod +x scripts/*.sh
 ./scripts/installation.sh
 ```
 
-> This creates a Python virtual environment, installs all pip dependencies, installs
-> DuckDB, runs `npm install` for the dashboard, and creates the `data/` directories.
+**Windows (PowerShell / CMD):**
+```powershell
+# Create venv and install dependencies
+python -m venv .venv
+.venv\Scripts\activate
+python -m pip install --upgrade pip
+pip install -r requirements.txt
 
-### 2. Run the Data Pipeline (Terminal 1)
+# Install Dashboard dependencies
+cd dashboard
+npm install
+cd ..
 
-Run each step sequentially to walk through the full Medallion Architecture:
-
-```bash
-# Step 1 — Generate synthetic raw data (CSV/JSON → data/raw/)
-./scripts/generation.sh
-
-# Step 2 — Ingest into Bronze layer (Parquet → data/bronze/)
-./scripts/ingestion.sh
-
-# Step 3 — Transform Bronze → Silver → Gold star schema
-./scripts/transform.sh
-
-# Step 4 — Compute all KPI analytics (JSON → data/analytics/)
-./scripts/kpi_analysis.sh
-
-# Step 5 — Run data quality checks (→ data/data_quality_report.json)
-./scripts/quality_checks.sh
+# Create data directories
+mkdir data\raw, data\bronze, data\silver, data\gold, data\analytics
 ```
 
-### 3. Start the API Server (Terminal 2)
+---
 
-```bash
-./scripts/api.sh
-```
+## 📊 Running the Platform
 
-> 🟢 FastAPI runs on **http://localhost:8000**
-> 📚 Interactive API docs at **http://localhost:8000/docs**
+### 🧹 Step 0: The "Clean Slate" (Reset Button)
+Run this once right before you start your demo to impress the judges by showing how the system builds from scratch.
 
-### 4. Start the Dashboard (Terminal 3)
+**macOS / Linux:** `./scripts/cleanup.sh`  
+**Windows:** `rm -Recurse -Force data/silver/*, data/gold/*, data/analytics/*` (or similar)
 
-```bash
-./scripts/dashboard.sh
-```
+---
+
+### 🧪 Step 1: Terminal 1 — The Data Pipeline
+Run these one by one to build the "Retail Brain".
+
+| Step | macOS / Linux Command | Windows (Activated Venv) |
+|---|---|---|
+| **1. Generate Data** | `./scripts/generation.sh` | `python src/data_generation/generate_pos.py` |
+| **2. Ingest** | `./scripts/ingestion.sh` | `python src/ingestion/ingest_batch.py` |
+| **3. Transform** | `./scripts/transform.sh` | `python src/transformation/bronze_to_silver.py` |
+| **4. Data Quality** | `./scripts/quality_checks.sh` | `python src/quality/quality_checks.py` |
+| **5. KPI Analysis** | `./scripts/kpi_analysis.sh` | `python src/analytics/commercial_kpis.py` |
+| **6. AI Forecast** | `./scripts/forecast.sh` | `python src/ml/demand_forecast.py` |
+
+---
+
+### 🚀 Step 2: Terminal 2 — Start API Server
+Start this once the pipeline data is ready.
+
+**macOS / Linux:** `./scripts/api.sh`  
+**Windows:** `python src/api/api.py`
+
+> 🟢 FastAPI runs on **http://localhost:8000** | 📚 Docs: **http://localhost:8000/docs**
+
+---
+
+### 🖥️ Step 3: Terminal 3 — Start Dashboard
+Keep this running to show the final visualization.
+
+**macOS / Linux:** `./scripts/dashboard.sh`  
+**Windows:** `cd dashboard && npm run dev`
 
 > 🟢 Next.js dashboard on **http://localhost:3000**
 
@@ -313,11 +263,13 @@ All scripts live in `scripts/` and auto-detect the project root + activate the v
 | Script | Purpose |
 |---|---|
 | `installation.sh` | Creates venv, installs Python deps + npm packages, sets up data dirs |
+| `cleanup.sh` | Resets demo state by wiping Silver, Gold, and Analytics layers |
 | `generation.sh` | Generates synthetic POS, Web Order, and Warehouse data |
 | `ingestion.sh` | Ingests raw CSV/JSON into Bronze layer Parquet files |
 | `transform.sh` | Runs Bronze → Silver → Gold transformations (incl. SCD2) |
-| `kpi_analysis.sh` | Executes all 4 KPI analytics scripts, outputs JSON |
 | `quality_checks.sh` | Runs 7 data quality checks, generates report |
+| `kpi_analysis.sh` | Executes all 4 KPI analytics scripts, outputs JSON |
+| `forecast.sh` | Trains LSTM AI brain and generates demand forecasts |
 | `api.sh` | Starts the FastAPI server on port 8000 |
 | `dashboard.sh` | Starts the Next.js dev server on port 3000 |
 
