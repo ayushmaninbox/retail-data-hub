@@ -81,15 +81,15 @@ into analytics-ready star schema tables.
                                │
               ┌────────────────┼────────────────┐
               ▼                ▼                ▼
-┌───────────────────┐ ┌────────────────┐ ┌──────────────────────┐
-│ 📊 DASHBOARD      │ │ 📝 SQL QUERIES │ │ 📈 ANALYTICS ENGINE  │
-│ (Streamlit +      │ │ (sql/)         │ │ (src/analytics/)     │
-│  Plotly)          │ │                │ │                      │
-│ 7 interactive     │ │ Pure SQL KPIs  │ │ KPI computation      │
-│ tabs covering     │ │ running on     │ │ Market Basket (ML)   │
-│ all KPI           │ │ DuckDB OLAP   │ │ RFM segmentation     │
-│ categories        │ │ engine         │ │ CLV analysis         │
-└───────────────────┘ └────────────────┘ └──────────────────────┘
+┌───────────────────┐ ┌────────────────┐ ┌──────────────────────┐ ┌───────────────────┐
+│ 📊 DASHBOARD      │ │ 📝 SQL QUERIES │ │ 📈 ANALYTICS ENGINE  │ │ 🧠 ML FORECAST     │
+│ (Next.js +        │ │ (sql/)         │ │ (src/analytics/)     │ │ (src/ml/)         │
+│  Tailwind)        │ │                │ │                      │ │                   │
+│ 7 interactive     │ │ Pure SQL KPIs  │ │ KPI computation      │ │ LSTM Demand       │
+│ pages covering    │ │ running on     │ │ Market Basket (ML)   │ │ Forecasting       │
+│ all KPI           │ │ DuckDB OLAP   │ │ RFM segmentation     │ │ (PyTorch)         │
+│ categories        │ │ engine         │ │ CLV analysis         │ │ Confidence Bands  │
+└───────────────────┘ └────────────────┘ └──────────────────────┘ └───────────────────┘
 ```
 
 ---
@@ -144,10 +144,11 @@ flowchart TD
     end
 
     subgraph Analytics["📊 Analytics & Presentation"]
-        DASH["Streamlit Dashboard<br/>7 Interactive Tabs"]
+        DASH["Next.js Dashboard<br/>7 Interactive Pages"]
         SQL["SQL Queries<br/>DuckDB OLAP"]
         KPI["KPI Engine<br/>Python Analytics"]
-        ML["Market Basket<br/>Apriori Algorithm"]
+        ML_MB["Market Basket<br/>Apriori Algorithm"]
+        ML_LSTM["Demand Forecast<br/>PyTorch LSTM"]
     end
 
     POS --> IB
@@ -188,7 +189,9 @@ flowchart TD
     F_SALES --> DASH
     F_SALES --> SQL
     F_SALES --> KPI
-    F_SALES --> ML
+    F_SALES --> ML_MB
+    F_SALES --> ML_LSTM
+    ML_LSTM --> DASH
     F_INV --> DASH
     F_SHP --> DASH
 ```

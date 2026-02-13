@@ -27,7 +27,7 @@ python src/quality/quality_checks.py
 | **Action on failure** | Quarantine row (exclude from downstream) |
 | **Why it exists** | Negative prices indicate data entry errors or reversed transactions that need manual review |
 
-**How it's caught:** The data generators intentionally inject ~0.4% negative prices to test this check.
+**How it's caught:** The data generators intentionally inject ~1.5% negative prices to test this check.
 
 ---
 
@@ -51,7 +51,7 @@ python src/quality/quality_checks.py
 | **Action on failure** | Fill with `"UNKNOWN"` |
 | **Why it exists** | Null customer IDs break RFM segmentation and CLV calculations |
 
-**How it's caught:** The data generators inject ~0.3% null customer IDs to test this check.
+**How it's caught:** The data generators inject ~1.5% null customer IDs to test this check.
 
 ---
 
@@ -174,8 +174,8 @@ The data generators **deliberately inject** quality issues to demonstrate the fr
 
 | Issue | Injection Rate | Generator | Caught By |
 |---|---|---|---|
-| Negative prices | ~0.4% of transactions | `generate_pos.py`, `generate_web_orders.py` | Check 1 |
-| Null customer IDs | ~0.3% of transactions | `generate_pos.py`, `generate_web_orders.py` | Check 3 |
+| Negative prices | ~1.5% of transactions | `generate_pos.py`, `generate_web_orders.py` | Check 1 |
+| Null customer IDs | ~1.5% of transactions | `generate_pos.py`, `generate_web_orders.py` | Check 3 |
 | SCD city changes | ~10% of customers | `generate_pos.py` | SCD Type 2 logic |
 | Stockout inventory | ~5% of snapshots | `generate_warehouse.py` | Check 6, analytics |
 | Delivery delays | ~15% of shipments | `generate_warehouse.py` | Logistics KPIs |
