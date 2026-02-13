@@ -11,10 +11,12 @@ import {
     ShoppingCart,
     ShieldCheck,
     Sparkles,
+    Database,
 } from "lucide-react";
 
 const navItems = [
     { href: "/", label: "Overview", icon: LayoutDashboard },
+    { href: "/tables", label: "Data Tables", icon: Database },
     { href: "/sales", label: "Sales Analytics", icon: BarChart3 },
     { href: "/inventory", label: "Inventory", icon: Package },
     { href: "/logistics", label: "Logistics", icon: Truck },
@@ -59,14 +61,14 @@ export default function Sidebar() {
                             key={item.href}
                             href={item.href}
                             className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 group ${isActive
-                                    ? "bg-gradient-to-r from-accent-purple/20 to-accent-blue/10 text-white border border-accent-purple/20"
-                                    : "text-slate-400 hover:text-white hover:bg-white/[0.04]"
+                                ? "bg-gradient-to-r from-accent-purple/20 to-accent-blue/10 text-white border border-accent-purple/20"
+                                : "text-slate-400 hover:text-white hover:bg-white/[0.04]"
                                 }`}
                         >
                             <Icon
                                 className={`w-[18px] h-[18px] transition-colors ${isActive
-                                        ? "text-accent-purple"
-                                        : "text-slate-500 group-hover:text-slate-300"
+                                    ? "text-accent-purple"
+                                    : "text-slate-500 group-hover:text-slate-300"
                                     }`}
                             />
                             {item.label}
