@@ -85,10 +85,10 @@ export default function DetailsModal({
                         "0 24px 80px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.04)",
                     opacity: animateIn ? 1 : 0,
                     transform: animateIn
-                        ? "translateY(0) scale(1)"
-                        : "translateY(24px) scale(0.96)",
+                        ? "scale(1)"
+                        : "scale(0.98)",
                     transition:
-                        "opacity 0.3s cubic-bezier(0.16,1,0.3,1), transform 0.3s cubic-bezier(0.16,1,0.3,1)",
+                        "opacity 0.25s cubic-bezier(0.16,1,0.3,1), transform 0.25s cubic-bezier(0.16,1,0.3,1)",
                 }}
             >
                 {/* Header — fixed */}
