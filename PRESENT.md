@@ -1,41 +1,46 @@
-# 🚀 Retail Data Hub — Demo Run Order
+# 🚀 Retail Data Hub — Hackathon Demo Playbook
 
-> All scripts are in `scripts/` and can be run from anywhere.
-> Each script auto-detects the project root and activates the venv.
+Follow this guide to show the judges a perfect End-to-End data pipeline journey from "Zero to AI".
 
 ---
 
-## 🛠️ First Time Setup (one-time)
+## 🧹 STEP 0: The "Clean Slate" (Reset Button)
+Run this once right before you start your demo to impress the judges by showing how the system builds from scratch.
 
 ```bash
-./scripts/installation.sh
+./scripts/cleanup.sh
 ```
-> Creates venv, installs Python deps + DuckDB, runs npm install for dashboard
+> **What it does**: Wipes processed Silver/Gold/Analytics data but keeps the Raw CSVs so you don't waste time re-generating data.
 
 ---
 
-## 📊 TERMINAL 1 — Run Pipeline (sequential, one by one)
+## 📊 TERMINAL 1: The Pipeline (Run Serially 1–8)
+Run these one by one as you narrate the Medallion Architecture.
 
 ```bash
-# Step 1: Generate Raw Data (CSV/JSON → data/raw/)
+# 1. GENERATE (The Source)
 ./scripts/generation.sh
 
-# Step 2: Ingest → Bronze Layer (Parquet → data/bronze/)
+# 2. INGEST (Bronze Layer: Creating Parquets)
 ./scripts/ingestion.sh
 
-# Step 3 & 4: Transform Bronze → Silver → Gold Star Schema
+# 3. TRANSFORM (Silver/Gold: Schema Evolution & Star Schema)
 ./scripts/transform.sh
 
-# Step 5: Run KPI Analytics (JSON → data/analytics/)
+# 4. DATA QUALITY (The Data Firewall)
+./scripts/quality_checks.sh
+
+# 5. KPI ANALYSIS (Commercial & Operations Intelligence)
 ./scripts/kpi_analysis.sh
 
-# Step 6: Data Quality Checks (→ data/data_quality_report.json)
-./scripts/quality_checks.sh
+# 6. DEMAND FORECAST (🧠 The LSTM AI Brain)
+./scripts/forecast.sh
 ```
 
 ---
 
-## 🚀 TERMINAL 2 — Start API Server (keep running)
+## 🚀 TERMINAL 2: The API & Service Layer
+Start this once the pipeline data is ready.
 
 ```bash
 ./scripts/api.sh
@@ -44,7 +49,8 @@
 
 ---
 
-## 🖥️ TERMINAL 3 — Start Dashboard (keep running)
+## 🖥️ TERMINAL 3: The Dashboard
+Keep this running to show the final visualization.
 
 ```bash
 ./scripts/dashboard.sh
@@ -53,10 +59,10 @@
 
 ---
 
-## 🎯 Demo Flow for Judges
+## 🎯 Pitch Highlights for Judges
 
-1. **Show empty `data/` folders** — "We start from zero"
-2. **Run Steps 1–6 in Terminal 1** — narrate each medallion layer
-3. **Start API (Terminal 2)** — show Swagger docs briefly
-4. **Start Dashboard (Terminal 3)** — walk through all 7 pages
-5. **Highlight**: Raw CSV → Parquet → Star Schema → KPIs → API → Dashboard
+1.  **Medallion Architecture**: Explain how we move from Raw CSV → Bronze (Storage) → Silver (Cleanup) → Gold (Analytics).
+2.  **Data Quality**: Show the "Dirty Data" we catch (negative prices, null IDs) and quarantine.
+3.  **LSTM Forecasting**: Highlight the **Forecast** page. "We don't just show history; we use a 2-layer LSTM to predict the next 30 days of demand."
+4.  **Cross-Channel Insight**: Mention how we join Online and POS data to see a single view of the customer.
+5.  **Tech Stack**: DuckDB (Speed), PyTorch (AI Brain), FastAPI (Service), Next.js (Visuals).

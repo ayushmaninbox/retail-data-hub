@@ -189,27 +189,95 @@ for idx in SCD_CUSTOMERS:
     }
 
 # ══════════════════════════════════════════════════════════════════════
-# 2. DATE RANGE + HELPERS
+# 2. DATE RANGE + REALISTIC DEMAND MODEL
 # ══════════════════════════════════════════════════════════════════════
 
 START_DATE = datetime(2023, 1, 1)
 END_DATE = datetime(2025, 1, 31)
 TOTAL_DAYS = (END_DATE - START_DATE).days
 
+# ── Monthly seasonality multipliers (Indian retail) ─────────────────
+# High: Oct-Dec (Diwali, Dussehra, Christmas), Mar (Holi)
+# Low:  Feb, Jun-Jul (monsoon lull)
+MONTHLY_MULTIPLIER = {
+    1: 0.75,    # Jan — post-festive dip
+    2: 0.80,    # Feb — slow month
+    3: 1.00,    # Mar — Holi + end of financial year
+    4: 0.90,    # Apr — new financial year
+    5: 0.85,    # May — summer, moderate
+    6: 0.70,    # Jun — monsoon starts, low footfall
+    7: 0.72,    # Jul — peak monsoon
+    8: 0.88,    # Aug — Raksha Bandhan, Independence Day
+    9: 0.95,    # Sep — pre-festive buildup
+    10: 1.40,   # Oct — Dussehra, Navratri
+    11: 1.60,   # Nov — Diwali peak
+    12: 1.30,   # Dec — Christmas, year-end sales
+}
 
-def random_date():
-    """Return a random datetime with weekend + seasonal weighting."""
-    while True:
-        d = START_DATE + timedelta(days=random.randint(0, TOTAL_DAYS))
-        # boost weekends (Sat=5, Sun=6)
-        if d.weekday() >= 5 and random.random() < 0.35:
-            return d
-        # seasonal spikes — Oct-Dec (festive season), Jan (New Year sales)
-        if d.month in (10, 11, 12, 1) and random.random() < 0.30:
-            return d
-        # regular day accepted ~50 %
-        if random.random() < 0.50:
-            return d
+# ── Day-of-week multipliers (footfall driven) ───────────────────────
+DOW_MULTIPLIER = {
+    0: 0.82,    # Mon — lowest footfall
+    1: 0.85,    # Tue
+    2: 0.90,    # Wed
+    3: 0.95,    # Thu
+    4: 1.15,    # Fri — pre-weekend spike
+    5: 1.35,    # Sat — peak shopping day
+    6: 1.10,    # Sun — families, slightly less than Sat
+}
+
+# ── Category seasonal weights ───────────────────────────────────────
+# Some categories spike in specific months
+CATEGORY_SEASONAL = {
+    "Electronics": {10: 1.5, 11: 1.8, 12: 1.3},           # Diwali electronics boom
+    "Clothing":    {3: 1.3, 10: 1.6, 11: 1.5, 12: 1.2},   # festive + Holi
+    "Groceries":   {10: 1.2, 11: 1.3, 12: 1.1},            # festive cooking
+    "Toys":        {11: 1.5, 12: 1.8},                      # Diwali gifts + Christmas
+    "Beauty":      {10: 1.4, 11: 1.5, 3: 1.2},             # festive grooming
+    "Books":       {6: 1.3, 7: 1.2},                        # monsoon reading
+    "Sports":      {1: 1.3, 8: 1.2},                        # New Year fitness + sports
+    "Home & Kitchen": {10: 1.4, 11: 1.6, 3: 1.2},          # Dhanteras, Holi cleaning
+}
+
+
+def demand_multiplier(date: datetime, category: str = None) -> float:
+    """Calculate a demand multiplier for a given date + optional category."""
+    m = 1.0
+
+    # 1. Monthly seasonality
+    m *= MONTHLY_MULTIPLIER.get(date.month, 1.0)
+
+    # 2. Day-of-week pattern
+    m *= DOW_MULTIPLIER.get(date.weekday(), 1.0)
+
+    # 3. Year-over-year growth (~15% annually)
+    years_elapsed = (date - START_DATE).days / 365.25
+    m *= (1 + 0.15 * years_elapsed)
+
+    # 4. Salary-day effect (1st and 15th of month → spending bump)
+    if date.day in (1, 2, 15, 16):
+        m *= 1.25
+
+    # 5. Specific festive dates (exact boosts)
+    md = (date.month, date.day)
+    if md == (11, 12) or md == (11, 13):    # Diwali (approx)
+        m *= 2.2
+    elif md == (10, 24) or md == (10, 25):  # Dussehra (approx)
+        m *= 1.8
+    elif md == (12, 25):                     # Christmas
+        m *= 1.6
+    elif md == (3, 25) or md == (3, 26):     # Holi (approx)
+        m *= 1.5
+    elif md == (8, 15):                      # Independence Day
+        m *= 1.3
+    elif md == (1, 26):                      # Republic Day
+        m *= 1.2
+
+    # 6. Category-specific seasonal boost
+    if category and category in CATEGORY_SEASONAL:
+        cat_boost = CATEGORY_SEASONAL[category].get(date.month, 1.0)
+        m *= cat_boost
+
+    return m
 
 
 def customer_city_at(cid: str, date: datetime):
@@ -221,59 +289,83 @@ def customer_city_at(cid: str, date: datetime):
 
 
 # ══════════════════════════════════════════════════════════════════════
-# 3. GENERATE POS TRANSACTIONS
+# 3. GENERATE POS TRANSACTIONS (date-driven demand model)
 # ══════════════════════════════════════════════════════════════════════
-
-NUM_INVOICES = 12_000
-ROWS = []
 
 print("🧾 Generating POS sales…")
 
-for inv_num in range(1, NUM_INVOICES + 1):
-    inv_id = f"INV-{inv_num:06d}"
-    inv_date = random_date()
+# Generate invoices by iterating each day — this creates realistic daily patterns
+BASE_INVOICES_PER_DAY = 16   # ~16 invoices/day × 762 days ≈ 12,000 invoices
+ROWS = []
+inv_counter = 0
 
-    # pick a random customer + matching store in their city
-    cust = random.choice(CUSTOMERS)
-    cid = cust["customer_id"]
-    cust_city, cust_state = customer_city_at(cid, inv_date)
+all_dates = [START_DATE + timedelta(days=d) for d in range(TOTAL_DAYS + 1)]
 
-    # stores in that city
-    city_stores = STORE_DF[STORE_DF["city"] == cust_city]["store_id"].tolist()
-    store_id = random.choice(city_stores) if city_stores else random.choice(STORE_DF["store_id"].tolist())
+for current_date in all_dates:
+    # Calculate how many invoices this day should have
+    day_mult = demand_multiplier(current_date)
+    n_invoices = max(1, int(BASE_INVOICES_PER_DAY * day_mult + random.gauss(0, 2)))
 
-    # 1–6 line items per invoice
-    n_items = random.randint(1, 6)
-    chosen_products = random.sample(PRODUCTS, k=min(n_items, len(PRODUCTS)))
+    for _ in range(n_invoices):
+        inv_counter += 1
+        inv_id = f"INV-{inv_counter:06d}"
 
-    for prod in chosen_products:
-        qty = random.randint(1, 10)
-        price = round(prod["base_price"] * random.uniform(0.85, 1.15), 2)
+        # pick a random customer + matching store
+        cust = random.choice(CUSTOMERS)
+        cid = cust["customer_id"]
+        cust_city, cust_state = customer_city_at(cid, current_date)
 
-        # ── intentional dirty data (~0.5 %) ─────────────────────────
-        if random.random() < 0.005:
-            price = round(-abs(price), 2)  # negative price
-        if random.random() < 0.003:
-            cid = None                      # null customer_id
+        city_stores = STORE_DF[STORE_DF["city"] == cust_city]["store_id"].tolist()
+        store_id = random.choice(city_stores) if city_stores else random.choice(STORE_DF["store_id"].tolist())
 
-        total = round(qty * price, 2)
+        # 1–6 line items per invoice
+        n_items = random.randint(1, 6)
 
-        ROWS.append({
-            "invoice_no":    inv_id,
-            "invoice_date":   inv_date.strftime("%Y-%m-%d %H:%M:%S"),
-            "store_id":       store_id,
-            "store_city":     cust_city,
-            "customer_id":    cid,
-            "product_id":     prod["product_id"],
-            "product_name":   prod["product_name"],
-            "category":       prod["category"],
-            "quantity":       qty,
-            "unit_price":     price,
-            "total_amount":   total,
-        })
+        # weight product selection by category seasonal demand
+        cat_weights = []
+        for p in PRODUCTS:
+            w = demand_multiplier(current_date, p["category"]) / day_mult
+            cat_weights.append(w)
+        total_w = sum(cat_weights)
+        cat_weights = [w / total_w for w in cat_weights]
+        chosen_indices = random.choices(range(len(PRODUCTS)), weights=cat_weights, k=n_items)
+        chosen_products = [PRODUCTS[i] for i in chosen_indices]
 
-    if inv_num % 3000 == 0:
-        print(f"   … {inv_num}/{NUM_INVOICES} invoices")
+        for prod in chosen_products:
+            qty = random.randint(1, 10)
+            # price varies by day — slight discount during festive, higher on slow days
+            price_mult = random.uniform(0.85, 1.15)
+            if current_date.month in (10, 11):
+                price_mult *= random.uniform(0.88, 0.97)  # festive discounts
+            price = round(prod["base_price"] * price_mult, 2)
+
+            # ── intentional dirty data (~1.5 %) ─────────────────────
+            if random.random() < 0.008:
+                price = round(-abs(price), 2)       # negative price
+            if random.random() < 0.005:
+                cid = None                           # null customer_id
+            if random.random() < 0.003:
+                qty = random.randint(50, 500)        # abnormal quantity spike
+
+            total = round(qty * price, 2)
+
+            ROWS.append({
+                "invoice_no":    inv_id,
+                "invoice_date":  current_date.strftime("%Y-%m-%d %H:%M:%S"),
+                "store_id":      store_id,
+                "store_city":    cust_city,
+                "customer_id":   cid,
+                "product_id":    prod["product_id"],
+                "product_name":  prod["product_name"],
+                "category":      prod["category"],
+                "quantity":      qty,
+                "unit_price":    price,
+                "total_amount":  total,
+            })
+
+    if (current_date - START_DATE).days % 200 == 0:
+        print(f"   … {(current_date - START_DATE).days}/{TOTAL_DAYS} days "
+              f"({inv_counter:,} invoices so far)")
 
 # ── write CSV ────────────────────────────────────────────────────────
 df = pd.DataFrame(ROWS)

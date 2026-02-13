@@ -36,93 +36,104 @@ sys.path.insert(0, os.path.dirname(__file__))
 from generate_pos import (
     CITIES, PRODUCTS, CUSTOMERS, CUSTOMER_DF,
     SCD_MAP, SCD_CUTOFF, START_DATE, END_DATE, TOTAL_DAYS,
+    demand_multiplier, CATEGORY_SEASONAL, all_dates,
+    customer_city_at,
 )
 
-# ══════════════════════════════════════════════════════════════════════
-# 1. HELPERS
-# ══════════════════════════════════════════════════════════════════════
-
+# ── Payment methods ─────────────────────────────────────────────────
 PAYMENT_METHODS = ["UPI", "Credit Card", "Debit Card", "COD", "Net Banking"]
 PAYMENT_WEIGHTS = [0.40, 0.25, 0.20, 0.10, 0.05]
 
 
-def random_date_web():
-    """Weighted random date — heavier on weekends + festive months."""
-    while True:
-        d = START_DATE + timedelta(days=random.randint(0, TOTAL_DAYS))
-        if d.weekday() >= 5 and random.random() < 0.35:
-            return d
-        if d.month in (10, 11, 12, 1) and random.random() < 0.30:
-            return d
-        if random.random() < 0.50:
-            return d
-
-
-def customer_city_at(cid: str, date: datetime):
-    """Return city/state for a customer, accounting for SCD."""
-    base = CUSTOMER_DF.loc[CUSTOMER_DF["customer_id"] == cid].iloc[0]
-    if cid in SCD_MAP and date >= SCD_CUTOFF:
-        return SCD_MAP[cid]["new_city"], SCD_MAP[cid]["new_state"]
-    return base["city"], base["state"]
-
-
 # ══════════════════════════════════════════════════════════════════════
-# 2. GENERATE WEB ORDERS — flat format, one record per line item
+# 2. GENERATE WEB ORDERS — date-driven demand model
 # ══════════════════════════════════════════════════════════════════════
 
-NUM_ORDERS = 15_000
+BASE_ORDERS_PER_DAY = 20   # ~20 orders/day × 762 days ≈ 15,000 orders
 records = []
 
 print("🌐 Generating web orders (flat JSON)…")
 
-for i in range(1, NUM_ORDERS + 1):
-    order_id = f"WEB-{i:06d}"
-    order_date = random_date_web()
+order_counter = 0
 
-    # pick a random customer
-    cust = random.choice(CUSTOMERS)
-    cid = cust["customer_id"]
-    cust_city, cust_state = customer_city_at(cid, order_date)
+for current_date in all_dates:
+    # Web has slightly different patterns — more weekday orders (office browsing)
+    day_mult = demand_multiplier(current_date)
+    # Web gets a weekday boost (online shopping during work hours)
+    if current_date.weekday() < 5:
+        day_mult *= 1.10
+    # Web gets flash sale boosts on specific days
+    if current_date.day in (11, 12) and current_date.month in (1, 7, 11):
+        day_mult *= 1.5   # "Big Billion" / "Republic Day" style flash sales
 
-    # pick a random product
-    prod = random.choice(PRODUCTS)
-    qty = random.randint(1, 5)
-    price = round(prod["base_price"] * random.uniform(0.85, 1.15), 2)
+    n_orders = max(1, int(BASE_ORDERS_PER_DAY * day_mult + random.gauss(0, 3)))
 
-    # intentional dirty data (~0.4 %)
-    if random.random() < 0.004:
-        price = round(-abs(price), 2)
+    for _ in range(n_orders):
+        order_counter += 1
+        order_id = f"WEB-{order_counter:06d}"
 
-    total = round(qty * price, 2)
+        # pick a random customer
+        cust = random.choice(CUSTOMERS)
+        cid = cust["customer_id"]
+        cust_city, cust_state = customer_city_at(cid, current_date)
 
-    payment = random.choices(PAYMENT_METHODS, weights=PAYMENT_WEIGHTS, k=1)[0]
-    delivery_addr = fake.address().replace("\n", ", ")
+        # pick a product weighted by category demand
+        cat_weights = []
+        for p in PRODUCTS:
+            w = demand_multiplier(current_date, p["category"]) / day_mult
+            cat_weights.append(w)
+        total_w = sum(cat_weights)
+        cat_weights = [w / total_w for w in cat_weights]
+        prod_idx = random.choices(range(len(PRODUCTS)), weights=cat_weights, k=1)[0]
+        prod = PRODUCTS[prod_idx]
 
-    # null customer_id occasionally (~0.3 %)
-    record_cid = cid
-    if random.random() < 0.003:
-        record_cid = None
+        qty = random.randint(1, 5)
+        price_mult = random.uniform(0.85, 1.15)
+        # web often has deeper discounts during festive / sale periods
+        if current_date.month in (10, 11):
+            price_mult *= random.uniform(0.82, 0.95)  # Diwali discounts
+        elif current_date.month == 1:
+            price_mult *= random.uniform(0.90, 0.98)  # New Year sale
 
-    record = {
-        "order_id":          order_id,
-        "order_date":        order_date.strftime("%Y-%m-%d %H:%M:%S"),
-        "customer_id":       record_cid,
-        "customer_name":     cust["name"],
-        "customer_city":     cust_city,
-        "product_id":        prod["product_id"],
-        "product_name":      prod["product_name"],
-        "category":          prod["category"],
-        "quantity":          qty,
-        "unit_price":        price,
-        "total_amount":      total,
-        "payment_method":    payment,
-        "delivery_address":  delivery_addr,
-    }
+        price = round(prod["base_price"] * price_mult, 2)
 
-    records.append(record)
+        # ── intentional dirty data (~1.5 %) ─────────────────────────
+        if random.random() < 0.006:
+            price = round(-abs(price), 2)          # negative price
+        if random.random() < 0.004:
+            qty = random.randint(20, 200)           # abnormal quantity
 
-    if i % 5000 == 0:
-        print(f"   … {i}/{NUM_ORDERS} orders")
+        total = round(qty * price, 2)
+
+        payment = random.choices(PAYMENT_METHODS, weights=PAYMENT_WEIGHTS, k=1)[0]
+        delivery_addr = fake.address().replace("\n", ", ")
+
+        # null customer_id occasionally (~0.5 %)
+        record_cid = cid
+        if random.random() < 0.005:
+            record_cid = None
+
+        record = {
+            "order_id":          order_id,
+            "order_date":        current_date.strftime("%Y-%m-%d %H:%M:%S"),
+            "customer_id":       record_cid,
+            "customer_name":     cust["name"],
+            "customer_city":     cust_city,
+            "product_id":        prod["product_id"],
+            "product_name":      prod["product_name"],
+            "category":          prod["category"],
+            "quantity":          qty,
+            "unit_price":        price,
+            "total_amount":      total,
+            "payment_method":    payment,
+            "delivery_address":  delivery_addr,
+        }
+
+        records.append(record)
+
+    if (current_date - START_DATE).days % 200 == 0:
+        print(f"   … {(current_date - START_DATE).days}/{TOTAL_DAYS} days "
+              f"({order_counter:,} orders so far)")
 
 # ── write JSON ───────────────────────────────────────────────────────
 out_path = os.path.join(RAW_DIR, "web_orders.json")

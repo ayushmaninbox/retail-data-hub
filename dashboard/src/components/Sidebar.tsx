@@ -10,6 +10,7 @@ import {
     Users,
     ShoppingCart,
     ShieldCheck,
+    TrendingUp,
     Sparkles,
     Database,
 } from "lucide-react";
@@ -23,6 +24,7 @@ const navItems = [
     { href: "/customers", label: "Customers", icon: Users },
     { href: "/market-basket", label: "Market Basket", icon: ShoppingCart },
     { href: "/data-quality", label: "Data Quality", icon: ShieldCheck },
+    { href: "/forecast", label: "Forecast", icon: TrendingUp },
 ];
 
 export default function Sidebar() {

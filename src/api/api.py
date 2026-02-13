@@ -110,6 +110,12 @@ def data_quality():
     return {"error": "data_quality_report.json not found. Run quality_checks.py first."}
 
 
+@app.get("/api/forecast")
+def demand_forecast():
+    """LSTM demand forecast — 30-day revenue predictions by category."""
+    return load_json("demand_forecast.json")
+
+
 @app.get("/api/sales")
 def sales_analytics():
     """Sales-specific data for the Sales Analytics dashboard page."""
