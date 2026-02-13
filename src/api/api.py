@@ -308,12 +308,6 @@ def list_tables():
                     info["mean"] = _safe_val(round(df[col].mean(), 2))
                 col_info.append(info)
 
-            # Sample rows (first 20)
-            sample = df.head(20)
-            rows = []
-            for _, row in sample.iterrows():
-                rows.append({col: _safe_val(row[col]) for col in df.columns})
-
             layer_tables.append({
                 "name": tbl["name"],
                 "description": tbl.get("description", ""),
@@ -322,12 +316,49 @@ def list_tables():
                 "rows": len(df),
                 "columns": len(df.columns),
                 "column_info": col_info,
-                "sample_rows": rows,
                 "fk_links": tbl.get("fk_links"),
                 "pk": tbl.get("pk"),
             })
         result[layer] = layer_tables
     return result
+
+
+@app.get("/api/tables/rows/{layer}/{table_name}")
+def table_rows(
+    layer: str,
+    table_name: str,
+    page: int = Query(1, ge=1, description="Page number (1-indexed)"),
+    page_size: int = Query(20, ge=1, le=100, description="Rows per page"),
+):
+    """Return paginated rows for a specific table."""
+    tables = TABLE_REGISTRY.get(layer, [])
+    tbl = next((t for t in tables if t["name"] == table_name), None)
+    if not tbl:
+        return {"error": f"Table {layer}/{table_name} not found"}
+
+    df = _load_table_df(tbl["path"], tbl["format"])
+    if df is None:
+        return {"error": f"Could not load {tbl['path']}"}
+
+    total_rows = len(df)
+    total_pages = max(1, math.ceil(total_rows / page_size))
+    start = (page - 1) * page_size
+    end = min(start + page_size, total_rows)
+
+    page_df = df.iloc[start:end]
+    rows = []
+    for _, row in page_df.iterrows():
+        rows.append({col: _safe_val(row[col]) for col in df.columns})
+
+    return {
+        "rows": rows,
+        "page": page,
+        "page_size": page_size,
+        "total_rows": total_rows,
+        "total_pages": total_pages,
+        "has_next": page < total_pages,
+        "has_prev": page > 1,
+    }
 
 
 @app.get("/api/tables/download/{layer}/{table_name}")
