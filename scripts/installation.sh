@@ -25,9 +25,9 @@ echo "   ✓ Activated .venv"
 echo ""
 
 # 2. Python dependencies
-echo "📦 Installing Python dependencies…"
-pip install --upgrade pip -q
-pip install -r requirements.txt -q
+echo "📦 Installing Python dependencies (this may take a minute)…"
+pip install --upgrade pip
+pip install -r requirements.txt
 echo "   ✓ Installed requirements.txt"
 echo ""
 
@@ -37,9 +37,9 @@ python3 -c "import duckdb; print(f'   ✓ DuckDB {duckdb.__version__} installed'
 echo ""
 
 # 4. Node.js / Dashboard dependencies
-echo "📦 Installing Dashboard dependencies…"
+echo "📦 Installing Dashboard dependencies (running npm install)…"
 cd "$PROJ_DIR/dashboard"
-npm install --silent
+npm install
 echo "   ✓ Installed npm packages"
 cd "$PROJ_DIR"
 echo ""
