@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useApi } from "@/hooks/useApi";
 import { PageSkeleton } from "@/components/Skeleton";
 import {
@@ -12,6 +13,7 @@ import { LayoutDashboard } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import KpiCard from "@/components/KpiCard";
 import ChartCard from "@/components/ChartCard";
+import DetailsModal from "@/components/DetailsModal";
 import {
     AreaChart,
     Area,
@@ -45,8 +47,17 @@ function fmt(n: number): string {
     return `₹${n.toLocaleString("en-IN")}`;
 }
 
+function fmtNum(n: number): string {
+    return n.toLocaleString("en-IN");
+}
+
+type ModalType = "revenue" | "orders" | "customers" | "aov" | null;
+
 export default function OverviewPage() {
     const { data, loading } = useApi<any>("/api/overview");
+    const { data: commercialData } = useApi<any>("/api/commercial");
+    const { data: customerData } = useApi<any>("/api/customers");
+    const [activeModal, setActiveModal] = useState<ModalType>(null);
 
     if (loading || !data) return <PageSkeleton />;
 
@@ -61,6 +72,62 @@ export default function OverviewPage() {
         revenue: m.revenue,
     }));
     const customers = data.customers || {};
+
+    /* ── Build modal row data ── */
+
+    // Revenue breakdown: by channel
+    const revenueRows = (data.channel_mix || []).map((c: any) => ({
+        label: c.channel === "POS" ? "POS (In-Store)" : "Web (Online)",
+        value: fmt(c.revenue),
+        subValue: `${fmtNum(c.transactions)} transactions`,
+        color: c.channel === "POS" ? "#8b5cf6" : "#14b8a6",
+        percentage: c.revenue_pct,
+    }));
+
+    // Orders breakdown: by channel
+    const ordersRows = (data.channel_mix || []).map((c: any) => ({
+        label: c.channel === "POS" ? "POS (In-Store)" : "Web (Online)",
+        value: fmtNum(c.transactions),
+        subValue: `${fmtNum(c.units_sold)} units · ${fmt(c.revenue)} revenue`,
+        color: c.channel === "POS" ? "#8b5cf6" : "#14b8a6",
+        percentage: c.revenue_pct,
+    }));
+
+    // Customer breakdown
+    const custSummary = customerData?.new_vs_returning?.summary || {};
+    const customerRows = [
+        {
+            label: "New Customers",
+            value: fmtNum(custSummary.new_customers || 0),
+            subValue: `${(custSummary.new_pct || 0).toFixed(1)}% of total`,
+            color: "#14b8a6",
+            percentage: custSummary.new_pct || 0,
+        },
+        {
+            label: "Returning Customers",
+            value: fmtNum(custSummary.returning_customers || 0),
+            subValue: `${(custSummary.repeat_rate_pct || 0).toFixed(1)}% repeat rate`,
+            color: "#8b5cf6",
+            percentage: custSummary.returning_pct || 0,
+        },
+    ];
+
+    // AOV breakdown: by channel
+    const aovRows = (data.channel_mix || []).map((c: any) => ({
+        label: c.channel === "POS" ? "POS (In-Store)" : "Web (Online)",
+        value: fmt(c.transactions > 0 ? c.revenue / c.transactions : 0),
+        subValue: `Based on ${fmtNum(c.transactions)} transactions`,
+        color: c.channel === "POS" ? "#8b5cf6" : "#14b8a6",
+    }));
+
+    // City sales (top 5) for revenue modal extra info
+    const citySales = (commercialData?.city_sales || []).slice(0, 5);
+    const revenueCityRows = citySales.map((c: any, i: number) => ({
+        label: c.city,
+        value: fmt(c.revenue),
+        subValue: `${fmtNum(c.transactions)} txns · #${i + 1}`,
+        color: ["#8b5cf6", "#3b82f6", "#14b8a6", "#ec4899", "#f59e0b"][i],
+    }));
 
     return (
         <div className="space-y-6">
@@ -79,6 +146,7 @@ export default function OverviewPage() {
                     trend="up"
                     accentColor="from-accent-purple to-accent-blue"
                     subtitle="All time"
+                    onClick={() => setActiveModal("revenue")}
                 />
                 <KpiCard
                     icon={ShoppingBag}
@@ -88,6 +156,7 @@ export default function OverviewPage() {
                     trend="up"
                     accentColor="from-accent-blue to-accent-teal"
                     subtitle="All time"
+                    onClick={() => setActiveModal("orders")}
                 />
                 <KpiCard
                     icon={Users}
@@ -97,6 +166,7 @@ export default function OverviewPage() {
                     trend="up"
                     accentColor="from-accent-teal to-emerald-400"
                     subtitle="Active buyers"
+                    onClick={() => setActiveModal("customers")}
                 />
                 <KpiCard
                     icon={CreditCard}
@@ -106,6 +176,7 @@ export default function OverviewPage() {
                     trend="neutral"
                     accentColor="from-accent-pink to-accent-orange"
                     subtitle="Across all channels"
+                    onClick={() => setActiveModal("aov")}
                 />
             </div>
 
@@ -194,6 +265,48 @@ export default function OverviewPage() {
                     </div>
                 </ChartCard>
             </div>
+
+            {/* ── Drill-Down Modals ── */}
+
+            <DetailsModal
+                open={activeModal === "revenue"}
+                onClose={() => setActiveModal(null)}
+                title="Revenue Breakdown"
+                icon={IndianRupee}
+                accentColor="from-accent-purple to-accent-blue"
+                rows={[...revenueRows, ...revenueCityRows]}
+                footer="Revenue split by channel and top 5 cities"
+            />
+
+            <DetailsModal
+                open={activeModal === "orders"}
+                onClose={() => setActiveModal(null)}
+                title="Orders Breakdown"
+                icon={ShoppingBag}
+                accentColor="from-accent-blue to-accent-teal"
+                rows={ordersRows}
+                footer="Orders split by POS (in-store) vs Web (online)"
+            />
+
+            <DetailsModal
+                open={activeModal === "customers"}
+                onClose={() => setActiveModal(null)}
+                title="Customer Breakdown"
+                icon={Users}
+                accentColor="from-accent-teal to-emerald-400"
+                rows={customerRows}
+                footer="New vs returning customers across all channels"
+            />
+
+            <DetailsModal
+                open={activeModal === "aov"}
+                onClose={() => setActiveModal(null)}
+                title="Avg Order Value by Channel"
+                icon={CreditCard}
+                accentColor="from-accent-pink to-accent-orange"
+                rows={aovRows}
+                footer="Average transaction value per channel"
+            />
         </div>
     );
 }
