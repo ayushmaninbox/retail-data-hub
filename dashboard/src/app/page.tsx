@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { LayoutDashboard } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
+import ExecutiveSummary from "@/components/ExecutiveSummary";
 import KpiCard from "@/components/KpiCard";
 import ChartCard from "@/components/ChartCard";
 import DetailsModal from "@/components/DetailsModal";
@@ -143,6 +144,8 @@ export default function OverviewPage() {
                 title="Overview"
                 subtitle="Your retail business at a glance — key metrics and trends"
             />
+
+            <ExecutiveSummary />
 
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 animate-slide-up">
                 <KpiCard

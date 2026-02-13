@@ -17,6 +17,7 @@ import {
 
 const navItems = [
     { href: "/", label: "Overview", icon: LayoutDashboard },
+    { href: "/chat", label: "AI Assistant", icon: Sparkles },
     { href: "/tables", label: "Data Tables", icon: Database },
     { href: "/sales", label: "Sales Analytics", icon: BarChart3 },
     { href: "/inventory", label: "Inventory", icon: Package },

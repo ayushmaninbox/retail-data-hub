@@ -20,6 +20,8 @@ echo ""
 python3 src/analytics/customer_kpis.py
 echo ""
 python3 src/analytics/market_basket.py
+echo ""
+python3 src/analytics/executive_summary.py
 
 echo ""
 echo "============================================================"

@@ -23,11 +23,27 @@ import json
 import math
 from typing import Optional
 import pandas as pd
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, Query, Body
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
+from pydantic import BaseModel
 
-# ── paths ───────────────────────────────────────────────────────────
+import sys
+
+# ── Robust Path Setup ──────────────────────────────────────────────
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+API_DIR = os.path.join(ROOT_DIR, "src", "api")
+if API_DIR not in sys.path:
+    sys.path.append(API_DIR)
+
+# ── Import Chat Engine ─────────────────────────────────────────────
+try:
+    from chat_engine import engine as chat_engine
+except ImportError:
+    # Fallback to absolute if directory structure is weird
+    import src.api.chat_engine as ce
+    chat_engine = ce.engine
+
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 ANALYTICS_DIR = os.path.join(ROOT_DIR, "data", "analytics")
 DATA_DIR = os.path.join(ROOT_DIR, "data")
@@ -38,6 +54,21 @@ app = FastAPI(
     description="Serves KPI analytics from the Gold layer to the Next.js dashboard",
     version="1.0.0",
 )
+
+# ══════════════════════════════════════════════════════════════════════
+# AI CHAT ASSISTANT
+# ══════════════════════════════════════════════════════════════════════
+
+class ChatRequest(BaseModel):
+    message: str
+    history: Optional[list] = None
+
+@app.post("/api/chat")
+def chat(request: ChatRequest):
+    """Business Intelligence Chat Assistant powered by Gemini."""
+    response = chat_engine.ask(request.message, request.history)
+    return response
+
 
 # Allow Next.js dev server (localhost:3000) to call this API
 app.add_middleware(
@@ -69,12 +100,18 @@ def load_json(filename: str) -> dict:
 @app.get("/api/health")
 def health():
     """Health check."""
-    files = ["commercial_kpis.json", "operations_kpis.json", "customer_kpis.json", "market_basket.json"]
+    files = ["commercial_kpis.json", "operations_kpis.json", "customer_kpis.json", "market_basket.json", "executive_summary.json"]
     status = {}
     for f in files:
         path = os.path.join(ANALYTICS_DIR, f)
         status[f] = os.path.exists(path)
     return {"status": "ok", "data_files": status}
+
+
+@app.get("/api/summary")
+def executive_summary():
+    """Auto-generated business insights (Gemini AI)."""
+    return load_json("executive_summary.json")
 
 
 @app.get("/api/commercial")
