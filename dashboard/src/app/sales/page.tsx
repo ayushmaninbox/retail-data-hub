@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useApi } from "@/hooks/useApi";
 import { PageSkeleton } from "@/components/Skeleton";
 import {
@@ -12,6 +12,9 @@ import {
     Sparkles,
     Store,
     Globe,
+    ArrowUp,
+    Activity,
+    ShoppingBag,
 } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import KpiCard from "@/components/KpiCard";
@@ -137,9 +140,38 @@ const TreemapContent = (props: any) => {
 
 type ModalType = "topCity" | "topProduct" | null;
 
+const SECTIONS = [
+    { id: "kpis", label: "KPIs", icon: Activity },
+    { id: "trends", label: "Trends", icon: TrendingUp },
+    { id: "cities", label: "Cities", icon: MapPin },
+    { id: "products", label: "Products", icon: ShoppingBag },
+    { id: "categories", label: "Categories", icon: Layers },
+];
+
 export default function SalesPage() {
     const { data, loading } = useApi<any>("/api/commercial");
     const [activeModal, setActiveModal] = useState<ModalType>(null);
+    const [activeSection, setActiveSection] = useState("kpis");
+    const [showScrollTop, setShowScrollTop] = useState(false);
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    /* Scroll-spy: detect which section is in view */
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollY = window.scrollY;
+            setShowScrollTop(scrollY > 400);
+
+            for (let i = SECTIONS.length - 1; i >= 0; i--) {
+                const el = document.getElementById(SECTIONS[i].id);
+                if (el && el.offsetTop - 100 <= scrollY) {
+                    setActiveSection(SECTIONS[i].id);
+                    break;
+                }
+            }
+        };
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     if (loading || !data) return <PageSkeleton />;
 
@@ -233,15 +265,38 @@ export default function SalesPage() {
     }));
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-6" ref={containerRef}>
             <PageHeader
                 icon={BarChart3}
                 title="Sales Analytics"
                 subtitle="Deep dive into revenue streams, product mix & geographic performance"
             />
 
+            {/* ── Sticky Section Nav ── */}
+            <nav className="sticky top-0 z-40 -mx-8 px-8 py-3" style={{ background: "rgba(10,10,25,0.85)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide">
+                    {SECTIONS.map((s) => {
+                        const SIcon = s.icon;
+                        const isActive = activeSection === s.id;
+                        return (
+                            <a
+                                key={s.id}
+                                href={`#${s.id}`}
+                                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-medium transition-all whitespace-nowrap ${isActive
+                                        ? "bg-accent-purple/20 text-accent-purple shadow-sm shadow-accent-purple/10"
+                                        : "text-slate-400 hover:text-white hover:bg-white/[0.04]"
+                                    }`}
+                            >
+                                <SIcon className="w-3.5 h-3.5" />
+                                {s.label}
+                            </a>
+                        );
+                    })}
+                </div>
+            </nav>
+
             {/* ── KPI Row ── */}
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 animate-slide-up">
+            <div id="kpis" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 animate-slide-up">
                 <KpiCard
                     icon={TrendingUp}
                     title="Total Revenue"
@@ -287,7 +342,7 @@ export default function SalesPage() {
             </div>
 
             {/* ── Row 2: Revenue Trend (ComposedChart) + Category Treemap ── */}
-            <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 animate-slide-up" style={{ animationDelay: "0.05s" }}>
+            <div id="trends" className="grid grid-cols-1 xl:grid-cols-3 gap-4 animate-slide-up" style={{ animationDelay: "0.05s" }}>
                 <ChartCard
                     title="Revenue & Transactions Trend"
                     subtitle="Monthly dual-axis: revenue (area) and transactions (line)"
@@ -342,7 +397,7 @@ export default function SalesPage() {
             </div>
 
             {/* ── Row 3: City Race Bar + City Radar ── */}
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 animate-slide-up" style={{ animationDelay: "0.1s" }}>
+            <div id="cities" className="grid grid-cols-1 xl:grid-cols-2 gap-4 animate-slide-up" style={{ animationDelay: "0.1s" }}>
                 <ChartCard title="City Revenue Ranking" subtitle="Top 10 cities by total revenue">
                     <div className="h-96">
                         <ResponsiveContainer width="100%" height="100%">
@@ -405,7 +460,7 @@ export default function SalesPage() {
             </div>
 
             {/* ── Row 4: Top Products + Channel Comparison ── */}
-            <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 animate-slide-up" style={{ animationDelay: "0.15s" }}>
+            <div id="products" className="grid grid-cols-1 xl:grid-cols-3 gap-4 animate-slide-up" style={{ animationDelay: "0.15s" }}>
                 <ChartCard title="Top 10 Products by Revenue" subtitle="Star performers across all channels" className="xl:col-span-2">
                     <div className="h-96">
                         <ResponsiveContainer width="100%" height="100%">
@@ -512,7 +567,7 @@ export default function SalesPage() {
             </div>
 
             {/* ── Category Detail Cards ── */}
-            <div className="animate-slide-up" style={{ animationDelay: "0.2s" }}>
+            <div id="categories" className="animate-slide-up" style={{ animationDelay: "0.2s" }}>
                 <div className="flex items-center gap-2 mb-4">
                     <Layers className="w-4 h-4 text-accent-purple" />
                     <h3 className="text-sm font-semibold text-white">Category Breakdown</h3>
@@ -563,6 +618,15 @@ export default function SalesPage() {
                 rows={productModalRows}
                 footer="Top products by revenue across all channels"
             />
+
+            {/* ── Scroll to Top Button ── */}
+            <button
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className={`fixed bottom-6 right-6 z-50 w-10 h-10 rounded-full bg-accent-purple/90 text-white flex items-center justify-center shadow-lg shadow-accent-purple/30 transition-all duration-300 hover:bg-accent-purple hover:scale-110 ${showScrollTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
+                    }`}
+            >
+                <ArrowUp className="w-4 h-4" />
+            </button>
         </div>
     );
 }
