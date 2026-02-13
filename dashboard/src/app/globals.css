@@ -31,6 +31,10 @@
     @apply bg-white/70 backdrop-blur-md border border-white/50 shadow-sm;
 }
 
+.glass-card-dark {
+    @apply bg-slate-900/80 backdrop-blur-xl border border-white/10 shadow-2xl;
+}
+
 /* Recharts Overrides */
 .recharts-cartesian-grid-horizontal line,
 .recharts-cartesian-grid-vertical line {

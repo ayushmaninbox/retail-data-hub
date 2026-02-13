@@ -31,8 +31,8 @@ import {
 const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
         return (
-            <div className="glass-card-static p-3 border border-white/10">
-                <p className="text-xs text-slate-400">{label}</p>
+            <div className="glass-card-dark p-3 border border-white/10 ring-1 ring-white/5">
+                <p className="text-xs text-slate-400 mb-1 font-semibold">{label}</p>
                 <p className="text-sm font-bold text-white">
                     ₹{(payload[0].value / 10000000).toFixed(2)} Cr
                 </p>
@@ -254,11 +254,13 @@ export default function OverviewPage() {
                                         if (active && payload && payload.length) {
                                             const d = payload[0].payload;
                                             return (
-                                                <div className="glass-card-static p-3 border border-white/10">
-                                                    <p className="text-xs font-medium text-white mb-1">{d.name}</p>
-                                                    <p className="text-xs text-slate-300">Revenue: <span className="font-bold text-white">{fmt(d.value)}</span></p>
-                                                    <p className="text-xs text-slate-300">Share: <span className="font-bold text-white">{d.pct}%</span></p>
-                                                    <p className="text-xs text-slate-300">Txns: <span className="font-bold text-white">{fmtNum(d.transactions)}</span></p>
+                                                <div className="glass-card-dark p-3 ring-1 ring-white/10" style={{ zIndex: 9999 }}>
+                                                    <p className="text-[10px] font-bold text-accent-purple uppercase tracking-wider mb-1">{d.name}</p>
+                                                    <div className="space-y-0.5">
+                                                        <p className="text-xs text-white">Revenue: <span className="font-bold">{fmt(d.value)}</span></p>
+                                                        <p className="text-xs text-slate-300">Share: <span className="font-bold text-white">{d.pct}%</span></p>
+                                                        <p className="text-xs text-slate-300">Txns: <span className="font-bold text-white">{fmtNum(d.transactions)}</span></p>
+                                                    </div>
                                                 </div>
                                             );
                                         }

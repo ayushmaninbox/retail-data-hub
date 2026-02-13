@@ -170,27 +170,6 @@ export default function CustomersPage() {
         <div className="space-y-6">
             <PageHeader icon={Users} title="Customer Analytics" subtitle="Customer lifetime value, RFM segmentation & retention analysis" />
 
-            {/* ── Sticky Nav ── */}
-            <nav className="sticky top-0 z-40 -mx-8 px-8 py-3" style={{ background: "rgba(255,255,255,0.9)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
-                <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide">
-                    {SECTIONS.map((s) => {
-                        const SIcon = s.icon;
-                        return (
-                            <a
-                                key={s.id}
-                                href={`#${s.id}`}
-                                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-medium transition-all whitespace-nowrap ${activeSection === s.id
-                                    ? "bg-accent-purple/20 text-accent-purple shadow-sm shadow-accent-purple/10"
-                                    : "text-slate-400 hover:text-slate-800 hover:bg-black/[0.04]"
-                                    }`}
-                            >
-                                <SIcon className="w-3.5 h-3.5" />
-                                {s.label}
-                            </a>
-                        );
-                    })}
-                </div>
-            </nav>
 
             {/* ── KPI Cards ── */}
             <div id="kpis" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 animate-slide-up">
@@ -216,11 +195,11 @@ export default function CustomersPage() {
                                             if (active && payload && payload.length) {
                                                 const d = payload[0].payload;
                                                 return (
-                                                    <div className="glass-card-static p-3 border border-black/10" style={{ zIndex: 9999 }}>
-                                                        <p className="text-xs font-bold text-slate-800 mb-1">{d.segment}</p>
-                                                        <p className="text-xs text-slate-400">{fmtNum(d.count)} customers</p>
-                                                        <p className="text-xs text-slate-400">Avg Spend: {fmt(d.avg_monetary || 0)}</p>
-                                                        <p className="text-xs text-slate-400">Avg Frequency: {d.avg_frequency?.toFixed(1)}</p>
+                                                    <div className="glass-card-dark p-3 ring-1 ring-white/10" style={{ zIndex: 9999 }}>
+                                                        <p className="text-xs font-bold text-white mb-1">{d.segment}</p>
+                                                        <p className="text-xs text-slate-300">{fmtNum(d.count)} customers</p>
+                                                        <p className="text-xs text-slate-300">Avg Spend: {fmt(d.avg_monetary || 0)}</p>
+                                                        <p className="text-xs text-slate-300">Avg Frequency: {d.avg_frequency?.toFixed(1)}</p>
                                                     </div>
                                                 );
                                             }

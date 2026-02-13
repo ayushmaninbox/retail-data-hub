@@ -36,13 +36,7 @@ import {
 
 /* ── Config ── */
 
-const SECTIONS = [
-    { id: "kpis", label: "Overview", icon: ShoppingCart },
-    { id: "top-pairs", label: "Top Pairs", icon: Zap },
-    { id: "rules", label: "All Rules", icon: Target },
-    { id: "itemsets", label: "Frequent Items", icon: Package },
-    { id: "insights", label: "Insights", icon: Sparkles },
-];
+
 
 const TYPE_COLORS: Record<string, string> = {
     "Category": "#14b8a6",
@@ -167,7 +161,7 @@ function RuleDetailPanel({
 
 export default function MarketBasketPage() {
     const { data, loading } = useApi<any>("/api/market-basket");
-    const [activeSection, setActiveSection] = useState("kpis");
+
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [selectedRule, setSelectedRule] = useState<number | null>(null);
     const [sortBy, setSortBy] = useState<"confidence" | "lift" | "support">("confidence");
@@ -176,13 +170,7 @@ export default function MarketBasketPage() {
         const handleScroll = () => {
             setShowScrollTop(window.scrollY > 400);
             const scrollY = window.scrollY;
-            for (let i = SECTIONS.length - 1; i >= 0; i--) {
-                const el = document.getElementById(SECTIONS[i].id);
-                if (el && el.offsetTop - 100 <= scrollY) {
-                    setActiveSection(SECTIONS[i].id);
-                    break;
-                }
-            }
+
         };
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
@@ -285,24 +273,7 @@ export default function MarketBasketPage() {
         <div className="space-y-6">
             <PageHeader icon={ShoppingCart} title="Market Basket Analysis" subtitle="Apriori association rules — discover what customers buy together" />
 
-            {/* ── Sticky Nav ── */}
-            <nav className="sticky top-0 z-40 -mx-8 px-8 py-3" style={{ background: "rgba(255,255,255,0.9)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
-                <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide">
-                    {SECTIONS.map(s => {
-                        const SIcon = s.icon;
-                        return (
-                            <a key={s.id} href={`#${s.id}`}
-                                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-medium transition-all whitespace-nowrap ${activeSection === s.id
-                                    ? "bg-accent-purple/20 text-accent-purple shadow-sm shadow-accent-purple/10"
-                                    : "text-slate-400 hover:text-slate-800 hover:bg-black/[0.04]"
-                                    }`}>
-                                <SIcon className="w-3.5 h-3.5" />
-                                {s.label}
-                            </a>
-                        );
-                    })}
-                </div>
-            </nav>
+
 
             {/* ── KPI Cards ── */}
             <div id="kpis" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 animate-slide-up">
@@ -523,12 +494,12 @@ export default function MarketBasketPage() {
                                         if (active && payload && payload.length) {
                                             const d = payload[0].payload;
                                             return (
-                                                <div className="glass-card-static p-3 border border-black/10" style={{ zIndex: 9999 }}>
-                                                    <p className="text-xs font-bold text-slate-800 mb-1 max-w-[200px]">{d.name}</p>
-                                                    <p className="text-xs text-slate-400">Support: {d.x}%</p>
-                                                    <p className="text-xs text-slate-400">Confidence: {d.y}%</p>
-                                                    <p className="text-xs text-slate-400">Lift: {d.lift.toFixed(2)}x</p>
-                                                    <p className="text-[10px] text-slate-500">{d.type}</p>
+                                                <div className="glass-card-dark p-3 ring-1 ring-white/10" style={{ zIndex: 9999 }}>
+                                                    <p className="text-xs font-bold text-white mb-1 max-w-[200px]">{d.name}</p>
+                                                    <p className="text-xs text-slate-300">Support: {d.x}%</p>
+                                                    <p className="text-xs text-slate-300">Confidence: {d.y}%</p>
+                                                    <p className="text-xs text-slate-300">Lift: {d.lift.toFixed(2)}x</p>
+                                                    <p className="text-[10px] text-accent-purple font-semibold">{d.type}</p>
                                                 </div>
                                             );
                                         }
@@ -563,12 +534,12 @@ export default function MarketBasketPage() {
                                     <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} />
                                     <YAxis dataKey="range" type="category" axisLine={false} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 10 }} width={55} />
                                     <Tooltip
-                                        contentStyle={{ background: "rgba(255,255,255,0.97)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "12px", color: "#334155", fontSize: "13px", fontWeight: 600, padding: "10px 14px", boxShadow: "0 8px 32px rgba(0,0,0,0.6)" }}
+                                        contentStyle={{ background: "rgba(15,23,42,0.9)", backdropFilter: "blur(12px)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", color: "#fff", fontSize: "12px", fontWeight: 600, padding: "10px 14px", boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1)" }}
                                         wrapperStyle={{ zIndex: 99999, pointerEvents: "none" }}
-                                        itemStyle={{ color: "#334155" }}
+                                        itemStyle={{ color: "#fff" }}
                                         labelStyle={{ color: "#94a3b8", fontSize: "11px", marginBottom: "4px" }}
                                         formatter={(value: number) => [`${value} rules`, "Count"]}
-                                        cursor={{ fill: "rgba(0,0,0,0.04)" }}
+                                        cursor={{ fill: "rgba(255,255,255,0.05)" }}
                                     />
                                     <Bar dataKey="count" radius={[0, 6, 6, 0]} barSize={18}>
                                         {confBands.map((entry, i) => (

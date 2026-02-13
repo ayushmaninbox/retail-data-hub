@@ -72,24 +72,18 @@ const CATEGORY_COLORS: Record<string, string> = {
 
 const CARRIER_COLORS = ["#8b5cf6", "#3b82f6", "#14b8a6", "#ec4899", "#f59e0b", "#ef4444", "#06b6d4"];
 
-const SECTIONS = [
-    { id: "kpis", label: "KPIs", icon: Activity },
-    { id: "alerts", label: "Reorder Alerts", icon: AlertTriangle },
-    { id: "turnover", label: "Turnover", icon: RotateCcw },
-    { id: "stockouts", label: "Stockouts", icon: XCircle },
-    { id: "delivery", label: "Delivery", icon: Truck },
-];
+
 
 const GlassTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
         return (
-            <div className="glass-card-static p-3 border border-black/10 max-w-xs">
-                <p className="text-xs text-slate-400 mb-1 font-medium">{label}</p>
+            <div className="glass-card-dark p-3 border border-white/10 max-w-xs ring-1 ring-white/5">
+                <p className="text-xs text-slate-400 mb-1 font-semibold">{label}</p>
                 {payload.map((p: any, i: number) => (
                     <div key={i} className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full" style={{ background: p.color || p.stroke }} />
+                        <div className="w-2 h-2 rounded-full shadow-sm" style={{ background: p.color || p.stroke }} />
                         <span className="text-xs text-slate-300">{p.name}:</span>
-                        <span className="text-xs font-bold text-slate-800">
+                        <span className="text-xs font-bold text-white">
                             {typeof p.value === "number" && p.value > 1000 ? fmtNum(p.value) : p.value}
                         </span>
                     </div>
@@ -107,7 +101,7 @@ type ModalType = "stockoutDetail" | "deliveryDetail" | null;
 export default function InventoryPage() {
     const { data, loading } = useApi<any>("/api/operations");
     const [activeModal, setActiveModal] = useState<ModalType>(null);
-    const [activeSection, setActiveSection] = useState("kpis");
+
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [alertFilter, setAlertFilter] = useState<"all" | "stockout" | "low">("all");
     const [alertGroupBy, setAlertGroupBy] = useState<"city" | "category">("city");
@@ -118,13 +112,7 @@ export default function InventoryPage() {
         const handleScroll = () => {
             const scrollY = window.scrollY;
             setShowScrollTop(scrollY > 400);
-            for (let i = SECTIONS.length - 1; i >= 0; i--) {
-                const el = document.getElementById(SECTIONS[i].id);
-                if (el && el.offsetTop - 100 <= scrollY) {
-                    setActiveSection(SECTIONS[i].id);
-                    break;
-                }
-            }
+
         };
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
@@ -244,28 +232,7 @@ export default function InventoryPage() {
                 subtitle="Stock levels, turnover metrics, delivery tracking & actionable reorder alerts"
             />
 
-            {/* ── Sticky Nav ── */}
-            <nav className="sticky top-0 z-40 -mx-8 px-8 py-3" style={{ background: "rgba(255,255,255,0.9)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
-                <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide">
-                    {SECTIONS.map((s) => {
-                        const SIcon = s.icon;
-                        const isActive = activeSection === s.id;
-                        return (
-                            <a
-                                key={s.id}
-                                href={`#${s.id}`}
-                                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-medium transition-all whitespace-nowrap ${isActive
-                                    ? "bg-accent-purple/20 text-accent-purple shadow-sm shadow-accent-purple/10"
-                                    : "text-slate-400 hover:text-slate-800 hover:bg-black/[0.04]"
-                                    }`}
-                            >
-                                <SIcon className="w-3.5 h-3.5" />
-                                {s.label}
-                            </a>
-                        );
-                    })}
-                </div>
-            </nav>
+
 
             {/* ── KPI Row ── */}
             <div id="kpis" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 animate-slide-up">

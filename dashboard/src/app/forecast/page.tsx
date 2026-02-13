@@ -26,16 +26,11 @@ const COLORS = [
     "#ef4444", "#ec4899", "#3b82f6", "#84cc16",
 ];
 
-const SECTIONS = [
-    { id: "kpis", label: "Overview", icon: Activity },
-    { id: "forecast", label: "Forecast", icon: TrendingUp },
-    { id: "model", label: "Model", icon: Brain },
-    { id: "training", label: "Training", icon: BarChart3 },
-];
+
 
 export default function ForecastPage() {
     const { data: rawData, loading, error } = useApi("/api/forecast");
-    const [activeSection, setActiveSection] = useState("kpis");
+
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const drillDownRef = useRef<HTMLDivElement>(null);
@@ -52,13 +47,7 @@ export default function ForecastPage() {
         const handleScroll = () => {
             setShowScrollTop(window.scrollY > 400);
             const scrollY = window.scrollY;
-            for (let i = SECTIONS.length - 1; i >= 0; i--) {
-                const el = document.getElementById(SECTIONS[i].id);
-                if (el && el.offsetTop - 100 <= scrollY) {
-                    setActiveSection(SECTIONS[i].id);
-                    break;
-                }
-            }
+
         };
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
@@ -146,24 +135,7 @@ export default function ForecastPage() {
             {/* Header */}
             <PageHeader icon={Brain} title="LSTM Demand Forecast" subtitle="Deep learning powered demand prediction across 8 product categories" />
 
-            {/* ── Sticky Nav ── */}
-            <nav className="sticky top-0 z-40 -mx-8 px-8 py-3" style={{ background: "rgba(255,255,255,0.9)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
-                <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide">
-                    {SECTIONS.map(s => {
-                        const SIcon = s.icon;
-                        return (
-                            <a key={s.id} href={`#${s.id}`}
-                                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-medium transition-all whitespace-nowrap ${activeSection === s.id
-                                    ? "bg-accent-purple/20 text-accent-purple shadow-sm shadow-accent-purple/10"
-                                    : "text-slate-400 hover:text-slate-800 hover:bg-black/[0.04]"
-                                    }`}>
-                                <SIcon className="w-3.5 h-3.5" />
-                                {s.label}
-                            </a>
-                        );
-                    })}
-                </div>
-            </nav>
+
 
             {/* ── KPI Cards ── */}
             <div id="kpis" className="grid grid-cols-1 md:grid-cols-4 gap-4 animate-slide-up">
@@ -203,7 +175,7 @@ export default function ForecastPage() {
                                 <YAxis tick={{ fill: "#94a3b8", fontSize: 11 }}
                                     tickFormatter={(v: number) => `₹${(v / 1e7).toFixed(0)}Cr`} />
                                 <Tooltip
-                                    contentStyle={{ background: "rgba(255,255,255,0.97)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "12px", color: "#334155", fontSize: "13px", fontWeight: 600, padding: "10px 14px", boxShadow: "0 8px 32px rgba(0,0,0,0.6)" }}
+                                    contentStyle={{ background: "rgba(15,23,42,0.9)", backdropFilter: "blur(12px)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", color: "#fff", fontSize: "12px", fontWeight: 600, padding: "10px 14px", boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1)" }}
                                     wrapperStyle={{ zIndex: 99999 }}
                                     labelStyle={{ color: "#94a3b8", fontSize: "11px", marginBottom: "4px" }}
                                     formatter={(v: number) => fmt(v)}

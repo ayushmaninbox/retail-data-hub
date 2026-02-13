@@ -37,12 +37,7 @@ import {
 
 /* ── Config ── */
 
-const SECTIONS = [
-    { id: "kpis", label: "Overview", icon: Activity },
-    { id: "checks", label: "Quality Checks", icon: ShieldCheck },
-    { id: "datasets", label: "Datasets", icon: Database },
-    { id: "completeness", label: "Completeness", icon: Layers },
-];
+
 
 const datasetIcons: Record<string, string> = {
     pos_sales: "🏪",
@@ -55,7 +50,7 @@ const datasetIcons: Record<string, string> = {
 
 export default function DataQualityPage() {
     const { data, loading } = useApi<any>("/api/data-quality");
-    const [activeSection, setActiveSection] = useState("kpis");
+
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [expandedKpi, setExpandedKpi] = useState<string | null>(null);
     const [expandedCheck, setExpandedCheck] = useState<number | null>(null);
@@ -64,13 +59,7 @@ export default function DataQualityPage() {
         const handleScroll = () => {
             setShowScrollTop(window.scrollY > 400);
             const scrollY = window.scrollY;
-            for (let i = SECTIONS.length - 1; i >= 0; i--) {
-                const el = document.getElementById(SECTIONS[i].id);
-                if (el && el.offsetTop - 100 <= scrollY) {
-                    setActiveSection(SECTIONS[i].id);
-                    break;
-                }
-            }
+
         };
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
@@ -161,24 +150,7 @@ export default function DataQualityPage() {
         <div className="space-y-6">
             <PageHeader icon={ShieldCheck} title="Data Quality" subtitle="Pipeline health, automated quality checks & evidence reports" />
 
-            {/* ── Sticky Nav ── */}
-            <nav className="sticky top-0 z-40 -mx-8 px-8 py-3" style={{ background: "rgba(255,255,255,0.9)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
-                <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide">
-                    {SECTIONS.map(s => {
-                        const SIcon = s.icon;
-                        return (
-                            <a key={s.id} href={`#${s.id}`}
-                                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-medium transition-all whitespace-nowrap ${activeSection === s.id
-                                    ? "bg-accent-purple/20 text-accent-purple shadow-sm shadow-accent-purple/10"
-                                    : "text-slate-400 hover:text-slate-800 hover:bg-black/[0.04]"
-                                    }`}>
-                                <SIcon className="w-3.5 h-3.5" />
-                                {s.label}
-                            </a>
-                        );
-                    })}
-                </div>
-            </nav>
+
 
             {/* ── KPI Cards with Dropdowns ── */}
             <div id="kpis" className="space-y-4 animate-slide-up">
@@ -412,12 +384,12 @@ export default function DataQualityPage() {
                                     <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} />
                                     <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 10 }} width={120} />
                                     <Tooltip
-                                        contentStyle={{ background: "rgba(255,255,255,0.97)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "12px", color: "#334155", fontSize: "13px", fontWeight: 600, padding: "10px 14px", boxShadow: "0 8px 32px rgba(0,0,0,0.6)" }}
+                                        contentStyle={{ background: "rgba(15,23,42,0.9)", backdropFilter: "blur(12px)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", color: "#fff", fontSize: "12px", fontWeight: 600, padding: "10px 14px", boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1)" }}
                                         wrapperStyle={{ zIndex: 99999, pointerEvents: "none" }}
-                                        itemStyle={{ color: "#334155" }}
+                                        itemStyle={{ color: "#fff" }}
                                         labelStyle={{ color: "#94a3b8", fontSize: "11px", marginBottom: "4px" }}
                                         formatter={(value: number) => [`${value.toLocaleString()} violations`, "Count"]}
-                                        cursor={{ fill: "rgba(0,0,0,0.04)" }}
+                                        cursor={{ fill: "rgba(255,255,255,0.05)" }}
                                     />
                                     <Bar dataKey="violations" radius={[0, 6, 6, 0]} barSize={18}>
                                         {violationsByCheck.map((entry: { name: string; violations: number; color: string }, i: number) => (

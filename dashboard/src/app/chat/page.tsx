@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { 
-    Send, 
-    Bot, 
-    User, 
-    Sparkles, 
-    BarChart3, 
-    Table as TableIcon, 
+import {
+    Send,
+    Bot,
+    User,
+    Sparkles,
+    BarChart3,
+    Table as TableIcon,
     ChevronRight,
     Loader2,
     Database,
@@ -71,11 +71,10 @@ const MessageBubble = ({ message }: { message: ChatMessage }) => {
         <div className={`flex ${isUser ? "justify-end" : "justify-start"} animate-in fade-in slide-in-from-bottom-2 duration-300`}>
             {/* Content */}
             <div className={`${!isUser && message.data ? "max-w-full" : "max-w-[85%]"} space-y-4 ${isUser ? "text-right" : "text-left"} flex-1`}>
-                <div className={`inline-block p-4 rounded-2xl border relative group ${
-                    isUser 
-                    ? "bg-white/[0.03] border-white/10 text-slate-200" 
-                    : "glass-card-static border-accent-purple/20 text-white"
-                }`}>
+                <div className={`inline-block p-4 rounded-2xl border relative group ${isUser
+                    ? "bg-white border-slate-200 text-slate-700 shadow-sm"
+                    : "bg-accent-purple/10 border-accent-purple/20 text-slate-900 shadow-sm"
+                    }`}>
                     {!isUser && (
                         <div className="absolute -top-2 -right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                             <span className="text-[8px] bg-accent-purple/40 text-white px-2 py-0.5 rounded-full backdrop-blur-md border border-white/10">GEMINI 2.0</span>
@@ -104,10 +103,10 @@ const ThemedTable = ({ data }: { data: any }) => {
         <div className="glass-card-static overflow-hidden border border-white/10 shadow-2xl w-full">
             <div className="max-h-[400px] overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
                 <table className="w-full text-left text-sm border-collapse">
-                    <thead className="bg-[#0f172a] sticky top-0 z-20 border-b border-white/10">
+                    <thead className="bg-slate-950 sticky top-0 z-20 border-b border-white/10">
                         <tr>
                             {data.headers.map((h: string, i: number) => (
-                                <th key={i} className="px-4 py-3 font-bold text-slate-300 uppercase tracking-wider text-[10px] bg-[#0f172a]">
+                                <th key={i} className="px-4 py-3 font-bold text-white uppercase tracking-wider text-[10px] bg-slate-950">
                                     {h}
                                 </th>
                             ))}
@@ -139,11 +138,11 @@ const DynamicChart = ({ config }: { config: any }) => {
         <div className="glass-card-static p-6 border border-white/10 h-80">
             <div className="flex items-center gap-2 mb-4">
                 <BarChart3 className="w-4 h-4 text-accent-purple" />
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                <span className="text-xs font-bold text-slate-300 uppercase tracking-widest">
                     {config.type} Analysis
                 </span>
             </div>
-            
+
             <ResponsiveContainer width="100%" height="85%">
                 {config.type === "pie" ? (
                     <PieChart>
@@ -204,10 +203,10 @@ export default function ChatPage() {
     useEffect(() => {
         // Dynamic greeting
         const hour = new Date().getHours();
-        const greeting = hour < 12 ? "Good morning! Ready for some deep retail intelligence?" : 
-                        hour < 18 ? "Good afternoon! The Retail Hub Brain is synchronized." : 
-                        "Good evening! Analyzing the day's final telemetry.";
-        
+        const greeting = hour < 12 ? "Good morning! Ready for some deep retail intelligence?" :
+            hour < 18 ? "Good afternoon! The Retail Hub Brain is synchronized." :
+                "Good evening! Analyzing the day's final telemetry.";
+
         setMessages([{
             role: "assistant",
             text: `${greeting} I have full technical and operational context of the platform. Ask me anything about our Star Schema, Forecasting models, or Commercial trends.`,
@@ -237,7 +236,7 @@ export default function ChatPage() {
                 "Running Multi-Model Inference...",
                 "Generating Consultative Insights..."
             ];
-            
+
             for (const step of steps) {
                 await new Promise(r => setTimeout(r, 600));
                 setThoughtLog(prev => [...prev, step]);
@@ -252,7 +251,7 @@ export default function ChatPage() {
             if (!response.ok) throw new Error("API failed");
 
             const data = await response.json();
-            
+
             const assistantMsg: ChatMessage = {
                 role: "assistant",
                 text: data.text,
@@ -284,7 +283,7 @@ export default function ChatPage() {
                         <Sparkles className="w-5 h-5 text-accent-purple" />
                     </div>
                     <div>
-                        <h1 className="text-lg font-bold text-white">Retail Hub Brain</h1>
+                        <h1 className="text-lg font-bold text-slate-900">Retail Hub Brain</h1>
                         <p className="text-[10px] text-slate-400 font-mono flex items-center gap-1">
                             <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
                             Synchronized with Medallion Pipeline
@@ -301,7 +300,7 @@ export default function ChatPage() {
                         <p className="text-sm">The Retail Hub's memory is ready.</p>
                     </div>
                 )}
-                
+
                 {messages.map((msg, i) => (
                     <MessageBubble key={i} message={msg} />
                 ))}
@@ -333,7 +332,7 @@ export default function ChatPage() {
                     <button
                         key={i}
                         onClick={() => handleSend(s.text)}
-                        className="flex items-center gap-2 px-4 py-2 glass-card hover:bg-white/5 whitespace-nowrap text-xs text-slate-300 border-white/5 transition-all hover:-translate-y-0.5 active:translate-y-0"
+                        className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 hover:bg-slate-50 whitespace-nowrap text-xs text-slate-700 transition-all hover:-translate-y-0.5 active:translate-y-0 rounded-lg shadow-sm"
                     >
                         {s.icon}
                         {s.label}
@@ -343,7 +342,7 @@ export default function ChatPage() {
 
             {/* Input */}
             <div className="glass-card p-4">
-                <form 
+                <form
                     onSubmit={(e) => { e.preventDefault(); handleSend(); }}
                     className="flex gap-4"
                 >
@@ -351,7 +350,7 @@ export default function ChatPage() {
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         placeholder="Ask about strategy, architecture, or deep analytics..."
-                        className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-accent-purple/50 transition-colors"
+                        className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-accent-purple/20 focus:border-accent-purple/50 transition-all"
                     />
                     <button
                         type="submit"

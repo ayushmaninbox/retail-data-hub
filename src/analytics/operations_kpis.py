@@ -192,6 +192,8 @@ def kpi_delivery_times(con):
             ROUND(AVG(CASE WHEN delivery_days IS NOT NULL THEN delivery_days END), 1) AS avg_days,
             SUM(CASE WHEN status = 'Delivered' THEN 1 ELSE 0 END) AS delivered,
             SUM(CASE WHEN status = 'Delayed' THEN 1 ELSE 0 END) AS delayed,
+            SUM(CASE WHEN status = 'In Transit' THEN 1 ELSE 0 END) AS in_transit,
+            SUM(CASE WHEN status = 'Returned' THEN 1 ELSE 0 END) AS returned,
             ROUND(SUM(CASE WHEN status = 'Delayed' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) AS delay_pct
         FROM shipments
         GROUP BY carrier
