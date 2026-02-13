@@ -24,10 +24,10 @@ export default function KpiCard({
 }: KpiCardProps) {
     const trendColor =
         trend === "up"
-            ? "text-emerald-400"
+            ? "text-emerald-600"
             : trend === "down"
-                ? "text-red-400"
-                : "text-slate-400";
+                ? "text-red-500"
+                : "text-slate-500";
 
     const TrendIcon =
         trend === "up" ? TrendingUp : trend === "down" ? TrendingDown : Minus;
@@ -44,20 +44,20 @@ export default function KpiCard({
         >
             {/* Gradient accent glow */}
             <div
-                className={`absolute -top-12 -right-12 w-32 h-32 bg-gradient-to-br ${accentColor} rounded-full opacity-10 blur-2xl group-hover:opacity-20 transition-opacity`}
+                className={`absolute -top-12 -right-12 w-32 h-32 bg-gradient-to-br ${accentColor} rounded-full opacity-[0.07] blur-2xl group-hover:opacity-[0.12] transition-opacity`}
             />
 
             <div className="relative z-10">
                 <div className="flex items-start justify-between mb-3">
                     <div
-                        className={`w-10 h-10 rounded-xl bg-gradient-to-br ${accentColor} flex items-center justify-center opacity-80`}
+                        className={`w-10 h-10 rounded-xl bg-gradient-to-br ${accentColor} flex items-center justify-center opacity-90`}
                     >
                         <Icon className="w-5 h-5 text-white" />
                     </div>
                     <div className="flex items-center gap-2">
                         {change && (
                             <div
-                                className={`flex items-center gap-1 text-xs font-semibold ${trendColor} px-2 py-1 rounded-full bg-white/[0.04]`}
+                                className={`flex items-center gap-1 text-xs font-semibold ${trendColor} px-2 py-1 rounded-full bg-black/[0.03]`}
                             >
                                 <TrendIcon className="w-3 h-3" />
                                 {change}
@@ -69,12 +69,12 @@ export default function KpiCard({
                     </div>
                 </div>
 
-                <p className="text-sm text-slate-400 font-medium mb-1">{title}</p>
-                <p className="text-2xl font-bold text-white tracking-tight">{value}</p>
+                <p className="text-sm text-slate-500 font-medium mb-1">{title}</p>
+                <p className="text-2xl font-bold text-slate-900 tracking-tight">{value}</p>
                 {subtitle && (
                     <p className="text-xs text-slate-500 mt-1">
                         {subtitle}
-                        {clickable && <span className="ml-1 text-accent-purple/60">· Click for details</span>}
+                        {clickable && <span className="ml-1 text-accent-purple/70">· Click for details</span>}
                     </p>
                 )}
             </div>

@@ -9,24 +9,25 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                dark: {
-                    900: "#0a0a1a",
-                    800: "#0f0f23",
-                    700: "#161631",
-                    600: "#1e1e3f",
-                    500: "#2a2a4a",
+                surface: {
+                    50: "#ffffff",
+                    100: "#f8f9fc",
+                    200: "#f1f3f8",
+                    300: "#e5e8f0",
+                    400: "#d1d5e0",
+                    500: "#9ca3b4",
                 },
                 accent: {
-                    purple: "#8b5cf6",
-                    blue: "#3b82f6",
-                    teal: "#14b8a6",
-                    pink: "#ec4899",
-                    orange: "#f97316",
+                    purple: "#7c3aed",
+                    blue: "#2563eb",
+                    teal: "#0d9488",
+                    pink: "#db2777",
+                    orange: "#ea580c",
                 },
                 glass: {
-                    light: "rgba(255, 255, 255, 0.05)",
-                    medium: "rgba(255, 255, 255, 0.08)",
-                    heavy: "rgba(255, 255, 255, 0.12)",
+                    light: "rgba(255, 255, 255, 0.7)",
+                    medium: "rgba(255, 255, 255, 0.85)",
+                    heavy: "rgba(255, 255, 255, 0.95)",
                 },
             },
             fontFamily: {

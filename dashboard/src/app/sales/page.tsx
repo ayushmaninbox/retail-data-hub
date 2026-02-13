@@ -78,13 +78,13 @@ const CATEGORY_COLORS = [
 const GlassTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
         return (
-            <div className="glass-card-static p-3 border border-white/10 max-w-xs">
-                <p className="text-xs text-slate-400 mb-1 font-medium">{label}</p>
+            <div className="glass-card-static p-3 border border-black/[0.06] max-w-xs">
+                <p className="text-xs text-slate-500 mb-1 font-medium">{label}</p>
                 {payload.map((p: any, i: number) => (
                     <div key={i} className="flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full" style={{ background: p.color || p.stroke }} />
-                        <span className="text-xs text-slate-300">{p.name}:</span>
-                        <span className="text-xs font-bold text-white">
+                        <span className="text-xs text-slate-500">{p.name}:</span>
+                        <span className="text-xs font-bold text-slate-800">
                             {typeof p.value === "number" && p.value > 1000 ? fmt(p.value) : fmtNum(p.value)}
                         </span>
                     </div>
@@ -273,7 +273,7 @@ export default function SalesPage() {
             />
 
             {/* ── Sticky Section Nav ── */}
-            <nav className="sticky top-0 z-40 -mx-8 px-8 py-3" style={{ background: "rgba(10,10,25,0.85)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+            <nav className="sticky top-0 z-40 -mx-8 px-8 py-3" style={{ background: "rgba(255,255,255,0.9)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
                 <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide">
                     {SECTIONS.map((s) => {
                         const SIcon = s.icon;
@@ -283,8 +283,8 @@ export default function SalesPage() {
                                 key={s.id}
                                 href={`#${s.id}`}
                                 className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-medium transition-all whitespace-nowrap ${isActive
-                                        ? "bg-accent-purple/20 text-accent-purple shadow-sm shadow-accent-purple/10"
-                                        : "text-slate-400 hover:text-white hover:bg-white/[0.04]"
+                                    ? "bg-accent-purple/10 text-accent-purple shadow-sm shadow-accent-purple/5"
+                                    : "text-slate-400 hover:text-slate-800 hover:bg-black/[0.03]"
                                     }`}
                             >
                                 <SIcon className="w-3.5 h-3.5" />
@@ -357,7 +357,7 @@ export default function SalesPage() {
                                         <stop offset="100%" stopColor="#8b5cf6" stopOpacity={0} />
                                     </linearGradient>
                                 </defs>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
                                 <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} />
                                 <YAxis
                                     yAxisId="left"
@@ -402,7 +402,7 @@ export default function SalesPage() {
                     <div className="h-96">
                         <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={citySales} layout="vertical" margin={{ left: 5 }}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" horizontal={false} />
+                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" horizontal={false} />
                                 <XAxis
                                     type="number"
                                     axisLine={false}
@@ -418,7 +418,7 @@ export default function SalesPage() {
                                     tick={{ fill: "#94a3b8", fontSize: 12, fontWeight: 500 }}
                                     width={90}
                                 />
-                                <Tooltip content={<GlassTooltip />} cursor={{ fill: "rgba(255,255,255,0.02)" }} />
+                                <Tooltip content={<GlassTooltip />} cursor={{ fill: "rgba(0,0,0,0.02)" }} />
                                 <Bar dataKey="revenue" name="Revenue" radius={[0, 8, 8, 0]} barSize={22}>
                                     {citySales.map((entry: any, index: number) => (
                                         <Cell key={index} fill={entry.color} fillOpacity={0.8} />
@@ -433,22 +433,22 @@ export default function SalesPage() {
                     <div className="h-96">
                         <ResponsiveContainer width="100%" height="100%">
                             <RadarChart data={radarData} outerRadius="70%">
-                                <PolarGrid stroke="rgba(255,255,255,0.08)" />
-                                <PolarAngleAxis dataKey="city" tick={{ fill: "#94a3b8", fontSize: 11 }} />
+                                <PolarGrid stroke="rgba(0,0,0,0.08)" />
+                                <PolarAngleAxis dataKey="city" tick={{ fill: "#64748b", fontSize: 11 }} />
                                 <PolarRadiusAxis angle={90} domain={[0, 100]} tick={false} axisLine={false} />
                                 <Radar name="Revenue" dataKey="Revenue" stroke="#8b5cf6" fill="#8b5cf6" fillOpacity={0.15} strokeWidth={2} />
                                 <Radar name="Transactions" dataKey="Transactions" stroke="#14b8a6" fill="#14b8a6" fillOpacity={0.1} strokeWidth={2} />
                                 <Radar name="Customers" dataKey="Customers" stroke="#ec4899" fill="#ec4899" fillOpacity={0.08} strokeWidth={2} />
                                 <Legend
                                     iconType="circle"
-                                    wrapperStyle={{ fontSize: "11px", color: "#94a3b8", paddingTop: "8px" }}
+                                    wrapperStyle={{ fontSize: "11px", color: "#64748b", paddingTop: "8px" }}
                                 />
                                 <Tooltip
                                     contentStyle={{
-                                        background: "rgba(15,15,35,0.95)",
-                                        border: "1px solid rgba(255,255,255,0.1)",
+                                        background: "rgba(255,255,255,0.95)",
+                                        border: "1px solid rgba(0,0,0,0.08)",
                                         borderRadius: "12px",
-                                        color: "#fff",
+                                        color: "#1e293b",
                                         fontSize: "12px",
                                     }}
                                     formatter={(value: number) => `${value}%`}
@@ -465,10 +465,10 @@ export default function SalesPage() {
                     <div className="h-96">
                         <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={topByRevenue} layout="vertical" margin={{ left: 10 }}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" horizontal={false} />
+                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" horizontal={false} />
                                 <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} tickFormatter={(v) => `₹${fmtShort(v)}`} />
                                 <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 11 }} width={140} />
-                                <Tooltip content={<GlassTooltip />} cursor={{ fill: "rgba(255,255,255,0.02)" }} />
+                                <Tooltip content={<GlassTooltip />} cursor={{ fill: "rgba(0,0,0,0.02)" }} />
                                 <Bar dataKey="revenue" name="Revenue" radius={[0, 8, 8, 0]} barSize={18}>
                                     {topByRevenue.map((entry: any, index: number) => (
                                         <Cell key={index} fill={entry.color} fillOpacity={0.75} />
@@ -486,25 +486,25 @@ export default function SalesPage() {
                         <div className="p-4 rounded-xl" style={{ background: "rgba(139,92,246,0.08)", border: "1px solid rgba(139,92,246,0.15)" }}>
                             <div className="flex items-center gap-2 mb-3">
                                 <Store className="w-4 h-4 text-purple-400" />
-                                <span className="text-sm font-semibold text-white">POS (In-Store)</span>
+                                <span className="text-sm font-semibold text-slate-800">POS (In-Store)</span>
                                 <span className="ml-auto text-xs font-bold text-purple-400">{posData.revenue_pct || 0}%</span>
                             </div>
                             <div className="grid grid-cols-2 gap-3">
                                 <div>
                                     <p className="text-xs text-slate-500">Revenue</p>
-                                    <p className="text-sm font-bold text-white">{fmt(posData.revenue || 0)}</p>
+                                    <p className="text-sm font-bold text-slate-800">{fmt(posData.revenue || 0)}</p>
                                 </div>
                                 <div>
                                     <p className="text-xs text-slate-500">Transactions</p>
-                                    <p className="text-sm font-bold text-white">{fmtNum(posData.transactions || 0)}</p>
+                                    <p className="text-sm font-bold text-slate-800">{fmtNum(posData.transactions || 0)}</p>
                                 </div>
                                 <div>
                                     <p className="text-xs text-slate-500">Units Sold</p>
-                                    <p className="text-sm font-bold text-white">{fmtNum(posData.units_sold || 0)}</p>
+                                    <p className="text-sm font-bold text-slate-800">{fmtNum(posData.units_sold || 0)}</p>
                                 </div>
                                 <div>
                                     <p className="text-xs text-slate-500">AOV</p>
-                                    <p className="text-sm font-bold text-white">{fmt(posData.transactions ? posData.revenue / posData.transactions : 0)}</p>
+                                    <p className="text-sm font-bold text-slate-800">{fmt(posData.transactions ? posData.revenue / posData.transactions : 0)}</p>
                                 </div>
                             </div>
                         </div>
@@ -513,25 +513,25 @@ export default function SalesPage() {
                         <div className="p-4 rounded-xl" style={{ background: "rgba(20,184,166,0.08)", border: "1px solid rgba(20,184,166,0.15)" }}>
                             <div className="flex items-center gap-2 mb-3">
                                 <Globe className="w-4 h-4 text-teal-400" />
-                                <span className="text-sm font-semibold text-white">Web (Online)</span>
+                                <span className="text-sm font-semibold text-slate-800">Web (Online)</span>
                                 <span className="ml-auto text-xs font-bold text-teal-400">{webData.revenue_pct || 0}%</span>
                             </div>
                             <div className="grid grid-cols-2 gap-3">
                                 <div>
                                     <p className="text-xs text-slate-500">Revenue</p>
-                                    <p className="text-sm font-bold text-white">{fmt(webData.revenue || 0)}</p>
+                                    <p className="text-sm font-bold text-slate-800">{fmt(webData.revenue || 0)}</p>
                                 </div>
                                 <div>
                                     <p className="text-xs text-slate-500">Transactions</p>
-                                    <p className="text-sm font-bold text-white">{fmtNum(webData.transactions || 0)}</p>
+                                    <p className="text-sm font-bold text-slate-800">{fmtNum(webData.transactions || 0)}</p>
                                 </div>
                                 <div>
                                     <p className="text-xs text-slate-500">Units Sold</p>
-                                    <p className="text-sm font-bold text-white">{fmtNum(webData.units_sold || 0)}</p>
+                                    <p className="text-sm font-bold text-slate-800">{fmtNum(webData.units_sold || 0)}</p>
                                 </div>
                                 <div>
                                     <p className="text-xs text-slate-500">AOV</p>
-                                    <p className="text-sm font-bold text-white">{fmt(webData.transactions ? webData.revenue / webData.transactions : 0)}</p>
+                                    <p className="text-sm font-bold text-slate-800">{fmt(webData.transactions ? webData.revenue / webData.transactions : 0)}</p>
                                 </div>
                             </div>
                         </div>
@@ -539,7 +539,7 @@ export default function SalesPage() {
                         {/* Split bar */}
                         <div>
                             <p className="text-xs text-slate-500 mb-2">Revenue Split</p>
-                            <div className="h-3 rounded-full overflow-hidden flex" style={{ background: "rgba(255,255,255,0.06)" }}>
+                            <div className="h-3 rounded-full overflow-hidden flex" style={{ background: "rgba(0,0,0,0.05)" }}>
                                 <div className="h-full rounded-l-full" style={{ width: `${posData.revenue_pct || 50}%`, background: "#8b5cf6", transition: "width 0.6s ease" }} />
                                 <div className="h-full rounded-r-full" style={{ width: `${webData.revenue_pct || 50}%`, background: "#14b8a6", transition: "width 0.6s ease" }} />
                             </div>
@@ -549,16 +549,16 @@ export default function SalesPage() {
                         <div className="p-4 rounded-xl" style={{ background: "rgba(245,158,11,0.06)", border: "1px solid rgba(245,158,11,0.12)" }}>
                             <div className="flex items-center gap-2 mb-2">
                                 <Sparkles className="w-4 h-4 text-amber-400" />
-                                <span className="text-sm font-semibold text-white">Festive Season Impact</span>
+                                <span className="text-sm font-semibold text-slate-800">Festive Season Impact</span>
                             </div>
                             <div className="grid grid-cols-2 gap-3">
                                 <div>
                                     <p className="text-xs text-slate-500">Festive Revenue</p>
-                                    <p className="text-sm font-bold text-white">{fmt(festivePeriod.revenue || 0)}</p>
+                                    <p className="text-sm font-bold text-slate-800">{fmt(festivePeriod.revenue || 0)}</p>
                                 </div>
                                 <div>
                                     <p className="text-xs text-slate-500">Normal Revenue</p>
-                                    <p className="text-sm font-bold text-white">{fmt(normalPeriod.revenue || 0)}</p>
+                                    <p className="text-sm font-bold text-slate-800">{fmt(normalPeriod.revenue || 0)}</p>
                                 </div>
                             </div>
                         </div>
@@ -570,7 +570,7 @@ export default function SalesPage() {
             <div id="categories" className="animate-slide-up" style={{ animationDelay: "0.2s" }}>
                 <div className="flex items-center gap-2 mb-4">
                     <Layers className="w-4 h-4 text-accent-purple" />
-                    <h3 className="text-sm font-semibold text-white">Category Breakdown</h3>
+                    <h3 className="text-sm font-semibold text-slate-800">Category Breakdown</h3>
                     <span className="text-xs text-slate-500">— {categories.length} categories</span>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -585,9 +585,9 @@ export default function SalesPage() {
                         >
                             <div className="flex items-center gap-2 mb-2">
                                 <div className="w-2.5 h-2.5 rounded-full" style={{ background: cat.color }} />
-                                <p className="text-xs font-semibold text-white truncate">{cat.name}</p>
+                                <p className="text-xs font-semibold text-slate-800 truncate">{cat.name}</p>
                             </div>
-                            <p className="text-lg font-bold text-white mb-1">{fmt(cat.revenue)}</p>
+                            <p className="text-lg font-bold text-slate-800 mb-1">{fmt(cat.revenue)}</p>
                             <div className="flex gap-3 text-xs text-slate-500">
                                 <span>{fmtNum(cat.units_sold)} units</span>
                                 <span>·</span>

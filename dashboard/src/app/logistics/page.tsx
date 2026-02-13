@@ -132,13 +132,13 @@ function DrillDownPanel({
                         <CfgIcon className="w-5 h-5" style={{ color: cfg.color }} />
                     </div>
                     <div>
-                        <h3 className="text-sm font-bold text-white">{cfg.title}</h3>
+                        <h3 className="text-sm font-bold text-slate-800">{cfg.title}</h3>
                         <p className="text-xs text-slate-500">{cfg.description} · <span className="font-semibold" style={{ color: cfg.color }}>{fmtNum(totalField)}</span> total</p>
                     </div>
                 </div>
                 <button
                     onClick={onClose}
-                    className="w-7 h-7 rounded-lg flex items-center justify-center text-slate-500 hover:text-white hover:bg-white/[0.06] transition-all"
+                    className="w-7 h-7 rounded-lg flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-black/[0.04] transition-all"
                 >
                     <XCircle className="w-4 h-4" />
                 </button>
@@ -147,7 +147,7 @@ function DrillDownPanel({
             <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
                 {/* Carrier breakdown table */}
                 <div className="xl:col-span-2">
-                    <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
+                    <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
                         <table className="w-full">
                             <thead>
                                 <tr style={{ background: `${cfg.color}08` }}>
@@ -163,12 +163,12 @@ function DrillDownPanel({
                                 {sorted.map((c, i) => {
                                     const share = totalField > 0 ? (c.value / totalField * 100).toFixed(1) : "0";
                                     return (
-                                        <tr key={i} className="border-t border-white/[0.04] hover:bg-white/[0.02] transition-colors">
+                                        <tr key={i} className="border-t border-black/[0.04] hover:bg-black/[0.02] transition-colors">
                                             <td className="px-4 py-3 text-xs text-slate-600 font-mono">{i + 1}</td>
                                             <td className="px-4 py-3">
                                                 <div className="flex items-center gap-2">
                                                     <div className="w-2.5 h-2.5 rounded-full" style={{ background: c.color }} />
-                                                    <span className="text-sm font-semibold text-white">{c.carrier}</span>
+                                                    <span className="text-sm font-semibold text-slate-800">{c.carrier}</span>
                                                 </div>
                                             </td>
                                             <td className="px-4 py-3">
@@ -176,7 +176,7 @@ function DrillDownPanel({
                                             </td>
                                             <td className="px-4 py-3 w-36">
                                                 <div className="flex items-center gap-2">
-                                                    <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
+                                                    <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: "rgba(0,0,0,0.06)" }}>
                                                         <div className="h-full rounded-full transition-all duration-500" style={{ width: `${share}%`, background: c.color }} />
                                                     </div>
                                                     <span className="text-[10px] text-slate-400 w-10 text-right">{share}%</span>
@@ -185,9 +185,9 @@ function DrillDownPanel({
                                             <td className="px-4 py-3 text-sm text-slate-400 text-right font-mono">{fmtNum(c.shipments)}</td>
                                             <td className="px-4 py-3 text-right">
                                                 <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${drill === "delivered" ? "text-emerald-400 bg-emerald-400/10" :
-                                                        drill === "delayed" ? "text-red-400 bg-red-400/10" :
-                                                            drill === "returned" ? "text-purple-400 bg-purple-400/10" :
-                                                                "text-amber-400 bg-amber-400/10"
+                                                    drill === "delayed" ? "text-red-400 bg-red-400/10" :
+                                                        drill === "returned" ? "text-purple-400 bg-purple-400/10" :
+                                                            "text-amber-400 bg-amber-400/10"
                                                     }`}>{c.pct}%</span>
                                             </td>
                                         </tr>
@@ -220,10 +220,10 @@ function DrillDownPanel({
                                 <Tooltip
                                     formatter={(value: number, name: string) => [fmtNum(value), name]}
                                     contentStyle={{
-                                        background: "rgba(15,15,35,0.97)",
-                                        border: "1px solid rgba(255,255,255,0.15)",
+                                        background: "rgba(255,255,255,0.97)",
+                                        border: "1px solid rgba(0,0,0,0.08)",
                                         borderRadius: "12px",
-                                        color: "#fff",
+                                        color: "#334155",
                                         fontSize: "13px",
                                         fontWeight: 600,
                                         padding: "10px 14px",
@@ -231,7 +231,7 @@ function DrillDownPanel({
                                         boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
                                     }}
                                     wrapperStyle={{ zIndex: 9999 }}
-                                    itemStyle={{ color: "#fff", fontSize: "12px" }}
+                                    itemStyle={{ color: "#334155", fontSize: "12px" }}
                                     labelStyle={{ color: "#94a3b8", fontSize: "11px", marginBottom: "4px" }}
                                 />
                                 <Legend
@@ -324,7 +324,7 @@ export default function LogisticsPage() {
             <PageHeader icon={Truck} title="Logistics" subtitle="Delivery performance, delay analysis & route bottlenecks" />
 
             {/* ── Sticky Nav ── */}
-            <nav className="sticky top-0 z-40 -mx-8 px-8 py-3" style={{ background: "rgba(10,10,25,0.85)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+            <nav className="sticky top-0 z-40 -mx-8 px-8 py-3" style={{ background: "rgba(255,255,255,0.9)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
                 <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide">
                     {SECTIONS.map((s) => {
                         const SIcon = s.icon;
@@ -335,7 +335,7 @@ export default function LogisticsPage() {
                                 href={`#${s.id}`}
                                 className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-medium transition-all whitespace-nowrap ${isActive
                                     ? "bg-accent-purple/20 text-accent-purple shadow-sm shadow-accent-purple/10"
-                                    : "text-slate-400 hover:text-white hover:bg-white/[0.04]"
+                                    : "text-slate-400 hover:text-slate-800 hover:bg-black/[0.04]"
                                     }`}
                             >
                                 <SIcon className="w-3.5 h-3.5" />
@@ -410,12 +410,12 @@ export default function LogisticsPage() {
                     <div className="h-80">
                         <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={carrierChart} layout="vertical" margin={{ left: 40 }}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" horizontal={false} />
+                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" horizontal={false} />
                                 <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 11 }} tickFormatter={(v) => `${v}d`} />
                                 <YAxis dataKey="carrier" type="category" axisLine={false} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 11 }} width={110} />
                                 <Tooltip
                                     formatter={(value: number) => [`${value} days`, "Avg Delivery"]}
-                                    contentStyle={{ background: "rgba(15,15,35,0.95)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", color: "#fff", fontSize: "12px" }}
+                                    contentStyle={{ background: "rgba(255,255,255,0.97)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "12px", color: "#334155", fontSize: "12px" }}
                                 />
                                 <Bar dataKey="avgDays" radius={[0, 6, 6, 0]} barSize={18}>
                                     {carrierChart.map((c: any, i: number) => (
@@ -429,7 +429,7 @@ export default function LogisticsPage() {
 
                 {/* Carrier ranked table */}
                 <ChartCard title="Carrier Rankings" subtitle="Sorted by on-time performance" className="animate-slide-up">
-                    <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
+                    <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
                         <table className="w-full">
                             <thead>
                                 <tr style={{ background: "rgba(139,92,246,0.06)" }}>
@@ -444,17 +444,17 @@ export default function LogisticsPage() {
                                 {[...carrierChart]
                                     .sort((a: any, b: any) => parseFloat(b.onTimeRate) - parseFloat(a.onTimeRate))
                                     .map((c: any, i: number) => (
-                                        <tr key={i} className="border-t border-white/[0.04] hover:bg-white/[0.02] transition-colors">
+                                        <tr key={i} className="border-t border-black/[0.04] hover:bg-black/[0.02] transition-colors">
                                             <td className="px-3 py-2.5 text-xs text-slate-600 font-mono">{i + 1}</td>
                                             <td className="px-3 py-2.5">
                                                 <div className="flex items-center gap-2">
                                                     <div className="w-2 h-2 rounded-full" style={{ background: c.color }} />
-                                                    <span className="text-xs font-semibold text-white">{c.carrier}</span>
+                                                    <span className="text-xs font-semibold text-slate-800">{c.carrier}</span>
                                                 </div>
                                             </td>
                                             <td className="px-3 py-2.5 w-32">
                                                 <div className="flex items-center gap-1.5">
-                                                    <div className="flex-1 h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
+                                                    <div className="flex-1 h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(0,0,0,0.06)" }}>
                                                         <div
                                                             className="h-full rounded-full"
                                                             style={{
@@ -486,10 +486,10 @@ export default function LogisticsPage() {
                     <div className="h-72">
                         <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={distribution}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
                                 <XAxis dataKey="bucket" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} />
                                 <YAxis axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 11 }} />
-                                <Tooltip contentStyle={{ background: "rgba(15,15,35,0.95)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", color: "#fff", fontSize: "12px" }} />
+                                <Tooltip contentStyle={{ background: "rgba(255,255,255,0.97)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "12px", color: "#334155", fontSize: "12px" }} />
                                 <Bar dataKey="count" radius={[6, 6, 0, 0]} barSize={36}>
                                     {distribution.map((_: any, index: number) => (
                                         <Cell key={index} fill={CARRIER_COLORS[index % CARRIER_COLORS.length]} />
@@ -505,7 +505,7 @@ export default function LogisticsPage() {
             {bottlenecks.length > 0 && (
                 <div id="destinations">
                     <ChartCard title="Delivery by Destination" subtitle="Top destinations by avg delivery time — click slow routes for details" className="animate-slide-up">
-                        <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
+                        <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
                             <table className="w-full">
                                 <thead>
                                     <tr style={{ background: "rgba(139,92,246,0.06)" }}>
@@ -519,12 +519,12 @@ export default function LogisticsPage() {
                                 </thead>
                                 <tbody>
                                     {bottlenecks.map((route: any, i: number) => (
-                                        <tr key={i} className="border-t border-white/[0.04] hover:bg-white/[0.02] transition-colors">
+                                        <tr key={i} className="border-t border-black/[0.04] hover:bg-black/[0.02] transition-colors">
                                             <td className="px-4 py-3 text-xs text-slate-600 font-mono">{i + 1}</td>
                                             <td className="px-4 py-3">
                                                 <div className="flex items-center gap-2">
                                                     <MapPin className="w-3.5 h-3.5 text-slate-500" />
-                                                    <span className="text-sm font-semibold text-white">{route.city}</span>
+                                                    <span className="text-sm font-semibold text-slate-800">{route.city}</span>
                                                 </div>
                                             </td>
                                             <td className="px-4 py-3">
@@ -536,7 +536,7 @@ export default function LogisticsPage() {
                                             <td className="px-4 py-3 text-sm text-slate-400 text-right font-mono">{fmtNum(route.shipments)}</td>
                                             <td className="px-4 py-3 w-40">
                                                 <div className="flex items-center gap-2">
-                                                    <div className="flex-1 h-2 bg-white/[0.06] rounded-full">
+                                                    <div className="flex-1 h-2 bg-black/[0.06] rounded-full">
                                                         <div
                                                             className="h-2 rounded-full transition-all duration-500"
                                                             style={{
