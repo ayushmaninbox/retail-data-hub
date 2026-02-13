@@ -16,14 +16,17 @@ import json
 import traceback
 from datetime import datetime
 import google.generativeai as genai
+from dotenv import load_dotenv
 
 # ── configuration ───────────────────────────────────────────────────
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+load_dotenv(os.path.join(ROOT, ".env"))
+
 ANALYTICS_DIR = os.path.join(ROOT, "data", "analytics")
 OUT_FILE = os.path.join(ANALYTICS_DIR, "executive_summary.json")
 
-# User provided API Key
-GEMINI_API_KEY = "AIzaSyBtngwiNc7c7DwKQ9ZhnRq8oeJATQZgDt8"
+# User provided API Key via .env
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 def load_json(name):
     path = os.path.join(ANALYTICS_DIR, name)
@@ -87,43 +90,53 @@ def main():
     print("📊 Data Snapshot Prepared.")
     
     # 3. Call Gemini
-    try:
-        genai.configure(api_key=GEMINI_API_KEY)
-        model = genai.GenerativeModel('gemini-2.0-flash')
-        
-        prompt = f"""
-        You are a high-level Retail Strategy Consultant. Based on the following business metrics, 
-        provide exactly 3-4 punchy, high-impact "Executive Insights" for a dashboard summary.
-        
-        Rules:
-        - Keep each bullet point under 15 words.
-        - Use a confident, professional, and data-driven tone.
-        - Focus on the most interesting findings (e.g. city performance, inventory risks, or growth predictions).
-        - Output ONLY the bullet points (no intro or outro).
-        
-        DATA:
-        {snapshot}
-        """
-        
-        response = model.generate_content(prompt)
-        text = response.text.strip()
-        
-        # Clean up bullet points (split by lines/dashes)
-        insights = [line.strip().replace("- ", "").replace("* ", "") for line in text.split('\n') if line.strip()]
-        
-        # Limit to 4
-        insights = insights[:4]
-        
-        result = {
-            "source": "gemini_pro",
-            "generated_at": datetime.now().isoformat(),
-            "insights": insights
-        }
-        print("✅ Gemini AI generated insights successfully.")
+    models = ['gemini-2.5-flash', 'gemini-2.5-flash-lite', 'gemini-2.0-flash']
+    success = False
 
-    except Exception as e:
-        print(f"⚠️ Gemini API Error: {e}")
-        traceback.print_exc()
+    for model_name in models:
+        try:
+            print(f"Trying Gemini model: {model_name}...")
+            genai.configure(api_key=GEMINI_API_KEY)
+            model = genai.GenerativeModel(model_name)
+            
+            prompt = f"""
+            You are a high-level Retail Strategy Consultant. Based on the following business metrics, 
+            provide exactly 3-4 punchy, high-impact "Executive Insights" for a dashboard summary.
+            
+            Rules:
+            - Keep each bullet point under 15 words.
+            - Use a confident, professional, and data-driven tone.
+            - Focus on the most interesting findings (e.g. city performance, inventory risks, or growth predictions).
+            - Output ONLY the bullet points (no intro or outro).
+            
+            DATA:
+            {snapshot}
+            """
+            
+            response = model.generate_content(prompt)
+            text = response.text.strip()
+            
+            # Clean up bullet points (split by lines/dashes)
+            insights = [line.strip().replace("- ", "").replace("* ", "") for line in text.split('\n') if line.strip()]
+            
+            # Limit to 4
+            insights = insights[:4]
+            
+            result = {
+                "source": model_name,
+                "generated_at": datetime.now().isoformat(),
+                "insights": insights
+            }
+            print(f"✅ Gemini AI ({model_name}) generated insights successfully.")
+            success = True
+            break
+
+        except Exception as e:
+            print(f"⚠️ {model_name} Error: {e}")
+            continue
+
+    if not success:
+        print("❌ All Gemini models failed. Using deterministic fallback.")
         result = generate_deterministic_fallback(snapshot)
 
     # 4. Save

@@ -55,7 +55,6 @@ PLATFORM_KNOWLEDGE = {
 
 class ChatEngine:
     def __init__(self):
-        # We will initialize models on demand in the ask() method
         self.data_snapshot = self._load_data_snapshot()
         self.data_context = json.dumps({
             "platform_info": PLATFORM_KNOWLEDGE,
@@ -111,19 +110,44 @@ class ChatEngine:
         
         return snapshot
 
+    def get_full_analytics(self, area: str):
+        """Tool: Fetches full JSON content for a specific analytics area."""
+        files = {
+            "commercial": "commercial_kpis.json",
+            "operations": "operations_kpis.json",
+            "customer": "customer_kpis.json",
+            "forecast": "demand_forecast.json",
+            "market_basket": "market_basket.json",
+            "summary": "executive_summary.json"
+        }
+        if area not in files:
+            return {"error": f"Invalid area. Choose from: {list(files.keys())}"}
+        
+        path = os.path.join(ANALYTICS_DIR, files[area])
+        if os.path.exists(path):
+            with open(path, "r") as f:
+                return json.load(f)
+        return {"error": "File not found"}
+
+    def get_platform_tech_stack(self):
+        """Tool: Returns detailed information about the tech stack and Medallion architecture."""
+        return PLATFORM_KNOWLEDGE
+
     def ask(self, user_query: str, history: list = None):
         """AI-first query handler with Universal USP Platform Knowledge."""
-        prompt = f"""
+        
+        # Define tools for the model
+        tools = [self.get_full_analytics, self.get_platform_tech_stack]
+        
+        system_instruction = f"""
         Act as the 'Retail Hub Lead Consultant'. You are the USP (Unique Selling Point) of this platform.
         You have absolute awareness of the Technical Pipeline (Medallion/DuckDB), Operational Efficiency, and Commercial Health.
-
-        PLATFORM BRAIN (CONTEXT):
-        {self.data_context}
-
+        
         YOUR MISSION:
         1. Be Powerful & Direct: Answer questions with deep data precision.
-        2. Be Crazy Proactive: If you see a trend or a risk (e.g., high turnover but low stock), mention it!
-        3. Be technical: Mention 'Parquet storage' or 'DuckDB engine' or 'LSTM models' to explain the platform's speed.
+        2. Be an 'MCP-style' Worker: Use your tools to gather specific evidence BEFORE answering.
+        3. Be Crazy Proactive: If you see a trend or a risk (e.g., high turnover but low stock), mention it!
+        4. Be technical: Mention 'Parquet storage' or 'DuckDB engine' or 'LSTM models' to explain the platform's speed.
         
         PRESENTATION RULES:
         - Return 'table' for granular comparisons or lists.
@@ -137,28 +161,37 @@ class ChatEngine:
             "data": null | table_object | chart_object
         }}
 
-        Table Object: {{ "headers": ["..."], "rows": [["..."]] }}
-        Chart Object: {{ "type": "bar" | "area" | "pie", "data": [{{ "name": "...", "value": 0 }}] }}
-
-        USER QUERY: {user_query}
+        CONTEXT SNAPSHOT:
+        {self.data_snapshot}
         """
 
-        models = [
-            'gemini-2.0-flash-exp',
-            'gemini-2.5-flash-lite',
-            'gemini-2.0-flash', 
-            'gemini-flash-latest'
-        ]
+        models = ['gemini-2.5-flash', 'gemini-2.5-flash-lite', 'gemini-2.0-flash']
         
         for model_name in models:
             try:
-                model = genai.GenerativeModel(model_name)
-                response = model.generate_content(
-                    prompt,
-                    generation_config=genai.GenerationConfig(response_mime_type="application/json")
+                model = genai.GenerativeModel(
+                    model_name=model_name,
+                    tools=tools,
+                    system_instruction=system_instruction
                 )
+                
+                chat = model.start_chat(enable_automatic_function_calling=True)
+                response = chat.send_message(user_query)
+                
                 print(f"✅ AI Success: Using {model_name}")
-                return json.loads(response.text)
+                
+                # Try to find JSON in the response text if it's not strictly JSON
+                text = response.text
+                if "```json" in text:
+                    text = text.split("```json")[1].split("```")[0].strip()
+                elif "{" in text:
+                    # Basic extraction if it's mixed with text
+                    start = text.find("{")
+                    end = text.rfind("}")
+                    if start != -1 and end != -1:
+                        text = text[start:end+1]
+
+                return json.loads(text)
             except Exception as e:
                 print(f"⚠️ {model_name} Fail: {e}")
                 continue
@@ -171,7 +204,7 @@ class ChatEngine:
         s = self.data_snapshot
         
         resp = {
-            "text": "I'm accessing the Retail Hub's deep data layers to answer: ",
+            "text": "I'm accessing the Retail Hub's deep data layers to provide specialized context: ",
             "data_type": "text",
             "data": None
         }

@@ -64,6 +64,9 @@ const GREETINGS = [
 
 // ── Components ──────────────────────────────────────────────────────
 
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
 const MessageBubble = ({ message }: { message: ChatMessage }) => {
     const isUser = message.role === "user";
 
@@ -71,17 +74,21 @@ const MessageBubble = ({ message }: { message: ChatMessage }) => {
         <div className={`flex ${isUser ? "justify-end" : "justify-start"} animate-in fade-in slide-in-from-bottom-2 duration-300`}>
             {/* Content */}
             <div className={`${!isUser && message.data ? "max-w-full" : "max-w-[85%]"} space-y-4 ${isUser ? "text-right" : "text-left"} flex-1`}>
-                <div className={`inline-block p-4 rounded-2xl border relative group ${isUser
-                    ? "bg-white border-slate-200 text-slate-700 shadow-sm"
-                    : "bg-accent-purple/10 border-accent-purple/20 text-slate-900 shadow-sm"
+                <div className={`inline-block p-4 rounded-2xl border relative group transition-all ${isUser
+                    ? "bg-indigo-600 border-indigo-500 text-white shadow-lg"
+                    : "bg-slate-50 border-slate-200 text-slate-900 shadow-sm"
                     }`}>
                     {!isUser && (
-                        <div className="absolute -top-2 -right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <span className="text-[8px] bg-accent-purple/40 text-white px-2 py-0.5 rounded-full backdrop-blur-md border border-white/10">GEMINI 2.0</span>
-                            <span className="text-[8px] bg-green-500/40 text-white px-2 py-0.5 rounded-full backdrop-blur-md border border-white/10">DUCKDB GOLD</span>
+                        <div className="absolute -top-2.5 -right-2 flex gap-1 opacity-100">
+                            <span className="text-[9px] font-bold bg-indigo-500 text-white px-2 py-0.5 rounded-md shadow-sm border border-white/20">GEMINI 2.0</span>
+                            <span className="text-[9px] font-bold bg-emerald-600 text-white px-2 py-0.5 rounded-md shadow-sm border border-white/20">MCP-PROTOCOL</span>
                         </div>
                     )}
-                    <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.text}</p>
+                    <div className={`text-[15px] leading-relaxed prose prose-sm max-w-none ${isUser ? "prose-invert" : "prose-slate"}`}>
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                            {message.text}
+                        </ReactMarkdown>
+                    </div>
                 </div>
 
                 {/* Data Rendering */}
@@ -103,20 +110,20 @@ const ThemedTable = ({ data }: { data: any }) => {
         <div className="glass-card-static overflow-hidden border border-white/10 shadow-2xl w-full">
             <div className="max-h-[400px] overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
                 <table className="w-full text-left text-sm border-collapse">
-                    <thead className="bg-slate-950 sticky top-0 z-20 border-b border-white/10">
+                    <thead className="bg-slate-100 sticky top-0 z-20 border-b border-slate-200">
                         <tr>
                             {data.headers.map((h: string, i: number) => (
-                                <th key={i} className="px-4 py-3 font-bold text-white uppercase tracking-wider text-[10px] bg-slate-950">
+                                <th key={i} className="px-4 py-3 font-bold text-slate-900 uppercase tracking-wider text-[11px]">
                                     {h}
                                 </th>
                             ))}
                         </tr>
                     </thead>
-                    <tbody className="divide-y divide-white/5">
+                    <tbody className="divide-y divide-slate-100">
                         {data.rows.map((row: any[], i: number) => (
-                            <tr key={i} className="hover:bg-white/[0.02] transition-colors">
+                            <tr key={i} className="hover:bg-slate-50 transition-colors bg-white">
                                 {row.map((cell: any, j: number) => (
-                                    <td key={j} className="px-4 py-3 text-slate-300 font-medium whitespace-nowrap">
+                                    <td key={j} className="px-4 py-3 text-slate-700 font-medium whitespace-nowrap">
                                         {cell}
                                     </td>
                                 ))}
@@ -307,15 +314,15 @@ export default function ChatPage() {
 
                 {isLoading && (
                     <div className="flex justify-start space-y-2 animate-in fade-in slide-in-from-bottom-2 duration-300 w-full">
-                        <div className="glass-card-static border-accent-purple/20 p-4 rounded-2xl w-full max-w-sm">
+                        <div className="bg-slate-900 border border-slate-800 p-4 rounded-2xl w-full max-w-sm shadow-2xl">
                             <div className="flex items-center gap-3 mb-3">
-                                <Search className="w-4 h-4 text-accent-purple animate-spin" />
-                                <span className="text-xs font-bold text-slate-300">Intelligence Log</span>
+                                <Cpu className="w-4 h-4 text-emerald-400 animate-pulse" />
+                                <span className="text-xs font-bold text-white uppercase tracking-widest">MCP Agent Logs</span>
                             </div>
-                            <div className="space-y-1">
+                            <div className="space-y-1.5">
                                 {thoughtLog.map((step, idx) => (
-                                    <div key={idx} className="flex items-center gap-2 text-[10px] text-slate-400 font-mono animate-in fade-in slide-in-from-left-2">
-                                        <div className="w-1 h-1 bg-accent-purple rounded-full" />
+                                    <div key={idx} className="flex items-center gap-2 text-[10px] text-slate-300 font-mono animate-in fade-in slide-in-from-left-2">
+                                        <ChevronRight className="w-3 h-3 text-emerald-500" />
                                         {step}
                                     </div>
                                 ))}

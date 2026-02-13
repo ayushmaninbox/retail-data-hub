@@ -15,20 +15,44 @@
 | Capability | Implementation |
 |---|---|
 | **Architecture** | Medallion (Raw → Bronze → Silver → Gold) with Parquet storage |
+| **Cloud/AI** | Native Gemini 2.0 Flash with automated tool-calling |
 | **Data Modeling** | Star schema with fact & dimension tables, SCD Type 2 |
-| **Ingestion** | Batch (CSV) + near real-time (JSON) with schema validation & retry |
+| **Ingestion** | Batch (CSV) + near real-time (JSON) with schema validation |
 | **Data Quality** | 7 automated checks with JSON evidence reports |
 | **Analytics** | Commercial, Operations, Customer KPIs + Market Basket (Apriori) |
 | **API** | FastAPI backend serving Gold layer KPIs with Swagger docs |
-| **Dashboard** | 7-page interactive Next.js app with Recharts, Tailwind CSS |
+| **Dashboard** | Interactive Next.js 14 app with Recharts & Tailwind CSS |
 | **Query Engine** | DuckDB — in-process SQL directly on Parquet files |
-| **Cost** | $0 — Python + DuckDB + Next.js |
 
 ---
 
 ## 🏗️ Architecture
 
-![Retail Data Hub Architecture](/Users/ayushmaninbox/.gemini/antigravity/brain/ec357741-fe32-45ad-9dd7-17720c70ff90/retail_data_hub_architecture_v2_1770974777549.png)
+```mermaid
+graph TD
+    subgraph Bronze [Bronze Layer - Raw Data]
+        A[CSV / JSON Files] -->|Ingestion| B(Parquet: Raw)
+    end
+
+    subgraph Silver [Silver Layer - Cleaned Data]
+        B -->|Cleaning & Deduplication| C(Parquet: Cleaned)
+        C -->|Data Quality Checks| D{Quality Pass?}
+        D -- No --> E[Quarantine Table]
+        D -- Yes --> F(Parquet: Trusted)
+    end
+
+    subgraph Gold [Gold Layer - Curated Data]
+        F -->|Transformation| G(Star Schema: Fact & Dims)
+        G -->|Aggregation| H(KPI JSONs)
+    end
+
+    subgraph Analytics [Analytics & Consumption]
+        G -->|Ad-hoc Queries| I[DuckDB Engine]
+        H -->|API Serving| J[FastAPI Backend]
+        J -->|Visualization| K[Next.js Dashboard]
+        I -->|AI Context| L[Gemini 2.5]
+    end
+```
 
 ---
 
@@ -37,106 +61,38 @@
 ```
 retail-data-hub/
 │
-├── data/                              # All data layers (ignored by git)
-│   ├── raw/                           #   Source files (CSV, JSON)
-│   ├── bronze/                        #   Ingested Parquet (schema-validated)
-│   ├── silver/                        #   Cleaned & merged Parquet
-│   ├── gold/                          #   Star schema Parquet (fact/dims)
-│   ├── analytics/                     #   KPI and ML Forecast output (JSON)
-│   └── logs/                          #   Pipeline execution logs
-│
-├── src/                               # All core logic
-│   ├── data_generation/               #   Realistic synthetic generators
-│   ├── ingestion/                     #   Raw → Bronze layer
-│   ├── transformation/                #   Bronze → Silver → Gold
-│   ├── quality/                       #   Data Quality framework
-│   ├── analytics/                     #   KPI computation scripts
-│   ├── ml/                            #   🧠 LSTM Demand Forecasting (PyTorch)
-│   └── api/                           #   FastAPI backend
-│
+├── data/                              # Data layers (Raw → Bronze → Silver → Gold)
+├── src/                               # Python source (ETL, Quality, ML, API)
 ├── dashboard/                         # Next.js 14 Dashboard
-│   ├── src/app/forecast/              #   🧠 AI Forecast page
-│   └── ...                            #   Other analytics pages
-│
-├── scripts/                           # One-click automation
-│   ├── cleanup.sh                     #   🧹 Reset demo state
-│   ├── forecast.sh                    #   🧠 Run LSTM training
-│   ├── generation.sh                  #   Generate raw data
-│   ├── ingestion.sh                   #   Load Bronze parquets
-│   ├── transform.sh                   #   Build Gold star schema
-│   ├── kpi_analysis.sh                #   Compute JSON analytics
-│   ├── quality_checks.sh              #   Verify data firewall
-│   ├── api.sh                         #   Launch backend
-│   └── dashboard.sh                   #   Launch frontend
+├── scripts/                           # Automation scripts
+└── docs/                              # Technical documentation
 ```
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start (WSL / Linux / macOS)
 
-### Prerequisites
+These instructions are optimized for **WSL (Ubuntu)**, Linux, and macOS.
 
+### 1. Prerequisites
 - **Python 3.9+**
 - **Node.js 18+** & npm
-- **Git**
+- **Gemini API Key** (Set in `.env`)
 
-### 1. Clone & Install (one-time setup)
+### 2. Implementation & Setup
 
 ```bash
+# Clone the repository
 git clone https://github.com/ayushmaninbox/retail-data-hub.git
 cd retail-data-hub
-```
 
-**macOS / Linux:**
-```bash
+# Make scripts executable
 chmod +x scripts/*.sh
+
+# Run the installation script (Auto-venv, deps, and folders)
 ./scripts/installation.sh
 ```
 
-**Windows (PowerShell / CMD):**
-```powershell
-# Create venv and install dependencies
-python -m venv .venv
-.venv\Scripts\activate
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-
-# Install Dashboard dependencies
-cd dashboard
-npm install
-cd ..
-
-# Create data directories
-mkdir data\raw, data\bronze, data\silver, data\gold, data\analytics
-```
-
----
-
-## 📊 Running the Platform
-
-### 🧹 Step 0: The "Clean Slate" (Reset Button)
-Run this once right before you start your demo to impress the judges by showing how the system builds from scratch.
-
-**macOS / Linux:** `./scripts/cleanup.sh`  
-**Windows:** `rm -Recurse -Force data/silver/*, data/gold/*, data/analytics/*` (or similar)
-
----
-
-### 🧪 Step 1: Terminal 1 — The Data Pipeline
-Run these one by one to build the "Retail Brain".
-
-| Step | macOS / Linux Command | Windows (Activated Venv) |
-|---|---|---|
-| **1. Generate Data** | `./scripts/generation.sh` | `python src/data_generation/generate_pos.py` |
-| **2. Ingest** | `./scripts/ingestion.sh` | `python src/ingestion/ingest_batch.py` |
-| **3. Transform** | `./scripts/transform.sh` | `python src/transformation/bronze_to_silver.py` |
-| **4. Data Quality** | `./scripts/quality_checks.sh` | `python src/quality/quality_checks.py` |
-| **5. KPI Analysis** | `./scripts/kpi_analysis.sh` | `python src/analytics/commercial_kpis.py` |
-| **6. AI Forecast** | `./scripts/forecast.sh` | `python src/ml/demand_forecast.py` |
-
----
-
-### 🚀 Step 2: Terminal 2 — Start API Server
 Start this once the pipeline data is ready.
 
 **macOS / Linux:** `./scripts/api.sh`  
