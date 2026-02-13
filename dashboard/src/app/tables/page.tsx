@@ -124,7 +124,7 @@ function PaginatedTable({
                             {columns.map((col: any, i: number) => (
                                 <th
                                     key={i}
-                                    className="text-left px-3 py-2.5 text-[10px] font-semibold text-slate-400 uppercase tracking-wider whitespace-nowrap border-b border-black/[0.06]"
+                                    className="text-left px-3 py-2.5 text-[10px] font-bold text-slate-500 uppercase tracking-wider whitespace-nowrap border-b border-black/[0.06]"
                                 >
                                     <div className="flex items-center gap-1">
                                         {col.is_pk && <Key className="w-3 h-3 text-yellow-400" />}
@@ -149,7 +149,7 @@ function PaginatedTable({
                                     return (
                                         <td
                                             key={ci}
-                                            className={`px-3 py-2 whitespace-nowrap font-mono text-[11px] ${val === null ? "text-slate-600 italic" : "text-slate-300"
+                                            className={`px-3 py-2 whitespace-nowrap font-mono text-[11px] ${val === null ? "text-slate-500 italic" : "text-slate-800 font-medium"
                                                 }`}
                                             title={display}
                                         >
@@ -474,15 +474,15 @@ export default function DataTablesPage() {
                                     <span
                                         key={i}
                                         className={`inline-flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-mono ${col.is_pk
-                                            ? "bg-yellow-500/10 text-yellow-300 border border-yellow-500/20"
+                                            ? "bg-yellow-500/10 text-yellow-700 border border-yellow-500/20"
                                             : col.fk_to
-                                                ? "bg-blue-500/10 text-blue-300 border border-blue-500/20"
-                                                : "bg-black/[0.03] text-slate-400 border border-black/[0.05]"
+                                                ? "bg-blue-500/10 text-blue-700 border border-blue-500/20"
+                                                : "bg-black/[0.03] text-slate-600 border border-black/[0.05]"
                                             }`}
                                     >
-                                        {col.is_pk ? <Key className="w-2.5 h-2.5" /> : col.fk_to ? <Link2 className="w-2.5 h-2.5" /> : <DIcon className="w-2.5 h-2.5 opacity-50" />}
+                                        {col.is_pk ? <Key className="w-2.5 h-2.5" /> : col.fk_to ? <Link2 className="w-2.5 h-2.5" /> : <DIcon className="w-2.5 h-2.5 opacity-60" />}
                                         {col.name}
-                                        <span className="text-slate-600">{col.dtype.replace("64", "").replace("32", "")}</span>
+                                        <span className="text-slate-500 font-bold">{col.dtype.replace("64", "").replace("32", "")}</span>
                                         {col.fk_to && (
                                             <button
                                                 onClick={() => handleNavigate(col.fk_to)}

@@ -19,7 +19,7 @@ export default function ChartCard({
                 <div>
                     <h3 className="text-sm font-semibold text-slate-800">{title}</h3>
                     {subtitle && (
-                        <p className="text-xs text-slate-400 mt-0.5">{subtitle}</p>
+                        <p className="text-xs text-slate-500 font-medium mt-0.5">{subtitle}</p>
                     )}
                 </div>
                 {action}

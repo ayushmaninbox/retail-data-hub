@@ -21,7 +21,7 @@ export default function PageHeader({
                     {title}
                 </h1>
             </div>
-            <p className="text-sm text-slate-400 ml-11">{subtitle}</p>
+            <p className="text-sm text-slate-700 font-medium ml-11">{subtitle}</p>
         </div>
     );
 }

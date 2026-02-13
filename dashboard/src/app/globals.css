@@ -6,17 +6,6 @@
     body {
         @apply text-slate-800 antialiased;
     }
-
-    /* Hide default cursor on desktop where custom cursor is active */
-    @media (pointer: fine) {
-
-        body,
-        a,
-        button,
-        input {
-            cursor: none !important;
-        }
-    }
 }
 
 /* Custom Scrollbar */

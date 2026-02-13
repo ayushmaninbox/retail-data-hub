@@ -27,7 +27,7 @@ export default function KpiCard({
             ? "text-emerald-600"
             : trend === "down"
                 ? "text-red-500"
-                : "text-slate-400";
+                : "text-slate-500";
 
     const TrendIcon =
         trend === "up" ? TrendingUp : trend === "down" ? TrendingDown : Minus;
@@ -64,7 +64,7 @@ export default function KpiCard({
                             </div>
                         )}
                         {clickable && (
-                            <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-accent-purple transition-colors" />
+                            <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-accent-purple transition-colors" />
                         )}
                     </div>
                 </div>
@@ -72,9 +72,9 @@ export default function KpiCard({
                 <p className="text-sm text-slate-500 font-medium mb-1">{title}</p>
                 <p className="text-2xl font-bold text-slate-900 tracking-tight">{value}</p>
                 {subtitle && (
-                    <p className="text-xs text-slate-400 mt-1">
+                    <p className="text-xs text-slate-500 mt-1">
                         {subtitle}
-                        {clickable && <span className="ml-1 text-accent-purple/60">· Click for details</span>}
+                        {clickable && <span className="ml-1 text-accent-purple/70">· Click for details</span>}
                     </p>
                 )}
             </div>

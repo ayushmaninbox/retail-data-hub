@@ -107,7 +107,7 @@ export default function DetailsModal({
                     </div>
                     <button
                         onClick={onClose}
-                        className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-700 hover:bg-black/5 transition-all"
+                        className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-black/5 transition-all"
                     >
                         <X className="w-4 h-4" />
                     </button>
@@ -141,7 +141,7 @@ export default function DetailsModal({
                                         {row.label}
                                     </p>
                                     {row.subValue && (
-                                        <p className="text-xs text-slate-400 mt-0.5">
+                                        <p className="text-xs text-slate-500 font-medium mt-0.5">
                                             {row.subValue}
                                         </p>
                                     )}
@@ -150,7 +150,7 @@ export default function DetailsModal({
                             <div className="text-right">
                                 <p className="text-sm font-bold text-slate-900">{row.value}</p>
                                 {row.percentage !== undefined && (
-                                    <p className="text-xs text-slate-400 mt-0.5">
+                                    <p className="text-xs text-slate-500 font-medium mt-0.5">
                                         {row.percentage.toFixed(1)}%
                                     </p>
                                 )}
@@ -184,7 +184,7 @@ export default function DetailsModal({
                 {/* Footer — fixed */}
                 {footer && (
                     <div className="px-6 pb-5 pt-2 border-t border-black/[0.04] flex-shrink-0">
-                        <p className="text-xs text-slate-400 text-center">{footer}</p>
+                        <p className="text-xs text-slate-500 font-medium text-center">{footer}</p>
                     </div>
                 )}
             </div>
