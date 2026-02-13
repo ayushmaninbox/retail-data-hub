@@ -171,7 +171,7 @@ export default function CustomersPage() {
             <PageHeader icon={Users} title="Customer Analytics" subtitle="Customer lifetime value, RFM segmentation & retention analysis" />
 
             {/* ── Sticky Nav ── */}
-            <nav className="sticky top-0 z-40 -mx-8 px-8 py-3" style={{ background: "rgba(10,10,25,0.85)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+            <nav className="sticky top-0 z-40 -mx-8 px-8 py-3" style={{ background: "rgba(255,255,255,0.9)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
                 <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide">
                     {SECTIONS.map((s) => {
                         const SIcon = s.icon;
@@ -181,7 +181,7 @@ export default function CustomersPage() {
                                 href={`#${s.id}`}
                                 className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-medium transition-all whitespace-nowrap ${activeSection === s.id
                                     ? "bg-accent-purple/20 text-accent-purple shadow-sm shadow-accent-purple/10"
-                                    : "text-slate-400 hover:text-white hover:bg-white/[0.04]"
+                                    : "text-slate-400 hover:text-slate-800 hover:bg-black/[0.04]"
                                     }`}
                             >
                                 <SIcon className="w-3.5 h-3.5" />
@@ -208,7 +208,7 @@ export default function CustomersPage() {
                         <div className="xl:col-span-2 h-80">
                             <ResponsiveContainer width="100%" height="100%">
                                 <BarChart data={rfmSegments} layout="vertical" margin={{ left: 20 }}>
-                                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" horizontal={false} />
+                                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" horizontal={false} />
                                     <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 11 }} />
                                     <YAxis dataKey="segment" type="category" axisLine={false} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 11 }} width={130} />
                                     <Tooltip
@@ -216,8 +216,8 @@ export default function CustomersPage() {
                                             if (active && payload && payload.length) {
                                                 const d = payload[0].payload;
                                                 return (
-                                                    <div className="glass-card-static p-3 border border-white/10" style={{ zIndex: 9999 }}>
-                                                        <p className="text-xs font-bold text-white mb-1">{d.segment}</p>
+                                                    <div className="glass-card-static p-3 border border-black/10" style={{ zIndex: 9999 }}>
+                                                        <p className="text-xs font-bold text-slate-800 mb-1">{d.segment}</p>
                                                         <p className="text-xs text-slate-400">{fmtNum(d.count)} customers</p>
                                                         <p className="text-xs text-slate-400">Avg Spend: {fmt(d.avg_monetary || 0)}</p>
                                                         <p className="text-xs text-slate-400">Avg Frequency: {d.avg_frequency?.toFixed(1)}</p>
@@ -246,18 +246,18 @@ export default function CustomersPage() {
                                     <button
                                         key={seg.segment}
                                         onClick={() => setActiveSeg(isActive ? null : seg.segment)}
-                                        className={`w-full flex items-center gap-3 p-2.5 rounded-lg text-left transition-all ${isActive ? "bg-white/[0.06] ring-1" : "hover:bg-white/[0.03]"
+                                        className={`w-full flex items-center gap-3 p-2.5 rounded-lg text-left transition-all ${isActive ? "bg-black/[0.06] ring-1" : "hover:bg-black/[0.03]"
                                             }`}
                                         style={isActive ? { borderColor: seg.color + "40" } : undefined}
                                     >
                                         <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: seg.color }} />
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center justify-between">
-                                                <span className="text-xs font-semibold text-white">{seg.segment}</span>
+                                                <span className="text-xs font-semibold text-slate-800">{seg.segment}</span>
                                                 <span className="text-[10px] font-bold text-slate-400">{fmtNum(seg.count)}</span>
                                             </div>
                                             <div className="flex items-center gap-2 mt-1">
-                                                <div className="flex-1 h-1 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
+                                                <div className="flex-1 h-1 rounded-full overflow-hidden" style={{ background: "rgba(0,0,0,0.06)" }}>
                                                     <div className="h-full rounded-full" style={{ width: `${pct}%`, background: seg.color }} />
                                                 </div>
                                                 <span className="text-[9px] text-slate-500">{pct}%</span>
@@ -282,30 +282,30 @@ export default function CustomersPage() {
                                         })()}
                                     </div>
                                     <div>
-                                        <h4 className="text-sm font-bold text-white">{selectedSegData.segment}</h4>
+                                        <h4 className="text-sm font-bold text-slate-800">{selectedSegData.segment}</h4>
                                         <p className="text-xs text-slate-500">{segInsights[selectedSegData.segment]?.desc || ""}</p>
                                     </div>
                                 </div>
-                                <button onClick={() => setActiveSeg(null)} className="w-6 h-6 rounded-lg flex items-center justify-center text-slate-500 hover:text-white hover:bg-white/[0.06]">
+                                <button onClick={() => setActiveSeg(null)} className="w-6 h-6 rounded-lg flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-black/[0.06]">
                                     <XCircle className="w-4 h-4" />
                                 </button>
                             </div>
 
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
-                                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.05)" }}>
-                                    <p className="text-lg font-bold text-white">{fmtNum(selectedSegData.count)}</p>
+                                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.06)" }}>
+                                    <p className="text-lg font-bold text-slate-800">{fmtNum(selectedSegData.count)}</p>
                                     <p className="text-[10px] text-slate-500 uppercase">Customers</p>
                                 </div>
-                                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.05)" }}>
-                                    <p className="text-lg font-bold text-white">{fmt(selectedSegData.avg_monetary || 0)}</p>
+                                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.06)" }}>
+                                    <p className="text-lg font-bold text-slate-800">{fmt(selectedSegData.avg_monetary || 0)}</p>
                                     <p className="text-[10px] text-slate-500 uppercase">Avg Spend</p>
                                 </div>
-                                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.05)" }}>
-                                    <p className="text-lg font-bold text-white">{selectedSegData.avg_frequency?.toFixed(1) || "—"}</p>
+                                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.06)" }}>
+                                    <p className="text-lg font-bold text-slate-800">{selectedSegData.avg_frequency?.toFixed(1) || "—"}</p>
                                     <p className="text-[10px] text-slate-500 uppercase">Avg Frequency</p>
                                 </div>
-                                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.05)" }}>
-                                    <p className="text-lg font-bold text-white">{selectedSegData.avg_recency?.toFixed(0) || "—"} days</p>
+                                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.06)" }}>
+                                    <p className="text-lg font-bold text-slate-800">{selectedSegData.avg_recency?.toFixed(0) || "—"} days</p>
                                     <p className="text-[10px] text-slate-500 uppercase">Avg Recency</p>
                                 </div>
                             </div>
@@ -349,7 +349,7 @@ export default function CustomersPage() {
                                     </Pie>
                                     <Tooltip
                                         formatter={(value: number, name: string) => [fmtNum(value) + " customers", name]}
-                                        contentStyle={{ background: "rgba(15,15,35,0.97)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "12px", color: "#fff", fontSize: "13px", fontWeight: 600, padding: "10px 14px", zIndex: 9999, boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }}
+                                        contentStyle={{ background: "rgba(255,255,255,0.97)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "12px", color: "#334155", fontSize: "13px", fontWeight: 600, padding: "10px 14px", zIndex: 9999, boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }}
                                         wrapperStyle={{ zIndex: 9999 }}
                                     />
                                 </PieChart>
@@ -365,7 +365,7 @@ export default function CustomersPage() {
                                     <button
                                         key={tier.tier}
                                         onClick={() => setActiveCLV(isActive ? null : tier.tier)}
-                                        className={`w-full flex items-center gap-3 p-3 rounded-xl text-left transition-all ${isActive ? "ring-1 bg-white/[0.04]" : "hover:bg-white/[0.03]"
+                                        className={`w-full flex items-center gap-3 p-3 rounded-xl text-left transition-all ${isActive ? "ring-1 bg-black/[0.04]" : "hover:bg-black/[0.03]"
                                             }`}
                                         style={isActive ? { borderColor: tier.color + "40" } : undefined}
                                     >
@@ -374,7 +374,7 @@ export default function CustomersPage() {
                                         </div>
                                         <div className="flex-1">
                                             <div className="flex items-center justify-between">
-                                                <span className="text-sm font-semibold text-white">{tier.tier}</span>
+                                                <span className="text-sm font-semibold text-slate-800">{tier.tier}</span>
                                                 <span className="text-xs font-bold" style={{ color: tier.color }}>{pct}%</span>
                                             </div>
                                             <p className="text-[10px] text-slate-500">{fmtNum(tier.count)} customers</p>
@@ -397,7 +397,7 @@ export default function CustomersPage() {
                             { label: "Repeat Rate", value: `${summary.repeat_rate_pct || 0}%`, color: "#14b8a6" },
                         ].map(({ label, value, color }) => (
                             <div key={label} className="p-4 rounded-xl text-center" style={{ background: `${color}08`, border: `1px solid ${color}15` }}>
-                                <p className="text-lg font-bold text-white">{value}</p>
+                                <p className="text-lg font-bold text-slate-800">{value}</p>
                                 <p className="text-[10px] text-slate-500 uppercase">{label}</p>
                             </div>
                         ))}
@@ -407,7 +407,7 @@ export default function CustomersPage() {
                     {topCustomers.length > 0 && (
                         <div className="mt-4">
                             <p className="text-[10px] text-slate-500 uppercase font-semibold tracking-wider mb-2">Top Customers</p>
-                            <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
+                            <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
                                 <table className="w-full">
                                     <thead>
                                         <tr style={{ background: "rgba(139,92,246,0.06)" }}>
@@ -419,9 +419,9 @@ export default function CustomersPage() {
                                     </thead>
                                     <tbody>
                                         {topCustomers.slice(0, 5).map((c: any, i: number) => (
-                                            <tr key={i} className="border-t border-white/[0.04] hover:bg-white/[0.02]">
+                                            <tr key={i} className="border-t border-black/[0.04] hover:bg-black/[0.02] transition-colors">
                                                 <td className="px-3 py-2 text-xs text-slate-600 font-mono">{i + 1}</td>
-                                                <td className="px-3 py-2 text-xs font-semibold text-white">{c.customer_id}</td>
+                                                <td className="px-3 py-2 text-xs font-semibold text-slate-800">{c.customer_id}</td>
                                                 <td className="px-3 py-2 text-xs text-emerald-400 text-right font-mono">{fmt(c.monetary || c.total_spend || 0)}</td>
                                                 <td className="px-3 py-2 text-xs text-slate-400 text-right font-mono">{c.frequency || c.orders || "—"}</td>
                                             </tr>
@@ -440,11 +440,11 @@ export default function CustomersPage() {
                     <div className="h-72">
                         <ResponsiveContainer width="100%" height="100%">
                             <AreaChart data={monthlyNR}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
                                 <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} />
                                 <YAxis axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 11 }} />
                                 <Tooltip
-                                    contentStyle={{ background: "rgba(15,15,35,0.97)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "12px", color: "#fff", fontSize: "12px", boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }}
+                                    contentStyle={{ background: "rgba(255,255,255,0.97)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "12px", color: "#334155", fontSize: "12px", boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }}
                                     wrapperStyle={{ zIndex: 9999 }}
                                 />
                                 <defs>
@@ -478,10 +478,10 @@ export default function CustomersPage() {
                     <div className="h-72">
                         <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={monthlyNR}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
                                 <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} />
                                 <YAxis axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 11 }} />
-                                <Tooltip contentStyle={{ background: "rgba(15,15,35,0.97)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "12px", color: "#fff", fontSize: "12px", boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }} wrapperStyle={{ zIndex: 9999 }} />
+                                <Tooltip contentStyle={{ background: "rgba(255,255,255,0.97)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "12px", color: "#334155", fontSize: "12px", boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }} wrapperStyle={{ zIndex: 9999 }} />
                                 <Bar dataKey="returning" name="Returning" stackId="a" fill="#8b5cf6" radius={[0, 0, 0, 0]} barSize={20} />
                                 <Bar dataKey="new" name="New" stackId="a" fill="#14b8a6" radius={[6, 6, 0, 0]} barSize={20} />
                             </BarChart>
@@ -504,7 +504,7 @@ export default function CustomersPage() {
             {customerCities.length > 0 && (
                 <div id="cities">
                     <ChartCard title="Customers by City" subtitle="Top cities by customer count and total spend" className="animate-slide-up">
-                        <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
+                        <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
                             <table className="w-full">
                                 <thead>
                                     <tr style={{ background: "rgba(139,92,246,0.06)" }}>
@@ -520,21 +520,21 @@ export default function CustomersPage() {
                                     {customerCities.map((city: any, i: number) => {
                                         const share = totalCustomers > 0 ? ((city.customers / totalCustomers) * 100).toFixed(1) : "0";
                                         return (
-                                            <tr key={i} className="border-t border-white/[0.04] hover:bg-white/[0.02] transition-colors">
+                                            <tr key={i} className="border-t border-black/[0.04] hover:bg-black/[0.02] transition-colors">
                                                 <td className="px-4 py-3 text-xs text-slate-600 font-mono">{i + 1}</td>
                                                 <td className="px-4 py-3">
                                                     <div className="flex items-center gap-2">
                                                         <MapPin className="w-3.5 h-3.5" style={{ color: city.color }} />
                                                         <div>
-                                                            <span className="text-sm font-semibold text-white">{city.city}</span>
+                                                            <span className="text-sm font-semibold text-slate-800">{city.city}</span>
                                                             {city.state && <span className="text-[10px] text-slate-500 ml-1.5">{city.state}</span>}
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td className="px-4 py-3 text-sm text-white text-right font-mono font-semibold">{fmtNum(city.customers)}</td>
+                                                <td className="px-4 py-3 text-sm text-slate-800 text-right font-mono font-semibold">{fmtNum(city.customers)}</td>
                                                 <td className="px-4 py-3 w-32">
                                                     <div className="flex items-center gap-2">
-                                                        <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
+                                                        <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: "rgba(0,0,0,0.06)" }}>
                                                             <div className="h-full rounded-full" style={{ width: `${share}%`, background: city.color }} />
                                                         </div>
                                                         <span className="text-[10px] text-slate-400 w-10 text-right">{share}%</span>

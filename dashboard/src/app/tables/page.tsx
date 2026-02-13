@@ -35,23 +35,23 @@ import PageHeader from "@/components/PageHeader";
 
 const API_BASE = "http://localhost:8000";
 
-const LAYER_META: Record<string, { label: string; color: string; emoji: string; description: string }> = {
+const LAYER_META: Record<string, { label: string; color: string; icon: any; description: string }> = {
     gold: {
         label: "Gold",
         color: "#eab308",
-        emoji: "⭐",
+        icon: Star,
         description: "Star-schema analytics layer — fact & dimension tables",
     },
     silver: {
         label: "Silver",
         color: "#94a3b8",
-        emoji: "🔗",
+        icon: Link2,
         description: "Cleaned & validated data — deduped, quality-checked",
     },
     bronze: {
         label: "Bronze",
         color: "#cd7f32",
-        emoji: "📥",
+        icon: Download,
         description: "Raw ingested data — untransformed, as received",
     },
 };
@@ -116,15 +116,15 @@ function PaginatedTable({
     return (
         <div>
             {/* Data grid */}
-            <div className="overflow-x-auto rounded-xl" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
+            <div className="overflow-x-auto rounded-xl" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
                 <table className="w-full text-xs">
                     <thead>
                         <tr style={{ background: "rgba(139,92,246,0.08)" }}>
-                            <th className="text-center px-2 py-2.5 text-[10px] font-semibold text-slate-500 border-b border-white/[0.06] w-12">#</th>
+                            <th className="text-center px-2 py-2.5 text-[10px] font-semibold text-slate-500 border-b border-black/[0.06] w-12">#</th>
                             {columns.map((col: any, i: number) => (
                                 <th
                                     key={i}
-                                    className="text-left px-3 py-2.5 text-[10px] font-semibold text-slate-400 uppercase tracking-wider whitespace-nowrap border-b border-white/[0.06]"
+                                    className="text-left px-3 py-2.5 text-[10px] font-semibold text-slate-400 uppercase tracking-wider whitespace-nowrap border-b border-black/[0.06]"
                                 >
                                     <div className="flex items-center gap-1">
                                         {col.is_pk && <Key className="w-3 h-3 text-yellow-400" />}
@@ -141,7 +141,7 @@ function PaginatedTable({
                     </thead>
                     <tbody className={loadingRows ? "opacity-40 transition-opacity" : "transition-opacity"}>
                         {rows.map((row: any, ri: number) => (
-                            <tr key={ri} className="border-b border-white/[0.03] hover:bg-white/[0.02] transition-colors">
+                            <tr key={ri} className="border-b border-black/[0.04] hover:bg-black/[0.02] transition-colors">
                                 <td className="text-center px-2 py-2 text-[10px] text-slate-600 font-mono">{startRow + ri}</td>
                                 {columns.map((col: any, ci: number) => {
                                     const val = row[col.name];
@@ -166,7 +166,7 @@ function PaginatedTable({
             {/* Pagination controls */}
             <div className="flex items-center justify-between mt-4 px-1">
                 <p className="text-xs text-slate-500">
-                    Showing <span className="text-white font-semibold">{fmtNum(startRow)}</span> – <span className="text-white font-semibold">{fmtNum(endRow)}</span> of <span className="text-white font-semibold">{fmtNum(totalRows)}</span> rows
+                    Showing <span className="text-slate-800 font-semibold">{fmtNum(startRow)}</span> – <span className="text-slate-800 font-semibold">{fmtNum(endRow)}</span> of <span className="text-slate-800 font-semibold">{fmtNum(totalRows)}</span> rows
                 </p>
 
                 <div className="flex items-center gap-1">
@@ -174,7 +174,7 @@ function PaginatedTable({
                     <button
                         onClick={() => fetchPage(1)}
                         disabled={page <= 1}
-                        className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/[0.06] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                        className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-800 hover:bg-black/[0.04] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                         title="First page"
                     >
                         <ChevronsLeft className="w-4 h-4" />
@@ -183,7 +183,7 @@ function PaginatedTable({
                     <button
                         onClick={() => fetchPage(page - 1)}
                         disabled={page <= 1}
-                        className="px-3 h-8 rounded-lg flex items-center gap-1 text-xs font-medium text-slate-400 hover:text-white hover:bg-white/[0.06] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                        className="px-3 h-8 rounded-lg flex items-center gap-1 text-xs font-medium text-slate-400 hover:text-slate-800 hover:bg-black/[0.04] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                     >
                         <ChevronLeft className="w-3.5 h-3.5" /> Prev
                     </button>
@@ -199,8 +199,8 @@ function PaginatedTable({
                                 key={p}
                                 onClick={() => fetchPage(p)}
                                 className={`w-8 h-8 rounded-lg text-xs font-semibold transition-all ${p === page
-                                        ? "bg-accent-purple/25 text-accent-purple"
-                                        : "text-slate-500 hover:text-white hover:bg-white/[0.06]"
+                                    ? "bg-accent-purple/25 text-accent-purple"
+                                    : "text-slate-500 hover:text-slate-800 hover:bg-black/[0.04]"
                                     }`}
                             >
                                 {p}
@@ -212,7 +212,7 @@ function PaginatedTable({
                     <button
                         onClick={() => fetchPage(page + 1)}
                         disabled={page >= totalPages}
-                        className="px-3 h-8 rounded-lg flex items-center gap-1 text-xs font-medium text-slate-400 hover:text-white hover:bg-white/[0.06] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                        className="px-3 h-8 rounded-lg flex items-center gap-1 text-xs font-medium text-slate-400 hover:text-slate-800 hover:bg-black/[0.04] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                     >
                         Next <ChevronRight className="w-3.5 h-3.5" />
                     </button>
@@ -220,7 +220,7 @@ function PaginatedTable({
                     <button
                         onClick={() => fetchPage(totalPages)}
                         disabled={page >= totalPages}
-                        className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/[0.06] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                        className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-800 hover:bg-black/[0.04] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                         title="Last page"
                     >
                         <ChevronsRight className="w-4 h-4" />
@@ -311,7 +311,7 @@ export default function DataTablesPage() {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search tables by name or description..."
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl text-sm bg-white/[0.04] border border-white/[0.08] text-white placeholder-slate-500 focus:outline-none focus:border-accent-purple/40 transition-all"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl text-sm bg-black/[0.02] border border-black/[0.06] text-slate-800 placeholder-slate-500 focus:outline-none focus:border-accent-purple/40 transition-all"
                 />
             </div>
 
@@ -325,9 +325,9 @@ export default function DataTablesPage() {
                     <section key={layer} id={layer}>
                         {/* Layer header */}
                         <div className="flex items-center gap-3 mb-4">
-                            <span className="text-lg">{meta.emoji}</span>
+                            <meta.icon className="w-5 h-5" style={{ color: meta.color }} />
                             <div>
-                                <h2 className="text-base font-bold text-white">{meta.label} Layer</h2>
+                                <h2 className="text-base font-bold text-slate-800">{meta.label} Layer</h2>
                                 <p className="text-xs text-slate-500">{meta.description}</p>
                             </div>
                             <span className="ml-auto text-xs text-slate-600 font-mono">{tables.length} tables</span>
@@ -345,10 +345,10 @@ export default function DataTablesPage() {
                                         key={tbl.name}
                                         onClick={() => handleSelect(layer, tbl.name)}
                                         className={`w-full flex items-center gap-4 p-4 rounded-xl text-left transition-all ${isSelected
-                                                ? "bg-accent-purple/[0.08] ring-1 ring-accent-purple/40"
-                                                : "bg-white/[0.02] hover:bg-white/[0.04]"
+                                            ? "bg-accent-purple/[0.08] ring-1 ring-accent-purple/40"
+                                            : "bg-black/[0.02] hover:bg-black/[0.04]"
                                             }`}
-                                        style={{ border: `1px solid ${isSelected ? "rgba(139,92,246,0.3)" : "rgba(255,255,255,0.04)"}` }}
+                                        style={{ border: `1px solid ${isSelected ? "rgba(139,92,246,0.3)" : "rgba(0,0,0,0.04)"}` }}
                                     >
                                         {/* Icon */}
                                         <div
@@ -363,14 +363,14 @@ export default function DataTablesPage() {
                                         {/* Name + description */}
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center gap-2">
-                                                <span className="text-sm font-semibold text-white">{tbl.name}</span>
+                                                <span className="text-sm font-semibold text-slate-800">{tbl.name}</span>
                                                 {(isFact || isDim) && (
                                                     <span className={`text-[9px] font-bold uppercase px-1.5 py-0.5 rounded ${isFact ? "text-yellow-400 bg-yellow-400/15" : "text-blue-400 bg-blue-400/15"
                                                         }`}>
                                                         {tbl.table_type}
                                                     </span>
                                                 )}
-                                                <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/[0.04] text-slate-500 font-mono">{tbl.format}</span>
+                                                <span className="text-[10px] px-1.5 py-0.5 rounded bg-black/[0.04] text-slate-500 font-mono">{tbl.format}</span>
                                             </div>
                                             <p className="text-xs text-slate-500 mt-0.5 truncate">{tbl.description}</p>
                                         </div>
@@ -378,11 +378,11 @@ export default function DataTablesPage() {
                                         {/* Stats */}
                                         <div className="flex items-center gap-6 flex-shrink-0">
                                             <div className="text-right">
-                                                <p className="text-sm font-bold text-white">{fmtNum(tbl.rows)}</p>
+                                                <p className="text-sm font-bold text-slate-800">{fmtNum(tbl.rows)}</p>
                                                 <p className="text-[10px] text-slate-500">rows</p>
                                             </div>
                                             <div className="text-right">
-                                                <p className="text-sm font-bold text-white">{tbl.columns}</p>
+                                                <p className="text-sm font-bold text-slate-800">{tbl.columns}</p>
                                                 <p className="text-[10px] text-slate-500">cols</p>
                                             </div>
                                             {tbl.pk && (
@@ -419,8 +419,11 @@ export default function DataTablesPage() {
                         <div>
                             <div className="flex items-center gap-2 mb-1">
                                 <Database className="w-4 h-4 text-accent-purple" />
-                                <h3 className="text-base font-bold text-white">
-                                    {LAYER_META[selectedTable!.layer].emoji} {selectedMeta.name}
+                                <h3 className="text-base font-bold text-slate-800">
+                                    {(() => {
+                                        const Icon = LAYER_META[selectedTable!.layer].icon;
+                                        return <Icon className="w-5 h-5 inline-block mr-2 align-text-bottom" style={{ color: LAYER_META[selectedTable!.layer].color }} />;
+                                    })()} {selectedMeta.name}
                                 </h3>
                                 <span className="text-[10px] px-2 py-0.5 rounded-full bg-accent-purple/15 text-accent-purple font-semibold uppercase">
                                     {LAYER_META[selectedTable!.layer].label}
@@ -430,17 +433,17 @@ export default function DataTablesPage() {
                         </div>
                         <div className="flex items-center gap-2">
                             {/* Download controls */}
-                            <div className="flex rounded-lg overflow-hidden border border-white/10">
+                            <div className="flex rounded-lg overflow-hidden border border-black/10">
                                 <button
                                     onClick={() => setDlFormat("csv")}
-                                    className={`px-3 py-1.5 text-[10px] font-semibold uppercase flex items-center gap-1 transition-all ${dlFormat === "csv" ? "bg-accent-teal/20 text-accent-teal" : "text-slate-500 hover:text-white"
+                                    className={`px-3 py-1.5 text-[10px] font-semibold uppercase flex items-center gap-1 transition-all ${dlFormat === "csv" ? "bg-accent-teal/20 text-accent-teal" : "text-slate-500 hover:text-slate-800"
                                         }`}
                                 >
                                     <FileSpreadsheet className="w-3 h-3" /> CSV
                                 </button>
                                 <button
                                     onClick={() => setDlFormat("json")}
-                                    className={`px-3 py-1.5 text-[10px] font-semibold uppercase flex items-center gap-1 transition-all ${dlFormat === "json" ? "bg-accent-purple/20 text-accent-purple" : "text-slate-500 hover:text-white"
+                                    className={`px-3 py-1.5 text-[10px] font-semibold uppercase flex items-center gap-1 transition-all ${dlFormat === "json" ? "bg-accent-purple/20 text-accent-purple" : "text-slate-500 hover:text-slate-800"
                                         }`}
                                 >
                                     <FileJson className="w-3 h-3" /> JSON
@@ -454,7 +457,7 @@ export default function DataTablesPage() {
                             </button>
                             <button
                                 onClick={() => setSelectedTable(null)}
-                                className="w-7 h-7 rounded-lg flex items-center justify-center text-slate-500 hover:text-white hover:bg-white/[0.06] transition-all"
+                                className="w-7 h-7 rounded-lg flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-black/[0.04] transition-all"
                             >
                                 <X className="w-4 h-4" />
                             </button>
@@ -471,10 +474,10 @@ export default function DataTablesPage() {
                                     <span
                                         key={i}
                                         className={`inline-flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-mono ${col.is_pk
-                                                ? "bg-yellow-500/10 text-yellow-300 border border-yellow-500/20"
-                                                : col.fk_to
-                                                    ? "bg-blue-500/10 text-blue-300 border border-blue-500/20"
-                                                    : "bg-white/[0.03] text-slate-400 border border-white/[0.05]"
+                                            ? "bg-yellow-500/10 text-yellow-300 border border-yellow-500/20"
+                                            : col.fk_to
+                                                ? "bg-blue-500/10 text-blue-300 border border-blue-500/20"
+                                                : "bg-black/[0.03] text-slate-400 border border-black/[0.05]"
                                             }`}
                                     >
                                         {col.is_pk ? <Key className="w-2.5 h-2.5" /> : col.fk_to ? <Link2 className="w-2.5 h-2.5" /> : <DIcon className="w-2.5 h-2.5 opacity-50" />}

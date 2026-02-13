@@ -100,47 +100,47 @@ function RuleDetailPanel({
                         <ShoppingCart className="w-5 h-5" style={{ color: accentColor }} />
                     </div>
                     <div>
-                        <h4 className="text-sm font-bold text-white">Rule Detail</h4>
+                        <h4 className="text-sm font-bold text-slate-800">Rule Detail</h4>
                         <p className="text-xs text-slate-500">Association rule breakdown</p>
                     </div>
                 </div>
-                <button onClick={onClose} className="w-6 h-6 rounded-lg flex items-center justify-center text-slate-500 hover:text-white hover:bg-white/[0.06]">
+                <button onClick={onClose} className="w-6 h-6 rounded-lg flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-black/[0.06]">
                     <XCircle className="w-4 h-4" />
                 </button>
             </div>
 
             {/* Rule visual */}
-            <div className="flex items-center gap-3 mb-5 p-4 rounded-xl flex-wrap" style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.05)" }}>
-                <span className="text-sm font-bold text-white px-3 py-1.5 rounded-lg" style={{ background: `${accentColor}20` }}>
+            <div className="flex items-center gap-3 mb-5 p-4 rounded-xl flex-wrap" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.06)" }}>
+                <span className="text-sm font-bold text-slate-800 px-3 py-1.5 rounded-lg" style={{ background: `${accentColor}20` }}>
                     {rule.antecedent}
                 </span>
                 <div className="flex items-center gap-1.5">
                     <div className="w-8 h-[2px] rounded-full" style={{ background: accentColor }} />
                     <ChevronRight className="w-4 h-4" style={{ color: accentColor }} />
                 </div>
-                <span className="text-sm font-bold text-white px-3 py-1.5 rounded-lg bg-accent-teal/20">
+                <span className="text-sm font-bold text-slate-800 px-3 py-1.5 rounded-lg bg-accent-teal/20">
                     {rule.consequent}
                 </span>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
-                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.05)" }}>
-                    <p className="text-lg font-bold text-white">{(rule.support * 100).toFixed(1)}%</p>
+                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.06)" }}>
+                    <p className="text-lg font-bold text-slate-800">{(rule.support * 100).toFixed(1)}%</p>
                     <p className="text-[10px] text-slate-500 uppercase">Support</p>
                     <p className="text-[9px] text-slate-600 mt-0.5">Co-occurrence frequency</p>
                 </div>
-                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.05)" }}>
-                    <p className="text-lg font-bold text-white">{(rule.confidence * 100).toFixed(0)}%</p>
+                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.06)" }}>
+                    <p className="text-lg font-bold text-slate-800">{(rule.confidence * 100).toFixed(0)}%</p>
                     <p className="text-[10px] text-slate-500 uppercase">Confidence</p>
                     <p className="text-[9px] mt-0.5" style={{ color: strengthColor }}>{strengthLabel} rule</p>
                 </div>
-                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.05)" }}>
+                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.06)" }}>
                     <p className={`text-lg font-bold ${getLiftColor(rule.lift)}`}>{rule.lift.toFixed(2)}x</p>
                     <p className="text-[10px] text-slate-500 uppercase">Lift</p>
                     <p className="text-[9px] text-slate-600 mt-0.5">{liftLabel}</p>
                 </div>
-                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.05)" }}>
-                    <p className="text-xs font-bold text-white">{rule.type}</p>
+                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.06)" }}>
+                    <p className="text-xs font-bold text-slate-800">{rule.type}</p>
                     <p className="text-[10px] text-slate-500 uppercase mt-1">Rule Type</p>
                 </div>
             </div>
@@ -286,7 +286,7 @@ export default function MarketBasketPage() {
             <PageHeader icon={ShoppingCart} title="Market Basket Analysis" subtitle="Apriori association rules — discover what customers buy together" />
 
             {/* ── Sticky Nav ── */}
-            <nav className="sticky top-0 z-40 -mx-8 px-8 py-3" style={{ background: "rgba(10,10,25,0.85)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+            <nav className="sticky top-0 z-40 -mx-8 px-8 py-3" style={{ background: "rgba(255,255,255,0.9)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
                 <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide">
                     {SECTIONS.map(s => {
                         const SIcon = s.icon;
@@ -294,7 +294,7 @@ export default function MarketBasketPage() {
                             <a key={s.id} href={`#${s.id}`}
                                 className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-medium transition-all whitespace-nowrap ${activeSection === s.id
                                     ? "bg-accent-purple/20 text-accent-purple shadow-sm shadow-accent-purple/10"
-                                    : "text-slate-400 hover:text-white hover:bg-white/[0.04]"
+                                    : "text-slate-400 hover:text-slate-800 hover:bg-black/[0.04]"
                                     }`}>
                                 <SIcon className="w-3.5 h-3.5" />
                                 {s.label}
@@ -322,11 +322,11 @@ export default function MarketBasketPage() {
                                 <TIcon className="w-5 h-5" style={{ color: tc.color }} />
                             </div>
                             <div>
-                                <p className="text-xl font-bold text-white">{tc.count}</p>
+                                <p className="text-xl font-bold text-slate-800">{tc.count}</p>
                                 <p className="text-xs text-slate-500">{tc.type} Rules</p>
                             </div>
                             {tc.count === 0 && (
-                                <span className="ml-auto text-[10px] text-slate-600 bg-white/[0.04] px-2 py-0.5 rounded">No data</span>
+                                <span className="ml-auto text-[10px] text-slate-600 bg-black/[0.04] px-2 py-0.5 rounded">No data</span>
                             )}
                         </div>
                     );
@@ -339,15 +339,15 @@ export default function MarketBasketPage() {
                     <ChartCard title="🎯 Top Recommendation Pairs" subtitle="Highest confidence rules — best candidates for cross-sell and promotions" className="animate-slide-up">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {topPairs.map((pair, index) => (
-                                <div key={index} className="p-4 rounded-xl border border-white/[0.06] bg-gradient-to-br from-white/[0.03] to-transparent hover:border-accent-purple/30 transition-all group">
+                                <div key={index} className="p-4 rounded-xl border border-black/[0.06] bg-gradient-to-br from-black/[0.02] to-transparent hover:border-accent-purple/30 transition-all group">
                                     <div className="flex items-center gap-2 mb-3">
-                                        <span className="text-xs font-bold text-slate-600 bg-white/[0.06] w-6 h-6 rounded-full flex items-center justify-center">{index + 1}</span>
+                                        <span className="text-xs font-bold text-slate-600 bg-black/[0.06] w-6 h-6 rounded-full flex items-center justify-center">{index + 1}</span>
                                         <div className="flex items-center gap-1.5 flex-wrap">
-                                            <span className="text-sm font-semibold text-white px-2.5 py-0.5 rounded-full" style={{ background: `${TYPE_COLORS[pair.type] || "#8b5cf6"}20` }}>
+                                            <span className="text-sm font-semibold text-slate-800 px-2.5 py-0.5 rounded-full" style={{ background: `${TYPE_COLORS[pair.type] || "#8b5cf6"}20` }}>
                                                 {pair.antecedent}
                                             </span>
                                             <span className="text-xs font-bold" style={{ color: TYPE_COLORS[pair.type] || "#8b5cf6" }}>→</span>
-                                            <span className="text-sm font-semibold text-white bg-accent-teal/20 px-2.5 py-0.5 rounded-full">
+                                            <span className="text-sm font-semibold text-slate-800 bg-accent-teal/20 px-2.5 py-0.5 rounded-full">
                                                 {pair.consequent}
                                             </span>
                                         </div>
@@ -383,7 +383,7 @@ export default function MarketBasketPage() {
                     subtitle="Click any rule to see detailed breakdown and business recommendations"
                     className="animate-slide-up"
                     action={
-                        <div className="flex items-center gap-1.5 bg-white/[0.04] rounded-lg px-2.5 py-1">
+                        <div className="flex items-center gap-1.5 bg-black/[0.04] rounded-lg px-2.5 py-1">
                             <Filter className="w-3 h-3 text-slate-500" />
                             {(["confidence", "lift", "support"] as const).map(s => (
                                 <button
@@ -391,7 +391,7 @@ export default function MarketBasketPage() {
                                     onClick={() => { setSortBy(s); setSelectedRule(null); }}
                                     className={`px-2.5 py-1 rounded-md text-[10px] font-medium transition-all ${sortBy === s
                                         ? "bg-accent-purple/20 text-accent-purple"
-                                        : "text-slate-500 hover:text-white"
+                                        : "text-slate-500 hover:text-slate-800"
                                         }`}
                                 >
                                     {s.charAt(0).toUpperCase() + s.slice(1)}
@@ -401,7 +401,7 @@ export default function MarketBasketPage() {
                     }
                 >
                     {allRules.length > 0 ? (
-                        <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
+                        <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
                             <table className="w-full">
                                 <thead>
                                     <tr style={{ background: "rgba(139,92,246,0.06)" }}>
@@ -422,13 +422,13 @@ export default function MarketBasketPage() {
                                         return (
                                             <tr
                                                 key={i}
-                                                className={`border-t border-white/[0.04] cursor-pointer transition-all ${isSelected ? "bg-white/[0.04]" : "hover:bg-white/[0.02]"
+                                                className={`border-t border-black/[0.04] cursor-pointer transition-all ${isSelected ? "bg-black/[0.04]" : "hover:bg-black/[0.02]"
                                                     }`}
                                                 onClick={() => setSelectedRule(isSelected ? null : i)}
                                             >
                                                 <td className="px-4 py-3 text-xs text-slate-600 font-mono">{i + 1}</td>
                                                 <td className="px-4 py-3">
-                                                    <span className="text-sm text-white font-semibold px-2.5 py-0.5 rounded-full" style={{ background: `${typeColor}20` }}>
+                                                    <span className="text-sm text-slate-800 font-semibold px-2.5 py-0.5 rounded-full" style={{ background: `${typeColor}20` }}>
                                                         {rule.antecedent}
                                                     </span>
                                                 </td>
@@ -440,7 +440,7 @@ export default function MarketBasketPage() {
                                                 </td>
                                                 <td className="px-4 py-3">
                                                     <div className="flex items-center gap-2">
-                                                        <div className="w-12 h-1.5 bg-white/5 rounded-full">
+                                                        <div className="w-12 h-1.5 bg-black/5 rounded-full">
                                                             <div className="h-1.5 rounded-full bg-slate-500" style={{ width: `${Math.min(rule.support * 100 * 4, 100)}%` }} />
                                                         </div>
                                                         <span className="text-xs text-slate-400">{(rule.support * 100).toFixed(1)}%</span>
@@ -448,10 +448,10 @@ export default function MarketBasketPage() {
                                                 </td>
                                                 <td className="px-4 py-3">
                                                     <div className="flex items-center gap-2">
-                                                        <div className="w-16 h-1.5 bg-white/5 rounded-full">
+                                                        <div className="w-16 h-1.5 bg-black/5 rounded-full">
                                                             <div className={`h-1.5 rounded-full bg-gradient-to-r ${getConfidenceBar(rule.confidence)}`} style={{ width: `${rule.confidence * 100}%` }} />
                                                         </div>
-                                                        <span className="text-xs font-semibold text-white">{(rule.confidence * 100).toFixed(0)}%</span>
+                                                        <span className="text-xs font-semibold text-slate-800">{(rule.confidence * 100).toFixed(0)}%</span>
                                                     </div>
                                                 </td>
                                                 <td className="px-4 py-3">
@@ -493,9 +493,9 @@ export default function MarketBasketPage() {
                         <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-3">
                             {itemsets.map((item: any, i: number) => (
                                 <div key={i} className="p-3 rounded-xl text-center transition-all hover:scale-[1.02]" style={{ background: "rgba(139,92,246,0.04)", border: "1px solid rgba(139,92,246,0.08)" }}>
-                                    <p className="text-xs font-semibold text-white mb-1 truncate" title={item.items}>{item.items}</p>
+                                    <p className="text-xs font-semibold text-slate-800 mb-1 truncate" title={item.items}>{item.items}</p>
                                     <div className="flex items-center justify-center gap-1.5">
-                                        <div className="w-10 h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
+                                        <div className="w-10 h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(0,0,0,0.06)" }}>
                                             <div className="h-full rounded-full bg-accent-purple" style={{ width: `${Math.min(item.support * 100 * 10, 100)}%` }} />
                                         </div>
                                         <span className="text-[10px] text-slate-500">{(item.support * 100).toFixed(1)}%</span>
@@ -514,7 +514,7 @@ export default function MarketBasketPage() {
                     <div className="h-72">
                         <ResponsiveContainer width="100%" height="100%">
                             <ScatterChart margin={{ bottom: 10, left: 5, right: 10 }}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
                                 <XAxis type="number" dataKey="x" name="Support" unit="%" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} label={{ value: "Support %", position: "bottom", offset: 0, style: { fill: "#64748b", fontSize: 10 } }} />
                                 <YAxis type="number" dataKey="y" name="Confidence" unit="%" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} />
                                 <ZAxis type="number" dataKey="z" range={[40, 300]} />
@@ -523,8 +523,8 @@ export default function MarketBasketPage() {
                                         if (active && payload && payload.length) {
                                             const d = payload[0].payload;
                                             return (
-                                                <div className="glass-card-static p-3 border border-white/10" style={{ zIndex: 9999 }}>
-                                                    <p className="text-xs font-bold text-white mb-1 max-w-[200px]">{d.name}</p>
+                                                <div className="glass-card-static p-3 border border-black/10" style={{ zIndex: 9999 }}>
+                                                    <p className="text-xs font-bold text-slate-800 mb-1 max-w-[200px]">{d.name}</p>
                                                     <p className="text-xs text-slate-400">Support: {d.x}%</p>
                                                     <p className="text-xs text-slate-400">Confidence: {d.y}%</p>
                                                     <p className="text-xs text-slate-400">Lift: {d.lift.toFixed(2)}x</p>
@@ -559,16 +559,16 @@ export default function MarketBasketPage() {
                         <div className="h-40" style={{ overflow: "visible" }}>
                             <ResponsiveContainer width="100%" height="100%">
                                 <BarChart data={confBands} layout="vertical">
-                                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" horizontal={false} />
+                                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" horizontal={false} />
                                     <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} />
                                     <YAxis dataKey="range" type="category" axisLine={false} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 10 }} width={55} />
                                     <Tooltip
-                                        contentStyle={{ background: "rgba(15,15,35,0.97)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "12px", color: "#fff", fontSize: "13px", fontWeight: 600, padding: "10px 14px", boxShadow: "0 8px 32px rgba(0,0,0,0.6)" }}
+                                        contentStyle={{ background: "rgba(255,255,255,0.97)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "12px", color: "#334155", fontSize: "13px", fontWeight: 600, padding: "10px 14px", boxShadow: "0 8px 32px rgba(0,0,0,0.6)" }}
                                         wrapperStyle={{ zIndex: 99999, pointerEvents: "none" }}
-                                        itemStyle={{ color: "#fff" }}
+                                        itemStyle={{ color: "#334155" }}
                                         labelStyle={{ color: "#94a3b8", fontSize: "11px", marginBottom: "4px" }}
                                         formatter={(value: number) => [`${value} rules`, "Count"]}
-                                        cursor={{ fill: "rgba(255,255,255,0.04)" }}
+                                        cursor={{ fill: "rgba(0,0,0,0.04)" }}
                                     />
                                     <Bar dataKey="count" radius={[0, 6, 6, 0]} barSize={18}>
                                         {confBands.map((entry, i) => (
@@ -586,12 +586,12 @@ export default function MarketBasketPage() {
                             {liftBands.map(band => (
                                 <div key={band.range} className="flex items-center gap-3">
                                     <span className="text-[10px] text-slate-400 w-12 text-right font-mono">{band.range}</span>
-                                    <div className="flex-1 h-4 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.04)" }}>
+                                    <div className="flex-1 h-4 rounded-full overflow-hidden" style={{ background: "rgba(0,0,0,0.04)" }}>
                                         <div
                                             className="h-full rounded-full flex items-center pl-2 transition-all duration-500"
                                             style={{ width: `${totalRulesCount > 0 ? Math.max((band.count / totalRulesCount) * 100, 2) : 0}%`, background: band.color }}
                                         >
-                                            {band.count > 0 && <span className="text-[9px] font-bold text-white">{band.count}</span>}
+                                            {band.count > 0 && <span className="text-[9px] font-bold text-slate-800">{band.count}</span>}
                                         </div>
                                     </div>
                                     <span className="text-[9px] text-slate-600 w-16">{band.label}</span>

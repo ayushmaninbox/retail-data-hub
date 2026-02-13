@@ -83,13 +83,13 @@ const SECTIONS = [
 const GlassTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
         return (
-            <div className="glass-card-static p-3 border border-white/10 max-w-xs">
+            <div className="glass-card-static p-3 border border-black/10 max-w-xs">
                 <p className="text-xs text-slate-400 mb-1 font-medium">{label}</p>
                 {payload.map((p: any, i: number) => (
                     <div key={i} className="flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full" style={{ background: p.color || p.stroke }} />
                         <span className="text-xs text-slate-300">{p.name}:</span>
-                        <span className="text-xs font-bold text-white">
+                        <span className="text-xs font-bold text-slate-800">
                             {typeof p.value === "number" && p.value > 1000 ? fmtNum(p.value) : p.value}
                         </span>
                     </div>
@@ -245,7 +245,7 @@ export default function InventoryPage() {
             />
 
             {/* ── Sticky Nav ── */}
-            <nav className="sticky top-0 z-40 -mx-8 px-8 py-3" style={{ background: "rgba(10,10,25,0.85)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+            <nav className="sticky top-0 z-40 -mx-8 px-8 py-3" style={{ background: "rgba(255,255,255,0.9)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
                 <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide">
                     {SECTIONS.map((s) => {
                         const SIcon = s.icon;
@@ -256,7 +256,7 @@ export default function InventoryPage() {
                                 href={`#${s.id}`}
                                 className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-medium transition-all whitespace-nowrap ${isActive
                                     ? "bg-accent-purple/20 text-accent-purple shadow-sm shadow-accent-purple/10"
-                                    : "text-slate-400 hover:text-white hover:bg-white/[0.04]"
+                                    : "text-slate-400 hover:text-slate-800 hover:bg-black/[0.04]"
                                     }`}
                             >
                                 <SIcon className="w-3.5 h-3.5" />
@@ -319,14 +319,14 @@ export default function InventoryPage() {
                     action={
                         <div className="flex items-center gap-2">
                             {/* Filter */}
-                            <div className="flex rounded-lg overflow-hidden border border-white/10">
+                            <div className="flex rounded-lg overflow-hidden border border-black/10">
                                 {(["all", "stockout", "low"] as const).map((f) => (
                                     <button
                                         key={f}
                                         onClick={() => setAlertFilter(f)}
                                         className={`px-3 py-1.5 text-[10px] font-semibold uppercase transition-all ${alertFilter === f
                                             ? "bg-accent-purple/30 text-accent-purple"
-                                            : "text-slate-500 hover:text-white hover:bg-white/[0.04]"
+                                            : "text-slate-500 hover:text-slate-800 hover:bg-black/[0.04]"
                                             }`}
                                     >
                                         {f === "all" ? "All" : f === "stockout" ? "🔴 Stockout" : "🟡 Low"}
@@ -334,14 +334,14 @@ export default function InventoryPage() {
                                 ))}
                             </div>
                             {/* Group by */}
-                            <div className="flex rounded-lg overflow-hidden border border-white/10">
+                            <div className="flex rounded-lg overflow-hidden border border-black/10">
                                 {(["city", "category"] as const).map((g) => (
                                     <button
                                         key={g}
                                         onClick={() => { setAlertGroupBy(g); setExpandedGroups(new Set()); }}
                                         className={`px-3 py-1.5 text-[10px] font-semibold uppercase transition-all ${alertGroupBy === g
                                             ? "bg-accent-teal/20 text-accent-teal"
-                                            : "text-slate-500 hover:text-white hover:bg-white/[0.04]"
+                                            : "text-slate-500 hover:text-slate-800 hover:bg-black/[0.04]"
                                             }`}
                                     >
                                         {g === "city" ? "📍 City" : "📦 Category"}
@@ -360,12 +360,12 @@ export default function InventoryPage() {
                                 const expanded = isExpanded(group);
 
                                 return (
-                                    <div key={group} className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
+                                    <div key={group} className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
                                         {/* Group header */}
                                         <button
                                             onClick={() => toggleGroup(group)}
-                                            className="w-full flex items-center justify-between p-4 hover:bg-white/[0.02] transition-all"
-                                            style={{ background: "rgba(255,255,255,0.02)" }}
+                                            className="w-full flex items-center justify-between p-4 hover:bg-black/[0.02] transition-all"
+                                            style={{ background: "rgba(0,0,0,0.02)" }}
                                         >
                                             <div className="flex items-center gap-3">
                                                 {alertGroupBy === "city" ? (
@@ -373,7 +373,7 @@ export default function InventoryPage() {
                                                 ) : (
                                                     <div className="w-3 h-3 rounded-full" style={{ background: CATEGORY_COLORS[group] || "#8b5cf6" }} />
                                                 )}
-                                                <span className="text-sm font-semibold text-white">{group}</span>
+                                                <span className="text-sm font-semibold text-slate-800">{group}</span>
                                                 <span className="text-xs text-slate-500">{alerts.length} items</span>
                                                 {criticalCount > 0 && (
                                                     <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full text-red-400 bg-red-400/15">
@@ -382,7 +382,7 @@ export default function InventoryPage() {
                                                 )}
                                             </div>
                                             <div className="flex items-center gap-3">
-                                                <span className="text-xs text-slate-400">Cost: <span className="text-white font-semibold">{fmt(groupCost)}</span></span>
+                                                <span className="text-xs text-slate-400">Cost: <span className="text-slate-800 font-semibold">{fmt(groupCost)}</span></span>
                                                 {expanded ? <ChevronUp className="w-4 h-4 text-slate-500" /> : <ChevronDown className="w-4 h-4 text-slate-500" />}
                                             </div>
                                         </button>
@@ -407,7 +407,7 @@ export default function InventoryPage() {
                                                                     <AlertTriangle className="w-4 h-4 text-amber-400 flex-shrink-0" />
                                                                 )}
                                                                 <div>
-                                                                    <p className="text-sm font-semibold text-white">{alert.product}</p>
+                                                                    <p className="text-sm font-semibold text-slate-800">{alert.product}</p>
                                                                     <p className="text-xs text-slate-500">
                                                                         {alertGroupBy === "city" ? alert.category : alert.city} · {alert.storeId}
                                                                     </p>
@@ -433,7 +433,7 @@ export default function InventoryPage() {
                                                             </div>
                                                             <div>
                                                                 <p className="text-[10px] text-slate-500 uppercase">Reorder At</p>
-                                                                <p className="text-sm font-bold text-white">{alert.reorderPoint}</p>
+                                                                <p className="text-sm font-bold text-slate-800">{alert.reorderPoint}</p>
                                                             </div>
                                                             <div>
                                                                 <p className="text-[10px] text-slate-500 uppercase">Order Qty</p>
@@ -441,13 +441,13 @@ export default function InventoryPage() {
                                                             </div>
                                                             <div>
                                                                 <p className="text-[10px] text-slate-500 uppercase">Cost</p>
-                                                                <p className="text-sm font-bold text-white">{fmt(alert.reorderCost)}</p>
+                                                                <p className="text-sm font-bold text-slate-800">{fmt(alert.reorderCost)}</p>
                                                             </div>
                                                         </div>
 
                                                         {/* Stock level bar */}
                                                         <div className="mb-3">
-                                                            <div className="h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
+                                                            <div className="h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(0,0,0,0.06)" }}>
                                                                 <div
                                                                     className="h-full rounded-full transition-all duration-500"
                                                                     style={{
@@ -488,7 +488,7 @@ export default function InventoryPage() {
                     <div className="h-80">
                         <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={turnoverData}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
                                 <XAxis dataKey="category" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} angle={-20} textAnchor="end" height={50} />
                                 <YAxis axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 11 }} tickFormatter={(v) => `${v}x`} />
                                 <Tooltip content={<GlassTooltip />} />
@@ -507,19 +507,19 @@ export default function InventoryPage() {
                         {turnoverData.map((cat: any, i: number) => (
                             <div
                                 key={i}
-                                className="flex items-center justify-between p-3 rounded-xl hover:bg-white/[0.03] transition-all"
-                                style={{ border: "1px solid rgba(255,255,255,0.04)" }}
+                                className="flex items-center justify-between p-3 rounded-xl hover:bg-black/[0.03] transition-all"
+                                style={{ border: "1px solid rgba(0,0,0,0.04)" }}
                             >
                                 <div className="flex items-center gap-3">
                                     <div className="w-3 h-3 rounded-full" style={{ background: cat.color }} />
                                     <div>
-                                        <p className="text-sm font-medium text-white">{cat.category}</p>
+                                        <p className="text-sm font-medium text-slate-800">{cat.category}</p>
                                         <p className="text-xs text-slate-500">Avg inv: {fmtNum(cat.avg_inventory)} · Sold: {fmtNum(cat.total_sold)}</p>
                                     </div>
                                 </div>
                                 <div className="text-right">
-                                    <p className="text-lg font-bold text-white">{cat.turnover}x</p>
-                                    <div className="h-1 w-20 rounded-full overflow-hidden mt-1" style={{ background: "rgba(255,255,255,0.06)" }}>
+                                    <p className="text-lg font-bold text-slate-800">{cat.turnover}x</p>
+                                    <div className="h-1 w-20 rounded-full overflow-hidden mt-1" style={{ background: "rgba(0,0,0,0.06)" }}>
                                         <div
                                             className="h-full rounded-full"
                                             style={{
@@ -541,10 +541,10 @@ export default function InventoryPage() {
                     <div className="h-80">
                         <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={stockoutByCategory} layout="vertical" margin={{ left: 5 }}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" horizontal={false} />
+                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" horizontal={false} />
                                 <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} tickFormatter={(v) => `${v}%`} />
                                 <YAxis dataKey="category" type="category" axisLine={false} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 11 }} width={100} />
-                                <Tooltip content={<GlassTooltip />} cursor={{ fill: "rgba(255,255,255,0.02)" }} />
+                                <Tooltip content={<GlassTooltip />} cursor={{ fill: "rgba(0,0,0,0.02)" }} />
                                 <Bar dataKey="pct" name="Stockout %" radius={[0, 8, 8, 0]} barSize={18}>
                                     {stockoutByCategory.map((entry: any, index: number) => (
                                         <Cell key={index} fill={entry.color} fillOpacity={0.75} />
@@ -559,11 +559,11 @@ export default function InventoryPage() {
                     <div className="h-80">
                         <ResponsiveContainer width="100%" height="100%">
                             <RadarChart data={stockoutRadar} outerRadius="70%">
-                                <PolarGrid stroke="rgba(255,255,255,0.08)" />
+                                <PolarGrid stroke="rgba(0,0,0,0.08)" />
                                 <PolarAngleAxis dataKey="category" tick={{ fill: "#94a3b8", fontSize: 10 }} />
                                 <PolarRadiusAxis angle={90} domain={[0, 100]} tick={false} axisLine={false} />
                                 <Radar name="Stockout Rate" dataKey="Stockout Rate" stroke="#ef4444" fill="#ef4444" fillOpacity={0.15} strokeWidth={2} />
-                                <Tooltip contentStyle={{ background: "rgba(15,15,35,0.95)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", color: "#fff", fontSize: "12px" }} formatter={(value: number) => `${value}%`} />
+                                <Tooltip contentStyle={{ background: "rgba(255,255,255,0.97)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "12px", color: "#334155", fontSize: "12px" }} formatter={(value: number) => `${value}%`} />
                             </RadarChart>
                         </ResponsiveContainer>
                     </div>
@@ -580,22 +580,22 @@ export default function InventoryPage() {
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
                         <div className="p-3 rounded-xl text-center" style={{ background: "rgba(16,185,129,0.08)", border: "1px solid rgba(16,185,129,0.15)" }}>
                             <CheckCircle2 className="w-5 h-5 text-emerald-400 mx-auto mb-1" />
-                            <p className="text-lg font-bold text-white">{fmtNum(delivery.delivered)}</p>
+                            <p className="text-lg font-bold text-slate-800">{fmtNum(delivery.delivered)}</p>
                             <p className="text-[10px] text-slate-500 uppercase">Delivered</p>
                         </div>
                         <div className="p-3 rounded-xl text-center" style={{ background: "rgba(245,158,11,0.08)", border: "1px solid rgba(245,158,11,0.15)" }}>
                             <Clock className="w-5 h-5 text-amber-400 mx-auto mb-1" />
-                            <p className="text-lg font-bold text-white">{fmtNum(delivery.in_transit)}</p>
+                            <p className="text-lg font-bold text-slate-800">{fmtNum(delivery.in_transit)}</p>
                             <p className="text-[10px] text-slate-500 uppercase">In Transit</p>
                         </div>
                         <div className="p-3 rounded-xl text-center" style={{ background: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.15)" }}>
                             <AlertTriangle className="w-5 h-5 text-red-400 mx-auto mb-1" />
-                            <p className="text-lg font-bold text-white">{fmtNum(delivery.delayed)}</p>
+                            <p className="text-lg font-bold text-slate-800">{fmtNum(delivery.delayed)}</p>
                             <p className="text-[10px] text-slate-500 uppercase">Delayed</p>
                         </div>
                         <div className="p-3 rounded-xl text-center" style={{ background: "rgba(139,92,246,0.08)", border: "1px solid rgba(139,92,246,0.15)" }}>
                             <RotateCcw className="w-5 h-5 text-purple-400 mx-auto mb-1" />
-                            <p className="text-lg font-bold text-white">{fmtNum(delivery.returned)}</p>
+                            <p className="text-lg font-bold text-slate-800">{fmtNum(delivery.returned)}</p>
                             <p className="text-[10px] text-slate-500 uppercase">Returned</p>
                         </div>
                     </div>
@@ -613,8 +613,8 @@ export default function InventoryPage() {
                                 key={opt.key}
                                 onClick={() => setCarrierSort(opt.key)}
                                 className={`px-3 py-1 rounded-lg text-[10px] font-semibold transition-all ${carrierSort === opt.key
-                                        ? "bg-accent-purple/20 text-accent-purple"
-                                        : "text-slate-500 hover:text-white hover:bg-white/[0.04]"
+                                    ? "bg-accent-purple/20 text-accent-purple"
+                                    : "text-slate-500 hover:text-slate-800 hover:bg-black/[0.04]"
                                     }`}
                             >
                                 {opt.label}
@@ -623,7 +623,7 @@ export default function InventoryPage() {
                     </div>
 
                     {/* Carrier performance table */}
-                    <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
+                    <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
                         <table className="w-full">
                             <thead>
                                 <tr style={{ background: "rgba(139,92,246,0.06)" }}>
@@ -649,18 +649,18 @@ export default function InventoryPage() {
                                     .map((carrier: any, i: number) => (
                                         <tr
                                             key={i}
-                                            className="border-t border-white/[0.04] hover:bg-white/[0.02] transition-colors"
+                                            className="border-t border-black/[0.04] hover:bg-black/[0.02] transition-colors"
                                         >
                                             <td className="px-4 py-3 text-xs text-slate-600 font-mono">{i + 1}</td>
                                             <td className="px-4 py-3">
                                                 <div className="flex items-center gap-2">
                                                     <Truck className="w-4 h-4" style={{ color: carrier.color }} />
-                                                    <span className="text-sm font-semibold text-white">{carrier.carrier}</span>
+                                                    <span className="text-sm font-semibold text-slate-800">{carrier.carrier}</span>
                                                 </div>
                                             </td>
                                             <td className="px-4 py-3 w-48">
                                                 <div className="flex items-center gap-2">
-                                                    <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
+                                                    <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: "rgba(0,0,0,0.06)" }}>
                                                         <div
                                                             className="h-full rounded-full transition-all duration-700"
                                                             style={{

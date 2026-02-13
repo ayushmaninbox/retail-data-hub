@@ -30,9 +30,9 @@ import {
 const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
         return (
-            <div className="glass-card-static p-3 border border-white/10">
-                <p className="text-xs text-slate-400">{label}</p>
-                <p className="text-sm font-bold text-white">
+            <div className="glass-card-static p-3 border border-black/[0.06]">
+                <p className="text-xs text-slate-500">{label}</p>
+                <p className="text-sm font-bold text-slate-900">
                     ₹{(payload[0].value / 10000000).toFixed(2)} Cr
                 </p>
             </div>
@@ -202,7 +202,7 @@ export default function OverviewPage() {
                                         <stop offset="100%" stopColor="#8b5cf6" stopOpacity={0} />
                                     </linearGradient>
                                 </defs>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
                                 <XAxis
                                     dataKey="month"
                                     axisLine={false}
@@ -251,11 +251,11 @@ export default function OverviewPage() {
                                         if (active && payload && payload.length) {
                                             const d = payload[0].payload;
                                             return (
-                                                <div className="glass-card-static p-3 border border-white/10">
-                                                    <p className="text-xs font-medium text-white mb-1">{d.name}</p>
-                                                    <p className="text-xs text-slate-300">Revenue: <span className="font-bold text-white">{fmt(d.value)}</span></p>
-                                                    <p className="text-xs text-slate-300">Share: <span className="font-bold text-white">{d.pct}%</span></p>
-                                                    <p className="text-xs text-slate-300">Txns: <span className="font-bold text-white">{fmtNum(d.transactions)}</span></p>
+                                                <div className="glass-card-static p-3 border border-black/[0.06]">
+                                                    <p className="text-xs font-medium text-slate-800 mb-1">{d.name}</p>
+                                                    <p className="text-xs text-slate-500">Revenue: <span className="font-bold text-slate-800">{fmt(d.value)}</span></p>
+                                                    <p className="text-xs text-slate-500">Share: <span className="font-bold text-slate-800">{d.pct}%</span></p>
+                                                    <p className="text-xs text-slate-500">Txns: <span className="font-bold text-slate-800">{fmtNum(d.transactions)}</span></p>
                                                 </div>
                                             );
                                         }

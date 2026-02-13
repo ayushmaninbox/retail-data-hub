@@ -71,9 +71,9 @@ export default function ForecastPage() {
                 <PageHeader icon={Brain} title="LSTM Demand Forecast" subtitle="Deep learning powered demand prediction" />
                 <div className="glass-card p-8 text-center">
                     <Brain className="w-12 h-12 text-accent-purple mx-auto mb-4" />
-                    <h2 className="text-xl font-bold text-white mb-2">Forecast Not Available</h2>
+                    <h2 className="text-xl font-bold text-slate-800 mb-2">Forecast Not Available</h2>
                     <p className="text-slate-400">
-                        Run <code className="text-accent-teal bg-white/5 px-2 py-1 rounded">
+                        Run <code className="text-accent-teal bg-black/5 px-2 py-1 rounded">
                             ./scripts/forecast.sh</code> to train the LSTM model first.
                     </p>
                 </div>
@@ -147,7 +147,7 @@ export default function ForecastPage() {
             <PageHeader icon={Brain} title="LSTM Demand Forecast" subtitle="Deep learning powered demand prediction across 8 product categories" />
 
             {/* ── Sticky Nav ── */}
-            <nav className="sticky top-0 z-40 -mx-8 px-8 py-3" style={{ background: "rgba(10,10,25,0.85)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+            <nav className="sticky top-0 z-40 -mx-8 px-8 py-3" style={{ background: "rgba(255,255,255,0.9)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
                 <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide">
                     {SECTIONS.map(s => {
                         const SIcon = s.icon;
@@ -155,7 +155,7 @@ export default function ForecastPage() {
                             <a key={s.id} href={`#${s.id}`}
                                 className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-medium transition-all whitespace-nowrap ${activeSection === s.id
                                     ? "bg-accent-purple/20 text-accent-purple shadow-sm shadow-accent-purple/10"
-                                    : "text-slate-400 hover:text-white hover:bg-white/[0.04]"
+                                    : "text-slate-400 hover:text-slate-800 hover:bg-black/[0.04]"
                                     }`}>
                                 <SIcon className="w-3.5 h-3.5" />
                                 {s.label}
@@ -179,11 +179,11 @@ export default function ForecastPage() {
                     {configItems.map(item => {
                         const Icon = item.icon;
                         return (
-                            <div key={item.label} className="p-3 rounded-xl border border-white/[0.06] bg-gradient-to-br from-white/[0.02] to-transparent text-center">
+                            <div key={item.label} className="p-3 rounded-xl border border-black/[0.06] bg-gradient-to-br from-black/[0.02] to-transparent text-center">
                                 <div className="w-8 h-8 rounded-lg flex items-center justify-center mx-auto mb-2" style={{ background: `${item.color}15` }}>
                                     <Icon className="w-4 h-4" style={{ color: item.color }} />
                                 </div>
-                                <p className="text-lg font-bold text-white">{item.value}</p>
+                                <p className="text-lg font-bold text-slate-800">{item.value}</p>
                                 <p className="text-[10px] text-slate-500 uppercase tracking-wider mt-0.5">{item.label}</p>
                             </div>
                         );
@@ -198,12 +198,12 @@ export default function ForecastPage() {
                     <div className="h-80">
                         <ResponsiveContainer width="100%" height="100%">
                             <AreaChart data={dailyForecast}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
                                 <XAxis dataKey="date" tick={{ fill: "#94a3b8", fontSize: 11 }} />
                                 <YAxis tick={{ fill: "#94a3b8", fontSize: 11 }}
                                     tickFormatter={(v: number) => `₹${(v / 1e7).toFixed(0)}Cr`} />
                                 <Tooltip
-                                    contentStyle={{ background: "rgba(15,15,35,0.97)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "12px", color: "#fff", fontSize: "13px", fontWeight: 600, padding: "10px 14px", boxShadow: "0 8px 32px rgba(0,0,0,0.6)" }}
+                                    contentStyle={{ background: "rgba(255,255,255,0.97)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "12px", color: "#334155", fontSize: "13px", fontWeight: 600, padding: "10px 14px", boxShadow: "0 8px 32px rgba(0,0,0,0.6)" }}
                                     wrapperStyle={{ zIndex: 99999 }}
                                     labelStyle={{ color: "#94a3b8", fontSize: "11px", marginBottom: "4px" }}
                                     formatter={(v: number) => fmt(v)}
@@ -229,8 +229,8 @@ export default function ForecastPage() {
                                 <div
                                     key={cat.category}
                                     className={`flex items-center justify-between p-3 rounded-lg border cursor-pointer transition-all ${isSelected
-                                        ? "bg-white/[0.04] border-accent-purple/30"
-                                        : "bg-white/[0.02] border-white/[0.04] hover:bg-white/[0.03]"
+                                        ? "bg-black/[0.04] border-accent-purple/30"
+                                        : "bg-black/[0.02] border-black/[0.04] hover:bg-black/[0.03]"
                                         }`}
                                     onClick={() => setSelectedCategory(isSelected ? null : cat.category)}
                                 >
@@ -238,7 +238,7 @@ export default function ForecastPage() {
                                         <div className="w-2.5 h-2.5 rounded-full"
                                             style={{ backgroundColor: COLORS[i % COLORS.length] }} />
                                         <div>
-                                            <p className="text-sm font-medium text-white">
+                                            <p className="text-sm font-medium text-slate-800">
                                                 {cat.category}
                                             </p>
                                             <p className="text-xs text-slate-500">
@@ -277,13 +277,13 @@ export default function ForecastPage() {
                                     <TrendingUp className="w-4.5 h-4.5" style={{ color: catColor }} />
                                 </div>
                                 <div>
-                                    <h4 className="text-sm font-bold text-white">{selectedCategory} — 30-Day Forecast</h4>
+                                    <h4 className="text-sm font-bold text-slate-800">{selectedCategory} — 30-Day Forecast</h4>
                                     <p className="text-xs text-slate-500">
                                         Predicted: {fmt(catInfo?.next_30d_predicted || 0)} · Actual (last 30d): {fmt(catInfo?.last_30d_actual || 0)} · Change: <span className={catInfo?.change_pct > 0 ? "text-emerald-400" : "text-red-400"}>{catInfo?.change_pct > 0 ? "+" : ""}{catInfo?.change_pct}%</span>
                                     </p>
                                 </div>
                             </div>
-                            <button onClick={() => setSelectedCategory(null)} className="text-slate-500 hover:text-white transition-colors p-1 rounded-lg hover:bg-white/[0.05]">
+                            <button onClick={() => setSelectedCategory(null)} className="text-slate-500 hover:text-slate-800 transition-colors p-1 rounded-lg hover:bg-black/[0.05]">
                                 <X className="w-4 h-4" />
                             </button>
                         </div>
@@ -293,11 +293,11 @@ export default function ForecastPage() {
                             <div className="lg:col-span-3 h-64">
                                 <ResponsiveContainer width="100%" height="100%">
                                     <AreaChart data={catData}>
-                                        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                                        <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
                                         <XAxis dataKey="date" tick={{ fill: "#94a3b8", fontSize: 10 }} />
                                         <YAxis tick={{ fill: "#94a3b8", fontSize: 10 }} tickFormatter={(v: number) => fmt(v)} />
                                         <Tooltip
-                                            contentStyle={{ background: "rgba(15,15,35,0.97)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "12px", color: "#fff", fontSize: "13px", fontWeight: 600, padding: "10px 14px", boxShadow: "0 8px 32px rgba(0,0,0,0.6)" }}
+                                            contentStyle={{ background: "rgba(255,255,255,0.97)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "12px", color: "#334155", fontSize: "13px", fontWeight: 600, padding: "10px 14px", boxShadow: "0 8px 32px rgba(0,0,0,0.6)" }}
                                             wrapperStyle={{ zIndex: 99999 }}
                                             labelStyle={{ color: "#94a3b8", fontSize: "11px" }}
                                             formatter={(v: number) => fmt(v)}
@@ -318,21 +318,21 @@ export default function ForecastPage() {
                                             <p className={`text-xl font-bold mt-1 ${catMetrics.r2 > 0 ? "text-emerald-400" : "text-red-400"}`}>
                                                 {(catMetrics.r2 * 100).toFixed(1)}%
                                             </p>
-                                            <div className="mt-1.5 h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
+                                            <div className="mt-1.5 h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(0,0,0,0.06)" }}>
                                                 <div className="h-full rounded-full transition-all duration-500" style={{ width: `${Math.max(0, catMetrics.r2 * 100)}%`, background: catMetrics.r2 > 0.1 ? "#10b981" : catMetrics.r2 > 0 ? "#f59e0b" : "#ef4444" }} />
                                             </div>
                                         </div>
-                                        <div className="p-3 rounded-xl" style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.04)" }}>
+                                        <div className="p-3 rounded-xl" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.04)" }}>
                                             <p className="text-[10px] text-slate-500 uppercase font-semibold">MAE</p>
-                                            <p className="text-lg font-bold text-white mt-1">{fmt(catMetrics.mae)}</p>
+                                            <p className="text-lg font-bold text-slate-800 mt-1">{fmt(catMetrics.mae)}</p>
                                         </div>
-                                        <div className="p-3 rounded-xl" style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.04)" }}>
+                                        <div className="p-3 rounded-xl" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.04)" }}>
                                             <p className="text-[10px] text-slate-500 uppercase font-semibold">MSE</p>
-                                            <p className="text-sm font-bold text-white mt-1">{fmt(catMetrics.mse)}</p>
+                                            <p className="text-sm font-bold text-slate-800 mt-1">{fmt(catMetrics.mse)}</p>
                                         </div>
                                     </>
                                 )}
-                                <div className="p-3 rounded-xl" style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.04)" }}>
+                                <div className="p-3 rounded-xl" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.04)" }}>
                                     <p className="text-[10px] text-slate-500 uppercase font-semibold">Trend</p>
                                     <div className="flex items-center gap-2 mt-1">
                                         <TrendIcon trend={catInfo?.trend || "stable"} />
@@ -354,13 +354,13 @@ export default function ForecastPage() {
                     <div className="h-72">
                         <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={catSummary} layout="vertical">
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
                                 <XAxis type="number" tick={{ fill: "#94a3b8", fontSize: 11 }}
                                     tickFormatter={(v: number) => `₹${(v / 1e7).toFixed(0)}Cr`} />
                                 <YAxis type="category" dataKey="category" width={100}
                                     tick={{ fill: "#94a3b8", fontSize: 11 }} />
                                 <Tooltip
-                                    contentStyle={{ background: "rgba(15,15,35,0.97)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "12px", color: "#fff", fontSize: "13px", fontWeight: 600, padding: "10px 14px", boxShadow: "0 8px 32px rgba(0,0,0,0.6)" }}
+                                    contentStyle={{ background: "rgba(255,255,255,0.97)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "12px", color: "#334155", fontSize: "13px", fontWeight: 600, padding: "10px 14px", boxShadow: "0 8px 32px rgba(0,0,0,0.6)" }}
                                     wrapperStyle={{ zIndex: 99999 }}
                                     formatter={(v: number) => fmt(v)}
                                 />
@@ -378,7 +378,7 @@ export default function ForecastPage() {
                 <ChartCard title="🧠 Model Performance by Category" subtitle="R², MAE and MSE per category" className="animate-slide-up">
                     {metrics.per_category ? (
                         <div className="space-y-2">
-                            <div className="grid grid-cols-4 gap-2 text-xs text-slate-500 font-medium px-3 pb-2 border-b border-white/[0.06]">
+                            <div className="grid grid-cols-4 gap-2 text-xs text-slate-500 font-medium px-3 pb-2 border-b border-black/[0.06]">
                                 <span>Category</span>
                                 <span className="text-right">R²</span>
                                 <span className="text-right">MAE</span>
@@ -387,11 +387,11 @@ export default function ForecastPage() {
                             {Object.entries(metrics.per_category).map(([cat, m]: [string, any], i: number) => (
                                 <div
                                     key={cat}
-                                    className={`grid grid-cols-4 gap-2 text-sm px-3 py-2.5 rounded-lg transition-all cursor-pointer ${selectedCategory === cat ? "bg-white/[0.04] border border-accent-purple/20" : "hover:bg-white/[0.02] border border-transparent"
+                                    className={`grid grid-cols-4 gap-2 text-sm px-3 py-2.5 rounded-lg transition-all cursor-pointer ${selectedCategory === cat ? "bg-black/[0.04] border border-accent-purple/20" : "hover:bg-black/[0.02] border border-transparent"
                                         }`}
                                     onClick={() => setSelectedCategory(selectedCategory === cat ? null : cat)}
                                 >
-                                    <span className="text-white font-medium flex items-center gap-2">
+                                    <span className="text-slate-800 font-medium flex items-center gap-2">
                                         <div className="w-2 h-2 rounded-full"
                                             style={{ backgroundColor: COLORS[i % COLORS.length] }} />
                                         {cat}
@@ -423,11 +423,11 @@ export default function ForecastPage() {
                         <div className="h-52">
                             <ResponsiveContainer width="100%" height="100%">
                                 <LineChart data={history}>
-                                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
                                     <XAxis dataKey="epoch" tick={{ fill: "#94a3b8", fontSize: 11 }} />
                                     <YAxis tick={{ fill: "#94a3b8", fontSize: 11 }} />
                                     <Tooltip
-                                        contentStyle={{ background: "rgba(15,15,35,0.97)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "12px", color: "#fff", fontSize: "13px", fontWeight: 600, padding: "10px 14px", boxShadow: "0 8px 32px rgba(0,0,0,0.6)" }}
+                                        contentStyle={{ background: "rgba(255,255,255,0.97)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "12px", color: "#334155", fontSize: "13px", fontWeight: 600, padding: "10px 14px", boxShadow: "0 8px 32px rgba(0,0,0,0.6)" }}
                                         wrapperStyle={{ zIndex: 99999 }}
                                         labelStyle={{ color: "#94a3b8", fontSize: "11px" }}
                                     />

@@ -17,9 +17,9 @@ export default function ChartCard({
         <div className={`glass-card-static p-6 ${className}`}>
             <div className="flex items-start justify-between mb-5">
                 <div>
-                    <h3 className="text-sm font-semibold text-white">{title}</h3>
+                    <h3 className="text-sm font-semibold text-slate-800">{title}</h3>
                     {subtitle && (
-                        <p className="text-xs text-slate-500 mt-0.5">{subtitle}</p>
+                        <p className="text-xs text-slate-400 mt-0.5">{subtitle}</p>
                     )}
                 </div>
                 {action}
