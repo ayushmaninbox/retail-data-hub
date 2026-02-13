@@ -65,6 +65,9 @@ export default function OverviewPage() {
     const channelMix = (data.channel_mix || []).map((c: any) => ({
         name: c.channel === "POS" ? "POS (In-Store)" : "Web (Online)",
         value: c.revenue,
+        pct: c.revenue_pct,
+        transactions: c.transactions,
+        units_sold: c.units_sold,
         color: c.channel === "POS" ? "#8b5cf6" : "#14b8a6",
     }));
     const monthlyTrend = (data.monthly_trend || []).map((m: any) => ({
@@ -93,22 +96,26 @@ export default function OverviewPage() {
         percentage: c.revenue_pct,
     }));
 
-    // Customer breakdown
-    const custSummary = customerData?.new_vs_returning?.summary || {};
+    // Customer breakdown — use data from /api/overview customers object
+    const totalCust = customers.total_unique_customers || 0;
+    const oneTime = customers.one_time_buyers || 0;
+    const repeatBuyers = customers.repeat_buyers || 0;
+    const repeatPct = customers.repeat_rate_pct || 0;
+    const oneTimePct = totalCust > 0 ? ((oneTime / totalCust) * 100) : 0;
     const customerRows = [
         {
-            label: "New Customers",
-            value: fmtNum(custSummary.new_customers || 0),
-            subValue: `${(custSummary.new_pct || 0).toFixed(1)}% of total`,
-            color: "#14b8a6",
-            percentage: custSummary.new_pct || 0,
+            label: "Repeat Buyers",
+            value: fmtNum(repeatBuyers),
+            subValue: `${repeatPct.toFixed(1)}% repeat rate`,
+            color: "#8b5cf6",
+            percentage: repeatPct,
         },
         {
-            label: "Returning Customers",
-            value: fmtNum(custSummary.returning_customers || 0),
-            subValue: `${(custSummary.repeat_rate_pct || 0).toFixed(1)}% repeat rate`,
-            color: "#8b5cf6",
-            percentage: custSummary.returning_pct || 0,
+            label: "One-Time Buyers",
+            value: fmtNum(oneTime),
+            subValue: `${oneTimePct.toFixed(1)}% of total`,
+            color: "#14b8a6",
+            percentage: oneTimePct,
         },
     ];
 
@@ -240,13 +247,19 @@ export default function OverviewPage() {
                                     ))}
                                 </Pie>
                                 <Tooltip
-                                    formatter={(value: number) => fmt(value)}
-                                    contentStyle={{
-                                        background: "rgba(15,15,35,0.95)",
-                                        border: "1px solid rgba(255,255,255,0.1)",
-                                        borderRadius: "12px",
-                                        color: "#fff",
-                                        fontSize: "12px",
+                                    content={({ active, payload }: any) => {
+                                        if (active && payload && payload.length) {
+                                            const d = payload[0].payload;
+                                            return (
+                                                <div className="glass-card-static p-3 border border-white/10">
+                                                    <p className="text-xs font-medium text-white mb-1">{d.name}</p>
+                                                    <p className="text-xs text-slate-300">Revenue: <span className="font-bold text-white">{fmt(d.value)}</span></p>
+                                                    <p className="text-xs text-slate-300">Share: <span className="font-bold text-white">{d.pct}%</span></p>
+                                                    <p className="text-xs text-slate-300">Txns: <span className="font-bold text-white">{fmtNum(d.transactions)}</span></p>
+                                                </div>
+                                            );
+                                        }
+                                        return null;
                                     }}
                                 />
                             </PieChart>
