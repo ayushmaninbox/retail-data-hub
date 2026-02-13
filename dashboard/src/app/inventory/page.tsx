@@ -112,6 +112,7 @@ export default function InventoryPage() {
     const [alertFilter, setAlertFilter] = useState<"all" | "stockout" | "low">("all");
     const [alertGroupBy, setAlertGroupBy] = useState<"city" | "category">("city");
     const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set());
+    const [carrierSort, setCarrierSort] = useState<"ontime" | "shipments" | "avgdays" | "delay">("ontime");
 
     useEffect(() => {
         const handleScroll = () => {
@@ -254,8 +255,8 @@ export default function InventoryPage() {
                                 key={s.id}
                                 href={`#${s.id}`}
                                 className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-medium transition-all whitespace-nowrap ${isActive
-                                        ? "bg-accent-purple/20 text-accent-purple shadow-sm shadow-accent-purple/10"
-                                        : "text-slate-400 hover:text-white hover:bg-white/[0.04]"
+                                    ? "bg-accent-purple/20 text-accent-purple shadow-sm shadow-accent-purple/10"
+                                    : "text-slate-400 hover:text-white hover:bg-white/[0.04]"
                                     }`}
                             >
                                 <SIcon className="w-3.5 h-3.5" />
@@ -324,8 +325,8 @@ export default function InventoryPage() {
                                         key={f}
                                         onClick={() => setAlertFilter(f)}
                                         className={`px-3 py-1.5 text-[10px] font-semibold uppercase transition-all ${alertFilter === f
-                                                ? "bg-accent-purple/30 text-accent-purple"
-                                                : "text-slate-500 hover:text-white hover:bg-white/[0.04]"
+                                            ? "bg-accent-purple/30 text-accent-purple"
+                                            : "text-slate-500 hover:text-white hover:bg-white/[0.04]"
                                             }`}
                                     >
                                         {f === "all" ? "All" : f === "stockout" ? "🔴 Stockout" : "🟡 Low"}
@@ -339,8 +340,8 @@ export default function InventoryPage() {
                                         key={g}
                                         onClick={() => { setAlertGroupBy(g); setExpandedGroups(new Set()); }}
                                         className={`px-3 py-1.5 text-[10px] font-semibold uppercase transition-all ${alertGroupBy === g
-                                                ? "bg-accent-teal/20 text-accent-teal"
-                                                : "text-slate-500 hover:text-white hover:bg-white/[0.04]"
+                                            ? "bg-accent-teal/20 text-accent-teal"
+                                            : "text-slate-500 hover:text-white hover:bg-white/[0.04]"
                                             }`}
                                     >
                                         {g === "city" ? "📍 City" : "📦 Category"}
@@ -393,8 +394,8 @@ export default function InventoryPage() {
                                                     <div
                                                         key={i}
                                                         className={`p-4 rounded-xl transition-all ${alert.isStockout
-                                                                ? "border border-red-500/20 bg-red-500/[0.04]"
-                                                                : "border border-amber-500/15 bg-amber-500/[0.03]"
+                                                            ? "border border-red-500/20 bg-red-500/[0.04]"
+                                                            : "border border-amber-500/15 bg-amber-500/[0.03]"
                                                             }`}
                                                     >
                                                         {/* Top row */}
@@ -413,10 +414,10 @@ export default function InventoryPage() {
                                                                 </div>
                                                             </div>
                                                             <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full ${alert.priority === "Critical"
-                                                                    ? "text-red-400 bg-red-400/20"
-                                                                    : alert.priority === "High"
-                                                                        ? "text-orange-400 bg-orange-400/20"
-                                                                        : "text-amber-400 bg-amber-400/20"
+                                                                ? "text-red-400 bg-red-400/20"
+                                                                : alert.priority === "High"
+                                                                    ? "text-orange-400 bg-orange-400/20"
+                                                                    : "text-amber-400 bg-amber-400/20"
                                                                 }`}>
                                                                 {alert.priority}
                                                             </span>
@@ -599,47 +600,97 @@ export default function InventoryPage() {
                         </div>
                     </div>
 
-                    {/* Carrier cards */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
-                        {carriers.map((carrier: any, i: number) => (
-                            <div
-                                key={i}
-                                className="p-4 rounded-xl transition-all hover:scale-[1.01]"
-                                style={{
-                                    background: `linear-gradient(135deg, ${carrier.color}08, ${carrier.color}03)`,
-                                    border: `1px solid ${carrier.color}20`,
-                                }}
+                    {/* Sort control */}
+                    <div className="flex items-center gap-2 mb-3">
+                        <span className="text-[10px] text-slate-500 uppercase font-semibold tracking-wider">Sort by</span>
+                        {([
+                            { key: "ontime", label: "On-Time Rate" },
+                            { key: "shipments", label: "Shipments" },
+                            { key: "avgdays", label: "Avg Days" },
+                            { key: "delay", label: "Delay %" },
+                        ] as const).map((opt) => (
+                            <button
+                                key={opt.key}
+                                onClick={() => setCarrierSort(opt.key)}
+                                className={`px-3 py-1 rounded-lg text-[10px] font-semibold transition-all ${carrierSort === opt.key
+                                        ? "bg-accent-purple/20 text-accent-purple"
+                                        : "text-slate-500 hover:text-white hover:bg-white/[0.04]"
+                                    }`}
                             >
-                                <div className="flex items-center justify-between mb-3">
-                                    <div className="flex items-center gap-2">
-                                        <Truck className="w-4 h-4" style={{ color: carrier.color }} />
-                                        <span className="text-sm font-semibold text-white">{carrier.carrier}</span>
-                                    </div>
-                                    <span className="text-xs font-bold" style={{ color: carrier.color }}>{carrier.onTimeRate}% on-time</span>
-                                </div>
-                                <div className="grid grid-cols-3 gap-2">
-                                    <div>
-                                        <p className="text-[10px] text-slate-500">Shipments</p>
-                                        <p className="text-sm font-bold text-white">{fmtNum(carrier.shipments)}</p>
-                                    </div>
-                                    <div>
-                                        <p className="text-[10px] text-slate-500">Avg Days</p>
-                                        <p className="text-sm font-bold text-white">{carrier.avg_days}</p>
-                                    </div>
-                                    <div>
-                                        <p className="text-[10px] text-slate-500">Delayed</p>
-                                        <p className="text-sm font-bold text-red-400">{carrier.delay_pct}%</p>
-                                    </div>
-                                </div>
-                                {/* On-time bar */}
-                                <div className="mt-2 h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
-                                    <div
-                                        className="h-full rounded-full transition-all duration-500"
-                                        style={{ width: `${carrier.onTimeRate}%`, background: carrier.color }}
-                                    />
-                                </div>
-                            </div>
+                                {opt.label}
+                            </button>
                         ))}
+                    </div>
+
+                    {/* Carrier performance table */}
+                    <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
+                        <table className="w-full">
+                            <thead>
+                                <tr style={{ background: "rgba(139,92,246,0.06)" }}>
+                                    <th className="text-left px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider w-8">#</th>
+                                    <th className="text-left px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Carrier</th>
+                                    <th className="text-left px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">On-Time Rate</th>
+                                    <th className="text-right px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Shipments</th>
+                                    <th className="text-right px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Avg Days</th>
+                                    <th className="text-right px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Delayed</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {[...carriers]
+                                    .sort((a: any, b: any) => {
+                                        switch (carrierSort) {
+                                            case "ontime": return parseFloat(b.onTimeRate) - parseFloat(a.onTimeRate);
+                                            case "shipments": return b.shipments - a.shipments;
+                                            case "avgdays": return a.avg_days - b.avg_days;
+                                            case "delay": return b.delay_pct - a.delay_pct;
+                                            default: return 0;
+                                        }
+                                    })
+                                    .map((carrier: any, i: number) => (
+                                        <tr
+                                            key={i}
+                                            className="border-t border-white/[0.04] hover:bg-white/[0.02] transition-colors"
+                                        >
+                                            <td className="px-4 py-3 text-xs text-slate-600 font-mono">{i + 1}</td>
+                                            <td className="px-4 py-3">
+                                                <div className="flex items-center gap-2">
+                                                    <Truck className="w-4 h-4" style={{ color: carrier.color }} />
+                                                    <span className="text-sm font-semibold text-white">{carrier.carrier}</span>
+                                                </div>
+                                            </td>
+                                            <td className="px-4 py-3 w-48">
+                                                <div className="flex items-center gap-2">
+                                                    <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
+                                                        <div
+                                                            className="h-full rounded-full transition-all duration-700"
+                                                            style={{
+                                                                width: `${carrier.onTimeRate}%`,
+                                                                background: parseFloat(carrier.onTimeRate) >= 85
+                                                                    ? "#10b981"
+                                                                    : parseFloat(carrier.onTimeRate) >= 70
+                                                                        ? "#f59e0b"
+                                                                        : "#ef4444",
+                                                            }}
+                                                        />
+                                                    </div>
+                                                    <span className="text-xs font-bold w-12 text-right" style={{
+                                                        color: parseFloat(carrier.onTimeRate) >= 85
+                                                            ? "#10b981"
+                                                            : parseFloat(carrier.onTimeRate) >= 70
+                                                                ? "#f59e0b"
+                                                                : "#ef4444",
+                                                    }}>{carrier.onTimeRate}%</span>
+                                                </div>
+                                            </td>
+                                            <td className="px-4 py-3 text-sm text-slate-300 text-right font-mono">{fmtNum(carrier.shipments)}</td>
+                                            <td className="px-4 py-3 text-sm text-slate-300 text-right font-mono">{carrier.avg_days}d</td>
+                                            <td className="px-4 py-3 text-right">
+                                                <span className="text-xs font-semibold px-2 py-0.5 rounded-full text-red-400 bg-red-400/10">{carrier.delay_pct}%</span>
+                                            </td>
+                                        </tr>
+                                    ))}
+                            </tbody>
+                        </table>
                     </div>
                 </ChartCard>
             </div>
