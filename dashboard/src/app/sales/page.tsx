@@ -78,17 +78,21 @@ const CATEGORY_COLORS = [
 const GlassTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
         return (
-            <div className="glass-card-dark p-3 border border-white/10 max-w-xs ring-1 ring-white/5">
-                <p className="text-xs text-slate-400 mb-1 font-semibold">{label}</p>
-                {payload.map((p: any, i: number) => (
-                    <div key={i} className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full shadow-sm" style={{ background: p.color || p.stroke }} />
-                        <span className="text-xs text-slate-300">{p.name}:</span>
-                        <span className="text-xs font-bold text-white">
-                            {typeof p.value === "number" && p.value > 1000 ? fmt(p.value) : fmtNum(p.value)}
-                        </span>
-                    </div>
-                ))}
+            <div className="glass-card-dark p-4 border border-white/10 max-w-xs shadow-2xl rounded-2xl">
+                <p className="text-sm text-slate-400 mb-2 font-bold tracking-tight">{label}</p>
+                <div className="space-y-1.5">
+                    {payload.map((p: any, i: number) => (
+                        <div key={i} className="flex items-center justify-between gap-4">
+                            <div className="flex items-center gap-2">
+                                <div className="w-2.5 h-2.5 rounded-full shadow-sm" style={{ background: p.color || p.stroke }} />
+                                <span className="text-xs font-medium text-slate-300">{p.name}</span>
+                            </div>
+                            <span className="text-sm font-black text-white">
+                                {typeof p.value === "number" && p.value > 1000 ? fmt(p.value) : fmtNum(p.value)}
+                            </span>
+                        </div>
+                    ))}
+                </div>
             </div>
         );
     }
@@ -99,7 +103,9 @@ const GlassTooltip = ({ active, payload, label }: any) => {
 
 const TreemapContent = (props: any) => {
     const { x, y, width, height, name, revenue, color, index } = props;
-    if (width < 50 || height < 40) return null;
+    if (width < 30 || height < 20) return null;
+    const isSmall = width < 80 || height < 60;
+
     return (
         <g>
             <rect
@@ -107,31 +113,41 @@ const TreemapContent = (props: any) => {
                 y={y}
                 width={width}
                 height={height}
-                rx={8}
+                rx={12}
                 fill={color || CATEGORY_COLORS[index % CATEGORY_COLORS.length]}
-                fillOpacity={0.7}
-                stroke="rgba(0,0,0,0.3)"
-                strokeWidth={2}
+                fillOpacity={0.6}
+                stroke="rgba(255,255,255,0.2)"
+                strokeWidth={1.5}
+                className="transition-all duration-500 hover:fill-opacity-90 hover:stroke-white/50 cursor-pointer"
             />
-            <text
-                x={x + width / 2}
-                y={y + height / 2 - 8}
-                textAnchor="middle"
-                fill="#fff"
-                fontSize={width > 100 ? 13 : 11}
-                fontWeight="600"
-            >
-                {name}
-            </text>
-            <text
-                x={x + width / 2}
-                y={y + height / 2 + 10}
-                textAnchor="middle"
-                fill="rgba(255,255,255,0.7)"
-                fontSize={width > 100 ? 11 : 9}
-            >
-                {fmt(revenue)}
-            </text>
+            {!isSmall && (
+                <>
+                    <text
+                        x={x + width / 2}
+                        y={y + height / 2 - (width > 100 ? 6 : 0)}
+                        textAnchor="middle"
+                        fill="#fff"
+                        fontSize={width > 120 ? 12 : 10}
+                        fontWeight="700"
+                        className="pointer-events-none drop-shadow-sm uppercase tracking-wider"
+                    >
+                        {name}
+                    </text>
+                    {width > 100 && (
+                        <text
+                            x={x + width / 2}
+                            y={y + height / 2 + 12}
+                            textAnchor="middle"
+                            fill="rgba(255,255,255,0.8)"
+                            fontSize={10}
+                            fontWeight="500"
+                            className="pointer-events-none"
+                        >
+                            {fmt(revenue)}
+                        </text>
+                    )}
+                </>
+            )}
         </g>
     );
 };
@@ -199,7 +215,27 @@ export default function SalesPage() {
         color: CATEGORY_COLORS[i % CATEGORY_COLORS.length],
     }));
 
-    const categories = (data.category_revenue || []).map((c: any, i: number) => ({
+    const sortedCats = [...(data.category_revenue || [])].sort((a, b) => b.revenue - a.revenue);
+    const topCats = sortedCats.slice(0, 7);
+    const otherCats = sortedCats.slice(7);
+
+    const treemapData = topCats.map((c: any, i: number) => ({
+        name: c.category,
+        size: c.revenue,
+        revenue: c.revenue,
+        color: CATEGORY_COLORS[i % CATEGORY_COLORS.length],
+    }));
+
+    if (otherCats.length > 0) {
+        treemapData.push({
+            name: "Others",
+            size: otherCats.reduce((acc: number, curr: any) => acc + curr.revenue, 0),
+            revenue: otherCats.reduce((acc: number, curr: any) => acc + curr.revenue, 0),
+            color: "#64748b",
+        });
+    }
+
+    const categories = sortedCats.map((c: any, i: number) => ({
         name: c.category,
         revenue: c.revenue,
         units_sold: c.units_sold,
@@ -207,14 +243,6 @@ export default function SalesPage() {
         avg_price: c.avg_price,
         customers: c.unique_customers,
         color: CATEGORY_COLORS[i % CATEGORY_COLORS.length],
-    }));
-
-    // Treemap data
-    const treemapData = categories.map((c: any) => ({
-        name: c.name,
-        size: c.revenue,
-        revenue: c.revenue,
-        color: c.color,
     }));
 
     // Radar data — normalize city metrics for comparison
@@ -319,12 +347,11 @@ export default function SalesPage() {
                 />
             </div>
 
-            {/* ── Row 2: Revenue Trend (ComposedChart) + Category Treemap ── */}
-            <div id="trends" className="grid grid-cols-1 xl:grid-cols-3 gap-4 animate-slide-up" style={{ animationDelay: "0.05s" }}>
+            {/* ── Row 2: Revenue Trend (ComposedChart) ── */}
+            <div id="trends" className="grid grid-cols-1 gap-4 animate-slide-up" style={{ animationDelay: "0.05s" }}>
                 <ChartCard
                     title="Revenue & Transactions Trend"
                     subtitle="Monthly dual-axis: revenue (area) and transactions (line)"
-                    className="xl:col-span-2"
                 >
                     <div className="h-80">
                         <ResponsiveContainer width="100%" height="100%">
@@ -359,19 +386,6 @@ export default function SalesPage() {
                         </ResponsiveContainer>
                     </div>
                 </ChartCard>
-
-                <ChartCard title="Category Revenue Map" subtitle="Revenue proportional to area">
-                    <div className="h-80">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <Treemap
-                                data={treemapData}
-                                dataKey="size"
-                                aspectRatio={1}
-                                content={<TreemapContent />}
-                            />
-                        </ResponsiveContainer>
-                    </div>
-                </ChartCard>
             </div>
 
             {/* ── Row 3: City Race Bar + City Radar ── */}
@@ -397,7 +411,13 @@ export default function SalesPage() {
                                     width={90}
                                 />
                                 <Tooltip content={<GlassTooltip />} cursor={{ fill: "rgba(0,0,0,0.02)" }} />
-                                <Bar dataKey="revenue" name="Revenue" radius={[0, 8, 8, 0]} barSize={22}>
+                                <Bar
+                                    dataKey="revenue"
+                                    name="Revenue"
+                                    radius={[0, 8, 8, 0]}
+                                    barSize={22}
+                                    activeBar={{ fillOpacity: 1, stroke: "white", strokeWidth: 1.5 }}
+                                >
                                     {citySales.map((entry: any, index: number) => (
                                         <Cell key={index} fill={entry.color} fillOpacity={0.8} />
                                     ))}
@@ -421,16 +441,7 @@ export default function SalesPage() {
                                     iconType="circle"
                                     wrapperStyle={{ fontSize: "11px", color: "#64748b", paddingTop: "8px" }}
                                 />
-                                <Tooltip
-                                    contentStyle={{
-                                        background: "rgba(255,255,255,0.95)",
-                                        border: "1px solid rgba(0,0,0,0.08)",
-                                        borderRadius: "12px",
-                                        color: "#1e293b",
-                                        fontSize: "12px",
-                                    }}
-                                    formatter={(value: number) => `${value}%`}
-                                />
+                                <Tooltip content={<GlassTooltip />} />
                             </RadarChart>
                         </ResponsiveContainer>
                     </div>
@@ -447,7 +458,13 @@ export default function SalesPage() {
                                 <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} tickFormatter={(v) => `₹${fmtShort(v)}`} />
                                 <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 11 }} width={140} />
                                 <Tooltip content={<GlassTooltip />} cursor={{ fill: "rgba(0,0,0,0.02)" }} />
-                                <Bar dataKey="revenue" name="Revenue" radius={[0, 8, 8, 0]} barSize={18}>
+                                <Bar
+                                    dataKey="revenue"
+                                    name="Revenue"
+                                    radius={[0, 8, 8, 0]}
+                                    barSize={18}
+                                    activeBar={{ fillOpacity: 1, stroke: "white", strokeWidth: 1.5 }}
+                                >
                                     {topByRevenue.map((entry: any, index: number) => (
                                         <Cell key={index} fill={entry.color} fillOpacity={0.75} />
                                     ))}

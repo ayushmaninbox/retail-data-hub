@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useApi } from "@/hooks/useApi";
 import { PageSkeleton } from "@/components/Skeleton";
 import {
@@ -17,6 +17,7 @@ import {
     Timer,
     TrendingDown,
     XCircle,
+    SortAsc,
 } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import KpiCard from "@/components/KpiCard";
@@ -39,9 +40,47 @@ import {
 
 const CARRIER_COLORS = ["#8b5cf6", "#3b82f6", "#14b8a6", "#f59e0b", "#ef4444", "#ec4899", "#6b7280"];
 
+const TITLES: Record<string, { title: string; subtitle: string }> = {
+    avgDays: { title: "Avg Delivery by Carrier", subtitle: "Average days from dispatch to delivery" },
+    shipments: { title: "Total Shipments by Carrier", subtitle: "Volume distribution across logistics partners" },
+    onTimeRate: { title: "On-Time Reliability by Carrier", subtitle: "Percentage of shipments delivered within window" },
+    delayPct: { title: "Delay Propensity by Carrier", subtitle: "Carrier-specific delay rates for risk assessment" },
+};
+
+const OPTIONS = [
+    { label: "Avg Days", value: "avgDays" },
+    { label: "Shipments", value: "shipments" },
+    { label: "On-Time %", value: "onTimeRate" },
+    { label: "Delay %", value: "delayPct" },
+];
+
 function fmtNum(n: number | undefined | null): string {
     return (n ?? 0).toLocaleString("en-IN");
 }
+
+const GlassTooltip = ({ active, payload, label }: any) => {
+    if (active && payload && payload.length) {
+        return (
+            <div className="glass-card-dark p-4 border border-white/10 max-w-xs shadow-2xl rounded-2xl">
+                <p className="text-sm text-slate-400 mb-2 font-bold tracking-tight">{label}</p>
+                <div className="space-y-1.5">
+                    {payload.map((p: any, i: number) => (
+                        <div key={i} className="flex items-center justify-between gap-4">
+                            <div className="flex items-center gap-2">
+                                <div className="w-2.5 h-2.5 rounded-full shadow-sm" style={{ background: p.color || p.stroke }} />
+                                <span className="text-xs font-medium text-slate-300">{p.name}</span>
+                            </div>
+                            <span className="text-sm font-bold text-white">
+                                {typeof p.value === "number" ? `${p.value}d` : p.value}
+                            </span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+    }
+    return null;
+};
 
 
 
@@ -252,16 +291,26 @@ function DrillDownPanel({
 export default function LogisticsPage() {
     const { data, loading } = useApi<any>("/api/operations");
     const [activeDrill, setActiveDrill] = useState<DrillType>(null);
-
+    const [carrierSort, setCarrierSort] = useState<"avgDays" | "shipments" | "onTimeRate" | "delayPct">("avgDays");
+    const [dropdownOpen, setDropdownOpen] = useState(false);
     const [showScrollTop, setShowScrollTop] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const handleScroll = () => {
             setShowScrollTop(window.scrollY > 400);
-
+        };
+        const handleClickOutside = (event: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setDropdownOpen(false);
+            }
         };
         window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
+        window.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("mousedown", handleClickOutside);
+        };
     }, []);
 
     if (loading || !data) return <PageSkeleton />;
@@ -270,18 +319,21 @@ export default function LogisticsPage() {
     const byCarrier = data.delivery_times?.by_carrier || [];
     const carrierChart = byCarrier.map((c: any, i: number) => ({
         carrier: c.carrier,
-        avgDays: c.avg_days,
-        shipments: c.shipments,
-        delayed: c.delayed,
-        delayPct: c.delay_pct,
+        avgDays: Number(c.avg_days || 0),
+        shipments: Number(c.shipments || 0),
+        delayed: Number(c.delayed || 0),
+        delayPct: Number(c.delay_pct || 0),
         color: CARRIER_COLORS[i % CARRIER_COLORS.length],
-        onTimeRate: (100 - (c.delay_pct || 0)).toFixed(1),
+        onTimeRate: Number((100 - (c.delay_pct || 0)).toFixed(1)),
     }));
 
-    const distribution = (data.delivery_times?.distribution || []).map((d: any) => ({
-        bucket: `${d.days}d`,
-        count: d.shipments,
-    }));
+    const filteredCarriers = carrierChart
+        .sort((a: any, b: any) => {
+            // Lower avgDays is better (ascending), others descending
+            if (carrierSort === "avgDays") return a.avgDays - b.avgDays;
+            return (b as any)[carrierSort] - (a as any)[carrierSort];
+        });
+
 
     const bottlenecks = (data.delivery_times?.by_destination || [])
         .sort((a: any, b: any) => b.avg_days - a.avg_days)
@@ -375,22 +427,71 @@ export default function LogisticsPage() {
                 />
             </div>
 
-            {/* ── Carrier Performance ── */}
-            <div id="carriers" className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-                <ChartCard title="Avg Delivery by Carrier" subtitle="Days from dispatch to delivery" className="animate-slide-up">
+            {/* ── Carrier Performance Row ── */}
+            <div id="carriers" className="grid grid-cols-1 gap-4">
+                <ChartCard
+                    title={TITLES[carrierSort].title}
+                    subtitle={TITLES[carrierSort].subtitle}
+                    className="animate-slide-up"
+                    action={
+                        <div className="flex items-center gap-3">
+                            <div className="relative group" ref={dropdownRef}>
+                                <button
+                                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                                    className="flex items-center gap-2 bg-white/50 backdrop-blur-sm border border-slate-200/60 rounded-xl px-3 py-1.5 shadow-sm hover:border-slate-300 hover:bg-white/80 transition-all cursor-pointer"
+                                >
+                                    <SortAsc className="w-3.5 h-3.5 text-slate-400 group-hover:text-accent-purple transition-colors" />
+                                    <span className="text-[10px] font-bold text-slate-600 uppercase tracking-wider">
+                                        {OPTIONS.find(o => o.value === carrierSort)?.label || carrierSort}
+                                    </span>
+                                    <ChevronDown className={`w-3 h-3 text-slate-400 transition-transform duration-300 ${dropdownOpen ? "rotate-180" : ""}`} />
+                                </button>
+
+                                {dropdownOpen && (
+                                    <div className="absolute right-0 mt-2 w-40 bg-white/90 backdrop-blur-md border border-slate-200/60 rounded-2xl shadow-xl z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-200 py-1.5 origin-top-right">
+                                        {OPTIONS.map((opt) => (
+                                            <button
+                                                key={opt.value}
+                                                onClick={() => {
+                                                    setCarrierSort(opt.value as any);
+                                                    setDropdownOpen(false);
+                                                }}
+                                                className={`w-full text-left px-4 py-2 text-[10px] font-bold uppercase tracking-wider transition-colors hover:bg-accent-purple/5 ${carrierSort === opt.value
+                                                    ? "text-accent-purple bg-accent-purple/10"
+                                                    : "text-slate-600 hover:text-slate-900"
+                                                    }`}
+                                            >
+                                                {opt.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    }
+                >
                     <div className="h-80">
                         <ResponsiveContainer width="100%" height="100%">
-                            <BarChart data={carrierChart} layout="vertical" margin={{ left: 40 }}>
+                            <BarChart data={filteredCarriers} layout="vertical" margin={{ left: 40 }}>
                                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" horizontal={false} />
-                                <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 11 }} tickFormatter={(v) => `${v}d`} />
-                                <YAxis dataKey="carrier" type="category" axisLine={false} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 11 }} width={110} />
-                                <Tooltip
-                                    formatter={(value: number) => [`${value} days`, "Avg Delivery"]}
-                                    contentStyle={{ background: "rgba(255,255,255,0.97)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "12px", color: "#334155", fontSize: "12px" }}
+                                <XAxis
+                                    type="number"
+                                    axisLine={false}
+                                    tickLine={false}
+                                    tick={{ fill: "#64748b", fontSize: 11, fontWeight: 600 }}
+                                    tickFormatter={(v) => carrierSort === "avgDays" ? `${v}d` : carrierSort === "shipments" ? fmtNum(v) : `${v}%`}
                                 />
-                                <Bar dataKey="avgDays" radius={[0, 6, 6, 0]} barSize={18}>
-                                    {carrierChart.map((c: any, i: number) => (
-                                        <Cell key={i} fill={c.color} />
+                                <YAxis dataKey="carrier" type="category" axisLine={false} tickLine={false} tick={{ fill: "#475569", fontSize: 11, fontWeight: 700 }} width={110} />
+                                <Tooltip content={<GlassTooltip />} cursor={{ fill: "rgba(0,0,0,0.02)" }} />
+                                <Bar
+                                    dataKey={carrierSort}
+                                    name={carrierSort === "avgDays" ? "Avg Delivery" : carrierSort === "shipments" ? "Shipments" : carrierSort === "onTimeRate" ? "On-Time Rate" : "Delay Rate"}
+                                    radius={[0, 6, 6, 0]}
+                                    barSize={18}
+                                    activeBar={{ fillOpacity: 1, stroke: "white", strokeWidth: 1 }}
+                                >
+                                    {filteredCarriers.map((c: any, i: number) => (
+                                        <Cell key={i} fill={c.color} fillOpacity={0.7} />
                                     ))}
                                 </Bar>
                             </BarChart>
@@ -398,79 +499,8 @@ export default function LogisticsPage() {
                     </div>
                 </ChartCard>
 
-                {/* Carrier ranked table */}
-                <ChartCard title="Carrier Rankings" subtitle="Sorted by on-time performance" className="animate-slide-up">
-                    <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
-                        <table className="w-full">
-                            <thead>
-                                <tr style={{ background: "rgba(139,92,246,0.06)" }}>
-                                    <th className="text-left px-3 py-2.5 text-[10px] font-semibold text-slate-500 uppercase tracking-wider w-6">#</th>
-                                    <th className="text-left px-3 py-2.5 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Carrier</th>
-                                    <th className="text-left px-3 py-2.5 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">On-Time</th>
-                                    <th className="text-right px-3 py-2.5 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Delayed</th>
-                                    <th className="text-right px-3 py-2.5 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Avg</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {[...carrierChart]
-                                    .sort((a: any, b: any) => parseFloat(b.onTimeRate) - parseFloat(a.onTimeRate))
-                                    .map((c: any, i: number) => (
-                                        <tr key={i} className="border-t border-black/[0.04] hover:bg-black/[0.02] transition-colors">
-                                            <td className="px-3 py-2.5 text-xs text-slate-600 font-mono">{i + 1}</td>
-                                            <td className="px-3 py-2.5">
-                                                <div className="flex items-center gap-2">
-                                                    <div className="w-2 h-2 rounded-full" style={{ background: c.color }} />
-                                                    <span className="text-xs font-semibold text-slate-800">{c.carrier}</span>
-                                                </div>
-                                            </td>
-                                            <td className="px-3 py-2.5 w-32">
-                                                <div className="flex items-center gap-1.5">
-                                                    <div className="flex-1 h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(0,0,0,0.06)" }}>
-                                                        <div
-                                                            className="h-full rounded-full"
-                                                            style={{
-                                                                width: `${c.onTimeRate}%`,
-                                                                background: parseFloat(c.onTimeRate) >= 85 ? "#10b981" : parseFloat(c.onTimeRate) >= 70 ? "#f59e0b" : "#ef4444",
-                                                            }}
-                                                        />
-                                                    </div>
-                                                    <span className="text-[10px] font-bold" style={{
-                                                        color: parseFloat(c.onTimeRate) >= 85 ? "#10b981" : parseFloat(c.onTimeRate) >= 70 ? "#f59e0b" : "#ef4444",
-                                                    }}>{c.onTimeRate}%</span>
-                                                </div>
-                                            </td>
-                                            <td className="px-3 py-2.5 text-right">
-                                                <span className="text-xs font-semibold text-red-400">{c.delayPct}%</span>
-                                            </td>
-                                            <td className="px-3 py-2.5 text-right text-xs text-slate-400 font-mono">{c.avgDays}d</td>
-                                        </tr>
-                                    ))}
-                            </tbody>
-                        </table>
-                    </div>
-                </ChartCard>
             </div>
 
-            {/* ── Distribution ── */}
-            <div id="distribution">
-                <ChartCard title="Delivery Time Distribution" subtitle="Shipment count by delivery days" className="animate-slide-up">
-                    <div className="h-72">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <BarChart data={distribution}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
-                                <XAxis dataKey="bucket" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} />
-                                <YAxis axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 11 }} />
-                                <Tooltip contentStyle={{ background: "rgba(255,255,255,0.97)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "12px", color: "#334155", fontSize: "12px" }} />
-                                <Bar dataKey="count" radius={[6, 6, 0, 0]} barSize={36}>
-                                    {distribution.map((_: any, index: number) => (
-                                        <Cell key={index} fill={CARRIER_COLORS[index % CARRIER_COLORS.length]} />
-                                    ))}
-                                </Bar>
-                            </BarChart>
-                        </ResponsiveContainer>
-                    </div>
-                </ChartCard>
-            </div>
 
             {/* ── Destinations ── */}
             {bottlenecks.length > 0 && (
@@ -479,13 +509,13 @@ export default function LogisticsPage() {
                         <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
                             <table className="w-full">
                                 <thead>
-                                    <tr style={{ background: "rgba(139,92,246,0.06)" }}>
-                                        <th className="text-left px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">#</th>
-                                        <th className="text-left px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Destination</th>
-                                        <th className="text-left px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Avg Days</th>
-                                        <th className="text-right px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Shipments</th>
-                                        <th className="text-left px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">On-Time Rate</th>
-                                        <th className="text-right px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Bottleneck</th>
+                                    <tr style={{ background: "rgba(139,92,246,0.12)" }}>
+                                        <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-700 uppercase tracking-wider">#</th>
+                                        <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-700 uppercase tracking-wider">Destination</th>
+                                        <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-700 uppercase tracking-wider">Avg Days</th>
+                                        <th className="text-right px-4 py-3 text-[10px] font-bold text-slate-700 uppercase tracking-wider">Shipments</th>
+                                        <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-700 uppercase tracking-wider">On-Time Rate</th>
+                                        <th className="text-right px-4 py-3 text-[10px] font-bold text-slate-700 uppercase tracking-wider">Bottleneck</th>
                                     </tr>
                                 </thead>
                                 <tbody>

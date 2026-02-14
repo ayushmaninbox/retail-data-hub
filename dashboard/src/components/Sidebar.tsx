@@ -1,16 +1,16 @@
 "use client";
 
-import { 
-  Github, 
-  Linkedin, 
-  LayoutDashboard, 
-  ShoppingCart, 
-  Truck, 
-  Users, 
-  Package, 
-  Brain, 
-  Activity, 
-  Settings, 
+import {
+  Github,
+  Linkedin,
+  LayoutDashboard,
+  ShoppingCart,
+  Truck,
+  Users,
+  Package,
+  Brain,
+  Activity,
+  Settings,
   TrendingUp,
   Database
 } from "lucide-react";
@@ -24,20 +24,20 @@ export default function Sidebar() {
     <aside className="fixed left-0 top-0 h-full w-64 bg-slate-900 border-r border-slate-800 flex flex-col z-50">
       <div className="p-6">
         <div className="flex items-center gap-3">
-          <div className="p-2 bg-indigo-600 rounded-xl shadow-lg shadow-indigo-900/20">
+          <div className="p-2 bg-indigo-600 rounded-2xl shadow-lg shadow-indigo-900/20">
             <Brain className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-bold tracking-tight text-white">Retail Hub</h1>
-            <p className="text-[10px] font-medium text-slate-400 uppercase tracking-widest mt-0.5">Analytics System</p>
+            <h1 className="text-2xl font-bold tracking-tight text-white">Retail Hub</h1>
+            <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">Analytics System</p>
           </div>
         </div>
       </div>
 
       <nav className="flex-1 px-4 space-y-8 overflow-y-auto py-4">
         <div>
-          <div className="px-3 mb-4 text-[10px] font-bold text-slate-500 uppercase tracking-widest flex items-center gap-2">
-            <div className="w-1 h-3 bg-indigo-500 rounded-full" />
+          <div className="px-3 mb-5 text-xs font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
+            <div className="w-1.5 h-4 bg-indigo-500 rounded-full" />
             Main Console
           </div>
           <div className="space-y-1">
@@ -50,8 +50,8 @@ export default function Sidebar() {
         </div>
 
         <div>
-          <div className="px-3 mb-4 text-[10px] font-bold text-slate-500 uppercase tracking-widest flex items-center gap-2">
-            <div className="w-1 h-3 bg-emerald-500 rounded-full" />
+          <div className="px-3 mb-5 text-xs font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
+            <div className="w-1.5 h-4 bg-emerald-500 rounded-full" />
             Intelligence
           </div>
           <div className="space-y-1">
@@ -62,8 +62,8 @@ export default function Sidebar() {
         </div>
 
         <div>
-           <div className="px-3 mb-4 text-[10px] font-bold text-slate-500 uppercase tracking-widest flex items-center gap-2">
-            <div className="w-1 h-3 bg-amber-500 rounded-full" />
+          <div className="px-3 mb-5 text-xs font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
+            <div className="w-1.5 h-4 bg-amber-500 rounded-full" />
             Infrastructure
           </div>
           <div className="space-y-1">
@@ -90,14 +90,13 @@ function NavItem({ href, icon: Icon, label, active }: { href: string; icon: any;
   return (
     <Link
       href={href}
-      className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 group ${
-        active 
-          ? "bg-indigo-600/10 text-indigo-400 font-medium" 
-          : "text-slate-400 hover:bg-slate-800 hover:text-slate-200"
-      }`}
+      className={`flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-200 group ${active
+        ? "bg-indigo-600/10 text-indigo-400 font-medium"
+        : "text-slate-400 hover:bg-slate-800 hover:text-slate-200"
+        }`}
     >
-      <Icon className={`w-4 h-4 flex-shrink-0 ${active ? "text-indigo-400" : "text-slate-500 group-hover:text-slate-300"}`} />
-      <span className="text-sm">{label}</span>
+      <Icon className={`w-5 h-5 flex-shrink-0 ${active ? "text-indigo-400" : "text-slate-500 group-hover:text-slate-300"}`} />
+      <span className="text-base font-medium">{label}</span>
     </Link>
   );
 }

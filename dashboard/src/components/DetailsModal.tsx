@@ -80,7 +80,7 @@ export default function DetailsModal({
                     maxHeight: "85vh",
                     background: "rgba(255,255,255,0.97)",
                     border: "1px solid rgba(0,0,0,0.08)",
-                    borderRadius: "20px",
+                    borderRadius: "28px",
                     boxShadow:
                         "0 24px 80px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.04)",
                     opacity: animateIn ? 1 : 0,
@@ -101,7 +101,7 @@ export default function DetailsModal({
                                 <Icon className="w-5 h-5 text-white" />
                             </div>
                         )}
-                        <h2 className="text-lg font-bold text-slate-900 tracking-tight">
+                        <h2 className="text-xl font-bold text-slate-900 tracking-tight">
                             {title}
                         </h2>
                     </div>
@@ -137,20 +137,20 @@ export default function DetailsModal({
                                     />
                                 )}
                                 <div>
-                                    <p className="text-sm font-medium text-slate-800">
+                                    <p className="text-base font-bold text-slate-800">
                                         {row.label}
                                     </p>
                                     {row.subValue && (
-                                        <p className="text-xs text-slate-500 font-medium mt-0.5">
+                                        <p className="text-sm text-slate-500 font-medium mt-1 leading-relaxed">
                                             {row.subValue}
                                         </p>
                                     )}
                                 </div>
                             </div>
                             <div className="text-right">
-                                <p className="text-sm font-bold text-slate-900">{row.value}</p>
+                                <p className="text-base font-black text-slate-900">{row.value}</p>
                                 {row.percentage !== undefined && (
-                                    <p className="text-xs text-slate-500 font-medium mt-0.5">
+                                    <p className="text-sm text-slate-500 font-bold mt-1">
                                         {row.percentage.toFixed(1)}%
                                     </p>
                                 )}

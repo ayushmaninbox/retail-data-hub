@@ -8,14 +8,11 @@ import {
     RotateCcw,
     AlertTriangle,
     Layers,
-    Truck,
     MapPin,
     ArrowUp,
     Activity,
     ShoppingBag,
     XCircle,
-    CheckCircle2,
-    Clock,
     ChevronDown,
     ChevronUp,
     IndianRupee,
@@ -77,17 +74,21 @@ const CARRIER_COLORS = ["#8b5cf6", "#3b82f6", "#14b8a6", "#ec4899", "#f59e0b", "
 const GlassTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
         return (
-            <div className="glass-card-dark p-3 border border-white/10 max-w-xs ring-1 ring-white/5">
-                <p className="text-xs text-slate-400 mb-1 font-semibold">{label}</p>
-                {payload.map((p: any, i: number) => (
-                    <div key={i} className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full shadow-sm" style={{ background: p.color || p.stroke }} />
-                        <span className="text-xs text-slate-300">{p.name}:</span>
-                        <span className="text-xs font-bold text-white">
-                            {typeof p.value === "number" && p.value > 1000 ? fmtNum(p.value) : p.value}
-                        </span>
-                    </div>
-                ))}
+            <div className="glass-card-dark p-4 border border-white/10 max-w-xs shadow-2xl rounded-2xl">
+                <p className="text-sm text-slate-400 mb-2 font-bold tracking-tight">{label}</p>
+                <div className="space-y-1.5">
+                    {payload.map((p: any, i: number) => (
+                        <div key={i} className="flex items-center justify-between gap-4">
+                            <div className="flex items-center gap-2">
+                                <div className="w-2.5 h-2.5 rounded-full shadow-sm" style={{ background: p.color || p.stroke }} />
+                                <span className="text-xs font-medium text-slate-300">{p.name}</span>
+                            </div>
+                            <span className="text-sm font-black text-white">
+                                {typeof p.value === "number" && p.value > 1000 ? fmtNum(p.value) : p.value}
+                            </span>
+                        </div>
+                    ))}
+                </div>
             </div>
         );
     }
@@ -96,7 +97,7 @@ const GlassTooltip = ({ active, payload, label }: any) => {
 
 /* ── Main Page ── */
 
-type ModalType = "stockoutDetail" | "deliveryDetail" | null;
+type ModalType = "stockoutDetail" | null;
 
 export default function InventoryPage() {
     const { data, loading } = useApi<any>("/api/operations");
@@ -106,7 +107,6 @@ export default function InventoryPage() {
     const [alertFilter, setAlertFilter] = useState<"all" | "stockout" | "low">("all");
     const [alertGroupBy, setAlertGroupBy] = useState<"city" | "category">("city");
     const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set());
-    const [carrierSort, setCarrierSort] = useState<"ontime" | "shipments" | "avgdays" | "delay">("ontime");
 
     useEffect(() => {
         const handleScroll = () => {
@@ -139,12 +139,6 @@ export default function InventoryPage() {
         color: CATEGORY_COLORS[c.category] || "#8b5cf6",
     }));
 
-    const delivery = data.delivery_times?.overall || {};
-    const carriers = (data.delivery_times?.by_carrier || []).map((c: any, i: number) => ({
-        ...c,
-        color: CARRIER_COLORS[i % CARRIER_COLORS.length],
-        onTimeRate: (100 - (c.delay_pct || 0)).toFixed(1),
-    }));
 
     const allAlerts = (data.reorder_alerts || []).map((r: any) => ({
         product: r.product_name,
@@ -210,12 +204,6 @@ export default function InventoryPage() {
         percentage: c.pct * (100 / Math.max(...stockoutByCategory.map((s: any) => s.pct), 1)),
     }));
 
-    const deliveryModalRows = carriers.map((c: any) => ({
-        label: c.carrier,
-        value: `${c.avg_days} days avg`,
-        subValue: `${fmtNum(c.shipments)} shipments · ${c.delay_pct}% delayed · ${c.onTimeRate}% on-time`,
-        color: c.color,
-    }));
 
     // Radar data for stockout
     const maxStockoutPct = Math.max(...stockoutByCategory.map((c: any) => c.pct), 1);
@@ -235,7 +223,7 @@ export default function InventoryPage() {
 
 
             {/* ── KPI Row ── */}
-            <div id="kpis" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 animate-slide-up">
+            <div id="kpis" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 animate-slide-up">
                 <KpiCard
                     icon={RotateCcw}
                     title="Avg Turnover Ratio"
@@ -263,16 +251,6 @@ export default function InventoryPage() {
                     trend="down"
                     accentColor="from-amber-500 to-accent-orange"
                     subtitle="Action needed"
-                />
-                <KpiCard
-                    icon={Truck}
-                    title="Delivery Performance"
-                    value={`${delivery.avg_delivery_days || 0} days`}
-                    change={`${fmtNum(delivery.delivered)} delivered · ${delivery.delayed || 0} delayed`}
-                    trend="up"
-                    accentColor="from-accent-blue to-accent-teal"
-                    subtitle={`${fmtNum(delivery.total_shipments)} total shipments`}
-                    onClick={() => setActiveModal("deliveryDetail")}
                 />
             </div>
 
@@ -431,9 +409,9 @@ export default function InventoryPage() {
                                                                 <PackageCheck className="w-3.5 h-3.5 text-accent-teal mt-0.5 flex-shrink-0" />
                                                                 <div>
                                                                     <p className="text-[10px] font-semibold text-accent-teal uppercase mb-0.5">Resolution</p>
-                                                                    <p className="text-xs text-slate-300 leading-relaxed">{alert.resolution}</p>
-                                                                    <p className="text-[10px] text-slate-500 mt-1">
-                                                                        📋 <span className="text-slate-400">{alert.sourceAction}</span>
+                                                                    <p className="text-xs text-slate-700 font-medium leading-relaxed">{alert.resolution}</p>
+                                                                    <p className="text-[10px] text-slate-600 mt-1">
+                                                                        📋 <span className="text-slate-500 font-bold">{alert.sourceAction}</span>
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -459,7 +437,13 @@ export default function InventoryPage() {
                                 <XAxis dataKey="category" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} angle={-20} textAnchor="end" height={50} />
                                 <YAxis axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 11 }} tickFormatter={(v) => `${v}x`} />
                                 <Tooltip content={<GlassTooltip />} />
-                                <Bar dataKey="turnover" name="Turnover Ratio" radius={[6, 6, 0, 0]} barSize={32}>
+                                <Bar
+                                    dataKey="turnover"
+                                    name="Turnover Ratio"
+                                    radius={[6, 6, 0, 0]}
+                                    barSize={32}
+                                    activeBar={{ fillOpacity: 1, stroke: "white", strokeWidth: 1.5 }}
+                                >
                                     {turnoverData.map((entry: any, index: number) => (
                                         <Cell key={index} fill={entry.color} fillOpacity={0.75} />
                                     ))}
@@ -512,7 +496,13 @@ export default function InventoryPage() {
                                 <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} tickFormatter={(v) => `${v}%`} />
                                 <YAxis dataKey="category" type="category" axisLine={false} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 11 }} width={100} />
                                 <Tooltip content={<GlassTooltip />} cursor={{ fill: "rgba(0,0,0,0.02)" }} />
-                                <Bar dataKey="pct" name="Stockout %" radius={[0, 8, 8, 0]} barSize={18}>
+                                <Bar
+                                    dataKey="pct"
+                                    name="Stockout %"
+                                    radius={[0, 8, 8, 0]}
+                                    barSize={18}
+                                    activeBar={{ fillOpacity: 1, stroke: "white", strokeWidth: 1.5 }}
+                                >
                                     {stockoutByCategory.map((entry: any, index: number) => (
                                         <Cell key={index} fill={entry.color} fillOpacity={0.75} />
                                     ))}
@@ -537,130 +527,6 @@ export default function InventoryPage() {
                 </ChartCard>
             </div>
 
-            {/* ── Row 4: Delivery Performance ── */}
-            <div id="delivery" className="animate-slide-up" style={{ animationDelay: "0.2s" }}>
-                <ChartCard
-                    title="🚚 Delivery Performance by Carrier"
-                    subtitle={`${fmtNum(delivery.total_shipments)} shipments · ${delivery.avg_delivery_days} days avg · ${fmtNum(delivery.delayed)} delayed`}
-                >
-                    {/* Delivery summary cards */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-                        <div className="p-3 rounded-xl text-center" style={{ background: "rgba(16,185,129,0.08)", border: "1px solid rgba(16,185,129,0.15)" }}>
-                            <CheckCircle2 className="w-5 h-5 text-emerald-400 mx-auto mb-1" />
-                            <p className="text-lg font-bold text-slate-800">{fmtNum(delivery.delivered)}</p>
-                            <p className="text-[10px] text-slate-500 uppercase">Delivered</p>
-                        </div>
-                        <div className="p-3 rounded-xl text-center" style={{ background: "rgba(245,158,11,0.08)", border: "1px solid rgba(245,158,11,0.15)" }}>
-                            <Clock className="w-5 h-5 text-amber-400 mx-auto mb-1" />
-                            <p className="text-lg font-bold text-slate-800">{fmtNum(delivery.in_transit)}</p>
-                            <p className="text-[10px] text-slate-500 uppercase">In Transit</p>
-                        </div>
-                        <div className="p-3 rounded-xl text-center" style={{ background: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.15)" }}>
-                            <AlertTriangle className="w-5 h-5 text-red-400 mx-auto mb-1" />
-                            <p className="text-lg font-bold text-slate-800">{fmtNum(delivery.delayed)}</p>
-                            <p className="text-[10px] text-slate-500 uppercase">Delayed</p>
-                        </div>
-                        <div className="p-3 rounded-xl text-center" style={{ background: "rgba(139,92,246,0.08)", border: "1px solid rgba(139,92,246,0.15)" }}>
-                            <RotateCcw className="w-5 h-5 text-purple-400 mx-auto mb-1" />
-                            <p className="text-lg font-bold text-slate-800">{fmtNum(delivery.returned)}</p>
-                            <p className="text-[10px] text-slate-500 uppercase">Returned</p>
-                        </div>
-                    </div>
-
-                    {/* Sort control */}
-                    <div className="flex items-center gap-2 mb-3">
-                        <span className="text-[10px] text-slate-500 uppercase font-semibold tracking-wider">Sort by</span>
-                        {([
-                            { key: "ontime", label: "On-Time Rate" },
-                            { key: "shipments", label: "Shipments" },
-                            { key: "avgdays", label: "Avg Days" },
-                            { key: "delay", label: "Delay %" },
-                        ] as const).map((opt) => (
-                            <button
-                                key={opt.key}
-                                onClick={() => setCarrierSort(opt.key)}
-                                className={`px-3 py-1 rounded-lg text-[10px] font-semibold transition-all ${carrierSort === opt.key
-                                    ? "bg-accent-purple/20 text-accent-purple"
-                                    : "text-slate-500 hover:text-slate-800 hover:bg-black/[0.04]"
-                                    }`}
-                            >
-                                {opt.label}
-                            </button>
-                        ))}
-                    </div>
-
-                    {/* Carrier performance table */}
-                    <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
-                        <table className="w-full">
-                            <thead>
-                                <tr style={{ background: "rgba(139,92,246,0.06)" }}>
-                                    <th className="text-left px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider w-8">#</th>
-                                    <th className="text-left px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Carrier</th>
-                                    <th className="text-left px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">On-Time Rate</th>
-                                    <th className="text-right px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Shipments</th>
-                                    <th className="text-right px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Avg Days</th>
-                                    <th className="text-right px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Delayed</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {[...carriers]
-                                    .sort((a: any, b: any) => {
-                                        switch (carrierSort) {
-                                            case "ontime": return parseFloat(b.onTimeRate) - parseFloat(a.onTimeRate);
-                                            case "shipments": return b.shipments - a.shipments;
-                                            case "avgdays": return a.avg_days - b.avg_days;
-                                            case "delay": return b.delay_pct - a.delay_pct;
-                                            default: return 0;
-                                        }
-                                    })
-                                    .map((carrier: any, i: number) => (
-                                        <tr
-                                            key={i}
-                                            className="border-t border-black/[0.04] hover:bg-black/[0.02] transition-colors"
-                                        >
-                                            <td className="px-4 py-3 text-xs text-slate-600 font-mono">{i + 1}</td>
-                                            <td className="px-4 py-3">
-                                                <div className="flex items-center gap-2">
-                                                    <Truck className="w-4 h-4" style={{ color: carrier.color }} />
-                                                    <span className="text-sm font-semibold text-slate-800">{carrier.carrier}</span>
-                                                </div>
-                                            </td>
-                                            <td className="px-4 py-3 w-48">
-                                                <div className="flex items-center gap-2">
-                                                    <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: "rgba(0,0,0,0.06)" }}>
-                                                        <div
-                                                            className="h-full rounded-full transition-all duration-700"
-                                                            style={{
-                                                                width: `${carrier.onTimeRate}%`,
-                                                                background: parseFloat(carrier.onTimeRate) >= 85
-                                                                    ? "#10b981"
-                                                                    : parseFloat(carrier.onTimeRate) >= 70
-                                                                        ? "#f59e0b"
-                                                                        : "#ef4444",
-                                                            }}
-                                                        />
-                                                    </div>
-                                                    <span className="text-xs font-bold w-12 text-right" style={{
-                                                        color: parseFloat(carrier.onTimeRate) >= 85
-                                                            ? "#10b981"
-                                                            : parseFloat(carrier.onTimeRate) >= 70
-                                                                ? "#f59e0b"
-                                                                : "#ef4444",
-                                                    }}>{carrier.onTimeRate}%</span>
-                                                </div>
-                                            </td>
-                                            <td className="px-4 py-3 text-sm text-slate-300 text-right font-mono">{fmtNum(carrier.shipments)}</td>
-                                            <td className="px-4 py-3 text-sm text-slate-300 text-right font-mono">{carrier.avg_days}d</td>
-                                            <td className="px-4 py-3 text-right">
-                                                <span className="text-xs font-semibold px-2 py-0.5 rounded-full text-red-400 bg-red-400/10">{carrier.delay_pct}%</span>
-                                            </td>
-                                        </tr>
-                                    ))}
-                            </tbody>
-                        </table>
-                    </div>
-                </ChartCard>
-            </div>
 
             {/* ── Modals ── */}
             <DetailsModal
@@ -673,15 +539,6 @@ export default function InventoryPage() {
                 footer={`Overall stockout rate: ${stockout.stockout_pct}% across ${fmtNum(stockout.total_records)} records`}
             />
 
-            <DetailsModal
-                open={activeModal === "deliveryDetail"}
-                onClose={() => setActiveModal(null)}
-                title="Carrier Performance Details"
-                icon={Truck}
-                accentColor="from-accent-blue to-accent-teal"
-                rows={deliveryModalRows}
-                footer={`${carriers.length} carriers · ${delivery.avg_delivery_days} days avg delivery`}
-            />
 
             {/* ── Scroll to Top ── */}
             <button

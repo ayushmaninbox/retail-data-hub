@@ -31,9 +31,9 @@ import {
 const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
         return (
-            <div className="glass-card-dark p-3 border border-white/10 ring-1 ring-white/5">
-                <p className="text-xs text-slate-400 mb-1 font-semibold">{label}</p>
-                <p className="text-sm font-bold text-white">
+            <div className="glass-card-dark p-4 border border-white/10 shadow-2xl rounded-2xl">
+                <p className="text-sm text-slate-400 mb-2 font-bold tracking-tight">{label}</p>
+                <p className="text-lg font-black text-white">
                     ₹{(payload[0].value / 10000000).toFixed(2)} Cr
                 </p>
             </div>
@@ -223,8 +223,9 @@ export default function OverviewPage() {
                                     type="monotone"
                                     dataKey="revenue"
                                     stroke="#8b5cf6"
-                                    strokeWidth={2.5}
+                                    strokeWidth={3}
                                     fill="url(#revenueGrad)"
+                                    activeDot={{ r: 6, strokeWidth: 0, fill: "#fff" }}
                                 />
                             </AreaChart>
                         </ResponsiveContainer>
@@ -244,6 +245,7 @@ export default function OverviewPage() {
                                     paddingAngle={4}
                                     dataKey="value"
                                     stroke="none"
+                                    activeShape={{ fillOpacity: 1 }}
                                 >
                                     {channelMix.map((entry: any, index: number) => (
                                         <Cell key={index} fill={entry.color} />
@@ -254,12 +256,21 @@ export default function OverviewPage() {
                                         if (active && payload && payload.length) {
                                             const d = payload[0].payload;
                                             return (
-                                                <div className="glass-card-dark p-3 ring-1 ring-white/10" style={{ zIndex: 9999 }}>
-                                                    <p className="text-[10px] font-bold text-accent-purple uppercase tracking-wider mb-1">{d.name}</p>
-                                                    <div className="space-y-0.5">
-                                                        <p className="text-xs text-white">Revenue: <span className="font-bold">{fmt(d.value)}</span></p>
-                                                        <p className="text-xs text-slate-300">Share: <span className="font-bold text-white">{d.pct}%</span></p>
-                                                        <p className="text-xs text-slate-300">Txns: <span className="font-bold text-white">{fmtNum(d.transactions)}</span></p>
+                                                <div className="glass-card-dark p-4 border border-white/10 shadow-2xl rounded-2xl" style={{ zIndex: 9999 }}>
+                                                    <p className="text-xs font-black text-accent-purple uppercase tracking-wider mb-2">{d.name}</p>
+                                                    <div className="space-y-1.5">
+                                                        <div className="flex items-center justify-between gap-4">
+                                                            <span className="text-xs font-medium text-slate-300">Revenue</span>
+                                                            <span className="text-sm font-black text-white">{fmt(d.value)}</span>
+                                                        </div>
+                                                        <div className="flex items-center justify-between gap-4">
+                                                            <span className="text-xs font-medium text-slate-300">Share</span>
+                                                            <span className="text-sm font-black text-white">{d.pct}%</span>
+                                                        </div>
+                                                        <div className="flex items-center justify-between gap-4">
+                                                            <span className="text-xs font-medium text-slate-300">Transactions</span>
+                                                            <span className="text-sm font-black text-white">{fmtNum(d.transactions)}</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             );

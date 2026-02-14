@@ -12,16 +12,16 @@ export default function PageHeader({
     icon: Icon,
 }: PageHeaderProps) {
     return (
-        <div className="mb-8 animate-fade-in">
-            <div className="flex items-center gap-3 mb-1">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent-purple/15 to-accent-blue/15 flex items-center justify-center border border-accent-purple/15">
-                    <Icon className="w-4 h-4 text-accent-purple" />
+        <div className="mb-10 animate-fade-in">
+            <div className="flex items-center gap-4 mb-2">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-accent-purple/15 to-accent-blue/15 flex items-center justify-center border border-accent-purple/15">
+                    <Icon className="w-5 h-5 text-accent-purple" />
                 </div>
-                <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
+                <h1 className="text-3xl font-bold text-slate-900 tracking-tight">
                     {title}
                 </h1>
             </div>
-            <p className="text-sm text-slate-700 font-medium ml-11">{subtitle}</p>
+            <p className="text-base text-slate-700 font-medium ml-14 leading-relaxed">{subtitle}</p>
         </div>
     );
 }

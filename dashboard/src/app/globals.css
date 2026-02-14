@@ -6,6 +6,10 @@
     body {
         @apply text-slate-800 antialiased;
     }
+    
+    button, input, select, textarea {
+        @apply rounded-xl;
+    }
 }
 
 /* Custom Scrollbar */
@@ -24,15 +28,15 @@
 
 /* Glass Utilities */
 .glass-card {
-    @apply bg-white/60 backdrop-blur-xl border border-white/40 shadow-sm transition-all duration-300;
+    @apply bg-white/60 backdrop-blur-xl border border-white/40 shadow-sm transition-all duration-300 rounded-2xl;
 }
 
 .glass-card-static {
-    @apply bg-white/70 backdrop-blur-md border border-white/50 shadow-sm;
+    @apply bg-white/70 backdrop-blur-md border border-white/50 shadow-sm rounded-2xl;
 }
 
 .glass-card-dark {
-    @apply bg-slate-900/80 backdrop-blur-xl border border-white/10 shadow-2xl;
+    @apply bg-slate-900/80 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl;
 }
 
 /* Recharts Overrides */
