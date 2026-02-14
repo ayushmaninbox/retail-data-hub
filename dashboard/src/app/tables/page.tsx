@@ -33,7 +33,7 @@ import PageHeader from "@/components/PageHeader";
 
 /* ── Constants ── */
 
-const API_BASE = "http://localhost:8000";
+const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000").replace(/\/$/, "");
 
 const LAYER_META: Record<string, { label: string; color: string; icon: any; description: string }> = {
     gold: {
