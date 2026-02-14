@@ -1,0 +1,1966 @@
+{
+  "computed_at": "2026-02-14T13:42:51.723678",
+  "model_config": {
+    "architecture": "LSTM",
+    "layers": 2,
+    "hidden_dim": 64,
+    "sequence_length": 30,
+    "epochs": 60,
+    "forecast_horizon_days": 30
+  },
+  "model_metrics": {
+    "avg_r2": -0.0138,
+    "avg_mae": 231304.21,
+    "avg_mse": 564828989162.5,
+    "per_category": {
+      "Beauty": {
+        "mse": 37573484392.88,
+        "mae": 91090.04,
+        "r2": 0.0586
+      },
+      "Books": {
+        "mse": 5422805303.58,
+        "mae": 27184.83,
+        "r2": 0.0075
+      },
+      "Clothing": {
+        "mse": 32506651173.7,
+        "mae": 113935.43,
+        "r2": 0.0524
+      },
+      "Electronics": {
+        "mse": 4178847299324.06,
+        "mae": 1148760.42,
+        "r2": 0.0332
+      },
+      "Groceries": {
+        "mse": 1449850262.39,
+        "mae": 17956.05,
+        "r2": -0.0193
+      },
+      "Home & Kitchen": {
+        "mse": 223520284792.32,
+        "mae": 285652.88,
+        "r2": -0.0672
+      },
+      "Sports": {
+        "mse": 25819901882.06,
+        "mae": 91322.88,
+        "r2": -0.0686
+      },
+      "Toys": {
+        "mse": 13491636169.03,
+        "mae": 74531.12,
+        "r2": -0.107
+      }
+    }
+  },
+  "summary": {
+    "total_30d_predicted_revenue": 72199967.87,
+    "top_growth_category": "Beauty",
+    "top_growth_pct": 37.0,
+    "categories_trained": 8
+  },
+  "category_summary": [
+    {
+      "category": "Electronics",
+      "next_30d_predicted": 39192427.5,
+      "last_30d_actual": 39671969.18,
+      "trend": "stable",
+      "change_pct": -1.2
+    },
+    {
+      "category": "Home & Kitchen",
+      "next_30d_predicted": 12158040.39,
+      "last_30d_actual": 11382882.93,
+      "trend": "rising",
+      "change_pct": 6.8
+    },
+    {
+      "category": "Clothing",
+      "next_30d_predicted": 6023610.71,
+      "last_30d_actual": 4429631.68,
+      "trend": "rising",
+      "change_pct": 36.0
+    },
+    {
+      "category": "Sports",
+      "next_30d_predicted": 5541386.71,
+      "last_30d_actual": 6759975.49,
+      "trend": "falling",
+      "change_pct": -18.0
+    },
+    {
+      "category": "Beauty",
+      "next_30d_predicted": 4201308.13,
+      "last_30d_actual": 3067007.96,
+      "trend": "rising",
+      "change_pct": 37.0
+    },
+    {
+      "category": "Toys",
+      "next_30d_predicted": 3031341.53,
+      "last_30d_actual": 2456546.05,
+      "trend": "rising",
+      "change_pct": 23.4
+    },
+    {
+      "category": "Books",
+      "next_30d_predicted": 1102916.3,
+      "last_30d_actual": 889357.06,
+      "trend": "rising",
+      "change_pct": 24.0
+    },
+    {
+      "category": "Groceries",
+      "next_30d_predicted": 948936.6,
+      "last_30d_actual": 971209.25,
+      "trend": "falling",
+      "change_pct": -2.3
+    }
+  ],
+  "forecast": [
+    {
+      "date": "2025-02-01",
+      "category": "Beauty",
+      "predicted_revenue": 147045.21,
+      "lower": 112460.18,
+      "upper": 181630.25
+    },
+    {
+      "date": "2025-02-02",
+      "category": "Beauty",
+      "predicted_revenue": 150234.87,
+      "lower": 114899.63,
+      "upper": 185570.11
+    },
+    {
+      "date": "2025-02-03",
+      "category": "Beauty",
+      "predicted_revenue": 139477.95,
+      "lower": 106672.73,
+      "upper": 172283.16
+    },
+    {
+      "date": "2025-02-04",
+      "category": "Beauty",
+      "predicted_revenue": 131529.31,
+      "lower": 100593.62,
+      "upper": 162465.01
+    },
+    {
+      "date": "2025-02-05",
+      "category": "Beauty",
+      "predicted_revenue": 138859.58,
+      "lower": 106199.81,
+      "upper": 171519.36
+    },
+    {
+      "date": "2025-02-06",
+      "category": "Beauty",
+      "predicted_revenue": 146440.08,
+      "lower": 111997.38,
+      "upper": 180882.79
+    },
+    {
+      "date": "2025-02-07",
+      "category": "Beauty",
+      "predicted_revenue": 152137.64,
+      "lower": 116354.87,
+      "upper": 187920.41
+    },
+    {
+      "date": "2025-02-08",
+      "category": "Beauty",
+      "predicted_revenue": 146882.22,
+      "lower": 112335.52,
+      "upper": 181428.92
+    },
+    {
+      "date": "2025-02-09",
+      "category": "Beauty",
+      "predicted_revenue": 125095.14,
+      "lower": 95672.76,
+      "upper": 154517.52
+    },
+    {
+      "date": "2025-02-10",
+      "category": "Beauty",
+      "predicted_revenue": 103173.08,
+      "lower": 78906.77,
+      "upper": 127439.39
+    },
+    {
+      "date": "2025-02-11",
+      "category": "Beauty",
+      "predicted_revenue": 117069.17,
+      "lower": 89534.5,
+      "upper": 144603.84
+    },
+    {
+      "date": "2025-02-12",
+      "category": "Beauty",
+      "predicted_revenue": 131311.29,
+      "lower": 100426.88,
+      "upper": 162195.71
+    },
+    {
+      "date": "2025-02-13",
+      "category": "Beauty",
+      "predicted_revenue": 139436.02,
+      "lower": 106640.67,
+      "upper": 172231.37
+    },
+    {
+      "date": "2025-02-14",
+      "category": "Beauty",
+      "predicted_revenue": 149726.31,
+      "lower": 114510.68,
+      "upper": 184941.93
+    },
+    {
+      "date": "2025-02-15",
+      "category": "Beauty",
+      "predicted_revenue": 157676.67,
+      "lower": 120591.12,
+      "upper": 194762.23
+    },
+    {
+      "date": "2025-02-16",
+      "category": "Beauty",
+      "predicted_revenue": 151505.76,
+      "lower": 115871.6,
+      "upper": 187139.91
+    },
+    {
+      "date": "2025-02-17",
+      "category": "Beauty",
+      "predicted_revenue": 119809.63,
+      "lower": 91630.41,
+      "upper": 147988.86
+    },
+    {
+      "date": "2025-02-18",
+      "category": "Beauty",
+      "predicted_revenue": 119027.06,
+      "lower": 91031.89,
+      "upper": 147022.22
+    },
+    {
+      "date": "2025-02-19",
+      "category": "Beauty",
+      "predicted_revenue": 131838.65,
+      "lower": 100830.2,
+      "upper": 162847.1
+    },
+    {
+      "date": "2025-02-20",
+      "category": "Beauty",
+      "predicted_revenue": 138961.99,
+      "lower": 106278.13,
+      "upper": 171645.85
+    },
+    {
+      "date": "2025-02-21",
+      "category": "Beauty",
+      "predicted_revenue": 147595.44,
+      "lower": 112880.99,
+      "upper": 182309.89
+    },
+    {
+      "date": "2025-02-22",
+      "category": "Beauty",
+      "predicted_revenue": 153559.36,
+      "lower": 117442.2,
+      "upper": 189676.53
+    },
+    {
+      "date": "2025-02-23",
+      "category": "Beauty",
+      "predicted_revenue": 150488.87,
+      "lower": 115093.89,
+      "upper": 185883.85
+    },
+    {
+      "date": "2025-02-24",
+      "category": "Beauty",
+      "predicted_revenue": 129478.65,
+      "lower": 99025.27,
+      "upper": 159932.02
+    },
+    {
+      "date": "2025-02-25",
+      "category": "Beauty",
+      "predicted_revenue": 130577.44,
+      "lower": 99865.63,
+      "upper": 161289.25
+    },
+    {
+      "date": "2025-02-26",
+      "category": "Beauty",
+      "predicted_revenue": 135693.36,
+      "lower": 103778.28,
+      "upper": 167608.43
+    },
+    {
+      "date": "2025-02-27",
+      "category": "Beauty",
+      "predicted_revenue": 143859.69,
+      "lower": 110023.89,
+      "upper": 177695.49
+    },
+    {
+      "date": "2025-02-28",
+      "category": "Beauty",
+      "predicted_revenue": 151952.7,
+      "lower": 116213.42,
+      "upper": 187691.97
+    },
+    {
+      "date": "2025-03-01",
+      "category": "Beauty",
+      "predicted_revenue": 157834.82,
+      "lower": 120712.07,
+      "upper": 194957.57
+    },
+    {
+      "date": "2025-03-02",
+      "category": "Beauty",
+      "predicted_revenue": 163030.17,
+      "lower": 124685.48,
+      "upper": 201374.87
+    },
+    {
+      "date": "2025-02-01",
+      "category": "Books",
+      "predicted_revenue": 40930.63,
+      "lower": 31303.75,
+      "upper": 50557.51
+    },
+    {
+      "date": "2025-02-02",
+      "category": "Books",
+      "predicted_revenue": 33435.16,
+      "lower": 25571.21,
+      "upper": 41299.11
+    },
+    {
+      "date": "2025-02-03",
+      "category": "Books",
+      "predicted_revenue": 26466.3,
+      "lower": 20241.42,
+      "upper": 32691.17
+    },
+    {
+      "date": "2025-02-04",
+      "category": "Books",
+      "predicted_revenue": 28327.03,
+      "lower": 21664.51,
+      "upper": 34989.55
+    },
+    {
+      "date": "2025-02-05",
+      "category": "Books",
+      "predicted_revenue": 33952.44,
+      "lower": 25966.83,
+      "upper": 41938.06
+    },
+    {
+      "date": "2025-02-06",
+      "category": "Books",
+      "predicted_revenue": 40950.08,
+      "lower": 31318.62,
+      "upper": 50581.54
+    },
+    {
+      "date": "2025-02-07",
+      "category": "Books",
+      "predicted_revenue": 44742.82,
+      "lower": 34219.31,
+      "upper": 55266.33
+    },
+    {
+      "date": "2025-02-08",
+      "category": "Books",
+      "predicted_revenue": 45176.32,
+      "lower": 34550.85,
+      "upper": 55801.79
+    },
+    {
+      "date": "2025-02-09",
+      "category": "Books",
+      "predicted_revenue": 39563.23,
+      "lower": 30257.96,
+      "upper": 48868.5
+    },
+    {
+      "date": "2025-02-10",
+      "category": "Books",
+      "predicted_revenue": 28995.72,
+      "lower": 22175.92,
+      "upper": 35815.51
+    },
+    {
+      "date": "2025-02-11",
+      "category": "Books",
+      "predicted_revenue": 27692.52,
+      "lower": 21179.24,
+      "upper": 34205.8
+    },
+    {
+      "date": "2025-02-12",
+      "category": "Books",
+      "predicted_revenue": 32323.33,
+      "lower": 24720.89,
+      "upper": 39925.78
+    },
+    {
+      "date": "2025-02-13",
+      "category": "Books",
+      "predicted_revenue": 38834.84,
+      "lower": 29700.89,
+      "upper": 47968.8
+    },
+    {
+      "date": "2025-02-14",
+      "category": "Books",
+      "predicted_revenue": 43788.57,
+      "lower": 33489.5,
+      "upper": 54087.64
+    },
+    {
+      "date": "2025-02-15",
+      "category": "Books",
+      "predicted_revenue": 44697.23,
+      "lower": 34184.45,
+      "upper": 55210.02
+    },
+    {
+      "date": "2025-02-16",
+      "category": "Books",
+      "predicted_revenue": 39787.62,
+      "lower": 30429.57,
+      "upper": 49145.67
+    },
+    {
+      "date": "2025-02-17",
+      "category": "Books",
+      "predicted_revenue": 30152.32,
+      "lower": 23060.5,
+      "upper": 37244.15
+    },
+    {
+      "date": "2025-02-18",
+      "category": "Books",
+      "predicted_revenue": 28645.39,
+      "lower": 21908.0,
+      "upper": 35382.79
+    },
+    {
+      "date": "2025-02-19",
+      "category": "Books",
+      "predicted_revenue": 33069.28,
+      "lower": 25291.39,
+      "upper": 40847.18
+    },
+    {
+      "date": "2025-02-20",
+      "category": "Books",
+      "predicted_revenue": 39358.58,
+      "lower": 30101.44,
+      "upper": 48615.72
+    },
+    {
+      "date": "2025-02-21",
+      "category": "Books",
+      "predicted_revenue": 43718.53,
+      "lower": 33435.93,
+      "upper": 54001.13
+    },
+    {
+      "date": "2025-02-22",
+      "category": "Books",
+      "predicted_revenue": 43906.87,
+      "lower": 33579.97,
+      "upper": 54233.76
+    },
+    {
+      "date": "2025-02-23",
+      "category": "Books",
+      "predicted_revenue": 38115.76,
+      "lower": 29150.93,
+      "upper": 47080.58
+    },
+    {
+      "date": "2025-02-24",
+      "category": "Books",
+      "predicted_revenue": 29289.77,
+      "lower": 22400.82,
+      "upper": 36178.73
+    },
+    {
+      "date": "2025-02-25",
+      "category": "Books",
+      "predicted_revenue": 28755.05,
+      "lower": 21991.86,
+      "upper": 35518.23
+    },
+    {
+      "date": "2025-02-26",
+      "category": "Books",
+      "predicted_revenue": 33838.62,
+      "lower": 25879.77,
+      "upper": 41797.46
+    },
+    {
+      "date": "2025-02-27",
+      "category": "Books",
+      "predicted_revenue": 40283.58,
+      "lower": 30808.88,
+      "upper": 49758.28
+    },
+    {
+      "date": "2025-02-28",
+      "category": "Books",
+      "predicted_revenue": 44205.31,
+      "lower": 33808.22,
+      "upper": 54602.39
+    },
+    {
+      "date": "2025-03-01",
+      "category": "Books",
+      "predicted_revenue": 43913.58,
+      "lower": 33585.11,
+      "upper": 54242.05
+    },
+    {
+      "date": "2025-03-02",
+      "category": "Books",
+      "predicted_revenue": 35999.82,
+      "lower": 27532.66,
+      "upper": 44466.97
+    },
+    {
+      "date": "2025-02-01",
+      "category": "Clothing",
+      "predicted_revenue": 198324.14,
+      "lower": 151678.3,
+      "upper": 244969.97
+    },
+    {
+      "date": "2025-02-02",
+      "category": "Clothing",
+      "predicted_revenue": 185659.84,
+      "lower": 141992.65,
+      "upper": 229327.04
+    },
+    {
+      "date": "2025-02-03",
+      "category": "Clothing",
+      "predicted_revenue": 172497.81,
+      "lower": 131926.32,
+      "upper": 213069.29
+    },
+    {
+      "date": "2025-02-04",
+      "category": "Clothing",
+      "predicted_revenue": 170087.8,
+      "lower": 130083.15,
+      "upper": 210092.45
+    },
+    {
+      "date": "2025-02-05",
+      "category": "Clothing",
+      "predicted_revenue": 175385.06,
+      "lower": 134134.5,
+      "upper": 216635.63
+    },
+    {
+      "date": "2025-02-06",
+      "category": "Clothing",
+      "predicted_revenue": 181839.65,
+      "lower": 139070.96,
+      "upper": 224608.33
+    },
+    {
+      "date": "2025-02-07",
+      "category": "Clothing",
+      "predicted_revenue": 188391.19,
+      "lower": 144081.58,
+      "upper": 232700.79
+    },
+    {
+      "date": "2025-02-08",
+      "category": "Clothing",
+      "predicted_revenue": 191515.85,
+      "lower": 146471.32,
+      "upper": 236560.37
+    },
+    {
+      "date": "2025-02-09",
+      "category": "Clothing",
+      "predicted_revenue": 188033.64,
+      "lower": 143808.13,
+      "upper": 232259.15
+    },
+    {
+      "date": "2025-02-10",
+      "category": "Clothing",
+      "predicted_revenue": 178590.31,
+      "lower": 136585.87,
+      "upper": 220594.75
+    },
+    {
+      "date": "2025-02-11",
+      "category": "Clothing",
+      "predicted_revenue": 171810.17,
+      "lower": 131400.42,
+      "upper": 212219.92
+    },
+    {
+      "date": "2025-02-12",
+      "category": "Clothing",
+      "predicted_revenue": 174678.61,
+      "lower": 133594.2,
+      "upper": 215763.01
+    },
+    {
+      "date": "2025-02-13",
+      "category": "Clothing",
+      "predicted_revenue": 187182.62,
+      "lower": 143157.27,
+      "upper": 231207.98
+    },
+    {
+      "date": "2025-02-14",
+      "category": "Clothing",
+      "predicted_revenue": 210075.76,
+      "lower": 160665.94,
+      "upper": 259485.58
+    },
+    {
+      "date": "2025-02-15",
+      "category": "Clothing",
+      "predicted_revenue": 257575.51,
+      "lower": 196993.75,
+      "upper": 318157.27
+    },
+    {
+      "date": "2025-02-16",
+      "category": "Clothing",
+      "predicted_revenue": 230457.94,
+      "lower": 176254.23,
+      "upper": 284661.65
+    },
+    {
+      "date": "2025-02-17",
+      "category": "Clothing",
+      "predicted_revenue": 191116.67,
+      "lower": 146166.03,
+      "upper": 236067.32
+    },
+    {
+      "date": "2025-02-18",
+      "category": "Clothing",
+      "predicted_revenue": 173219.99,
+      "lower": 132478.65,
+      "upper": 213961.33
+    },
+    {
+      "date": "2025-02-19",
+      "category": "Clothing",
+      "predicted_revenue": 168006.26,
+      "lower": 128491.19,
+      "upper": 207521.34
+    },
+    {
+      "date": "2025-02-20",
+      "category": "Clothing",
+      "predicted_revenue": 180840.99,
+      "lower": 138307.19,
+      "upper": 223374.79
+    },
+    {
+      "date": "2025-02-21",
+      "category": "Clothing",
+      "predicted_revenue": 211347.65,
+      "lower": 161638.69,
+      "upper": 261056.62
+    },
+    {
+      "date": "2025-02-22",
+      "category": "Clothing",
+      "predicted_revenue": 276161.98,
+      "lower": 211208.69,
+      "upper": 341115.28
+    },
+    {
+      "date": "2025-02-23",
+      "category": "Clothing",
+      "predicted_revenue": 252669.73,
+      "lower": 193241.81,
+      "upper": 312097.65
+    },
+    {
+      "date": "2025-02-24",
+      "category": "Clothing",
+      "predicted_revenue": 199018.7,
+      "lower": 152209.5,
+      "upper": 245827.9
+    },
+    {
+      "date": "2025-02-25",
+      "category": "Clothing",
+      "predicted_revenue": 184212.08,
+      "lower": 140885.4,
+      "upper": 227538.76
+    },
+    {
+      "date": "2025-02-26",
+      "category": "Clothing",
+      "predicted_revenue": 186963.59,
+      "lower": 142989.76,
+      "upper": 230937.43
+    },
+    {
+      "date": "2025-02-27",
+      "category": "Clothing",
+      "predicted_revenue": 200999.41,
+      "lower": 153724.35,
+      "upper": 248274.47
+    },
+    {
+      "date": "2025-02-28",
+      "category": "Clothing",
+      "predicted_revenue": 243489.84,
+      "lower": 186221.03,
+      "upper": 300758.65
+    },
+    {
+      "date": "2025-03-01",
+      "category": "Clothing",
+      "predicted_revenue": 269474.27,
+      "lower": 206093.92,
+      "upper": 332854.62
+    },
+    {
+      "date": "2025-03-02",
+      "category": "Clothing",
+      "predicted_revenue": 223983.65,
+      "lower": 171302.69,
+      "upper": 276664.6
+    },
+    {
+      "date": "2025-02-01",
+      "category": "Electronics",
+      "predicted_revenue": 1542344.98,
+      "lower": 1179585.44,
+      "upper": 1905104.52
+    },
+    {
+      "date": "2025-02-02",
+      "category": "Electronics",
+      "predicted_revenue": 1227412.41,
+      "lower": 938725.01,
+      "upper": 1516099.8
+    },
+    {
+      "date": "2025-02-03",
+      "category": "Electronics",
+      "predicted_revenue": 991161.34,
+      "lower": 758040.19,
+      "upper": 1224282.48
+    },
+    {
+      "date": "2025-02-04",
+      "category": "Electronics",
+      "predicted_revenue": 890752.75,
+      "lower": 681247.71,
+      "upper": 1100257.8
+    },
+    {
+      "date": "2025-02-05",
+      "category": "Electronics",
+      "predicted_revenue": 997041.47,
+      "lower": 762537.32,
+      "upper": 1231545.63
+    },
+    {
+      "date": "2025-02-06",
+      "category": "Electronics",
+      "predicted_revenue": 1175227.05,
+      "lower": 898813.65,
+      "upper": 1451640.46
+    },
+    {
+      "date": "2025-02-07",
+      "category": "Electronics",
+      "predicted_revenue": 1342667.67,
+      "lower": 1026872.23,
+      "upper": 1658463.1
+    },
+    {
+      "date": "2025-02-08",
+      "category": "Electronics",
+      "predicted_revenue": 1438929.94,
+      "lower": 1100493.62,
+      "upper": 1777366.26
+    },
+    {
+      "date": "2025-02-09",
+      "category": "Electronics",
+      "predicted_revenue": 1345712.17,
+      "lower": 1029200.67,
+      "upper": 1662223.67
+    },
+    {
+      "date": "2025-02-10",
+      "category": "Electronics",
+      "predicted_revenue": 1180819.14,
+      "lower": 903090.48,
+      "upper": 1458547.8
+    },
+    {
+      "date": "2025-02-11",
+      "category": "Electronics",
+      "predicted_revenue": 1136656.1,
+      "lower": 869314.59,
+      "upper": 1403997.62
+    },
+    {
+      "date": "2025-02-12",
+      "category": "Electronics",
+      "predicted_revenue": 1189195.7,
+      "lower": 909496.87,
+      "upper": 1468894.53
+    },
+    {
+      "date": "2025-02-13",
+      "category": "Electronics",
+      "predicted_revenue": 1340794.0,
+      "lower": 1025439.25,
+      "upper": 1656148.75
+    },
+    {
+      "date": "2025-02-14",
+      "category": "Electronics",
+      "predicted_revenue": 1531575.98,
+      "lower": 1171349.31,
+      "upper": 1891802.65
+    },
+    {
+      "date": "2025-02-15",
+      "category": "Electronics",
+      "predicted_revenue": 1610143.73,
+      "lower": 1231437.92,
+      "upper": 1988849.53
+    },
+    {
+      "date": "2025-02-16",
+      "category": "Electronics",
+      "predicted_revenue": 1434295.19,
+      "lower": 1096948.96,
+      "upper": 1771641.41
+    },
+    {
+      "date": "2025-02-17",
+      "category": "Electronics",
+      "predicted_revenue": 1190065.38,
+      "lower": 910162.0,
+      "upper": 1469968.75
+    },
+    {
+      "date": "2025-02-18",
+      "category": "Electronics",
+      "predicted_revenue": 1104010.28,
+      "lower": 844347.06,
+      "upper": 1363673.49
+    },
+    {
+      "date": "2025-02-19",
+      "category": "Electronics",
+      "predicted_revenue": 1191453.44,
+      "lower": 911223.59,
+      "upper": 1471683.28
+    },
+    {
+      "date": "2025-02-20",
+      "category": "Electronics",
+      "predicted_revenue": 1363985.1,
+      "lower": 1043175.81,
+      "upper": 1684794.4
+    },
+    {
+      "date": "2025-02-21",
+      "category": "Electronics",
+      "predicted_revenue": 1587195.3,
+      "lower": 1213886.96,
+      "upper": 1960503.63
+    },
+    {
+      "date": "2025-02-22",
+      "category": "Electronics",
+      "predicted_revenue": 1641843.27,
+      "lower": 1255681.73,
+      "upper": 2028004.81
+    },
+    {
+      "date": "2025-02-23",
+      "category": "Electronics",
+      "predicted_revenue": 1399053.19,
+      "lower": 1069995.88,
+      "upper": 1728110.5
+    },
+    {
+      "date": "2025-02-24",
+      "category": "Electronics",
+      "predicted_revenue": 1140658.65,
+      "lower": 872375.74,
+      "upper": 1408941.56
+    },
+    {
+      "date": "2025-02-25",
+      "category": "Electronics",
+      "predicted_revenue": 1041171.09,
+      "lower": 796287.65,
+      "upper": 1286054.53
+    },
+    {
+      "date": "2025-02-26",
+      "category": "Electronics",
+      "predicted_revenue": 1189279.25,
+      "lower": 909560.77,
+      "upper": 1468997.73
+    },
+    {
+      "date": "2025-02-27",
+      "category": "Electronics",
+      "predicted_revenue": 1400932.13,
+      "lower": 1071432.89,
+      "upper": 1730431.37
+    },
+    {
+      "date": "2025-02-28",
+      "category": "Electronics",
+      "predicted_revenue": 1657653.58,
+      "lower": 1267773.46,
+      "upper": 2047533.7
+    },
+    {
+      "date": "2025-03-01",
+      "category": "Electronics",
+      "predicted_revenue": 1631598.44,
+      "lower": 1247846.49,
+      "upper": 2015350.39
+    },
+    {
+      "date": "2025-03-02",
+      "category": "Electronics",
+      "predicted_revenue": 1278798.78,
+      "lower": 978025.31,
+      "upper": 1579572.25
+    },
+    {
+      "date": "2025-02-01",
+      "category": "Groceries",
+      "predicted_revenue": 39339.97,
+      "lower": 30087.21,
+      "upper": 48592.74
+    },
+    {
+      "date": "2025-02-02",
+      "category": "Groceries",
+      "predicted_revenue": 32328.78,
+      "lower": 24725.05,
+      "upper": 39932.51
+    },
+    {
+      "date": "2025-02-03",
+      "category": "Groceries",
+      "predicted_revenue": 24358.61,
+      "lower": 18629.47,
+      "upper": 30087.76
+    },
+    {
+      "date": "2025-02-04",
+      "category": "Groceries",
+      "predicted_revenue": 22398.52,
+      "lower": 17130.39,
+      "upper": 27666.65
+    },
+    {
+      "date": "2025-02-05",
+      "category": "Groceries",
+      "predicted_revenue": 25395.86,
+      "lower": 19422.75,
+      "upper": 31368.96
+    },
+    {
+      "date": "2025-02-06",
+      "category": "Groceries",
+      "predicted_revenue": 30385.6,
+      "lower": 23238.91,
+      "upper": 37532.3
+    },
+    {
+      "date": "2025-02-07",
+      "category": "Groceries",
+      "predicted_revenue": 34484.61,
+      "lower": 26373.83,
+      "upper": 42595.39
+    },
+    {
+      "date": "2025-02-08",
+      "category": "Groceries",
+      "predicted_revenue": 35557.43,
+      "lower": 27194.32,
+      "upper": 43920.53
+    },
+    {
+      "date": "2025-02-09",
+      "category": "Groceries",
+      "predicted_revenue": 32932.54,
+      "lower": 25186.81,
+      "upper": 40678.27
+    },
+    {
+      "date": "2025-02-10",
+      "category": "Groceries",
+      "predicted_revenue": 27745.99,
+      "lower": 21220.14,
+      "upper": 34271.85
+    },
+    {
+      "date": "2025-02-11",
+      "category": "Groceries",
+      "predicted_revenue": 25871.34,
+      "lower": 19786.4,
+      "upper": 31956.28
+    },
+    {
+      "date": "2025-02-12",
+      "category": "Groceries",
+      "predicted_revenue": 28299.36,
+      "lower": 21643.35,
+      "upper": 34955.37
+    },
+    {
+      "date": "2025-02-13",
+      "category": "Groceries",
+      "predicted_revenue": 32698.46,
+      "lower": 25007.78,
+      "upper": 40389.13
+    },
+    {
+      "date": "2025-02-14",
+      "category": "Groceries",
+      "predicted_revenue": 36248.17,
+      "lower": 27722.6,
+      "upper": 44773.75
+    },
+    {
+      "date": "2025-02-15",
+      "category": "Groceries",
+      "predicted_revenue": 36666.68,
+      "lower": 28042.67,
+      "upper": 45290.68
+    },
+    {
+      "date": "2025-02-16",
+      "category": "Groceries",
+      "predicted_revenue": 33279.91,
+      "lower": 25452.47,
+      "upper": 41107.34
+    },
+    {
+      "date": "2025-02-17",
+      "category": "Groceries",
+      "predicted_revenue": 27448.48,
+      "lower": 20992.6,
+      "upper": 33904.36
+    },
+    {
+      "date": "2025-02-18",
+      "category": "Groceries",
+      "predicted_revenue": 25410.15,
+      "lower": 19433.68,
+      "upper": 31386.62
+    },
+    {
+      "date": "2025-02-19",
+      "category": "Groceries",
+      "predicted_revenue": 28343.22,
+      "lower": 21676.89,
+      "upper": 35009.54
+    },
+    {
+      "date": "2025-02-20",
+      "category": "Groceries",
+      "predicted_revenue": 33609.07,
+      "lower": 25704.22,
+      "upper": 41513.93
+    },
+    {
+      "date": "2025-02-21",
+      "category": "Groceries",
+      "predicted_revenue": 37898.07,
+      "lower": 28984.44,
+      "upper": 46811.7
+    },
+    {
+      "date": "2025-02-22",
+      "category": "Groceries",
+      "predicted_revenue": 38362.28,
+      "lower": 29339.47,
+      "upper": 47385.09
+    },
+    {
+      "date": "2025-02-23",
+      "category": "Groceries",
+      "predicted_revenue": 34160.36,
+      "lower": 26125.84,
+      "upper": 42194.88
+    },
+    {
+      "date": "2025-02-24",
+      "category": "Groceries",
+      "predicted_revenue": 27152.13,
+      "lower": 20765.95,
+      "upper": 33538.31
+    },
+    {
+      "date": "2025-02-25",
+      "category": "Groceries",
+      "predicted_revenue": 24591.57,
+      "lower": 18807.63,
+      "upper": 30375.5
+    },
+    {
+      "date": "2025-02-26",
+      "category": "Groceries",
+      "predicted_revenue": 27855.82,
+      "lower": 21304.13,
+      "upper": 34407.51
+    },
+    {
+      "date": "2025-02-27",
+      "category": "Groceries",
+      "predicted_revenue": 34035.71,
+      "lower": 26030.51,
+      "upper": 42040.91
+    },
+    {
+      "date": "2025-02-28",
+      "category": "Groceries",
+      "predicted_revenue": 39270.64,
+      "lower": 30034.18,
+      "upper": 48507.09
+    },
+    {
+      "date": "2025-03-01",
+      "category": "Groceries",
+      "predicted_revenue": 39971.15,
+      "lower": 30569.94,
+      "upper": 49372.37
+    },
+    {
+      "date": "2025-03-02",
+      "category": "Groceries",
+      "predicted_revenue": 32836.12,
+      "lower": 25113.07,
+      "upper": 40559.18
+    },
+    {
+      "date": "2025-02-01",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 543122.08,
+      "lower": 415379.77,
+      "upper": 670864.39
+    },
+    {
+      "date": "2025-02-02",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 474764.75,
+      "lower": 363100.08,
+      "upper": 586429.41
+    },
+    {
+      "date": "2025-02-03",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 371490.56,
+      "lower": 284115.98,
+      "upper": 458865.14
+    },
+    {
+      "date": "2025-02-04",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 335838.9,
+      "lower": 256849.59,
+      "upper": 414828.21
+    },
+    {
+      "date": "2025-02-05",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 331654.62,
+      "lower": 253649.45,
+      "upper": 409659.78
+    },
+    {
+      "date": "2025-02-06",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 338814.21,
+      "lower": 259125.11,
+      "upper": 418503.32
+    },
+    {
+      "date": "2025-02-07",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 340047.12,
+      "lower": 260068.04,
+      "upper": 420026.2
+    },
+    {
+      "date": "2025-02-08",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 328746.91,
+      "lower": 251425.64,
+      "upper": 406068.19
+    },
+    {
+      "date": "2025-02-09",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 304993.17,
+      "lower": 233258.78,
+      "upper": 376727.57
+    },
+    {
+      "date": "2025-02-10",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 273274.24,
+      "lower": 209000.14,
+      "upper": 337548.34
+    },
+    {
+      "date": "2025-02-11",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 297400.86,
+      "lower": 227452.18,
+      "upper": 367349.54
+    },
+    {
+      "date": "2025-02-12",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 332303.59,
+      "lower": 254145.78,
+      "upper": 410461.39
+    },
+    {
+      "date": "2025-02-13",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 367431.12,
+      "lower": 281011.32,
+      "upper": 453850.91
+    },
+    {
+      "date": "2025-02-14",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 392025.4,
+      "lower": 299821.02,
+      "upper": 484229.77
+    },
+    {
+      "date": "2025-02-15",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 401103.32,
+      "lower": 306763.82,
+      "upper": 495442.82
+    },
+    {
+      "date": "2025-02-16",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 392118.78,
+      "lower": 299892.45,
+      "upper": 484345.12
+    },
+    {
+      "date": "2025-02-17",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 365324.37,
+      "lower": 279400.08,
+      "upper": 451248.66
+    },
+    {
+      "date": "2025-02-18",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 387122.81,
+      "lower": 296071.53,
+      "upper": 478174.1
+    },
+    {
+      "date": "2025-02-19",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 416320.7,
+      "lower": 318402.07,
+      "upper": 514239.32
+    },
+    {
+      "date": "2025-02-20",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 435300.28,
+      "lower": 332917.66,
+      "upper": 537682.91
+    },
+    {
+      "date": "2025-02-21",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 465090.13,
+      "lower": 355700.93,
+      "upper": 574479.33
+    },
+    {
+      "date": "2025-02-22",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 513005.0,
+      "lower": 392346.22,
+      "upper": 633663.77
+    },
+    {
+      "date": "2025-02-23",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 488136.34,
+      "lower": 373326.67,
+      "upper": 602946.0
+    },
+    {
+      "date": "2025-02-24",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 420103.76,
+      "lower": 321295.35,
+      "upper": 518912.16
+    },
+    {
+      "date": "2025-02-25",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 417586.39,
+      "lower": 319370.07,
+      "upper": 515802.71
+    },
+    {
+      "date": "2025-02-26",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 439259.23,
+      "lower": 335945.46,
+      "upper": 542573.0
+    },
+    {
+      "date": "2025-02-27",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 468672.58,
+      "lower": 358440.79,
+      "upper": 578904.37
+    },
+    {
+      "date": "2025-02-28",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 514668.36,
+      "lower": 393618.37,
+      "upper": 635718.36
+    },
+    {
+      "date": "2025-03-01",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 538299.45,
+      "lower": 411691.42,
+      "upper": 664907.48
+    },
+    {
+      "date": "2025-03-02",
+      "category": "Home & Kitchen",
+      "predicted_revenue": 464021.36,
+      "lower": 354883.54,
+      "upper": 573159.19
+    },
+    {
+      "date": "2025-02-01",
+      "category": "Sports",
+      "predicted_revenue": 195557.14,
+      "lower": 149562.1,
+      "upper": 241552.17
+    },
+    {
+      "date": "2025-02-02",
+      "category": "Sports",
+      "predicted_revenue": 208177.71,
+      "lower": 159214.31,
+      "upper": 257141.11
+    },
+    {
+      "date": "2025-02-03",
+      "category": "Sports",
+      "predicted_revenue": 222836.4,
+      "lower": 170425.28,
+      "upper": 275247.52
+    },
+    {
+      "date": "2025-02-04",
+      "category": "Sports",
+      "predicted_revenue": 196565.75,
+      "lower": 150333.49,
+      "upper": 242798.02
+    },
+    {
+      "date": "2025-02-05",
+      "category": "Sports",
+      "predicted_revenue": 193919.95,
+      "lower": 148309.98,
+      "upper": 239529.92
+    },
+    {
+      "date": "2025-02-06",
+      "category": "Sports",
+      "predicted_revenue": 201497.99,
+      "lower": 154105.66,
+      "upper": 248890.32
+    },
+    {
+      "date": "2025-02-07",
+      "category": "Sports",
+      "predicted_revenue": 208716.71,
+      "lower": 159626.54,
+      "upper": 257806.88
+    },
+    {
+      "date": "2025-02-08",
+      "category": "Sports",
+      "predicted_revenue": 204547.7,
+      "lower": 156438.08,
+      "upper": 252657.32
+    },
+    {
+      "date": "2025-02-09",
+      "category": "Sports",
+      "predicted_revenue": 186957.15,
+      "lower": 142984.83,
+      "upper": 230929.47
+    },
+    {
+      "date": "2025-02-10",
+      "category": "Sports",
+      "predicted_revenue": 167704.07,
+      "lower": 128260.07,
+      "upper": 207148.06
+    },
+    {
+      "date": "2025-02-11",
+      "category": "Sports",
+      "predicted_revenue": 151604.31,
+      "lower": 115946.98,
+      "upper": 187261.65
+    },
+    {
+      "date": "2025-02-12",
+      "category": "Sports",
+      "predicted_revenue": 160909.94,
+      "lower": 123063.92,
+      "upper": 198755.95
+    },
+    {
+      "date": "2025-02-13",
+      "category": "Sports",
+      "predicted_revenue": 173834.76,
+      "lower": 132948.83,
+      "upper": 214720.7
+    },
+    {
+      "date": "2025-02-14",
+      "category": "Sports",
+      "predicted_revenue": 188800.95,
+      "lower": 144394.96,
+      "upper": 233206.93
+    },
+    {
+      "date": "2025-02-15",
+      "category": "Sports",
+      "predicted_revenue": 200701.0,
+      "lower": 153496.12,
+      "upper": 247905.87
+    },
+    {
+      "date": "2025-02-16",
+      "category": "Sports",
+      "predicted_revenue": 205389.52,
+      "lower": 157081.9,
+      "upper": 253697.13
+    },
+    {
+      "date": "2025-02-17",
+      "category": "Sports",
+      "predicted_revenue": 197260.16,
+      "lower": 150864.57,
+      "upper": 243655.75
+    },
+    {
+      "date": "2025-02-18",
+      "category": "Sports",
+      "predicted_revenue": 164031.43,
+      "lower": 125451.24,
+      "upper": 202611.62
+    },
+    {
+      "date": "2025-02-19",
+      "category": "Sports",
+      "predicted_revenue": 166620.29,
+      "lower": 127431.2,
+      "upper": 205809.38
+    },
+    {
+      "date": "2025-02-20",
+      "category": "Sports",
+      "predicted_revenue": 180017.01,
+      "lower": 137677.01,
+      "upper": 222357.01
+    },
+    {
+      "date": "2025-02-21",
+      "category": "Sports",
+      "predicted_revenue": 191746.45,
+      "lower": 146647.68,
+      "upper": 236845.21
+    },
+    {
+      "date": "2025-02-22",
+      "category": "Sports",
+      "predicted_revenue": 194656.66,
+      "lower": 148873.41,
+      "upper": 240439.91
+    },
+    {
+      "date": "2025-02-23",
+      "category": "Sports",
+      "predicted_revenue": 185172.74,
+      "lower": 141620.11,
+      "upper": 228725.37
+    },
+    {
+      "date": "2025-02-24",
+      "category": "Sports",
+      "predicted_revenue": 168074.31,
+      "lower": 128543.23,
+      "upper": 207605.39
+    },
+    {
+      "date": "2025-02-25",
+      "category": "Sports",
+      "predicted_revenue": 149814.07,
+      "lower": 114577.8,
+      "upper": 185050.34
+    },
+    {
+      "date": "2025-02-26",
+      "category": "Sports",
+      "predicted_revenue": 157467.61,
+      "lower": 120431.23,
+      "upper": 194504.0
+    },
+    {
+      "date": "2025-02-27",
+      "category": "Sports",
+      "predicted_revenue": 168644.08,
+      "lower": 128978.99,
+      "upper": 208309.17
+    },
+    {
+      "date": "2025-02-28",
+      "category": "Sports",
+      "predicted_revenue": 178618.29,
+      "lower": 136607.27,
+      "upper": 220629.31
+    },
+    {
+      "date": "2025-03-01",
+      "category": "Sports",
+      "predicted_revenue": 182051.47,
+      "lower": 139232.96,
+      "upper": 224869.98
+    },
+    {
+      "date": "2025-03-02",
+      "category": "Sports",
+      "predicted_revenue": 189491.09,
+      "lower": 144922.79,
+      "upper": 234059.39
+    },
+    {
+      "date": "2025-02-01",
+      "category": "Toys",
+      "predicted_revenue": 118169.52,
+      "lower": 90376.05,
+      "upper": 145962.99
+    },
+    {
+      "date": "2025-02-02",
+      "category": "Toys",
+      "predicted_revenue": 120734.27,
+      "lower": 92337.57,
+      "upper": 149130.98
+    },
+    {
+      "date": "2025-02-03",
+      "category": "Toys",
+      "predicted_revenue": 113141.54,
+      "lower": 86530.65,
+      "upper": 139752.43
+    },
+    {
+      "date": "2025-02-04",
+      "category": "Toys",
+      "predicted_revenue": 101473.34,
+      "lower": 77606.81,
+      "upper": 125339.87
+    },
+    {
+      "date": "2025-02-05",
+      "category": "Toys",
+      "predicted_revenue": 101301.86,
+      "lower": 77475.66,
+      "upper": 125128.05
+    },
+    {
+      "date": "2025-02-06",
+      "category": "Toys",
+      "predicted_revenue": 106593.54,
+      "lower": 81522.74,
+      "upper": 131664.34
+    },
+    {
+      "date": "2025-02-07",
+      "category": "Toys",
+      "predicted_revenue": 112865.16,
+      "lower": 86319.28,
+      "upper": 139411.05
+    },
+    {
+      "date": "2025-02-08",
+      "category": "Toys",
+      "predicted_revenue": 113218.65,
+      "lower": 86589.62,
+      "upper": 139847.67
+    },
+    {
+      "date": "2025-02-09",
+      "category": "Toys",
+      "predicted_revenue": 104407.1,
+      "lower": 79850.55,
+      "upper": 128963.65
+    },
+    {
+      "date": "2025-02-10",
+      "category": "Toys",
+      "predicted_revenue": 88692.26,
+      "lower": 67831.84,
+      "upper": 109552.68
+    },
+    {
+      "date": "2025-02-11",
+      "category": "Toys",
+      "predicted_revenue": 77496.39,
+      "lower": 59269.24,
+      "upper": 95723.54
+    },
+    {
+      "date": "2025-02-12",
+      "category": "Toys",
+      "predicted_revenue": 82627.54,
+      "lower": 63193.54,
+      "upper": 102061.54
+    },
+    {
+      "date": "2025-02-13",
+      "category": "Toys",
+      "predicted_revenue": 94150.4,
+      "lower": 72006.22,
+      "upper": 116294.57
+    },
+    {
+      "date": "2025-02-14",
+      "category": "Toys",
+      "predicted_revenue": 105971.25,
+      "lower": 81046.81,
+      "upper": 130895.69
+    },
+    {
+      "date": "2025-02-15",
+      "category": "Toys",
+      "predicted_revenue": 111130.9,
+      "lower": 84992.91,
+      "upper": 137268.89
+    },
+    {
+      "date": "2025-02-16",
+      "category": "Toys",
+      "predicted_revenue": 105540.77,
+      "lower": 80717.58,
+      "upper": 130363.96
+    },
+    {
+      "date": "2025-02-17",
+      "category": "Toys",
+      "predicted_revenue": 89626.12,
+      "lower": 68546.06,
+      "upper": 110706.19
+    },
+    {
+      "date": "2025-02-18",
+      "category": "Toys",
+      "predicted_revenue": 77257.96,
+      "lower": 59086.89,
+      "upper": 95429.03
+    },
+    {
+      "date": "2025-02-19",
+      "category": "Toys",
+      "predicted_revenue": 81587.52,
+      "lower": 62398.13,
+      "upper": 100776.9
+    },
+    {
+      "date": "2025-02-20",
+      "category": "Toys",
+      "predicted_revenue": 94535.58,
+      "lower": 72300.81,
+      "upper": 116770.35
+    },
+    {
+      "date": "2025-02-21",
+      "category": "Toys",
+      "predicted_revenue": 108591.51,
+      "lower": 83050.79,
+      "upper": 134132.23
+    },
+    {
+      "date": "2025-02-22",
+      "category": "Toys",
+      "predicted_revenue": 117050.49,
+      "lower": 89520.22,
+      "upper": 144580.77
+    },
+    {
+      "date": "2025-02-23",
+      "category": "Toys",
+      "predicted_revenue": 112805.95,
+      "lower": 86273.99,
+      "upper": 139337.9
+    },
+    {
+      "date": "2025-02-24",
+      "category": "Toys",
+      "predicted_revenue": 94470.3,
+      "lower": 72250.89,
+      "upper": 116689.72
+    },
+    {
+      "date": "2025-02-25",
+      "category": "Toys",
+      "predicted_revenue": 78105.6,
+      "lower": 59735.16,
+      "upper": 96476.04
+    },
+    {
+      "date": "2025-02-26",
+      "category": "Toys",
+      "predicted_revenue": 79623.73,
+      "lower": 60896.23,
+      "upper": 98351.23
+    },
+    {
+      "date": "2025-02-27",
+      "category": "Toys",
+      "predicted_revenue": 91688.68,
+      "lower": 70123.5,
+      "upper": 113253.85
+    },
+    {
+      "date": "2025-02-28",
+      "category": "Toys",
+      "predicted_revenue": 107637.75,
+      "lower": 82321.35,
+      "upper": 132954.15
+    },
+    {
+      "date": "2025-03-01",
+      "category": "Toys",
+      "predicted_revenue": 119341.27,
+      "lower": 91272.2,
+      "upper": 147410.33
+    },
+    {
+      "date": "2025-03-02",
+      "category": "Toys",
+      "predicted_revenue": 121504.58,
+      "lower": 92926.7,
+      "upper": 150082.45
+    }
+  ],
+  "training_history": [
+    {
+      "epoch": 56,
+      "loss": 0.006979
+    },
+    {
+      "epoch": 57,
+      "loss": 0.006571
+    },
+    {
+      "epoch": 58,
+      "loss": 0.006511
+    },
+    {
+      "epoch": 59,
+      "loss": 0.006691
+    },
+    {
+      "epoch": 60,
+      "loss": 0.006052
+    },
+    {
+      "epoch": 56,
+      "loss": 0.001915
+    },
+    {
+      "epoch": 57,
+      "loss": 0.001904
+    },
+    {
+      "epoch": 58,
+      "loss": 0.001892
+    },
+    {
+      "epoch": 59,
+      "loss": 0.001866
+    },
+    {
+      "epoch": 60,
+      "loss": 0.001873
+    },
+    {
+      "epoch": 56,
+      "loss": 0.010123
+    },
+    {
+      "epoch": 57,
+      "loss": 0.009954
+    },
+    {
+      "epoch": 58,
+      "loss": 0.009802
+    },
+    {
+      "epoch": 59,
+      "loss": 0.010554
+    },
+    {
+      "epoch": 60,
+      "loss": 0.010188
+    },
+    {
+      "epoch": 56,
+      "loss": 0.006732
+    },
+    {
+      "epoch": 57,
+      "loss": 0.006568
+    },
+    {
+      "epoch": 58,
+      "loss": 0.006552
+    },
+    {
+      "epoch": 59,
+      "loss": 0.006726
+    },
+    {
+      "epoch": 60,
+      "loss": 0.006634
+    },
+    {
+      "epoch": 56,
+      "loss": 0.003469
+    },
+    {
+      "epoch": 57,
+      "loss": 0.003443
+    },
+    {
+      "epoch": 58,
+      "loss": 0.003499
+    },
+    {
+      "epoch": 59,
+      "loss": 0.003364
+    },
+    {
+      "epoch": 60,
+      "loss": 0.003492
+    },
+    {
+      "epoch": 56,
+      "loss": 0.005176
+    },
+    {
+      "epoch": 57,
+      "loss": 0.005133
+    },
+    {
+      "epoch": 58,
+      "loss": 0.00509
+    },
+    {
+      "epoch": 59,
+      "loss": 0.005109
+    },
+    {
+      "epoch": 60,
+      "loss": 0.005034
+    },
+    {
+      "epoch": 56,
+      "loss": 0.008168
+    },
+    {
+      "epoch": 57,
+      "loss": 0.008699
+    },
+    {
+      "epoch": 58,
+      "loss": 0.00866
+    },
+    {
+      "epoch": 59,
+      "loss": 0.007751
+    },
+    {
+      "epoch": 60,
+      "loss": 0.0074
+    },
+    {
+      "epoch": 56,
+      "loss": 0.003203
+    },
+    {
+      "epoch": 57,
+      "loss": 0.003149
+    },
+    {
+      "epoch": 58,
+      "loss": 0.003251
+    },
+    {
+      "epoch": 59,
+      "loss": 0.00312
+    },
+    {
+      "epoch": 60,
+      "loss": 0.003145
+    }
+  ]
+}

@@ -1,0 +1,492 @@
+{
+  "report_timestamp": "2026-02-14T13:41:02.243654",
+  "summary": {
+    "total_checks": 7,
+    "passed": 4,
+    "failed": 3,
+    "total_violations": 1745,
+    "overall_status": "ISSUES_DETECTED"
+  },
+  "datasets_checked": {
+    "pos_sales": {
+      "rows": 50862,
+      "columns": 11
+    },
+    "web_orders": {
+      "rows": 19568,
+      "columns": 13
+    },
+    "warehouse_inventory": {
+      "rows": 50000,
+      "columns": 9
+    }
+  },
+  "check_results": [
+    {
+      "check_id": 1,
+      "check_name": "No Negative Prices",
+      "rule": "unit_price >= 0",
+      "datasets": [
+        "pos_sales",
+        "web_orders"
+      ],
+      "total_rows_checked": 70430,
+      "violations_found": 525,
+      "status": "FAIL",
+      "action_on_failure": "Quarantine row",
+      "violation_details": [
+        {
+          "source": "pos_sales",
+          "row_id": "INV-000080",
+          "unit_price": -6329.28,
+          "action": "QUARANTINE"
+        },
+        {
+          "source": "pos_sales",
+          "row_id": "INV-000120",
+          "unit_price": -2477.11,
+          "action": "QUARANTINE"
+        },
+        {
+          "source": "pos_sales",
+          "row_id": "INV-000150",
+          "unit_price": -12727.98,
+          "action": "QUARANTINE"
+        },
+        {
+          "source": "pos_sales",
+          "row_id": "INV-000159",
+          "unit_price": -38.24,
+          "action": "QUARANTINE"
+        },
+        {
+          "source": "pos_sales",
+          "row_id": "INV-000186",
+          "unit_price": -429.19,
+          "action": "QUARANTINE"
+        },
+        {
+          "source": "pos_sales",
+          "row_id": "INV-000188",
+          "unit_price": -245.13,
+          "action": "QUARANTINE"
+        },
+        {
+          "source": "pos_sales",
+          "row_id": "INV-000343",
+          "unit_price": -5389.43,
+          "action": "QUARANTINE"
+        },
+        {
+          "source": "pos_sales",
+          "row_id": "INV-000396",
+          "unit_price": -7921.89,
+          "action": "QUARANTINE"
+        },
+        {
+          "source": "pos_sales",
+          "row_id": "INV-000437",
+          "unit_price": -4575.48,
+          "action": "QUARANTINE"
+        },
+        {
+          "source": "pos_sales",
+          "row_id": "INV-000451",
+          "unit_price": -46570.19,
+          "action": "QUARANTINE"
+        }
+      ]
+    },
+    {
+      "check_id": 2,
+      "check_name": "No Future Dates",
+      "rule": "date <= today()",
+      "datasets": [
+        "pos_sales",
+        "web_orders",
+        "shipments"
+      ],
+      "total_rows_checked": 70430,
+      "violations_found": 0,
+      "status": "PASS",
+      "action_on_failure": "Reject row",
+      "violation_details": []
+    },
+    {
+      "check_id": 3,
+      "check_name": "No Null Customer IDs",
+      "rule": "customer_id IS NOT NULL",
+      "datasets": [
+        "pos_sales",
+        "web_orders"
+      ],
+      "total_rows_checked": 70430,
+      "violations_found": 789,
+      "status": "FAIL",
+      "action_on_failure": "Fill 'UNKNOWN'",
+      "violation_details": [
+        {
+          "source": "pos_sales",
+          "row_index": 0,
+          "row_id": "INV-000001",
+          "action": "FILL 'UNKNOWN'"
+        },
+        {
+          "source": "pos_sales",
+          "row_index": 197,
+          "row_id": "INV-000057",
+          "action": "FILL 'UNKNOWN'"
+        },
+        {
+          "source": "pos_sales",
+          "row_index": 198,
+          "row_id": "INV-000057",
+          "action": "FILL 'UNKNOWN'"
+        },
+        {
+          "source": "pos_sales",
+          "row_index": 199,
+          "row_id": "INV-000057",
+          "action": "FILL 'UNKNOWN'"
+        },
+        {
+          "source": "pos_sales",
+          "row_index": 329,
+          "row_id": "INV-000099",
+          "action": "FILL 'UNKNOWN'"
+        },
+        {
+          "source": "pos_sales",
+          "row_index": 330,
+          "row_id": "INV-000099",
+          "action": "FILL 'UNKNOWN'"
+        },
+        {
+          "source": "pos_sales",
+          "row_index": 331,
+          "row_id": "INV-000099",
+          "action": "FILL 'UNKNOWN'"
+        },
+        {
+          "source": "pos_sales",
+          "row_index": 332,
+          "row_id": "INV-000099",
+          "action": "FILL 'UNKNOWN'"
+        },
+        {
+          "source": "pos_sales",
+          "row_index": 333,
+          "row_id": "INV-000099",
+          "action": "FILL 'UNKNOWN'"
+        },
+        {
+          "source": "pos_sales",
+          "row_index": 648,
+          "row_id": "INV-000191",
+          "action": "FILL 'UNKNOWN'"
+        }
+      ]
+    },
+    {
+      "check_id": 4,
+      "check_name": "No Duplicates",
+      "rule": "Composite key uniqueness",
+      "datasets": [
+        "pos_sales",
+        "web_orders",
+        "shipments"
+      ],
+      "total_rows_checked": 70430,
+      "violations_found": 431,
+      "status": "FAIL",
+      "action_on_failure": "Drop duplicate",
+      "violation_details": [
+        {
+          "source": "pos_sales",
+          "key_columns": [
+            "invoice_no",
+            "product_id"
+          ],
+          "duplicate_rows": 431,
+          "action": "DROP DUPLICATE"
+        }
+      ]
+    },
+    {
+      "check_id": 5,
+      "check_name": "Referential Integrity",
+      "rule": "FK exists in parent dataset",
+      "datasets": [
+        "shipments \u2192 web_orders"
+      ],
+      "total_rows_checked": 0,
+      "violations_found": 0,
+      "status": "PASS",
+      "action_on_failure": "Reject orphan",
+      "violation_details": []
+    },
+    {
+      "check_id": 6,
+      "check_name": "Quantity Range",
+      "rule": "1 <= qty <= 10,000 (no negatives)",
+      "datasets": [
+        "pos_sales",
+        "web_orders",
+        "warehouse_inventory"
+      ],
+      "total_rows_checked": 120430,
+      "violations_found": 0,
+      "status": "PASS",
+      "action_on_failure": "Flag outlier",
+      "violation_details": []
+    },
+    {
+      "check_id": 7,
+      "check_name": "Column Completeness",
+      "rule": "% non-null per column >= 95%",
+      "datasets": [
+        "pos_sales",
+        "web_orders",
+        "warehouse_inventory"
+      ],
+      "total_columns_checked": 33,
+      "columns_below_threshold": 0,
+      "status": "PASS",
+      "action_on_failure": "Report metric",
+      "flagged_columns": [],
+      "all_columns": [
+        {
+          "source": "pos_sales",
+          "column": "invoice_no",
+          "total_rows": 50862,
+          "non_null_rows": 50862,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "pos_sales",
+          "column": "invoice_date",
+          "total_rows": 50862,
+          "non_null_rows": 50862,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "pos_sales",
+          "column": "store_id",
+          "total_rows": 50862,
+          "non_null_rows": 50862,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "pos_sales",
+          "column": "store_city",
+          "total_rows": 50862,
+          "non_null_rows": 50862,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "pos_sales",
+          "column": "customer_id",
+          "total_rows": 50862,
+          "non_null_rows": 50157,
+          "completeness_pct": 98.6
+        },
+        {
+          "source": "pos_sales",
+          "column": "product_id",
+          "total_rows": 50862,
+          "non_null_rows": 50862,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "pos_sales",
+          "column": "product_name",
+          "total_rows": 50862,
+          "non_null_rows": 50862,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "pos_sales",
+          "column": "category",
+          "total_rows": 50862,
+          "non_null_rows": 50862,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "pos_sales",
+          "column": "quantity",
+          "total_rows": 50862,
+          "non_null_rows": 50862,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "pos_sales",
+          "column": "unit_price",
+          "total_rows": 50862,
+          "non_null_rows": 50862,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "pos_sales",
+          "column": "total_amount",
+          "total_rows": 50862,
+          "non_null_rows": 50862,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "web_orders",
+          "column": "order_id",
+          "total_rows": 19568,
+          "non_null_rows": 19568,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "web_orders",
+          "column": "order_date",
+          "total_rows": 19568,
+          "non_null_rows": 19568,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "web_orders",
+          "column": "customer_id",
+          "total_rows": 19568,
+          "non_null_rows": 19484,
+          "completeness_pct": 99.6
+        },
+        {
+          "source": "web_orders",
+          "column": "customer_name",
+          "total_rows": 19568,
+          "non_null_rows": 19568,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "web_orders",
+          "column": "customer_city",
+          "total_rows": 19568,
+          "non_null_rows": 19568,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "web_orders",
+          "column": "product_id",
+          "total_rows": 19568,
+          "non_null_rows": 19568,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "web_orders",
+          "column": "product_name",
+          "total_rows": 19568,
+          "non_null_rows": 19568,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "web_orders",
+          "column": "category",
+          "total_rows": 19568,
+          "non_null_rows": 19568,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "web_orders",
+          "column": "quantity",
+          "total_rows": 19568,
+          "non_null_rows": 19568,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "web_orders",
+          "column": "unit_price",
+          "total_rows": 19568,
+          "non_null_rows": 19568,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "web_orders",
+          "column": "total_amount",
+          "total_rows": 19568,
+          "non_null_rows": 19568,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "web_orders",
+          "column": "payment_method",
+          "total_rows": 19568,
+          "non_null_rows": 19568,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "web_orders",
+          "column": "delivery_address",
+          "total_rows": 19568,
+          "non_null_rows": 19568,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "warehouse_inventory",
+          "column": "snapshot_date",
+          "total_rows": 50000,
+          "non_null_rows": 50000,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "warehouse_inventory",
+          "column": "store_id",
+          "total_rows": 50000,
+          "non_null_rows": 50000,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "warehouse_inventory",
+          "column": "store_city",
+          "total_rows": 50000,
+          "non_null_rows": 50000,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "warehouse_inventory",
+          "column": "product_id",
+          "total_rows": 50000,
+          "non_null_rows": 50000,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "warehouse_inventory",
+          "column": "product_name",
+          "total_rows": 50000,
+          "non_null_rows": 50000,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "warehouse_inventory",
+          "column": "category",
+          "total_rows": 50000,
+          "non_null_rows": 50000,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "warehouse_inventory",
+          "column": "quantity_on_hand",
+          "total_rows": 50000,
+          "non_null_rows": 50000,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "warehouse_inventory",
+          "column": "reorder_level",
+          "total_rows": 50000,
+          "non_null_rows": 50000,
+          "completeness_pct": 100.0
+        },
+        {
+          "source": "warehouse_inventory",
+          "column": "unit_cost",
+          "total_rows": 50000,
+          "non_null_rows": 50000,
+          "completeness_pct": 100.0
+        }
+      ]
+    }
+  ]
+}

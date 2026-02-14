@@ -1,0 +1,5895 @@
+{
+  "computed_at": "2026-02-14T13:41:08.445141",
+  "revenue": {
+    "summary": {
+      "total_revenue": 2314914533.9999967,
+      "avg_transaction_value": 33115.14961733777,
+      "total_transactions": 69905,
+      "total_units_sold": 386455.0,
+      "unique_transactions": 33970
+    },
+    "monthly_trend": [
+      {
+        "year_month": "2023-01",
+        "year": 2023,
+        "month": 1,
+        "revenue": 56102843.74000006,
+        "transactions": 1852,
+        "units_sold": 9376.0
+      },
+      {
+        "year_month": "2023-02",
+        "year": 2023,
+        "month": 2,
+        "revenue": 56537666.36999996,
+        "transactions": 1780,
+        "units_sold": 10711.0
+      },
+      {
+        "year_month": "2023-03",
+        "year": 2023,
+        "month": 3,
+        "revenue": 72631661.02000003,
+        "transactions": 2513,
+        "units_sold": 13689.0
+      },
+      {
+        "year_month": "2023-04",
+        "year": 2023,
+        "month": 4,
+        "revenue": 79012997.23000014,
+        "transactions": 2289,
+        "units_sold": 11945.0
+      },
+      {
+        "year_month": "2023-05",
+        "year": 2023,
+        "month": 5,
+        "revenue": 72310676.12999989,
+        "transactions": 2137,
+        "units_sold": 12386.0
+      },
+      {
+        "year_month": "2023-06",
+        "year": 2023,
+        "month": 6,
+        "revenue": 59205705.76,
+        "transactions": 1749,
+        "units_sold": 10822.0
+      },
+      {
+        "year_month": "2023-07",
+        "year": 2023,
+        "month": 7,
+        "revenue": 58784343.53000002,
+        "transactions": 1980,
+        "units_sold": 10369.0
+      },
+      {
+        "year_month": "2023-08",
+        "year": 2023,
+        "month": 8,
+        "revenue": 84285015.26000021,
+        "transactions": 2335,
+        "units_sold": 13311.0
+      },
+      {
+        "year_month": "2023-09",
+        "year": 2023,
+        "month": 9,
+        "revenue": 68710035.89999999,
+        "transactions": 2414,
+        "units_sold": 12775.0
+      },
+      {
+        "year_month": "2023-10",
+        "year": 2023,
+        "month": 10,
+        "revenue": 132709059.07000004,
+        "transactions": 3978,
+        "units_sold": 21861.0
+      },
+      {
+        "year_month": "2023-11",
+        "year": 2023,
+        "month": 11,
+        "revenue": 150670598.97000006,
+        "transactions": 4693,
+        "units_sold": 25635.0
+      },
+      {
+        "year_month": "2023-12",
+        "year": 2023,
+        "month": 12,
+        "revenue": 123841513.16999996,
+        "transactions": 3793,
+        "units_sold": 21335.0
+      },
+      {
+        "year_month": "2024-01",
+        "year": 2024,
+        "month": 1,
+        "revenue": 63706673.07999993,
+        "transactions": 2020,
+        "units_sold": 11261.0
+      },
+      {
+        "year_month": "2024-02",
+        "year": 2024,
+        "month": 2,
+        "revenue": 68767118.62000008,
+        "transactions": 2119,
+        "units_sold": 11960.0
+      },
+      {
+        "year_month": "2024-03",
+        "year": 2024,
+        "month": 3,
+        "revenue": 99685592.4099997,
+        "transactions": 3033,
+        "units_sold": 16333.0
+      },
+      {
+        "year_month": "2024-04",
+        "year": 2024,
+        "month": 4,
+        "revenue": 84766695.03000005,
+        "transactions": 2501,
+        "units_sold": 14070.0
+      },
+      {
+        "year_month": "2024-05",
+        "year": 2024,
+        "month": 5,
+        "revenue": 93170140.74999976,
+        "transactions": 2549,
+        "units_sold": 14550.0
+      },
+      {
+        "year_month": "2024-06",
+        "year": 2024,
+        "month": 6,
+        "revenue": 61405831.70999993,
+        "transactions": 2024,
+        "units_sold": 11310.0
+      },
+      {
+        "year_month": "2024-07",
+        "year": 2024,
+        "month": 7,
+        "revenue": 74302050.67000014,
+        "transactions": 2189,
+        "units_sold": 12594.0
+      },
+      {
+        "year_month": "2024-08",
+        "year": 2024,
+        "month": 8,
+        "revenue": 95930205.0199999,
+        "transactions": 2638,
+        "units_sold": 15284.0
+      },
+      {
+        "year_month": "2024-09",
+        "year": 2024,
+        "month": 9,
+        "revenue": 105260349.20000018,
+        "transactions": 2833,
+        "units_sold": 16840.0
+      },
+      {
+        "year_month": "2024-10",
+        "year": 2024,
+        "month": 10,
+        "revenue": 149070556.88999996,
+        "transactions": 4485,
+        "units_sold": 25364.0
+      },
+      {
+        "year_month": "2024-11",
+        "year": 2024,
+        "month": 11,
+        "revenue": 191795031.83999938,
+        "transactions": 5371,
+        "units_sold": 27884.0
+      },
+      {
+        "year_month": "2024-12",
+        "year": 2024,
+        "month": 12,
+        "revenue": 140867738.13000008,
+        "transactions": 4247,
+        "units_sold": 23055.0
+      },
+      {
+        "year_month": "2025-01",
+        "year": 2025,
+        "month": 1,
+        "revenue": 71384434.50000004,
+        "transactions": 2383,
+        "units_sold": 11735.0
+      }
+    ],
+    "daily_trend": [
+      {
+        "full_date": "2023-01-01 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2217134.15,
+        "transactions": 87
+      },
+      {
+        "full_date": "2023-01-02 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1922714.59,
+        "transactions": 61
+      },
+      {
+        "full_date": "2023-01-03 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1991236.3699999996,
+        "transactions": 44
+      },
+      {
+        "full_date": "2023-01-04 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2940915.4800000004,
+        "transactions": 58
+      },
+      {
+        "full_date": "2023-01-05 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2606231.539999999,
+        "transactions": 71
+      },
+      {
+        "full_date": "2023-01-06 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 1984799.1099999996,
+        "transactions": 52
+      },
+      {
+        "full_date": "2023-01-07 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 1747602.3399999994,
+        "transactions": 70
+      },
+      {
+        "full_date": "2023-01-08 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1160777.3399999999,
+        "transactions": 46
+      },
+      {
+        "full_date": "2023-01-09 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1567131.9599999997,
+        "transactions": 58
+      },
+      {
+        "full_date": "2023-01-10 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 948428.8799999999,
+        "transactions": 47
+      },
+      {
+        "full_date": "2023-01-11 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1446458.5099999998,
+        "transactions": 50
+      },
+      {
+        "full_date": "2023-01-12 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1167793.5100000002,
+        "transactions": 52
+      },
+      {
+        "full_date": "2023-01-13 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 4742214.269999999,
+        "transactions": 58
+      },
+      {
+        "full_date": "2023-01-14 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 1818100.4499999997,
+        "transactions": 76
+      },
+      {
+        "full_date": "2023-01-15 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2244798.9699999993,
+        "transactions": 80
+      },
+      {
+        "full_date": "2023-01-16 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1774516.9600000004,
+        "transactions": 57
+      },
+      {
+        "full_date": "2023-01-17 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1795240.0300000005,
+        "transactions": 60
+      },
+      {
+        "full_date": "2023-01-18 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1847773.4699999995,
+        "transactions": 45
+      },
+      {
+        "full_date": "2023-01-19 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1508802.9999999998,
+        "transactions": 44
+      },
+      {
+        "full_date": "2023-01-20 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 1613310.7,
+        "transactions": 60
+      },
+      {
+        "full_date": "2023-01-21 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 1552602.2600000007,
+        "transactions": 83
+      },
+      {
+        "full_date": "2023-01-22 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2409619.32,
+        "transactions": 71
+      },
+      {
+        "full_date": "2023-01-23 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1154841.65,
+        "transactions": 47
+      },
+      {
+        "full_date": "2023-01-24 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1202318.8499999999,
+        "transactions": 48
+      },
+      {
+        "full_date": "2023-01-25 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1509719.96,
+        "transactions": 52
+      },
+      {
+        "full_date": "2023-01-26 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1959819.1800000002,
+        "transactions": 74
+      },
+      {
+        "full_date": "2023-01-27 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2633584.29,
+        "transactions": 92
+      },
+      {
+        "full_date": "2023-01-28 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2178318.9600000004,
+        "transactions": 74
+      },
+      {
+        "full_date": "2023-01-29 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 852915.1100000001,
+        "transactions": 46
+      },
+      {
+        "full_date": "2023-01-30 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 985360.5299999999,
+        "transactions": 52
+      },
+      {
+        "full_date": "2023-01-31 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 617761.9999999999,
+        "transactions": 37
+      },
+      {
+        "full_date": "2023-02-01 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1454304.8200000005,
+        "transactions": 64
+      },
+      {
+        "full_date": "2023-02-02 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2366736.73,
+        "transactions": 61
+      },
+      {
+        "full_date": "2023-02-03 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 1666527.7100000007,
+        "transactions": 74
+      },
+      {
+        "full_date": "2023-02-04 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2717550.58,
+        "transactions": 75
+      },
+      {
+        "full_date": "2023-02-05 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1954679.7600000005,
+        "transactions": 69
+      },
+      {
+        "full_date": "2023-02-06 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2634155.19,
+        "transactions": 42
+      },
+      {
+        "full_date": "2023-02-07 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1317632.05,
+        "transactions": 52
+      },
+      {
+        "full_date": "2023-02-08 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1808561.2599999995,
+        "transactions": 56
+      },
+      {
+        "full_date": "2023-02-09 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1295038.91,
+        "transactions": 65
+      },
+      {
+        "full_date": "2023-02-10 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 3019976.5400000005,
+        "transactions": 92
+      },
+      {
+        "full_date": "2023-02-11 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 1913246.0099999995,
+        "transactions": 77
+      },
+      {
+        "full_date": "2023-02-12 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2230179.68,
+        "transactions": 67
+      },
+      {
+        "full_date": "2023-02-13 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2191956.41,
+        "transactions": 54
+      },
+      {
+        "full_date": "2023-02-14 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1830468.0199999998,
+        "transactions": 50
+      },
+      {
+        "full_date": "2023-02-15 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1568438.2900000003,
+        "transactions": 72
+      },
+      {
+        "full_date": "2023-02-16 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2723028.580000001,
+        "transactions": 92
+      },
+      {
+        "full_date": "2023-02-17 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 1642786.5699999996,
+        "transactions": 74
+      },
+      {
+        "full_date": "2023-02-18 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2798570.0100000002,
+        "transactions": 102
+      },
+      {
+        "full_date": "2023-02-19 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1657175.5999999999,
+        "transactions": 61
+      },
+      {
+        "full_date": "2023-02-20 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 820342.2199999999,
+        "transactions": 28
+      },
+      {
+        "full_date": "2023-02-21 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1194158.2600000002,
+        "transactions": 53
+      },
+      {
+        "full_date": "2023-02-22 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1489380.36,
+        "transactions": 50
+      },
+      {
+        "full_date": "2023-02-23 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1119243.46,
+        "transactions": 51
+      },
+      {
+        "full_date": "2023-02-24 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2132128.02,
+        "transactions": 71
+      },
+      {
+        "full_date": "2023-02-25 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 5662054.349999999,
+        "transactions": 68
+      },
+      {
+        "full_date": "2023-02-26 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1690542.2500000005,
+        "transactions": 55
+      },
+      {
+        "full_date": "2023-02-27 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2642151.0300000003,
+        "transactions": 61
+      },
+      {
+        "full_date": "2023-02-28 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 996653.6999999998,
+        "transactions": 44
+      },
+      {
+        "full_date": "2023-03-01 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2590297.340000001,
+        "transactions": 90
+      },
+      {
+        "full_date": "2023-03-02 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2033553.0999999987,
+        "transactions": 78
+      },
+      {
+        "full_date": "2023-03-03 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 3105576.2099999995,
+        "transactions": 111
+      },
+      {
+        "full_date": "2023-03-04 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2555955.6799999997,
+        "transactions": 89
+      },
+      {
+        "full_date": "2023-03-05 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2619277.64,
+        "transactions": 81
+      },
+      {
+        "full_date": "2023-03-06 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 3965448.8299999996,
+        "transactions": 46
+      },
+      {
+        "full_date": "2023-03-07 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1151432.94,
+        "transactions": 63
+      },
+      {
+        "full_date": "2023-03-08 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1495363.4499999995,
+        "transactions": 63
+      },
+      {
+        "full_date": "2023-03-09 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 3639027.75,
+        "transactions": 80
+      },
+      {
+        "full_date": "2023-03-10 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2141202.340000001,
+        "transactions": 87
+      },
+      {
+        "full_date": "2023-03-11 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2985602.1500000004,
+        "transactions": 103
+      },
+      {
+        "full_date": "2023-03-12 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1799599.6099999987,
+        "transactions": 79
+      },
+      {
+        "full_date": "2023-03-13 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1748422.8000000005,
+        "transactions": 64
+      },
+      {
+        "full_date": "2023-03-14 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1929429.0000000002,
+        "transactions": 67
+      },
+      {
+        "full_date": "2023-03-15 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2006436.0799999996,
+        "transactions": 74
+      },
+      {
+        "full_date": "2023-03-16 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2478797.0600000005,
+        "transactions": 90
+      },
+      {
+        "full_date": "2023-03-17 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2001406.5300000003,
+        "transactions": 70
+      },
+      {
+        "full_date": "2023-03-18 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2820864.29,
+        "transactions": 105
+      },
+      {
+        "full_date": "2023-03-19 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1973288.2800000003,
+        "transactions": 74
+      },
+      {
+        "full_date": "2023-03-20 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2107082.12,
+        "transactions": 62
+      },
+      {
+        "full_date": "2023-03-21 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2064925.5000000005,
+        "transactions": 60
+      },
+      {
+        "full_date": "2023-03-22 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1114010.34,
+        "transactions": 63
+      },
+      {
+        "full_date": "2023-03-23 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2432989.6999999997,
+        "transactions": 63
+      },
+      {
+        "full_date": "2023-03-24 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 1787947.6299999997,
+        "transactions": 93
+      },
+      {
+        "full_date": "2023-03-25 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 3159277.0500000003,
+        "transactions": 159
+      },
+      {
+        "full_date": "2023-03-26 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 4129047.0500000003,
+        "transactions": 134
+      },
+      {
+        "full_date": "2023-03-27 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1600924.2600000007,
+        "transactions": 66
+      },
+      {
+        "full_date": "2023-03-28 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 612761.85,
+        "transactions": 42
+      },
+      {
+        "full_date": "2023-03-29 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 3184524.0300000003,
+        "transactions": 83
+      },
+      {
+        "full_date": "2023-03-30 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2213458.7999999993,
+        "transactions": 80
+      },
+      {
+        "full_date": "2023-03-31 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 3183731.610000001,
+        "transactions": 94
+      },
+      {
+        "full_date": "2023-04-01 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 4081528.25,
+        "transactions": 126
+      },
+      {
+        "full_date": "2023-04-02 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 3492157.4799999995,
+        "transactions": 83
+      },
+      {
+        "full_date": "2023-04-03 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1613497.6100000003,
+        "transactions": 57
+      },
+      {
+        "full_date": "2023-04-04 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1263985.7600000002,
+        "transactions": 59
+      },
+      {
+        "full_date": "2023-04-05 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2492458.8000000007,
+        "transactions": 76
+      },
+      {
+        "full_date": "2023-04-06 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1298692.7300000002,
+        "transactions": 66
+      },
+      {
+        "full_date": "2023-04-07 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 5706205.990000001,
+        "transactions": 89
+      },
+      {
+        "full_date": "2023-04-08 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2333283.3799999985,
+        "transactions": 99
+      },
+      {
+        "full_date": "2023-04-09 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2477337.57,
+        "transactions": 78
+      },
+      {
+        "full_date": "2023-04-10 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2205061.1900000004,
+        "transactions": 67
+      },
+      {
+        "full_date": "2023-04-11 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 8590629.23,
+        "transactions": 64
+      },
+      {
+        "full_date": "2023-04-12 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1182494.89,
+        "transactions": 45
+      },
+      {
+        "full_date": "2023-04-13 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2202798.5100000002,
+        "transactions": 74
+      },
+      {
+        "full_date": "2023-04-14 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2948112.57,
+        "transactions": 81
+      },
+      {
+        "full_date": "2023-04-15 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 3517399.3900000006,
+        "transactions": 116
+      },
+      {
+        "full_date": "2023-04-16 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 3813668.9400000004,
+        "transactions": 111
+      },
+      {
+        "full_date": "2023-04-17 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2049133.2399999993,
+        "transactions": 56
+      },
+      {
+        "full_date": "2023-04-18 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1922487.3299999996,
+        "transactions": 57
+      },
+      {
+        "full_date": "2023-04-19 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2189371.9900000007,
+        "transactions": 72
+      },
+      {
+        "full_date": "2023-04-20 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2051288.7800000005,
+        "transactions": 76
+      },
+      {
+        "full_date": "2023-04-21 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 1692415.0899999999,
+        "transactions": 74
+      },
+      {
+        "full_date": "2023-04-22 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2826888.5800000005,
+        "transactions": 102
+      },
+      {
+        "full_date": "2023-04-23 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2930487.0500000003,
+        "transactions": 76
+      },
+      {
+        "full_date": "2023-04-24 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2209174.3800000004,
+        "transactions": 58
+      },
+      {
+        "full_date": "2023-04-25 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1961857.6999999997,
+        "transactions": 61
+      },
+      {
+        "full_date": "2023-04-26 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1843867.1900000002,
+        "transactions": 67
+      },
+      {
+        "full_date": "2023-04-27 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1995799.8099999998,
+        "transactions": 86
+      },
+      {
+        "full_date": "2023-04-28 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2445688.63,
+        "transactions": 67
+      },
+      {
+        "full_date": "2023-04-29 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 1901683.7600000002,
+        "transactions": 83
+      },
+      {
+        "full_date": "2023-04-30 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1773541.4100000001,
+        "transactions": 63
+      },
+      {
+        "full_date": "2023-05-01 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 3066472.879999999,
+        "transactions": 101
+      },
+      {
+        "full_date": "2023-05-02 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 3676489.7,
+        "transactions": 82
+      },
+      {
+        "full_date": "2023-05-03 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2238045.3400000003,
+        "transactions": 56
+      },
+      {
+        "full_date": "2023-05-04 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1896946.5099999995,
+        "transactions": 67
+      },
+      {
+        "full_date": "2023-05-05 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 3184055.269999999,
+        "transactions": 68
+      },
+      {
+        "full_date": "2023-05-06 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 3351093.0099999974,
+        "transactions": 84
+      },
+      {
+        "full_date": "2023-05-07 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2049819.3599999994,
+        "transactions": 79
+      },
+      {
+        "full_date": "2023-05-08 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1915287.6700000004,
+        "transactions": 58
+      },
+      {
+        "full_date": "2023-05-09 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1281423.3099999998,
+        "transactions": 45
+      },
+      {
+        "full_date": "2023-05-10 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1768001.1199999999,
+        "transactions": 69
+      },
+      {
+        "full_date": "2023-05-11 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1438564.6900000002,
+        "transactions": 46
+      },
+      {
+        "full_date": "2023-05-12 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2922247.699999999,
+        "transactions": 83
+      },
+      {
+        "full_date": "2023-05-13 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 1821603.9600000004,
+        "transactions": 77
+      },
+      {
+        "full_date": "2023-05-14 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1695353.1699999997,
+        "transactions": 60
+      },
+      {
+        "full_date": "2023-05-15 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1775402.8899999997,
+        "transactions": 58
+      },
+      {
+        "full_date": "2023-05-16 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1644785.0800000005,
+        "transactions": 65
+      },
+      {
+        "full_date": "2023-05-17 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1738056.1699999995,
+        "transactions": 76
+      },
+      {
+        "full_date": "2023-05-18 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 5366826.450000001,
+        "transactions": 65
+      },
+      {
+        "full_date": "2023-05-19 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 4083082.769999999,
+        "transactions": 84
+      },
+      {
+        "full_date": "2023-05-20 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2290616.6999999993,
+        "transactions": 91
+      },
+      {
+        "full_date": "2023-05-21 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1126553.5100000002,
+        "transactions": 61
+      },
+      {
+        "full_date": "2023-05-22 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1567969.3099999998,
+        "transactions": 54
+      },
+      {
+        "full_date": "2023-05-23 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1433562.2499999995,
+        "transactions": 48
+      },
+      {
+        "full_date": "2023-05-24 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1794360.1700000002,
+        "transactions": 63
+      },
+      {
+        "full_date": "2023-05-25 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1851117.8500000006,
+        "transactions": 57
+      },
+      {
+        "full_date": "2023-05-26 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 1966962.46,
+        "transactions": 83
+      },
+      {
+        "full_date": "2023-05-27 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2445803.419999999,
+        "transactions": 88
+      },
+      {
+        "full_date": "2023-05-28 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 3504481.1400000006,
+        "transactions": 67
+      },
+      {
+        "full_date": "2023-05-29 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2285701.4299999992,
+        "transactions": 61
+      },
+      {
+        "full_date": "2023-05-30 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2283241.47,
+        "transactions": 70
+      },
+      {
+        "full_date": "2023-05-31 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2846749.37,
+        "transactions": 71
+      },
+      {
+        "full_date": "2023-06-01 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1646875.2200000002,
+        "transactions": 64
+      },
+      {
+        "full_date": "2023-06-02 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 1827452.5499999996,
+        "transactions": 75
+      },
+      {
+        "full_date": "2023-06-03 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2389348.1999999997,
+        "transactions": 83
+      },
+      {
+        "full_date": "2023-06-04 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1435867.9200000002,
+        "transactions": 58
+      },
+      {
+        "full_date": "2023-06-05 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 3734144.8699999996,
+        "transactions": 52
+      },
+      {
+        "full_date": "2023-06-06 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 947670.2100000001,
+        "transactions": 50
+      },
+      {
+        "full_date": "2023-06-07 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1931654.7899999996,
+        "transactions": 50
+      },
+      {
+        "full_date": "2023-06-08 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1158953.8199999998,
+        "transactions": 51
+      },
+      {
+        "full_date": "2023-06-09 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 935951.9799999999,
+        "transactions": 50
+      },
+      {
+        "full_date": "2023-06-10 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 1778202.1699999997,
+        "transactions": 70
+      },
+      {
+        "full_date": "2023-06-11 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1810918.19,
+        "transactions": 56
+      },
+      {
+        "full_date": "2023-06-12 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1307821.35,
+        "transactions": 56
+      },
+      {
+        "full_date": "2023-06-13 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2024737.2399999998,
+        "transactions": 44
+      },
+      {
+        "full_date": "2023-06-14 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1585029.1000000003,
+        "transactions": 54
+      },
+      {
+        "full_date": "2023-06-15 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1541998.3700000006,
+        "transactions": 63
+      },
+      {
+        "full_date": "2023-06-16 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2440178.0300000003,
+        "transactions": 93
+      },
+      {
+        "full_date": "2023-06-17 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 3511306.5700000003,
+        "transactions": 61
+      },
+      {
+        "full_date": "2023-06-18 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1773946.0500000003,
+        "transactions": 68
+      },
+      {
+        "full_date": "2023-06-19 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 891090.3799999999,
+        "transactions": 52
+      },
+      {
+        "full_date": "2023-06-20 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1161275.54,
+        "transactions": 37
+      },
+      {
+        "full_date": "2023-06-21 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 721325.9199999998,
+        "transactions": 43
+      },
+      {
+        "full_date": "2023-06-22 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1073703.3900000004,
+        "transactions": 52
+      },
+      {
+        "full_date": "2023-06-23 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 1632899.15,
+        "transactions": 57
+      },
+      {
+        "full_date": "2023-06-24 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2526966.9599999995,
+        "transactions": 88
+      },
+      {
+        "full_date": "2023-06-25 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2260745.6399999997,
+        "transactions": 64
+      },
+      {
+        "full_date": "2023-06-26 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 923220.0800000001,
+        "transactions": 33
+      },
+      {
+        "full_date": "2023-06-27 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1192852.7300000004,
+        "transactions": 54
+      },
+      {
+        "full_date": "2023-06-28 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 9857067.26,
+        "transactions": 53
+      },
+      {
+        "full_date": "2023-06-29 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1611288.0400000003,
+        "transactions": 58
+      },
+      {
+        "full_date": "2023-06-30 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 1571214.0399999998,
+        "transactions": 60
+      },
+      {
+        "full_date": "2023-07-01 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2930891.0700000003,
+        "transactions": 105
+      },
+      {
+        "full_date": "2023-07-02 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2235752.4000000004,
+        "transactions": 68
+      },
+      {
+        "full_date": "2023-07-03 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1390082.7999999996,
+        "transactions": 65
+      },
+      {
+        "full_date": "2023-07-04 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1077116.31,
+        "transactions": 50
+      },
+      {
+        "full_date": "2023-07-05 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2078480.7199999995,
+        "transactions": 70
+      },
+      {
+        "full_date": "2023-07-06 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 999365.31,
+        "transactions": 56
+      },
+      {
+        "full_date": "2023-07-07 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2362717.4699999997,
+        "transactions": 90
+      },
+      {
+        "full_date": "2023-07-08 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2220297.76,
+        "transactions": 64
+      },
+      {
+        "full_date": "2023-07-09 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1705446.6900000006,
+        "transactions": 78
+      },
+      {
+        "full_date": "2023-07-10 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1500272.1200000003,
+        "transactions": 41
+      },
+      {
+        "full_date": "2023-07-11 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1503808.4699999997,
+        "transactions": 65
+      },
+      {
+        "full_date": "2023-07-12 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 750185.4500000002,
+        "transactions": 47
+      },
+      {
+        "full_date": "2023-07-13 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1457631.6299999997,
+        "transactions": 50
+      },
+      {
+        "full_date": "2023-07-14 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2640904.9899999993,
+        "transactions": 82
+      },
+      {
+        "full_date": "2023-07-15 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 3708711.3700000006,
+        "transactions": 95
+      },
+      {
+        "full_date": "2023-07-16 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1915267.25,
+        "transactions": 69
+      },
+      {
+        "full_date": "2023-07-17 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1666451.85,
+        "transactions": 55
+      },
+      {
+        "full_date": "2023-07-18 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1241568.2399999998,
+        "transactions": 44
+      },
+      {
+        "full_date": "2023-07-19 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 4402668.529999999,
+        "transactions": 77
+      },
+      {
+        "full_date": "2023-07-20 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1167434.37,
+        "transactions": 60
+      },
+      {
+        "full_date": "2023-07-21 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 1841974.6300000006,
+        "transactions": 73
+      },
+      {
+        "full_date": "2023-07-22 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 3938168.8599999985,
+        "transactions": 76
+      },
+      {
+        "full_date": "2023-07-23 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1477349.9700000004,
+        "transactions": 60
+      },
+      {
+        "full_date": "2023-07-24 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1625727.9799999993,
+        "transactions": 47
+      },
+      {
+        "full_date": "2023-07-25 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1235846.48,
+        "transactions": 49
+      },
+      {
+        "full_date": "2023-07-26 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1386780.7199999997,
+        "transactions": 44
+      },
+      {
+        "full_date": "2023-07-27 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1211889.970000001,
+        "transactions": 49
+      },
+      {
+        "full_date": "2023-07-28 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 1425988.7799999998,
+        "transactions": 57
+      },
+      {
+        "full_date": "2023-07-29 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 1670425.09,
+        "transactions": 87
+      },
+      {
+        "full_date": "2023-07-30 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1662399.5900000005,
+        "transactions": 54
+      },
+      {
+        "full_date": "2023-07-31 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2352736.6599999997,
+        "transactions": 53
+      },
+      {
+        "full_date": "2023-08-01 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2586044.9599999995,
+        "transactions": 82
+      },
+      {
+        "full_date": "2023-08-02 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1386676.1600000001,
+        "transactions": 60
+      },
+      {
+        "full_date": "2023-08-03 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 3029784.8900000006,
+        "transactions": 60
+      },
+      {
+        "full_date": "2023-08-04 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2666095.940000001,
+        "transactions": 93
+      },
+      {
+        "full_date": "2023-08-05 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2418807.940000001,
+        "transactions": 92
+      },
+      {
+        "full_date": "2023-08-06 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2645106.379999999,
+        "transactions": 82
+      },
+      {
+        "full_date": "2023-08-07 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1029345.5599999998,
+        "transactions": 56
+      },
+      {
+        "full_date": "2023-08-08 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 995462.1299999998,
+        "transactions": 53
+      },
+      {
+        "full_date": "2023-08-09 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1914045.9200000002,
+        "transactions": 65
+      },
+      {
+        "full_date": "2023-08-10 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2980525.35,
+        "transactions": 79
+      },
+      {
+        "full_date": "2023-08-11 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 3025206.3999999985,
+        "transactions": 87
+      },
+      {
+        "full_date": "2023-08-12 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2553467.7299999995,
+        "transactions": 85
+      },
+      {
+        "full_date": "2023-08-13 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2769448.919999999,
+        "transactions": 100
+      },
+      {
+        "full_date": "2023-08-14 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 9840462.779999997,
+        "transactions": 57
+      },
+      {
+        "full_date": "2023-08-15 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2739947.9,
+        "transactions": 107
+      },
+      {
+        "full_date": "2023-08-16 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2310708.82,
+        "transactions": 79
+      },
+      {
+        "full_date": "2023-08-17 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 3413874.4499999993,
+        "transactions": 84
+      },
+      {
+        "full_date": "2023-08-18 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 3715341.1099999994,
+        "transactions": 74
+      },
+      {
+        "full_date": "2023-08-19 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2756069.2200000007,
+        "transactions": 96
+      },
+      {
+        "full_date": "2023-08-20 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 3354498.52,
+        "transactions": 84
+      },
+      {
+        "full_date": "2023-08-21 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1881041.3099999998,
+        "transactions": 65
+      },
+      {
+        "full_date": "2023-08-22 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1895590.88,
+        "transactions": 69
+      },
+      {
+        "full_date": "2023-08-23 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2958837.19,
+        "transactions": 81
+      },
+      {
+        "full_date": "2023-08-24 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2383880.1899999995,
+        "transactions": 67
+      },
+      {
+        "full_date": "2023-08-25 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2154967.53,
+        "transactions": 85
+      },
+      {
+        "full_date": "2023-08-26 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2611659.549999999,
+        "transactions": 105
+      },
+      {
+        "full_date": "2023-08-27 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2600676.5900000017,
+        "transactions": 67
+      },
+      {
+        "full_date": "2023-08-28 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 4896466.029999998,
+        "transactions": 39
+      },
+      {
+        "full_date": "2023-08-29 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1349553.93,
+        "transactions": 53
+      },
+      {
+        "full_date": "2023-08-30 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2164985.820000001,
+        "transactions": 67
+      },
+      {
+        "full_date": "2023-08-31 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1256435.1600000001,
+        "transactions": 62
+      },
+      {
+        "full_date": "2023-09-01 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2900764.539999999,
+        "transactions": 114
+      },
+      {
+        "full_date": "2023-09-02 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 3365472.580000001,
+        "transactions": 124
+      },
+      {
+        "full_date": "2023-09-03 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2374626.51,
+        "transactions": 87
+      },
+      {
+        "full_date": "2023-09-04 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1953849.7300000002,
+        "transactions": 72
+      },
+      {
+        "full_date": "2023-09-05 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2385750.0999999996,
+        "transactions": 68
+      },
+      {
+        "full_date": "2023-09-06 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1778483.4100000004,
+        "transactions": 67
+      },
+      {
+        "full_date": "2023-09-07 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2251330.0599999996,
+        "transactions": 74
+      },
+      {
+        "full_date": "2023-09-08 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2457456.6799999992,
+        "transactions": 90
+      },
+      {
+        "full_date": "2023-09-09 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2669928.4999999986,
+        "transactions": 103
+      },
+      {
+        "full_date": "2023-09-10 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2189038.649999999,
+        "transactions": 80
+      },
+      {
+        "full_date": "2023-09-11 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1565654.35,
+        "transactions": 63
+      },
+      {
+        "full_date": "2023-09-12 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2004819.2199999997,
+        "transactions": 73
+      },
+      {
+        "full_date": "2023-09-13 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2332547.4899999998,
+        "transactions": 70
+      },
+      {
+        "full_date": "2023-09-14 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1556282.08,
+        "transactions": 64
+      },
+      {
+        "full_date": "2023-09-15 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 3943774.689999999,
+        "transactions": 126
+      },
+      {
+        "full_date": "2023-09-16 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 4440266.4799999995,
+        "transactions": 149
+      },
+      {
+        "full_date": "2023-09-17 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1899892.3900000001,
+        "transactions": 82
+      },
+      {
+        "full_date": "2023-09-18 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1726396.6399999992,
+        "transactions": 64
+      },
+      {
+        "full_date": "2023-09-19 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1361285.29,
+        "transactions": 50
+      },
+      {
+        "full_date": "2023-09-20 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1886966.1399999997,
+        "transactions": 52
+      },
+      {
+        "full_date": "2023-09-21 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1794083.6100000003,
+        "transactions": 58
+      },
+      {
+        "full_date": "2023-09-22 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 1968558.1400000001,
+        "transactions": 91
+      },
+      {
+        "full_date": "2023-09-23 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2613388.7900000005,
+        "transactions": 74
+      },
+      {
+        "full_date": "2023-09-24 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1438850.629999999,
+        "transactions": 69
+      },
+      {
+        "full_date": "2023-09-25 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1731783.2099999997,
+        "transactions": 57
+      },
+      {
+        "full_date": "2023-09-26 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2148824.27,
+        "transactions": 69
+      },
+      {
+        "full_date": "2023-09-27 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2320499.409999999,
+        "transactions": 61
+      },
+      {
+        "full_date": "2023-09-28 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2480475.07,
+        "transactions": 79
+      },
+      {
+        "full_date": "2023-09-29 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 1303313.5899999996,
+        "transactions": 74
+      },
+      {
+        "full_date": "2023-09-30 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 3865673.6500000004,
+        "transactions": 110
+      },
+      {
+        "full_date": "2023-10-01 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 5884835.429999998,
+        "transactions": 158
+      },
+      {
+        "full_date": "2023-10-02 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2619075.0700000008,
+        "transactions": 115
+      },
+      {
+        "full_date": "2023-10-03 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 3177850.150000001,
+        "transactions": 107
+      },
+      {
+        "full_date": "2023-10-04 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2747433.8399999994,
+        "transactions": 97
+      },
+      {
+        "full_date": "2023-10-05 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 3422031.3300000015,
+        "transactions": 107
+      },
+      {
+        "full_date": "2023-10-06 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 5926602.749999997,
+        "transactions": 169
+      },
+      {
+        "full_date": "2023-10-07 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 5191489.76,
+        "transactions": 177
+      },
+      {
+        "full_date": "2023-10-08 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 3621669.4900000007,
+        "transactions": 122
+      },
+      {
+        "full_date": "2023-10-09 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2938075.5900000003,
+        "transactions": 105
+      },
+      {
+        "full_date": "2023-10-10 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 3775759.2600000002,
+        "transactions": 104
+      },
+      {
+        "full_date": "2023-10-11 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1941507.1,
+        "transactions": 96
+      },
+      {
+        "full_date": "2023-10-12 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 3095827.85,
+        "transactions": 115
+      },
+      {
+        "full_date": "2023-10-13 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 4764701.7,
+        "transactions": 133
+      },
+      {
+        "full_date": "2023-10-14 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 6346349.000000001,
+        "transactions": 161
+      },
+      {
+        "full_date": "2023-10-15 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 4757920.9399999995,
+        "transactions": 172
+      },
+      {
+        "full_date": "2023-10-16 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 9268016.790000001,
+        "transactions": 128
+      },
+      {
+        "full_date": "2023-10-17 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 3020214.8699999996,
+        "transactions": 92
+      },
+      {
+        "full_date": "2023-10-18 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 3037895.8399999985,
+        "transactions": 110
+      },
+      {
+        "full_date": "2023-10-19 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1994983.35,
+        "transactions": 101
+      },
+      {
+        "full_date": "2023-10-20 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 13831474.26,
+        "transactions": 113
+      },
+      {
+        "full_date": "2023-10-21 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 4198908.44,
+        "transactions": 170
+      },
+      {
+        "full_date": "2023-10-22 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2879146.7900000005,
+        "transactions": 126
+      },
+      {
+        "full_date": "2023-10-23 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2635287.2700000005,
+        "transactions": 97
+      },
+      {
+        "full_date": "2023-10-24 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 6633651.989999998,
+        "transactions": 203
+      },
+      {
+        "full_date": "2023-10-25 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 5534150.989999998,
+        "transactions": 178
+      },
+      {
+        "full_date": "2023-10-26 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2906879.88,
+        "transactions": 105
+      },
+      {
+        "full_date": "2023-10-27 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 4520303.319999998,
+        "transactions": 133
+      },
+      {
+        "full_date": "2023-10-28 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 4135668.6500000004,
+        "transactions": 157
+      },
+      {
+        "full_date": "2023-10-29 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 3106015.8800000018,
+        "transactions": 132
+      },
+      {
+        "full_date": "2023-10-30 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2635423.6199999996,
+        "transactions": 99
+      },
+      {
+        "full_date": "2023-10-31 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2159907.869999999,
+        "transactions": 96
+      },
+      {
+        "full_date": "2023-11-01 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 6431754.8599999985,
+        "transactions": 176
+      },
+      {
+        "full_date": "2023-11-02 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 4708165.809999997,
+        "transactions": 163
+      },
+      {
+        "full_date": "2023-11-03 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 3496660.9299999992,
+        "transactions": 136
+      },
+      {
+        "full_date": "2023-11-04 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 5553809.17,
+        "transactions": 189
+      },
+      {
+        "full_date": "2023-11-05 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 5067936.94,
+        "transactions": 135
+      },
+      {
+        "full_date": "2023-11-06 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 4466483.459999999,
+        "transactions": 118
+      },
+      {
+        "full_date": "2023-11-07 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 3453187.3899999997,
+        "transactions": 125
+      },
+      {
+        "full_date": "2023-11-08 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 3348900.390000001,
+        "transactions": 122
+      },
+      {
+        "full_date": "2023-11-09 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 4467500.8999999985,
+        "transactions": 144
+      },
+      {
+        "full_date": "2023-11-10 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 4105109.5999999987,
+        "transactions": 149
+      },
+      {
+        "full_date": "2023-11-11 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 5142844.520000004,
+        "transactions": 208
+      },
+      {
+        "full_date": "2023-11-12 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 11507317.660000002,
+        "transactions": 406
+      },
+      {
+        "full_date": "2023-11-13 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 7716521.539999995,
+        "transactions": 251
+      },
+      {
+        "full_date": "2023-11-14 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2440793.4899999993,
+        "transactions": 106
+      },
+      {
+        "full_date": "2023-11-15 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 5410356.74,
+        "transactions": 160
+      },
+      {
+        "full_date": "2023-11-16 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 8194733.3999999985,
+        "transactions": 172
+      },
+      {
+        "full_date": "2023-11-17 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 4504662.350000001,
+        "transactions": 150
+      },
+      {
+        "full_date": "2023-11-18 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 5841011.639999996,
+        "transactions": 182
+      },
+      {
+        "full_date": "2023-11-19 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 4664735.410000001,
+        "transactions": 165
+      },
+      {
+        "full_date": "2023-11-20 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1863637.7899999996,
+        "transactions": 85
+      },
+      {
+        "full_date": "2023-11-21 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2571137.2200000007,
+        "transactions": 112
+      },
+      {
+        "full_date": "2023-11-22 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 7204854.450000003,
+        "transactions": 113
+      },
+      {
+        "full_date": "2023-11-23 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 3672283.3300000005,
+        "transactions": 126
+      },
+      {
+        "full_date": "2023-11-24 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 5744892.569999999,
+        "transactions": 153
+      },
+      {
+        "full_date": "2023-11-25 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 6826956.720000001,
+        "transactions": 188
+      },
+      {
+        "full_date": "2023-11-26 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 4979632.529999999,
+        "transactions": 162
+      },
+      {
+        "full_date": "2023-11-27 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2579022.6799999992,
+        "transactions": 133
+      },
+      {
+        "full_date": "2023-11-28 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 3549041.2599999993,
+        "transactions": 107
+      },
+      {
+        "full_date": "2023-11-29 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 6959099.550000002,
+        "transactions": 116
+      },
+      {
+        "full_date": "2023-11-30 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 4197554.67,
+        "transactions": 141
+      },
+      {
+        "full_date": "2023-12-01 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 4036862.419999999,
+        "transactions": 150
+      },
+      {
+        "full_date": "2023-12-02 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 4462655.07,
+        "transactions": 169
+      },
+      {
+        "full_date": "2023-12-03 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 3181081.050000001,
+        "transactions": 122
+      },
+      {
+        "full_date": "2023-12-04 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 6347035.700000004,
+        "transactions": 104
+      },
+      {
+        "full_date": "2023-12-05 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 3782318.0500000007,
+        "transactions": 98
+      },
+      {
+        "full_date": "2023-12-06 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2950362.340000001,
+        "transactions": 109
+      },
+      {
+        "full_date": "2023-12-07 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2805167.009999999,
+        "transactions": 116
+      },
+      {
+        "full_date": "2023-12-08 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 3655412.5299999993,
+        "transactions": 119
+      },
+      {
+        "full_date": "2023-12-09 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 8203591.879999998,
+        "transactions": 155
+      },
+      {
+        "full_date": "2023-12-10 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 3671372.419999998,
+        "transactions": 116
+      },
+      {
+        "full_date": "2023-12-11 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2309341.890000001,
+        "transactions": 90
+      },
+      {
+        "full_date": "2023-12-12 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2719149.86,
+        "transactions": 90
+      },
+      {
+        "full_date": "2023-12-13 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 3169516.03,
+        "transactions": 114
+      },
+      {
+        "full_date": "2023-12-14 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2740701.150000001,
+        "transactions": 100
+      },
+      {
+        "full_date": "2023-12-15 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 5816071.460000002,
+        "transactions": 177
+      },
+      {
+        "full_date": "2023-12-16 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 6954567.730000003,
+        "transactions": 184
+      },
+      {
+        "full_date": "2023-12-17 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2759197.6099999985,
+        "transactions": 112
+      },
+      {
+        "full_date": "2023-12-18 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 3549666.609999999,
+        "transactions": 93
+      },
+      {
+        "full_date": "2023-12-19 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2564515.2299999995,
+        "transactions": 83
+      },
+      {
+        "full_date": "2023-12-20 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2966334.2300000023,
+        "transactions": 99
+      },
+      {
+        "full_date": "2023-12-21 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 3977324.5400000005,
+        "transactions": 111
+      },
+      {
+        "full_date": "2023-12-22 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 4365908.960000001,
+        "transactions": 135
+      },
+      {
+        "full_date": "2023-12-23 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 3262308.73,
+        "transactions": 128
+      },
+      {
+        "full_date": "2023-12-24 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 4810196.360000001,
+        "transactions": 121
+      },
+      {
+        "full_date": "2023-12-25 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 6982245.120000001,
+        "transactions": 157
+      },
+      {
+        "full_date": "2023-12-26 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 3023744.8200000003,
+        "transactions": 104
+      },
+      {
+        "full_date": "2023-12-27 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 3347200.5999999996,
+        "transactions": 112
+      },
+      {
+        "full_date": "2023-12-28 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 3655919.9299999997,
+        "transactions": 125
+      },
+      {
+        "full_date": "2023-12-29 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 4344429.7700000005,
+        "transactions": 123
+      },
+      {
+        "full_date": "2023-12-30 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 3767530.9099999983,
+        "transactions": 147
+      },
+      {
+        "full_date": "2023-12-31 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 3659783.1599999997,
+        "transactions": 130
+      },
+      {
+        "full_date": "2024-01-01 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2005548.8799999994,
+        "transactions": 49
+      },
+      {
+        "full_date": "2024-01-02 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 4769010.139999996,
+        "transactions": 57
+      },
+      {
+        "full_date": "2024-01-03 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1091575.8900000001,
+        "transactions": 48
+      },
+      {
+        "full_date": "2024-01-04 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1239551.31,
+        "transactions": 55
+      },
+      {
+        "full_date": "2024-01-05 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 1830297.3700000003,
+        "transactions": 67
+      },
+      {
+        "full_date": "2024-01-06 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 1968012.360000001,
+        "transactions": 66
+      },
+      {
+        "full_date": "2024-01-07 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2315726.289999999,
+        "transactions": 70
+      },
+      {
+        "full_date": "2024-01-08 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2142929.9899999998,
+        "transactions": 75
+      },
+      {
+        "full_date": "2024-01-09 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1585138.6999999997,
+        "transactions": 68
+      },
+      {
+        "full_date": "2024-01-10 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1589399.9000000004,
+        "transactions": 65
+      },
+      {
+        "full_date": "2024-01-11 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2039079.4399999997,
+        "transactions": 70
+      },
+      {
+        "full_date": "2024-01-12 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 3727488.4099999997,
+        "transactions": 81
+      },
+      {
+        "full_date": "2024-01-13 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 1676847.3199999998,
+        "transactions": 76
+      },
+      {
+        "full_date": "2024-01-14 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1684393.3900000006,
+        "transactions": 59
+      },
+      {
+        "full_date": "2024-01-15 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2116714.2299999995,
+        "transactions": 71
+      },
+      {
+        "full_date": "2024-01-16 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2659576.8800000018,
+        "transactions": 79
+      },
+      {
+        "full_date": "2024-01-17 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1029209.0699999998,
+        "transactions": 52
+      },
+      {
+        "full_date": "2024-01-18 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2833198.060000001,
+        "transactions": 71
+      },
+      {
+        "full_date": "2024-01-19 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2612149.7100000004,
+        "transactions": 80
+      },
+      {
+        "full_date": "2024-01-20 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2775905.0699999994,
+        "transactions": 82
+      },
+      {
+        "full_date": "2024-01-21 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2432457.32,
+        "transactions": 58
+      },
+      {
+        "full_date": "2024-01-22 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2039354.22,
+        "transactions": 51
+      },
+      {
+        "full_date": "2024-01-23 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2304961.2700000005,
+        "transactions": 63
+      },
+      {
+        "full_date": "2024-01-24 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1120590.6699999997,
+        "transactions": 56
+      },
+      {
+        "full_date": "2024-01-25 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1180875.5899999999,
+        "transactions": 49
+      },
+      {
+        "full_date": "2024-01-26 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 1902788.4,
+        "transactions": 83
+      },
+      {
+        "full_date": "2024-01-27 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2151157.9900000007,
+        "transactions": 87
+      },
+      {
+        "full_date": "2024-01-28 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1588662.3,
+        "transactions": 63
+      },
+      {
+        "full_date": "2024-01-29 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2482667.3599999994,
+        "transactions": 64
+      },
+      {
+        "full_date": "2024-01-30 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1306130.9900000002,
+        "transactions": 45
+      },
+      {
+        "full_date": "2024-01-31 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1505274.56,
+        "transactions": 60
+      },
+      {
+        "full_date": "2024-02-01 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2636408.130000001,
+        "transactions": 76
+      },
+      {
+        "full_date": "2024-02-02 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2818170.57,
+        "transactions": 93
+      },
+      {
+        "full_date": "2024-02-03 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 3085463.4699999997,
+        "transactions": 84
+      },
+      {
+        "full_date": "2024-02-04 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1392532.01,
+        "transactions": 66
+      },
+      {
+        "full_date": "2024-02-05 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1375409.7099999995,
+        "transactions": 59
+      },
+      {
+        "full_date": "2024-02-06 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1634539.95,
+        "transactions": 62
+      },
+      {
+        "full_date": "2024-02-07 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1374129.9400000002,
+        "transactions": 50
+      },
+      {
+        "full_date": "2024-02-08 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1754153.1700000004,
+        "transactions": 64
+      },
+      {
+        "full_date": "2024-02-09 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 3265055.2799999993,
+        "transactions": 86
+      },
+      {
+        "full_date": "2024-02-10 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2530585.75,
+        "transactions": 101
+      },
+      {
+        "full_date": "2024-02-11 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2090747.44,
+        "transactions": 68
+      },
+      {
+        "full_date": "2024-02-12 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1398150.98,
+        "transactions": 55
+      },
+      {
+        "full_date": "2024-02-13 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1216363.8199999998,
+        "transactions": 61
+      },
+      {
+        "full_date": "2024-02-14 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2130741.5900000003,
+        "transactions": 59
+      },
+      {
+        "full_date": "2024-02-15 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2093389.399999999,
+        "transactions": 83
+      },
+      {
+        "full_date": "2024-02-16 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 3246003.1999999993,
+        "transactions": 97
+      },
+      {
+        "full_date": "2024-02-17 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 4313626.499999999,
+        "transactions": 100
+      },
+      {
+        "full_date": "2024-02-18 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2443816.55,
+        "transactions": 83
+      },
+      {
+        "full_date": "2024-02-19 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1459524.0199999996,
+        "transactions": 54
+      },
+      {
+        "full_date": "2024-02-20 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 3069720.22,
+        "transactions": 76
+      },
+      {
+        "full_date": "2024-02-21 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1820630.05,
+        "transactions": 59
+      },
+      {
+        "full_date": "2024-02-22 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1927806.6400000001,
+        "transactions": 60
+      },
+      {
+        "full_date": "2024-02-23 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 5222437.499999998,
+        "transactions": 94
+      },
+      {
+        "full_date": "2024-02-24 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 5254823.249999998,
+        "transactions": 98
+      },
+      {
+        "full_date": "2024-02-25 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1784318.43,
+        "transactions": 78
+      },
+      {
+        "full_date": "2024-02-26 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1773553.7999999998,
+        "transactions": 56
+      },
+      {
+        "full_date": "2024-02-27 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1404431.2100000002,
+        "transactions": 56
+      },
+      {
+        "full_date": "2024-02-28 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1363039.1,
+        "transactions": 62
+      },
+      {
+        "full_date": "2024-02-29 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2887546.94,
+        "transactions": 79
+      },
+      {
+        "full_date": "2024-03-01 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 3764185.8299999996,
+        "transactions": 123
+      },
+      {
+        "full_date": "2024-03-02 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 4654950.100000002,
+        "transactions": 147
+      },
+      {
+        "full_date": "2024-03-03 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2186961.6199999996,
+        "transactions": 100
+      },
+      {
+        "full_date": "2024-03-04 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 3628785.9200000004,
+        "transactions": 77
+      },
+      {
+        "full_date": "2024-03-05 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1573778.7400000002,
+        "transactions": 63
+      },
+      {
+        "full_date": "2024-03-06 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2006922.1900000006,
+        "transactions": 73
+      },
+      {
+        "full_date": "2024-03-07 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2400751.2600000002,
+        "transactions": 96
+      },
+      {
+        "full_date": "2024-03-08 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2574452.2599999993,
+        "transactions": 90
+      },
+      {
+        "full_date": "2024-03-09 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 3204572.44,
+        "transactions": 106
+      },
+      {
+        "full_date": "2024-03-10 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 3202534.67,
+        "transactions": 110
+      },
+      {
+        "full_date": "2024-03-11 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1774617.8,
+        "transactions": 83
+      },
+      {
+        "full_date": "2024-03-12 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2490418.5500000017,
+        "transactions": 95
+      },
+      {
+        "full_date": "2024-03-13 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 3123207.8100000005,
+        "transactions": 77
+      },
+      {
+        "full_date": "2024-03-14 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1916581.3799999997,
+        "transactions": 74
+      },
+      {
+        "full_date": "2024-03-15 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2535745.5900000003,
+        "transactions": 113
+      },
+      {
+        "full_date": "2024-03-16 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 4332222.580000001,
+        "transactions": 144
+      },
+      {
+        "full_date": "2024-03-17 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 3550900.200000001,
+        "transactions": 95
+      },
+      {
+        "full_date": "2024-03-18 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 12325352.649999999,
+        "transactions": 84
+      },
+      {
+        "full_date": "2024-03-19 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1615532.6000000003,
+        "transactions": 58
+      },
+      {
+        "full_date": "2024-03-20 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 3755853.1400000015,
+        "transactions": 104
+      },
+      {
+        "full_date": "2024-03-21 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 5199150.96,
+        "transactions": 82
+      },
+      {
+        "full_date": "2024-03-22 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2211558.810000001,
+        "transactions": 103
+      },
+      {
+        "full_date": "2024-03-23 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 3719915.139999999,
+        "transactions": 131
+      },
+      {
+        "full_date": "2024-03-24 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 3743021.2300000004,
+        "transactions": 107
+      },
+      {
+        "full_date": "2024-03-25 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2331365.7999999993,
+        "transactions": 101
+      },
+      {
+        "full_date": "2024-03-26 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1891302.2900000003,
+        "transactions": 98
+      },
+      {
+        "full_date": "2024-03-27 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2849309.0599999996,
+        "transactions": 78
+      },
+      {
+        "full_date": "2024-03-28 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 3623088.5499999993,
+        "transactions": 93
+      },
+      {
+        "full_date": "2024-03-29 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2712514.37,
+        "transactions": 121
+      },
+      {
+        "full_date": "2024-03-30 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2457107.690000002,
+        "transactions": 113
+      },
+      {
+        "full_date": "2024-03-31 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2328931.1799999992,
+        "transactions": 94
+      },
+      {
+        "full_date": "2024-04-01 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1460026.4800000002,
+        "transactions": 62
+      },
+      {
+        "full_date": "2024-04-02 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1756229.5899999996,
+        "transactions": 73
+      },
+      {
+        "full_date": "2024-04-03 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1894252.2600000007,
+        "transactions": 81
+      },
+      {
+        "full_date": "2024-04-04 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1587848.1800000002,
+        "transactions": 64
+      },
+      {
+        "full_date": "2024-04-05 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2835241.7500000005,
+        "transactions": 92
+      },
+      {
+        "full_date": "2024-04-06 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2255278.0500000003,
+        "transactions": 98
+      },
+      {
+        "full_date": "2024-04-07 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2104188.83,
+        "transactions": 84
+      },
+      {
+        "full_date": "2024-04-08 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1539389.71,
+        "transactions": 53
+      },
+      {
+        "full_date": "2024-04-09 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2705269.35,
+        "transactions": 65
+      },
+      {
+        "full_date": "2024-04-10 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2266466.5999999996,
+        "transactions": 59
+      },
+      {
+        "full_date": "2024-04-11 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1916910.5899999996,
+        "transactions": 85
+      },
+      {
+        "full_date": "2024-04-12 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 3107288.749999998,
+        "transactions": 96
+      },
+      {
+        "full_date": "2024-04-13 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 8631312.520000001,
+        "transactions": 118
+      },
+      {
+        "full_date": "2024-04-14 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 3640592.6,
+        "transactions": 104
+      },
+      {
+        "full_date": "2024-04-15 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1964710.4199999988,
+        "transactions": 95
+      },
+      {
+        "full_date": "2024-04-16 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2424000.6700000013,
+        "transactions": 108
+      },
+      {
+        "full_date": "2024-04-17 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2435748.86,
+        "transactions": 87
+      },
+      {
+        "full_date": "2024-04-18 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2497123.369999999,
+        "transactions": 59
+      },
+      {
+        "full_date": "2024-04-19 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 3515601.369999999,
+        "transactions": 97
+      },
+      {
+        "full_date": "2024-04-20 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 3081704.840000001,
+        "transactions": 109
+      },
+      {
+        "full_date": "2024-04-21 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 3411150.71,
+        "transactions": 87
+      },
+      {
+        "full_date": "2024-04-22 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1231685.5299999998,
+        "transactions": 60
+      },
+      {
+        "full_date": "2024-04-23 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1585247.09,
+        "transactions": 60
+      },
+      {
+        "full_date": "2024-04-24 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2628904.6100000003,
+        "transactions": 70
+      },
+      {
+        "full_date": "2024-04-25 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 3615670.6299999994,
+        "transactions": 84
+      },
+      {
+        "full_date": "2024-04-26 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 3088292.9900000007,
+        "transactions": 81
+      },
+      {
+        "full_date": "2024-04-27 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 9182031.02,
+        "transactions": 123
+      },
+      {
+        "full_date": "2024-04-28 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2531001.8300000005,
+        "transactions": 103
+      },
+      {
+        "full_date": "2024-04-29 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2046496.9100000001,
+        "transactions": 84
+      },
+      {
+        "full_date": "2024-04-30 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1827028.9200000006,
+        "transactions": 60
+      },
+      {
+        "full_date": "2024-05-01 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2312721.180000001,
+        "transactions": 58
+      },
+      {
+        "full_date": "2024-05-02 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2729039.429999999,
+        "transactions": 86
+      },
+      {
+        "full_date": "2024-05-03 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2244331.6900000004,
+        "transactions": 89
+      },
+      {
+        "full_date": "2024-05-04 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 3153781.130000001,
+        "transactions": 103
+      },
+      {
+        "full_date": "2024-05-05 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1740261.5499999993,
+        "transactions": 69
+      },
+      {
+        "full_date": "2024-05-06 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1772685.34,
+        "transactions": 67
+      },
+      {
+        "full_date": "2024-05-07 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 4191684.34,
+        "transactions": 92
+      },
+      {
+        "full_date": "2024-05-08 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1967384.0600000003,
+        "transactions": 68
+      },
+      {
+        "full_date": "2024-05-09 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2307489.2800000003,
+        "transactions": 61
+      },
+      {
+        "full_date": "2024-05-10 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2254367.3300000005,
+        "transactions": 86
+      },
+      {
+        "full_date": "2024-05-11 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 4000085.9600000014,
+        "transactions": 112
+      },
+      {
+        "full_date": "2024-05-12 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2879151.68,
+        "transactions": 89
+      },
+      {
+        "full_date": "2024-05-13 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2770011.0100000007,
+        "transactions": 88
+      },
+      {
+        "full_date": "2024-05-14 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1500329.9300000004,
+        "transactions": 55
+      },
+      {
+        "full_date": "2024-05-15 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 3198462.720000001,
+        "transactions": 103
+      },
+      {
+        "full_date": "2024-05-16 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2560643.5399999996,
+        "transactions": 75
+      },
+      {
+        "full_date": "2024-05-17 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2496744.979999999,
+        "transactions": 81
+      },
+      {
+        "full_date": "2024-05-18 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2475205.73,
+        "transactions": 112
+      },
+      {
+        "full_date": "2024-05-19 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 3551487.119999998,
+        "transactions": 84
+      },
+      {
+        "full_date": "2024-05-20 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1833941.34,
+        "transactions": 75
+      },
+      {
+        "full_date": "2024-05-21 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2467526.9600000004,
+        "transactions": 79
+      },
+      {
+        "full_date": "2024-05-22 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2125508.859999999,
+        "transactions": 79
+      },
+      {
+        "full_date": "2024-05-23 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1990307.9,
+        "transactions": 55
+      },
+      {
+        "full_date": "2024-05-24 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2003548.1700000006,
+        "transactions": 92
+      },
+      {
+        "full_date": "2024-05-25 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2504234.28,
+        "transactions": 102
+      },
+      {
+        "full_date": "2024-05-26 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2703019.5400000005,
+        "transactions": 76
+      },
+      {
+        "full_date": "2024-05-27 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1792871.7799999998,
+        "transactions": 61
+      },
+      {
+        "full_date": "2024-05-28 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1991318.4299999995,
+        "transactions": 76
+      },
+      {
+        "full_date": "2024-05-29 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2681675.6200000006,
+        "transactions": 92
+      },
+      {
+        "full_date": "2024-05-30 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2571213.269999999,
+        "transactions": 81
+      },
+      {
+        "full_date": "2024-05-31 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 18399106.6,
+        "transactions": 103
+      },
+      {
+        "full_date": "2024-06-01 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 3371966.32,
+        "transactions": 101
+      },
+      {
+        "full_date": "2024-06-02 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2498737.2800000007,
+        "transactions": 89
+      },
+      {
+        "full_date": "2024-06-03 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1168503.8399999999,
+        "transactions": 51
+      },
+      {
+        "full_date": "2024-06-04 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1777679.8199999996,
+        "transactions": 65
+      },
+      {
+        "full_date": "2024-06-05 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2561367.8000000003,
+        "transactions": 72
+      },
+      {
+        "full_date": "2024-06-06 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1915885.9200000004,
+        "transactions": 62
+      },
+      {
+        "full_date": "2024-06-07 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 1478396.77,
+        "transactions": 54
+      },
+      {
+        "full_date": "2024-06-08 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2221556.949999999,
+        "transactions": 80
+      },
+      {
+        "full_date": "2024-06-09 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2273926.45,
+        "transactions": 69
+      },
+      {
+        "full_date": "2024-06-10 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1265173.1900000002,
+        "transactions": 57
+      },
+      {
+        "full_date": "2024-06-11 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1566467.3199999998,
+        "transactions": 46
+      },
+      {
+        "full_date": "2024-06-12 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1444918.4800000002,
+        "transactions": 51
+      },
+      {
+        "full_date": "2024-06-13 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1434418.42,
+        "transactions": 52
+      },
+      {
+        "full_date": "2024-06-14 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 1200504.0500000003,
+        "transactions": 69
+      },
+      {
+        "full_date": "2024-06-15 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 4995267.7299999995,
+        "transactions": 119
+      },
+      {
+        "full_date": "2024-06-16 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2768788.2200000016,
+        "transactions": 88
+      },
+      {
+        "full_date": "2024-06-17 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 941847.5499999997,
+        "transactions": 46
+      },
+      {
+        "full_date": "2024-06-18 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 4822724.679999998,
+        "transactions": 57
+      },
+      {
+        "full_date": "2024-06-19 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 664391.4400000002,
+        "transactions": 51
+      },
+      {
+        "full_date": "2024-06-20 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1497758.7500000002,
+        "transactions": 66
+      },
+      {
+        "full_date": "2024-06-21 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2152387.3799999994,
+        "transactions": 73
+      },
+      {
+        "full_date": "2024-06-22 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 1943665.98,
+        "transactions": 98
+      },
+      {
+        "full_date": "2024-06-23 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1055041.7300000002,
+        "transactions": 32
+      },
+      {
+        "full_date": "2024-06-24 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1018048.0800000001,
+        "transactions": 43
+      },
+      {
+        "full_date": "2024-06-25 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1745430.1699999992,
+        "transactions": 54
+      },
+      {
+        "full_date": "2024-06-26 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1499153.69,
+        "transactions": 58
+      },
+      {
+        "full_date": "2024-06-27 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2326780.1100000003,
+        "transactions": 67
+      },
+      {
+        "full_date": "2024-06-28 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2030740.4100000006,
+        "transactions": 91
+      },
+      {
+        "full_date": "2024-06-29 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2645315.709999999,
+        "transactions": 84
+      },
+      {
+        "full_date": "2024-06-30 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 3118987.4699999993,
+        "transactions": 79
+      },
+      {
+        "full_date": "2024-07-01 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2191040.5500000007,
+        "transactions": 57
+      },
+      {
+        "full_date": "2024-07-02 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2520145.82,
+        "transactions": 70
+      },
+      {
+        "full_date": "2024-07-03 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 922937.2599999997,
+        "transactions": 58
+      },
+      {
+        "full_date": "2024-07-04 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 790316.47,
+        "transactions": 48
+      },
+      {
+        "full_date": "2024-07-05 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 1608921.9299999992,
+        "transactions": 79
+      },
+      {
+        "full_date": "2024-07-06 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2957333.39,
+        "transactions": 104
+      },
+      {
+        "full_date": "2024-07-07 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2615421.9,
+        "transactions": 81
+      },
+      {
+        "full_date": "2024-07-08 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2125357.93,
+        "transactions": 62
+      },
+      {
+        "full_date": "2024-07-09 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1388165.75,
+        "transactions": 61
+      },
+      {
+        "full_date": "2024-07-10 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1228673.67,
+        "transactions": 52
+      },
+      {
+        "full_date": "2024-07-11 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2730627.01,
+        "transactions": 84
+      },
+      {
+        "full_date": "2024-07-12 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 1555588.19,
+        "transactions": 74
+      },
+      {
+        "full_date": "2024-07-13 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2790526.48,
+        "transactions": 86
+      },
+      {
+        "full_date": "2024-07-14 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1961492.2500000002,
+        "transactions": 87
+      },
+      {
+        "full_date": "2024-07-15 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2021929.4600000002,
+        "transactions": 66
+      },
+      {
+        "full_date": "2024-07-16 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 5767557.150000001,
+        "transactions": 67
+      },
+      {
+        "full_date": "2024-07-17 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2166980.7999999993,
+        "transactions": 68
+      },
+      {
+        "full_date": "2024-07-18 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1901462.1900000002,
+        "transactions": 50
+      },
+      {
+        "full_date": "2024-07-19 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2962377.3599999994,
+        "transactions": 104
+      },
+      {
+        "full_date": "2024-07-20 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2603998.219999998,
+        "transactions": 117
+      },
+      {
+        "full_date": "2024-07-21 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 5042505.960000003,
+        "transactions": 60
+      },
+      {
+        "full_date": "2024-07-22 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1047513.13,
+        "transactions": 46
+      },
+      {
+        "full_date": "2024-07-23 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1576413.77,
+        "transactions": 62
+      },
+      {
+        "full_date": "2024-07-24 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2244338.3200000003,
+        "transactions": 54
+      },
+      {
+        "full_date": "2024-07-25 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1845217.4900000005,
+        "transactions": 59
+      },
+      {
+        "full_date": "2024-07-26 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2930803.5799999987,
+        "transactions": 87
+      },
+      {
+        "full_date": "2024-07-27 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2597113.1899999995,
+        "transactions": 82
+      },
+      {
+        "full_date": "2024-07-28 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 4741122.619999999,
+        "transactions": 82
+      },
+      {
+        "full_date": "2024-07-29 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1369315.06,
+        "transactions": 56
+      },
+      {
+        "full_date": "2024-07-30 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1742238.3200000003,
+        "transactions": 53
+      },
+      {
+        "full_date": "2024-07-31 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 4354615.449999998,
+        "transactions": 73
+      },
+      {
+        "full_date": "2024-08-01 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 9785845.219999997,
+        "transactions": 102
+      },
+      {
+        "full_date": "2024-08-02 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 3676097.6799999983,
+        "transactions": 132
+      },
+      {
+        "full_date": "2024-08-03 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 4835667.990000002,
+        "transactions": 122
+      },
+      {
+        "full_date": "2024-08-04 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2256739.2399999993,
+        "transactions": 78
+      },
+      {
+        "full_date": "2024-08-05 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1121122.74,
+        "transactions": 46
+      },
+      {
+        "full_date": "2024-08-06 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2315299.0699999994,
+        "transactions": 74
+      },
+      {
+        "full_date": "2024-08-07 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1334873.5,
+        "transactions": 58
+      },
+      {
+        "full_date": "2024-08-08 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2760653.7899999986,
+        "transactions": 79
+      },
+      {
+        "full_date": "2024-08-09 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 3490277.0699999994,
+        "transactions": 85
+      },
+      {
+        "full_date": "2024-08-10 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2718898.5700000003,
+        "transactions": 96
+      },
+      {
+        "full_date": "2024-08-11 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2509797.500000001,
+        "transactions": 79
+      },
+      {
+        "full_date": "2024-08-12 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1854020.05,
+        "transactions": 62
+      },
+      {
+        "full_date": "2024-08-13 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1370840.5200000007,
+        "transactions": 64
+      },
+      {
+        "full_date": "2024-08-14 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 3405679.2600000007,
+        "transactions": 79
+      },
+      {
+        "full_date": "2024-08-15 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 3592361.630000001,
+        "transactions": 122
+      },
+      {
+        "full_date": "2024-08-16 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2972173.809999999,
+        "transactions": 108
+      },
+      {
+        "full_date": "2024-08-17 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 11793071.459999993,
+        "transactions": 118
+      },
+      {
+        "full_date": "2024-08-18 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 3327000.4900000007,
+        "transactions": 96
+      },
+      {
+        "full_date": "2024-08-19 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1990061.8800000008,
+        "transactions": 65
+      },
+      {
+        "full_date": "2024-08-20 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2473940.5100000007,
+        "transactions": 78
+      },
+      {
+        "full_date": "2024-08-21 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2747171.6399999997,
+        "transactions": 86
+      },
+      {
+        "full_date": "2024-08-22 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1902266.67,
+        "transactions": 80
+      },
+      {
+        "full_date": "2024-08-23 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2214496.71,
+        "transactions": 68
+      },
+      {
+        "full_date": "2024-08-24 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 3828346.1099999985,
+        "transactions": 104
+      },
+      {
+        "full_date": "2024-08-25 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 3151388.159999999,
+        "transactions": 92
+      },
+      {
+        "full_date": "2024-08-26 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 3042548.0999999987,
+        "transactions": 84
+      },
+      {
+        "full_date": "2024-08-27 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1297890.2499999998,
+        "transactions": 51
+      },
+      {
+        "full_date": "2024-08-28 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1441001.5499999998,
+        "transactions": 64
+      },
+      {
+        "full_date": "2024-08-29 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1517716.5800000005,
+        "transactions": 64
+      },
+      {
+        "full_date": "2024-08-30 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2870482.86,
+        "transactions": 86
+      },
+      {
+        "full_date": "2024-08-31 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2332474.409999999,
+        "transactions": 116
+      },
+      {
+        "full_date": "2024-09-01 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 3835635.100000001,
+        "transactions": 115
+      },
+      {
+        "full_date": "2024-09-02 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2878703.630000001,
+        "transactions": 84
+      },
+      {
+        "full_date": "2024-09-03 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1794775.4200000004,
+        "transactions": 70
+      },
+      {
+        "full_date": "2024-09-04 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 3590252.160000002,
+        "transactions": 96
+      },
+      {
+        "full_date": "2024-09-05 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 6537210.290000005,
+        "transactions": 97
+      },
+      {
+        "full_date": "2024-09-06 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 3256892.9,
+        "transactions": 93
+      },
+      {
+        "full_date": "2024-09-07 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2924880.46,
+        "transactions": 129
+      },
+      {
+        "full_date": "2024-09-08 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 4072421.930000003,
+        "transactions": 110
+      },
+      {
+        "full_date": "2024-09-09 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1583152.3199999998,
+        "transactions": 83
+      },
+      {
+        "full_date": "2024-09-10 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 3009637.23,
+        "transactions": 79
+      },
+      {
+        "full_date": "2024-09-11 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1678936.66,
+        "transactions": 63
+      },
+      {
+        "full_date": "2024-09-12 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2794643.87,
+        "transactions": 84
+      },
+      {
+        "full_date": "2024-09-13 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 3002442.87,
+        "transactions": 91
+      },
+      {
+        "full_date": "2024-09-14 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 2980055.769999999,
+        "transactions": 116
+      },
+      {
+        "full_date": "2024-09-15 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 3965956.850000001,
+        "transactions": 131
+      },
+      {
+        "full_date": "2024-09-16 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2722165.3099999996,
+        "transactions": 80
+      },
+      {
+        "full_date": "2024-09-17 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2648077.7000000007,
+        "transactions": 84
+      },
+      {
+        "full_date": "2024-09-18 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1821330.0,
+        "transactions": 83
+      },
+      {
+        "full_date": "2024-09-19 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2766742.709999999,
+        "transactions": 88
+      },
+      {
+        "full_date": "2024-09-20 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2569561.7300000004,
+        "transactions": 91
+      },
+      {
+        "full_date": "2024-09-21 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 4147424.669999999,
+        "transactions": 114
+      },
+      {
+        "full_date": "2024-09-22 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 18375703.65999999,
+        "transactions": 98
+      },
+      {
+        "full_date": "2024-09-23 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2664261.6000000015,
+        "transactions": 79
+      },
+      {
+        "full_date": "2024-09-24 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2148625.7099999995,
+        "transactions": 81
+      },
+      {
+        "full_date": "2024-09-25 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2683593.3,
+        "transactions": 102
+      },
+      {
+        "full_date": "2024-09-26 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1337184.1300000004,
+        "transactions": 74
+      },
+      {
+        "full_date": "2024-09-27 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 4623296.489999999,
+        "transactions": 124
+      },
+      {
+        "full_date": "2024-09-28 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 4232782.6899999995,
+        "transactions": 107
+      },
+      {
+        "full_date": "2024-09-29 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1791084.8299999996,
+        "transactions": 98
+      },
+      {
+        "full_date": "2024-09-30 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 2822917.21,
+        "transactions": 89
+      },
+      {
+        "full_date": "2024-10-01 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 4260903.890000001,
+        "transactions": 151
+      },
+      {
+        "full_date": "2024-10-02 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 5237475.920000001,
+        "transactions": 164
+      },
+      {
+        "full_date": "2024-10-03 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 4957539.270000002,
+        "transactions": 147
+      },
+      {
+        "full_date": "2024-10-04 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 4479243.81,
+        "transactions": 159
+      },
+      {
+        "full_date": "2024-10-05 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 5610551.350000003,
+        "transactions": 188
+      },
+      {
+        "full_date": "2024-10-06 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 4750811.92,
+        "transactions": 149
+      },
+      {
+        "full_date": "2024-10-07 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 5737271.050000002,
+        "transactions": 117
+      },
+      {
+        "full_date": "2024-10-08 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 4242161.88,
+        "transactions": 123
+      },
+      {
+        "full_date": "2024-10-09 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 3757816.04,
+        "transactions": 131
+      },
+      {
+        "full_date": "2024-10-10 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 8632035.01,
+        "transactions": 146
+      },
+      {
+        "full_date": "2024-10-11 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2447375.1300000004,
+        "transactions": 124
+      },
+      {
+        "full_date": "2024-10-12 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 6790478.14,
+        "transactions": 164
+      },
+      {
+        "full_date": "2024-10-13 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 4111992.1900000004,
+        "transactions": 140
+      },
+      {
+        "full_date": "2024-10-14 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 3224419.6700000004,
+        "transactions": 109
+      },
+      {
+        "full_date": "2024-10-15 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 4228827.919999998,
+        "transactions": 125
+      },
+      {
+        "full_date": "2024-10-16 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 4722557.16,
+        "transactions": 154
+      },
+      {
+        "full_date": "2024-10-17 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2901710.330000002,
+        "transactions": 112
+      },
+      {
+        "full_date": "2024-10-18 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 5439257.669999996,
+        "transactions": 146
+      },
+      {
+        "full_date": "2024-10-19 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 8751156.25,
+        "transactions": 178
+      },
+      {
+        "full_date": "2024-10-20 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 3784561.829999998,
+        "transactions": 143
+      },
+      {
+        "full_date": "2024-10-21 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 3906541.5100000002,
+        "transactions": 99
+      },
+      {
+        "full_date": "2024-10-22 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2868765.3999999994,
+        "transactions": 116
+      },
+      {
+        "full_date": "2024-10-23 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2886549.259999998,
+        "transactions": 108
+      },
+      {
+        "full_date": "2024-10-24 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 5829908.039999996,
+        "transactions": 213
+      },
+      {
+        "full_date": "2024-10-25 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 8952083.51000001,
+        "transactions": 269
+      },
+      {
+        "full_date": "2024-10-26 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 7242251.469999999,
+        "transactions": 179
+      },
+      {
+        "full_date": "2024-10-27 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 4039226.030000001,
+        "transactions": 152
+      },
+      {
+        "full_date": "2024-10-28 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 4916313.11,
+        "transactions": 134
+      },
+      {
+        "full_date": "2024-10-29 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 3606558.46,
+        "transactions": 108
+      },
+      {
+        "full_date": "2024-10-30 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2415799.9800000004,
+        "transactions": 108
+      },
+      {
+        "full_date": "2024-10-31 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 4338413.689999999,
+        "transactions": 129
+      },
+      {
+        "full_date": "2024-11-01 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 5410267.0200000005,
+        "transactions": 210
+      },
+      {
+        "full_date": "2024-11-02 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 7509912.070000004,
+        "transactions": 254
+      },
+      {
+        "full_date": "2024-11-03 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 5337466.600000001,
+        "transactions": 145
+      },
+      {
+        "full_date": "2024-11-04 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 4685583.039999999,
+        "transactions": 146
+      },
+      {
+        "full_date": "2024-11-05 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 3814358.8600000013,
+        "transactions": 123
+      },
+      {
+        "full_date": "2024-11-06 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 16738279.89999999,
+        "transactions": 162
+      },
+      {
+        "full_date": "2024-11-07 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 5735041.889999999,
+        "transactions": 139
+      },
+      {
+        "full_date": "2024-11-08 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 5794865.070000001,
+        "transactions": 169
+      },
+      {
+        "full_date": "2024-11-09 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 7287894.929999994,
+        "transactions": 186
+      },
+      {
+        "full_date": "2024-11-10 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 5774340.840000002,
+        "transactions": 176
+      },
+      {
+        "full_date": "2024-11-11 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 4075487.389999999,
+        "transactions": 159
+      },
+      {
+        "full_date": "2024-11-12 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 12243751.799999991,
+        "transactions": 361
+      },
+      {
+        "full_date": "2024-11-13 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 11230003.29,
+        "transactions": 339
+      },
+      {
+        "full_date": "2024-11-14 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 4119649.050000001,
+        "transactions": 145
+      },
+      {
+        "full_date": "2024-11-15 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 6903957.349999996,
+        "transactions": 226
+      },
+      {
+        "full_date": "2024-11-16 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 8253943.319999995,
+        "transactions": 255
+      },
+      {
+        "full_date": "2024-11-17 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 6026338.46,
+        "transactions": 176
+      },
+      {
+        "full_date": "2024-11-18 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 3789379.1999999997,
+        "transactions": 122
+      },
+      {
+        "full_date": "2024-11-19 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 4935646.910000001,
+        "transactions": 133
+      },
+      {
+        "full_date": "2024-11-20 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 5235003.26,
+        "transactions": 148
+      },
+      {
+        "full_date": "2024-11-21 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 4686453.7,
+        "transactions": 146
+      },
+      {
+        "full_date": "2024-11-22 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 5122010.619999998,
+        "transactions": 182
+      },
+      {
+        "full_date": "2024-11-23 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 6677271.169999999,
+        "transactions": 194
+      },
+      {
+        "full_date": "2024-11-24 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 4931969.95,
+        "transactions": 159
+      },
+      {
+        "full_date": "2024-11-25 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 3103275.390000001,
+        "transactions": 108
+      },
+      {
+        "full_date": "2024-11-26 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 4756739.470000001,
+        "transactions": 138
+      },
+      {
+        "full_date": "2024-11-27 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 4502442.260000002,
+        "transactions": 130
+      },
+      {
+        "full_date": "2024-11-28 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 5586097.810000001,
+        "transactions": 163
+      },
+      {
+        "full_date": "2024-11-29 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 5549037.03,
+        "transactions": 159
+      },
+      {
+        "full_date": "2024-11-30 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 11978564.18999999,
+        "transactions": 218
+      },
+      {
+        "full_date": "2024-12-01 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 4945861.159999999,
+        "transactions": 200
+      },
+      {
+        "full_date": "2024-12-02 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 4969026.689999996,
+        "transactions": 155
+      },
+      {
+        "full_date": "2024-12-03 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 5710890.579999996,
+        "transactions": 100
+      },
+      {
+        "full_date": "2024-12-04 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 3414977.3,
+        "transactions": 132
+      },
+      {
+        "full_date": "2024-12-05 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2445004.99,
+        "transactions": 119
+      },
+      {
+        "full_date": "2024-12-06 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 4133608.7100000004,
+        "transactions": 147
+      },
+      {
+        "full_date": "2024-12-07 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 3991461.3600000013,
+        "transactions": 166
+      },
+      {
+        "full_date": "2024-12-08 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 7299474.300000003,
+        "transactions": 138
+      },
+      {
+        "full_date": "2024-12-09 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 4320463.640000001,
+        "transactions": 106
+      },
+      {
+        "full_date": "2024-12-10 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2946344.5600000005,
+        "transactions": 100
+      },
+      {
+        "full_date": "2024-12-11 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 5088851.54,
+        "transactions": 128
+      },
+      {
+        "full_date": "2024-12-12 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 3557255.5599999996,
+        "transactions": 125
+      },
+      {
+        "full_date": "2024-12-13 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 4722625.9700000025,
+        "transactions": 132
+      },
+      {
+        "full_date": "2024-12-14 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 4822304.380000002,
+        "transactions": 170
+      },
+      {
+        "full_date": "2024-12-15 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 4774037.169999998,
+        "transactions": 196
+      },
+      {
+        "full_date": "2024-12-16 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 5515443.199999999,
+        "transactions": 145
+      },
+      {
+        "full_date": "2024-12-17 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 3354196.830000001,
+        "transactions": 108
+      },
+      {
+        "full_date": "2024-12-18 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2097623.5700000003,
+        "transactions": 108
+      },
+      {
+        "full_date": "2024-12-19 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 5358312.6899999995,
+        "transactions": 131
+      },
+      {
+        "full_date": "2024-12-20 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2676173.680000002,
+        "transactions": 132
+      },
+      {
+        "full_date": "2024-12-21 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 4583342.84,
+        "transactions": 182
+      },
+      {
+        "full_date": "2024-12-22 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 3606911.5799999996,
+        "transactions": 124
+      },
+      {
+        "full_date": "2024-12-23 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 3719500.2600000007,
+        "transactions": 101
+      },
+      {
+        "full_date": "2024-12-24 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 3144583.0800000015,
+        "transactions": 108
+      },
+      {
+        "full_date": "2024-12-25 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 13133426.29,
+        "transactions": 176
+      },
+      {
+        "full_date": "2024-12-26 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 3622562.369999999,
+        "transactions": 115
+      },
+      {
+        "full_date": "2024-12-27 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 5282275.929999999,
+        "transactions": 154
+      },
+      {
+        "full_date": "2024-12-28 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 4153213.020000001,
+        "transactions": 162
+      },
+      {
+        "full_date": "2024-12-29 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 5438568.210000001,
+        "transactions": 143
+      },
+      {
+        "full_date": "2024-12-30 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 3825085.2100000004,
+        "transactions": 128
+      },
+      {
+        "full_date": "2024-12-31 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 4214331.459999998,
+        "transactions": 116
+      },
+      {
+        "full_date": "2025-01-01 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1755854.9000000001,
+        "transactions": 77
+      },
+      {
+        "full_date": "2025-01-02 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2594892.130000001,
+        "transactions": 88
+      },
+      {
+        "full_date": "2025-01-03 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2629394.3799999994,
+        "transactions": 90
+      },
+      {
+        "full_date": "2025-01-04 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 3776519.5299999993,
+        "transactions": 98
+      },
+      {
+        "full_date": "2025-01-05 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1195582.0700000005,
+        "transactions": 59
+      },
+      {
+        "full_date": "2025-01-06 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1391021.0900000008,
+        "transactions": 63
+      },
+      {
+        "full_date": "2025-01-07 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2628694.350000001,
+        "transactions": 70
+      },
+      {
+        "full_date": "2025-01-08 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 3158955.2100000004,
+        "transactions": 74
+      },
+      {
+        "full_date": "2025-01-09 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1961472.5100000002,
+        "transactions": 75
+      },
+      {
+        "full_date": "2025-01-10 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2245028.36,
+        "transactions": 83
+      },
+      {
+        "full_date": "2025-01-11 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 7520319.450000005,
+        "transactions": 101
+      },
+      {
+        "full_date": "2025-01-12 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1898391.2600000002,
+        "transactions": 87
+      },
+      {
+        "full_date": "2025-01-13 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1521675.82,
+        "transactions": 63
+      },
+      {
+        "full_date": "2025-01-14 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2036413.37,
+        "transactions": 69
+      },
+      {
+        "full_date": "2025-01-15 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2418138.840000001,
+        "transactions": 81
+      },
+      {
+        "full_date": "2025-01-16 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2805444.2200000007,
+        "transactions": 98
+      },
+      {
+        "full_date": "2025-01-17 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2407899.200000001,
+        "transactions": 88
+      },
+      {
+        "full_date": "2025-01-18 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 1830040.9400000002,
+        "transactions": 102
+      },
+      {
+        "full_date": "2025-01-19 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 1034887.4799999997,
+        "transactions": 68
+      },
+      {
+        "full_date": "2025-01-20 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1464111.8399999996,
+        "transactions": 73
+      },
+      {
+        "full_date": "2025-01-21 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 1409966.0300000003,
+        "transactions": 58
+      },
+      {
+        "full_date": "2025-01-22 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 2151597.4800000004,
+        "transactions": 55
+      },
+      {
+        "full_date": "2025-01-23 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 1581718.17,
+        "transactions": 70
+      },
+      {
+        "full_date": "2025-01-24 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2095039.7500000002,
+        "transactions": 72
+      },
+      {
+        "full_date": "2025-01-25 00:00:00",
+        "day_name": "Saturday",
+        "is_weekend": true,
+        "revenue": 3163124.500000002,
+        "transactions": 87
+      },
+      {
+        "full_date": "2025-01-26 00:00:00",
+        "day_name": "Sunday",
+        "is_weekend": true,
+        "revenue": 2598157.81,
+        "transactions": 78
+      },
+      {
+        "full_date": "2025-01-27 00:00:00",
+        "day_name": "Monday",
+        "is_weekend": false,
+        "revenue": 1509443.5399999998,
+        "transactions": 61
+      },
+      {
+        "full_date": "2025-01-28 00:00:00",
+        "day_name": "Tuesday",
+        "is_weekend": false,
+        "revenue": 2171896.13,
+        "transactions": 69
+      },
+      {
+        "full_date": "2025-01-29 00:00:00",
+        "day_name": "Wednesday",
+        "is_weekend": false,
+        "revenue": 1553240.89,
+        "transactions": 68
+      },
+      {
+        "full_date": "2025-01-30 00:00:00",
+        "day_name": "Thursday",
+        "is_weekend": false,
+        "revenue": 2424031.0200000005,
+        "transactions": 67
+      },
+      {
+        "full_date": "2025-01-31 00:00:00",
+        "day_name": "Friday",
+        "is_weekend": false,
+        "revenue": 2451482.2299999986,
+        "transactions": 91
+      }
+    ]
+  },
+  "city_sales": [
+    {
+      "city": "Online",
+      "state": "Online",
+      "region": "Online",
+      "revenue": 402347207.83999825,
+      "units_sold": 67532.0,
+      "transactions": 19460,
+      "unique_customers": 4297
+    },
+    {
+      "city": "Hyderabad",
+      "state": "Telangana",
+      "region": "South",
+      "revenue": 218048149.80000016,
+      "units_sold": 33274.0,
+      "transactions": 5170,
+      "unique_customers": 432
+    },
+    {
+      "city": "Ahmedabad",
+      "state": "Gujarat",
+      "region": "West",
+      "revenue": 204017211.9699988,
+      "units_sold": 33224.0,
+      "transactions": 5386,
+      "unique_customers": 435
+    },
+    {
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "region": "West",
+      "revenue": 200238084.99999943,
+      "units_sold": 30871.0,
+      "transactions": 4823,
+      "unique_customers": 385
+    },
+    {
+      "city": "Pune",
+      "state": "Maharashtra",
+      "region": "West",
+      "revenue": 195412293.05000022,
+      "units_sold": 32971.0,
+      "transactions": 5166,
+      "unique_customers": 407
+    },
+    {
+      "city": "Delhi",
+      "state": "Delhi",
+      "region": "North",
+      "revenue": 191334042.66999927,
+      "units_sold": 33468.0,
+      "transactions": 5357,
+      "unique_customers": 433
+    },
+    {
+      "city": "Chennai",
+      "state": "Tamil Nadu",
+      "region": "South",
+      "revenue": 186238825.08999893,
+      "units_sold": 29963.0,
+      "transactions": 4602,
+      "unique_customers": 393
+    },
+    {
+      "city": "Kolkata",
+      "state": "West Bengal",
+      "region": "East",
+      "revenue": 184453632.71999994,
+      "units_sold": 33537.0,
+      "transactions": 5181,
+      "unique_customers": 425
+    },
+    {
+      "city": "Lucknow",
+      "state": "Uttar Pradesh",
+      "region": "North",
+      "revenue": 183994187.01999918,
+      "units_sold": 32575.0,
+      "transactions": 5149,
+      "unique_customers": 432
+    },
+    {
+      "city": "Jaipur",
+      "state": "Rajasthan",
+      "region": "West",
+      "revenue": 175669475.62000027,
+      "units_sold": 30197.0,
+      "transactions": 4878,
+      "unique_customers": 401
+    },
+    {
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "region": "South",
+      "revenue": 173161423.21999925,
+      "units_sold": 28843.0,
+      "transactions": 4733,
+      "unique_customers": 412
+    }
+  ],
+  "top_products": {
+    "top_by_revenue": [
+      {
+        "product_name": "Digital Alarm Clock",
+        "category": "Electronics",
+        "revenue": 97683081.88999996,
+        "quantity_sold": 2112.0,
+        "transactions": 396
+      },
+      {
+        "product_name": "Pen Drive 64GB",
+        "category": "Electronics",
+        "revenue": 89793923.03999996,
+        "quantity_sold": 3016.0,
+        "transactions": 374
+      },
+      {
+        "product_name": "Fitness Tracker",
+        "category": "Electronics",
+        "revenue": 80631489.38999997,
+        "quantity_sold": 1907.0,
+        "transactions": 343
+      },
+      {
+        "product_name": "Charger 65W GaN",
+        "category": "Electronics",
+        "revenue": 80624213.7,
+        "quantity_sold": 2480.0,
+        "transactions": 367
+      },
+      {
+        "product_name": "Smartwatch Band",
+        "category": "Electronics",
+        "revenue": 76498039.25999998,
+        "quantity_sold": 2089.0,
+        "transactions": 373
+      },
+      {
+        "product_name": "Webcam HD",
+        "category": "Electronics",
+        "revenue": 74670878.54999997,
+        "quantity_sold": 1701.0,
+        "transactions": 366
+      },
+      {
+        "product_name": "Smart Plug WiFi",
+        "category": "Electronics",
+        "revenue": 68141410.54000002,
+        "quantity_sold": 1718.0,
+        "transactions": 355
+      },
+      {
+        "product_name": "Portable Monitor 15in",
+        "category": "Electronics",
+        "revenue": 67755645.43000002,
+        "quantity_sold": 1698.0,
+        "transactions": 340
+      },
+      {
+        "product_name": "Ring Light 10in",
+        "category": "Electronics",
+        "revenue": 63197949.48000002,
+        "quantity_sold": 1830.0,
+        "transactions": 359
+      },
+      {
+        "product_name": "LED Desk Lamp",
+        "category": "Electronics",
+        "revenue": 57468602.86999999,
+        "quantity_sold": 1720.0,
+        "transactions": 363
+      }
+    ],
+    "top_by_quantity": [
+      {
+        "product_name": "Pen Drive 64GB",
+        "category": "Electronics",
+        "quantity_sold": 3016.0,
+        "revenue": 89793923.03999996,
+        "transactions": 374
+      },
+      {
+        "product_name": "Chopping Board Bamboo",
+        "category": "Home & Kitchen",
+        "quantity_sold": 2973.0,
+        "revenue": 23470794.590000004,
+        "transactions": 379
+      },
+      {
+        "product_name": "Pull-Up Bar Doorway",
+        "category": "Sports",
+        "quantity_sold": 2875.0,
+        "revenue": 6812495.899999999,
+        "transactions": 375
+      },
+      {
+        "product_name": "Dinner Set 24pc",
+        "category": "Home & Kitchen",
+        "quantity_sold": 2765.0,
+        "revenue": 22016732.679999992,
+        "transactions": 348
+      },
+      {
+        "product_name": "Hair Gel Strong Hold",
+        "category": "Beauty",
+        "quantity_sold": 2719.0,
+        "revenue": 1351327.5299999998,
+        "transactions": 366
+      },
+      {
+        "product_name": "Car Phone Mount",
+        "category": "Electronics",
+        "quantity_sold": 2687.0,
+        "revenue": 47389411.82999999,
+        "transactions": 357
+      },
+      {
+        "product_name": "Yoga Mat 6mm",
+        "category": "Sports",
+        "quantity_sold": 2675.0,
+        "revenue": 13008516.509999996,
+        "transactions": 319
+      },
+      {
+        "product_name": "Cotton Bedsheet King",
+        "category": "Home & Kitchen",
+        "quantity_sold": 2631.0,
+        "revenue": 17257666.279999997,
+        "transactions": 343
+      },
+      {
+        "product_name": "USB-C Hub",
+        "category": "Electronics",
+        "quantity_sold": 2568.0,
+        "revenue": 38098078.94000002,
+        "transactions": 376
+      },
+      {
+        "product_name": "Track Pants",
+        "category": "Clothing",
+        "quantity_sold": 2557.0,
+        "revenue": 6226557.29,
+        "transactions": 360
+      }
+    ]
+  },
+  "channel_mix": [
+    {
+      "channel": "POS",
+      "revenue": 1912567326.1599996,
+      "transactions": 50445,
+      "units_sold": 318923.0,
+      "revenue_pct": 82.6
+    },
+    {
+      "channel": "Web",
+      "revenue": 402347207.83999825,
+      "transactions": 19460,
+      "units_sold": 67532.0,
+      "revenue_pct": 17.4
+    }
+  ],
+  "category_revenue": [
+    {
+      "category": "Electronics",
+      "revenue": 1303310179.6700015,
+      "units_sold": 62080.0,
+      "transactions": 11169,
+      "unique_customers": 3786,
+      "avg_price": 21206.78
+    },
+    {
+      "category": "Home & Kitchen",
+      "revenue": 400787706.36000067,
+      "units_sold": 50976.0,
+      "transactions": 8737,
+      "unique_customers": 3564,
+      "avg_price": 7851.3
+    },
+    {
+      "category": "Clothing",
+      "revenue": 176809412.26999918,
+      "units_sold": 60372.0,
+      "transactions": 10911,
+      "unique_customers": 3721,
+      "avg_price": 2944.48
+    },
+    {
+      "category": "Sports",
+      "revenue": 170110447.4699999,
+      "units_sold": 38104.0,
+      "transactions": 6545,
+      "unique_customers": 3188,
+      "avg_price": 4481.95
+    },
+    {
+      "category": "Beauty",
+      "revenue": 121834222.64999987,
+      "units_sold": 49200.0,
+      "transactions": 8764,
+      "unique_customers": 3521,
+      "avg_price": 2504.96
+    },
+    {
+      "category": "Toys",
+      "revenue": 83586451.83000004,
+      "units_sold": 39602.0,
+      "transactions": 7293,
+      "unique_customers": 3285,
+      "avg_price": 2140.18
+    },
+    {
+      "category": "Books",
+      "revenue": 31404976.790000074,
+      "units_sold": 32683.0,
+      "transactions": 6459,
+      "unique_customers": 3176,
+      "avg_price": 952.88
+    },
+    {
+      "category": "Groceries",
+      "revenue": 27071136.96000005,
+      "units_sold": 53438.0,
+      "transactions": 10027,
+      "unique_customers": 3695,
+      "avg_price": 496.79
+    }
+  ],
+  "festive_analysis": [
+    {
+      "period": "Normal",
+      "revenue": 1234766084.610003,
+      "transactions": 37083,
+      "units_sold": 208949.0,
+      "avg_transaction_value": 33297.36
+    },
+    {
+      "period": "Festive (Oct-Jan)",
+      "revenue": 1080148449.3899992,
+      "transactions": 32822,
+      "units_sold": 177506.0,
+      "avg_transaction_value": 32909.28
+    }
+  ]
+}

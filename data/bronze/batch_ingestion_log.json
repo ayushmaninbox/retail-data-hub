@@ -1,0 +1,35 @@
+[
+  {
+    "timestamp": "2026-02-14T13:33:42.124743",
+    "dataset": "pos_sales",
+    "source": "/Users/ayushmaninbox/Documents/Hackathon/retail-data-hub/data/raw/pos_sales.csv",
+    "output": "/Users/ayushmaninbox/Documents/Hackathon/retail-data-hub/data/bronze/pos_sales/pos_sales.parquet",
+    "rows": 50862,
+    "columns": 11,
+    "status": "SUCCESS",
+    "error": null,
+    "ingested_at": "2026-02-14T13:33:42.124749"
+  },
+  {
+    "timestamp": "2026-02-14T13:33:42.167164",
+    "dataset": "warehouse_inventory",
+    "source": "/Users/ayushmaninbox/Documents/Hackathon/retail-data-hub/data/raw/warehouse_inventory.csv",
+    "output": "/Users/ayushmaninbox/Documents/Hackathon/retail-data-hub/data/bronze/warehouse/warehouse_inventory.parquet",
+    "rows": 50000,
+    "columns": 9,
+    "status": "SUCCESS",
+    "error": null,
+    "ingested_at": "2026-02-14T13:33:42.167170"
+  },
+  {
+    "timestamp": "2026-02-14T13:33:42.181041",
+    "dataset": "shipments",
+    "source": "/Users/ayushmaninbox/Documents/Hackathon/retail-data-hub/data/raw/shipments.csv",
+    "output": "/Users/ayushmaninbox/Documents/Hackathon/retail-data-hub/data/bronze/warehouse/shipments.parquet",
+    "rows": 8000,
+    "columns": 8,
+    "status": "SUCCESS",
+    "error": null,
+    "ingested_at": "2026-02-14T13:33:42.181050"
+  }
+]

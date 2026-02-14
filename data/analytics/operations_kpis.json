@@ -1,0 +1,2576 @@
+{
+  "computed_at": "2026-02-14T13:41:08.750393",
+  "inventory_turnover": {
+    "by_category": [
+      {
+        "category": "Electronics",
+        "total_sold": 62080.0,
+        "avg_inventory": 237.0,
+        "turnover_ratio": 262.0
+      },
+      {
+        "category": "Clothing",
+        "total_sold": 60372.0,
+        "avg_inventory": 240.0,
+        "turnover_ratio": 251.41
+      },
+      {
+        "category": "Groceries",
+        "total_sold": 53438.0,
+        "avg_inventory": 239.0,
+        "turnover_ratio": 223.63
+      },
+      {
+        "category": "Home & Kitchen",
+        "total_sold": 50976.0,
+        "avg_inventory": 240.0,
+        "turnover_ratio": 212.84
+      },
+      {
+        "category": "Beauty",
+        "total_sold": 49200.0,
+        "avg_inventory": 237.0,
+        "turnover_ratio": 207.68
+      },
+      {
+        "category": "Toys",
+        "total_sold": 39602.0,
+        "avg_inventory": 239.0,
+        "turnover_ratio": 165.5
+      },
+      {
+        "category": "Sports",
+        "total_sold": 38104.0,
+        "avg_inventory": 235.0,
+        "turnover_ratio": 161.91
+      },
+      {
+        "category": "Books",
+        "total_sold": 32683.0,
+        "avg_inventory": 237.0,
+        "turnover_ratio": 138.09
+      }
+    ],
+    "by_store": [
+      {
+        "city": "Kolkata",
+        "total_sold": 33537.0,
+        "avg_inventory": 237.0,
+        "turnover_ratio": 141.46
+      },
+      {
+        "city": "Hyderabad",
+        "total_sold": 33274.0,
+        "avg_inventory": 236.0,
+        "turnover_ratio": 140.97
+      },
+      {
+        "city": "Delhi",
+        "total_sold": 33468.0,
+        "avg_inventory": 238.0,
+        "turnover_ratio": 140.55
+      },
+      {
+        "city": "Pune",
+        "total_sold": 32971.0,
+        "avg_inventory": 237.0,
+        "turnover_ratio": 139.36
+      },
+      {
+        "city": "Ahmedabad",
+        "total_sold": 33224.0,
+        "avg_inventory": 241.0,
+        "turnover_ratio": 138.02
+      },
+      {
+        "city": "Lucknow",
+        "total_sold": 32575.0,
+        "avg_inventory": 239.0,
+        "turnover_ratio": 136.45
+      },
+      {
+        "city": "Mumbai",
+        "total_sold": 30871.0,
+        "avg_inventory": 235.0,
+        "turnover_ratio": 131.09
+      },
+      {
+        "city": "Jaipur",
+        "total_sold": 30197.0,
+        "avg_inventory": 238.0,
+        "turnover_ratio": 126.72
+      },
+      {
+        "city": "Chennai",
+        "total_sold": 29963.0,
+        "avg_inventory": 241.0,
+        "turnover_ratio": 124.56
+      },
+      {
+        "city": "Bangalore",
+        "total_sold": 28843.0,
+        "avg_inventory": 239.0,
+        "turnover_ratio": 120.51
+      }
+    ]
+  },
+  "stockout_rate": {
+    "overall": {
+      "total_records": 50000,
+      "stockout_records": 2564.0,
+      "stockout_pct": 5.13
+    },
+    "by_category": [
+      {
+        "category": "Toys",
+        "total_records": 5004,
+        "stockout_records": 271.0,
+        "stockout_pct": 5.42
+      },
+      {
+        "category": "Groceries",
+        "total_records": 7591,
+        "stockout_records": 407.0,
+        "stockout_pct": 5.36
+      },
+      {
+        "category": "Beauty",
+        "total_records": 6101,
+        "stockout_records": 323.0,
+        "stockout_pct": 5.29
+      },
+      {
+        "category": "Electronics",
+        "total_records": 7430,
+        "stockout_records": 384.0,
+        "stockout_pct": 5.17
+      },
+      {
+        "category": "Sports",
+        "total_records": 5084,
+        "stockout_records": 253.0,
+        "stockout_pct": 4.98
+      },
+      {
+        "category": "Clothing",
+        "total_records": 7583,
+        "stockout_records": 377.0,
+        "stockout_pct": 4.97
+      },
+      {
+        "category": "Home & Kitchen",
+        "total_records": 6207,
+        "stockout_records": 307.0,
+        "stockout_pct": 4.95
+      },
+      {
+        "category": "Books",
+        "total_records": 5000,
+        "stockout_records": 242.0,
+        "stockout_pct": 4.84
+      }
+    ],
+    "by_city": [
+      {
+        "city": "Mumbai",
+        "total_records": 5000,
+        "stockout_records": 274.0,
+        "stockout_pct": 5.48
+      },
+      {
+        "city": "Ahmedabad",
+        "total_records": 5000,
+        "stockout_records": 269.0,
+        "stockout_pct": 5.38
+      },
+      {
+        "city": "Lucknow",
+        "total_records": 5000,
+        "stockout_records": 262.0,
+        "stockout_pct": 5.24
+      },
+      {
+        "city": "Chennai",
+        "total_records": 5000,
+        "stockout_records": 261.0,
+        "stockout_pct": 5.22
+      },
+      {
+        "city": "Hyderabad",
+        "total_records": 5000,
+        "stockout_records": 259.0,
+        "stockout_pct": 5.18
+      },
+      {
+        "city": "Jaipur",
+        "total_records": 5000,
+        "stockout_records": 252.0,
+        "stockout_pct": 5.04
+      },
+      {
+        "city": "Delhi",
+        "total_records": 5000,
+        "stockout_records": 252.0,
+        "stockout_pct": 5.04
+      },
+      {
+        "city": "Pune",
+        "total_records": 5000,
+        "stockout_records": 247.0,
+        "stockout_pct": 4.94
+      },
+      {
+        "city": "Bangalore",
+        "total_records": 5000,
+        "stockout_records": 245.0,
+        "stockout_pct": 4.9
+      },
+      {
+        "city": "Kolkata",
+        "total_records": 5000,
+        "stockout_records": 243.0,
+        "stockout_pct": 4.86
+      }
+    ],
+    "frequently_stocked_out": [
+      {
+        "product_name": "Blender 750W",
+        "category": "Home & Kitchen",
+        "total_snapshots": 233,
+        "zero_stock_snapshots": 21.0,
+        "stockout_pct": 9.0
+      },
+      {
+        "product_name": "The Subtle Art",
+        "category": "Books",
+        "total_snapshots": 257,
+        "zero_stock_snapshots": 23.0,
+        "stockout_pct": 8.9
+      },
+      {
+        "product_name": "Peanut Butter 400g",
+        "category": "Groceries",
+        "total_snapshots": 255,
+        "zero_stock_snapshots": 22.0,
+        "stockout_pct": 8.6
+      },
+      {
+        "product_name": "HDMI Cable 2m",
+        "category": "Electronics",
+        "total_snapshots": 258,
+        "zero_stock_snapshots": 22.0,
+        "stockout_pct": 8.5
+      },
+      {
+        "product_name": "Mouse Wireless",
+        "category": "Electronics",
+        "total_snapshots": 246,
+        "zero_stock_snapshots": 21.0,
+        "stockout_pct": 8.5
+      },
+      {
+        "product_name": "Raincoat Foldable",
+        "category": "Clothing",
+        "total_snapshots": 241,
+        "zero_stock_snapshots": 20.0,
+        "stockout_pct": 8.3
+      },
+      {
+        "product_name": "Meditations Marcus Aurelius",
+        "category": "Books",
+        "total_snapshots": 232,
+        "zero_stock_snapshots": 19.0,
+        "stockout_pct": 8.2
+      },
+      {
+        "product_name": "Knife Set 6pc",
+        "category": "Home & Kitchen",
+        "total_snapshots": 255,
+        "zero_stock_snapshots": 21.0,
+        "stockout_pct": 8.2
+      },
+      {
+        "product_name": "Face Scrub 100g",
+        "category": "Beauty",
+        "total_snapshots": 223,
+        "zero_stock_snapshots": 18.0,
+        "stockout_pct": 8.1
+      },
+      {
+        "product_name": "Night Suit",
+        "category": "Clothing",
+        "total_snapshots": 246,
+        "zero_stock_snapshots": 20.0,
+        "stockout_pct": 8.1
+      },
+      {
+        "product_name": "Nail Polish Set 6pc",
+        "category": "Beauty",
+        "total_snapshots": 235,
+        "zero_stock_snapshots": 19.0,
+        "stockout_pct": 8.1
+      },
+      {
+        "product_name": "Cumin Seeds 100g",
+        "category": "Groceries",
+        "total_snapshots": 258,
+        "zero_stock_snapshots": 20.0,
+        "stockout_pct": 7.8
+      },
+      {
+        "product_name": "Moisturiser SPF 30",
+        "category": "Beauty",
+        "total_snapshots": 253,
+        "zero_stock_snapshots": 19.0,
+        "stockout_pct": 7.5
+      },
+      {
+        "product_name": "Basmati Rice 5kg",
+        "category": "Groceries",
+        "total_snapshots": 231,
+        "zero_stock_snapshots": 17.0,
+        "stockout_pct": 7.4
+      },
+      {
+        "product_name": "Noise Cancelling Headphones",
+        "category": "Electronics",
+        "total_snapshots": 237,
+        "zero_stock_snapshots": 17.0,
+        "stockout_pct": 7.2
+      }
+    ]
+  },
+  "delivery_times": {
+    "overall": {
+      "total_shipments": 8000,
+      "delivered": 7245.0,
+      "delayed": 207.0,
+      "in_transit": 397.0,
+      "returned": 151.0,
+      "avg_delivery_days": 4.1,
+      "median_delivery_days": 3.0
+    },
+    "by_carrier": [
+      {
+        "carrier": "BlueDart",
+        "shipments": 1135,
+        "avg_days": 4.0,
+        "delivered": 1031.0,
+        "delayed": 23.0,
+        "in_transit": 61.0,
+        "returned": 20.0,
+        "delay_pct": 2.0
+      },
+      {
+        "carrier": "Ecom Express",
+        "shipments": 1180,
+        "avg_days": 4.0,
+        "delivered": 1068.0,
+        "delayed": 18.0,
+        "in_transit": 66.0,
+        "returned": 28.0,
+        "delay_pct": 1.5
+      },
+      {
+        "carrier": "Shadowfax",
+        "shipments": 1124,
+        "avg_days": 4.0,
+        "delivered": 1025.0,
+        "delayed": 24.0,
+        "in_transit": 58.0,
+        "returned": 17.0,
+        "delay_pct": 2.1
+      },
+      {
+        "carrier": "XpressBees",
+        "shipments": 1101,
+        "avg_days": 4.1,
+        "delivered": 985.0,
+        "delayed": 38.0,
+        "in_transit": 55.0,
+        "returned": 23.0,
+        "delay_pct": 3.5
+      },
+      {
+        "carrier": "DTDC",
+        "shipments": 1180,
+        "avg_days": 4.2,
+        "delivered": 1080.0,
+        "delayed": 23.0,
+        "in_transit": 55.0,
+        "returned": 22.0,
+        "delay_pct": 1.9
+      },
+      {
+        "carrier": "India Post",
+        "shipments": 1104,
+        "avg_days": 4.2,
+        "delivered": 999.0,
+        "delayed": 37.0,
+        "in_transit": 45.0,
+        "returned": 23.0,
+        "delay_pct": 3.4
+      },
+      {
+        "carrier": "Delhivery",
+        "shipments": 1176,
+        "avg_days": 4.3,
+        "delivered": 1057.0,
+        "delayed": 44.0,
+        "in_transit": 57.0,
+        "returned": 18.0,
+        "delay_pct": 3.7
+      }
+    ],
+    "by_destination": [
+      {
+        "destination_city": "Pune",
+        "shipments": 808,
+        "avg_days": 4.3,
+        "bottleneck_shipments": 122.0,
+        "bottleneck_pct": 15.1
+      },
+      {
+        "destination_city": "Delhi",
+        "shipments": 815,
+        "avg_days": 4.2,
+        "bottleneck_shipments": 127.0,
+        "bottleneck_pct": 15.6
+      },
+      {
+        "destination_city": "Chennai",
+        "shipments": 759,
+        "avg_days": 4.2,
+        "bottleneck_shipments": 112.0,
+        "bottleneck_pct": 14.8
+      },
+      {
+        "destination_city": "Mumbai",
+        "shipments": 827,
+        "avg_days": 4.2,
+        "bottleneck_shipments": 127.0,
+        "bottleneck_pct": 15.4
+      },
+      {
+        "destination_city": "Hyderabad",
+        "shipments": 780,
+        "avg_days": 4.2,
+        "bottleneck_shipments": 122.0,
+        "bottleneck_pct": 15.6
+      },
+      {
+        "destination_city": "Lucknow",
+        "shipments": 807,
+        "avg_days": 4.1,
+        "bottleneck_shipments": 124.0,
+        "bottleneck_pct": 15.4
+      },
+      {
+        "destination_city": "Bangalore",
+        "shipments": 823,
+        "avg_days": 4.1,
+        "bottleneck_shipments": 115.0,
+        "bottleneck_pct": 14.0
+      },
+      {
+        "destination_city": "Ahmedabad",
+        "shipments": 782,
+        "avg_days": 4.0,
+        "bottleneck_shipments": 105.0,
+        "bottleneck_pct": 13.4
+      },
+      {
+        "destination_city": "Kolkata",
+        "shipments": 765,
+        "avg_days": 4.0,
+        "bottleneck_shipments": 106.0,
+        "bottleneck_pct": 13.9
+      },
+      {
+        "destination_city": "Jaipur",
+        "shipments": 834,
+        "avg_days": 4.0,
+        "bottleneck_shipments": 113.0,
+        "bottleneck_pct": 13.5
+      }
+    ],
+    "distribution": [
+      {
+        "days": 1.0,
+        "shipments": 1363
+      },
+      {
+        "days": 2.0,
+        "shipments": 1214
+      },
+      {
+        "days": 3.0,
+        "shipments": 1250
+      },
+      {
+        "days": 4.0,
+        "shipments": 1306
+      },
+      {
+        "days": 5.0,
+        "shipments": 1297
+      },
+      {
+        "days": 7.0,
+        "shipments": 148
+      },
+      {
+        "days": 8.0,
+        "shipments": 161
+      },
+      {
+        "days": 9.0,
+        "shipments": 161
+      },
+      {
+        "days": 10.0,
+        "shipments": 152
+      },
+      {
+        "days": 11.0,
+        "shipments": 145
+      },
+      {
+        "days": 12.0,
+        "shipments": 122
+      },
+      {
+        "days": 13.0,
+        "shipments": 141
+      },
+      {
+        "days": 14.0,
+        "shipments": 143
+      }
+    ]
+  },
+  "seasonal_demand": [
+    {
+      "year_month": "2023-01",
+      "year": 2023,
+      "month": 1,
+      "month_name": "January",
+      "category": "Beauty",
+      "units_sold": 1419.0,
+      "revenue": 3344024.78
+    },
+    {
+      "year_month": "2023-01",
+      "year": 2023,
+      "month": 1,
+      "month_name": "January",
+      "category": "Books",
+      "units_sold": 826.0,
+      "revenue": 819571.4299999997
+    },
+    {
+      "year_month": "2023-01",
+      "year": 2023,
+      "month": 1,
+      "month_name": "January",
+      "category": "Clothing",
+      "units_sold": 1343.0,
+      "revenue": 4403491.889999999
+    },
+    {
+      "year_month": "2023-01",
+      "year": 2023,
+      "month": 1,
+      "month_name": "January",
+      "category": "Electronics",
+      "units_sold": 1236.0,
+      "revenue": 27846077.150000006
+    },
+    {
+      "year_month": "2023-01",
+      "year": 2023,
+      "month": 1,
+      "month_name": "January",
+      "category": "Groceries",
+      "units_sold": 1331.0,
+      "revenue": 685548.9999999997
+    },
+    {
+      "year_month": "2023-01",
+      "year": 2023,
+      "month": 1,
+      "month_name": "January",
+      "category": "Home & Kitchen",
+      "units_sold": 1239.0,
+      "revenue": 11701727.710000005
+    },
+    {
+      "year_month": "2023-01",
+      "year": 2023,
+      "month": 1,
+      "month_name": "January",
+      "category": "Sports",
+      "units_sold": 1215.0,
+      "revenue": 5778755.509999998
+    },
+    {
+      "year_month": "2023-01",
+      "year": 2023,
+      "month": 1,
+      "month_name": "January",
+      "category": "Toys",
+      "units_sold": 767.0,
+      "revenue": 1523646.2700000007
+    },
+    {
+      "year_month": "2023-02",
+      "year": 2023,
+      "month": 2,
+      "month_name": "February",
+      "category": "Beauty",
+      "units_sold": 1442.0,
+      "revenue": 3893087.100000001
+    },
+    {
+      "year_month": "2023-02",
+      "year": 2023,
+      "month": 2,
+      "month_name": "February",
+      "category": "Books",
+      "units_sold": 854.0,
+      "revenue": 820368.7599999998
+    },
+    {
+      "year_month": "2023-02",
+      "year": 2023,
+      "month": 2,
+      "month_name": "February",
+      "category": "Clothing",
+      "units_sold": 1592.0,
+      "revenue": 5035154.780000001
+    },
+    {
+      "year_month": "2023-02",
+      "year": 2023,
+      "month": 2,
+      "month_name": "February",
+      "category": "Electronics",
+      "units_sold": 1111.0,
+      "revenue": 23771404.780000012
+    },
+    {
+      "year_month": "2023-02",
+      "year": 2023,
+      "month": 2,
+      "month_name": "February",
+      "category": "Groceries",
+      "units_sold": 1254.0,
+      "revenue": 602866.6699999998
+    },
+    {
+      "year_month": "2023-02",
+      "year": 2023,
+      "month": 2,
+      "month_name": "February",
+      "category": "Home & Kitchen",
+      "units_sold": 1601.0,
+      "revenue": 13242104.000000011
+    },
+    {
+      "year_month": "2023-02",
+      "year": 2023,
+      "month": 2,
+      "month_name": "February",
+      "category": "Sports",
+      "units_sold": 1786.0,
+      "revenue": 6866155.030000001
+    },
+    {
+      "year_month": "2023-02",
+      "year": 2023,
+      "month": 2,
+      "month_name": "February",
+      "category": "Toys",
+      "units_sold": 1071.0,
+      "revenue": 2306525.2500000005
+    },
+    {
+      "year_month": "2023-03",
+      "year": 2023,
+      "month": 3,
+      "month_name": "March",
+      "category": "Beauty",
+      "units_sold": 2183.0,
+      "revenue": 4946442.859999997
+    },
+    {
+      "year_month": "2023-03",
+      "year": 2023,
+      "month": 3,
+      "month_name": "March",
+      "category": "Books",
+      "units_sold": 1127.0,
+      "revenue": 1110589.699999999
+    },
+    {
+      "year_month": "2023-03",
+      "year": 2023,
+      "month": 3,
+      "month_name": "March",
+      "category": "Clothing",
+      "units_sold": 2512.0,
+      "revenue": 7651925.8999999985
+    },
+    {
+      "year_month": "2023-03",
+      "year": 2023,
+      "month": 3,
+      "month_name": "March",
+      "category": "Electronics",
+      "units_sold": 1632.0,
+      "revenue": 35241658.06
+    },
+    {
+      "year_month": "2023-03",
+      "year": 2023,
+      "month": 3,
+      "month_name": "March",
+      "category": "Groceries",
+      "units_sold": 1756.0,
+      "revenue": 919680.2500000001
+    },
+    {
+      "year_month": "2023-03",
+      "year": 2023,
+      "month": 3,
+      "month_name": "March",
+      "category": "Home & Kitchen",
+      "units_sold": 1560.0,
+      "revenue": 12262217.729999995
+    },
+    {
+      "year_month": "2023-03",
+      "year": 2023,
+      "month": 3,
+      "month_name": "March",
+      "category": "Sports",
+      "units_sold": 1517.0,
+      "revenue": 7429373.909999997
+    },
+    {
+      "year_month": "2023-03",
+      "year": 2023,
+      "month": 3,
+      "month_name": "March",
+      "category": "Toys",
+      "units_sold": 1402.0,
+      "revenue": 3069772.61
+    },
+    {
+      "year_month": "2023-04",
+      "year": 2023,
+      "month": 4,
+      "month_name": "April",
+      "category": "Beauty",
+      "units_sold": 1496.0,
+      "revenue": 4094372.82
+    },
+    {
+      "year_month": "2023-04",
+      "year": 2023,
+      "month": 4,
+      "month_name": "April",
+      "category": "Books",
+      "units_sold": 1134.0,
+      "revenue": 1128440.9000000004
+    },
+    {
+      "year_month": "2023-04",
+      "year": 2023,
+      "month": 4,
+      "month_name": "April",
+      "category": "Clothing",
+      "units_sold": 1732.0,
+      "revenue": 5203760.330000004
+    },
+    {
+      "year_month": "2023-04",
+      "year": 2023,
+      "month": 4,
+      "month_name": "April",
+      "category": "Electronics",
+      "units_sold": 2064.0,
+      "revenue": 47696106.13000003
+    },
+    {
+      "year_month": "2023-04",
+      "year": 2023,
+      "month": 4,
+      "month_name": "April",
+      "category": "Groceries",
+      "units_sold": 1739.0,
+      "revenue": 911494.6500000004
+    },
+    {
+      "year_month": "2023-04",
+      "year": 2023,
+      "month": 4,
+      "month_name": "April",
+      "category": "Home & Kitchen",
+      "units_sold": 1415.0,
+      "revenue": 11663432.239999998
+    },
+    {
+      "year_month": "2023-04",
+      "year": 2023,
+      "month": 4,
+      "month_name": "April",
+      "category": "Sports",
+      "units_sold": 1256.0,
+      "revenue": 5810008.6
+    },
+    {
+      "year_month": "2023-04",
+      "year": 2023,
+      "month": 4,
+      "month_name": "April",
+      "category": "Toys",
+      "units_sold": 1109.0,
+      "revenue": 2505381.5599999996
+    },
+    {
+      "year_month": "2023-05",
+      "year": 2023,
+      "month": 5,
+      "month_name": "May",
+      "category": "Beauty",
+      "units_sold": 1459.0,
+      "revenue": 4242865.830000001
+    },
+    {
+      "year_month": "2023-05",
+      "year": 2023,
+      "month": 5,
+      "month_name": "May",
+      "category": "Books",
+      "units_sold": 1065.0,
+      "revenue": 1034952.5800000001
+    },
+    {
+      "year_month": "2023-05",
+      "year": 2023,
+      "month": 5,
+      "month_name": "May",
+      "category": "Clothing",
+      "units_sold": 2265.0,
+      "revenue": 8053726.920000002
+    },
+    {
+      "year_month": "2023-05",
+      "year": 2023,
+      "month": 5,
+      "month_name": "May",
+      "category": "Electronics",
+      "units_sold": 1952.0,
+      "revenue": 39602430.39999999
+    },
+    {
+      "year_month": "2023-05",
+      "year": 2023,
+      "month": 5,
+      "month_name": "May",
+      "category": "Groceries",
+      "units_sold": 1890.0,
+      "revenue": 946090.8900000005
+    },
+    {
+      "year_month": "2023-05",
+      "year": 2023,
+      "month": 5,
+      "month_name": "May",
+      "category": "Home & Kitchen",
+      "units_sold": 1231.0,
+      "revenue": 10008469.260000002
+    },
+    {
+      "year_month": "2023-05",
+      "year": 2023,
+      "month": 5,
+      "month_name": "May",
+      "category": "Sports",
+      "units_sold": 1157.0,
+      "revenue": 5656353.959999994
+    },
+    {
+      "year_month": "2023-05",
+      "year": 2023,
+      "month": 5,
+      "month_name": "May",
+      "category": "Toys",
+      "units_sold": 1367.0,
+      "revenue": 2765786.29
+    },
+    {
+      "year_month": "2023-06",
+      "year": 2023,
+      "month": 6,
+      "month_name": "June",
+      "category": "Beauty",
+      "units_sold": 1264.0,
+      "revenue": 2926881.2099999986
+    },
+    {
+      "year_month": "2023-06",
+      "year": 2023,
+      "month": 6,
+      "month_name": "June",
+      "category": "Books",
+      "units_sold": 1175.0,
+      "revenue": 1129818.35
+    },
+    {
+      "year_month": "2023-06",
+      "year": 2023,
+      "month": 6,
+      "month_name": "June",
+      "category": "Clothing",
+      "units_sold": 1769.0,
+      "revenue": 4646322.02
+    },
+    {
+      "year_month": "2023-06",
+      "year": 2023,
+      "month": 6,
+      "month_name": "June",
+      "category": "Electronics",
+      "units_sold": 1705.0,
+      "revenue": 32911517.43999999
+    },
+    {
+      "year_month": "2023-06",
+      "year": 2023,
+      "month": 6,
+      "month_name": "June",
+      "category": "Groceries",
+      "units_sold": 1545.0,
+      "revenue": 802648.4100000005
+    },
+    {
+      "year_month": "2023-06",
+      "year": 2023,
+      "month": 6,
+      "month_name": "June",
+      "category": "Home & Kitchen",
+      "units_sold": 915.0,
+      "revenue": 7550143.730000004
+    },
+    {
+      "year_month": "2023-06",
+      "year": 2023,
+      "month": 6,
+      "month_name": "June",
+      "category": "Sports",
+      "units_sold": 988.0,
+      "revenue": 5199180.179999998
+    },
+    {
+      "year_month": "2023-06",
+      "year": 2023,
+      "month": 6,
+      "month_name": "June",
+      "category": "Toys",
+      "units_sold": 1461.0,
+      "revenue": 4039194.420000002
+    },
+    {
+      "year_month": "2023-07",
+      "year": 2023,
+      "month": 7,
+      "month_name": "July",
+      "category": "Beauty",
+      "units_sold": 1428.0,
+      "revenue": 3102099.1500000013
+    },
+    {
+      "year_month": "2023-07",
+      "year": 2023,
+      "month": 7,
+      "month_name": "July",
+      "category": "Books",
+      "units_sold": 1070.0,
+      "revenue": 1012518.7299999996
+    },
+    {
+      "year_month": "2023-07",
+      "year": 2023,
+      "month": 7,
+      "month_name": "July",
+      "category": "Clothing",
+      "units_sold": 1282.0,
+      "revenue": 4153876.3600000003
+    },
+    {
+      "year_month": "2023-07",
+      "year": 2023,
+      "month": 7,
+      "month_name": "July",
+      "category": "Electronics",
+      "units_sold": 1783.0,
+      "revenue": 31494810.08
+    },
+    {
+      "year_month": "2023-07",
+      "year": 2023,
+      "month": 7,
+      "month_name": "July",
+      "category": "Groceries",
+      "units_sold": 1462.0,
+      "revenue": 714092.8800000008
+    },
+    {
+      "year_month": "2023-07",
+      "year": 2023,
+      "month": 7,
+      "month_name": "July",
+      "category": "Home & Kitchen",
+      "units_sold": 1333.0,
+      "revenue": 12116853.020000001
+    },
+    {
+      "year_month": "2023-07",
+      "year": 2023,
+      "month": 7,
+      "month_name": "July",
+      "category": "Sports",
+      "units_sold": 1030.0,
+      "revenue": 4038222.5100000002
+    },
+    {
+      "year_month": "2023-07",
+      "year": 2023,
+      "month": 7,
+      "month_name": "July",
+      "category": "Toys",
+      "units_sold": 981.0,
+      "revenue": 2151870.8
+    },
+    {
+      "year_month": "2023-08",
+      "year": 2023,
+      "month": 8,
+      "month_name": "August",
+      "category": "Beauty",
+      "units_sold": 1424.0,
+      "revenue": 3674194.5000000005
+    },
+    {
+      "year_month": "2023-08",
+      "year": 2023,
+      "month": 8,
+      "month_name": "August",
+      "category": "Books",
+      "units_sold": 1066.0,
+      "revenue": 1150874.1000000008
+    },
+    {
+      "year_month": "2023-08",
+      "year": 2023,
+      "month": 8,
+      "month_name": "August",
+      "category": "Clothing",
+      "units_sold": 1621.0,
+      "revenue": 5035452.110000001
+    },
+    {
+      "year_month": "2023-08",
+      "year": 2023,
+      "month": 8,
+      "month_name": "August",
+      "category": "Electronics",
+      "units_sold": 2252.0,
+      "revenue": 49269347.220000006
+    },
+    {
+      "year_month": "2023-08",
+      "year": 2023,
+      "month": 8,
+      "month_name": "August",
+      "category": "Groceries",
+      "units_sold": 1649.0,
+      "revenue": 884065.3200000004
+    },
+    {
+      "year_month": "2023-08",
+      "year": 2023,
+      "month": 8,
+      "month_name": "August",
+      "category": "Home & Kitchen",
+      "units_sold": 1415.0,
+      "revenue": 11391881.99
+    },
+    {
+      "year_month": "2023-08",
+      "year": 2023,
+      "month": 8,
+      "month_name": "August",
+      "category": "Sports",
+      "units_sold": 2247.0,
+      "revenue": 9543400.89
+    },
+    {
+      "year_month": "2023-08",
+      "year": 2023,
+      "month": 8,
+      "month_name": "August",
+      "category": "Toys",
+      "units_sold": 1637.0,
+      "revenue": 3335799.1299999976
+    },
+    {
+      "year_month": "2023-09",
+      "year": 2023,
+      "month": 9,
+      "month_name": "September",
+      "category": "Beauty",
+      "units_sold": 2234.0,
+      "revenue": 5186697.009999998
+    },
+    {
+      "year_month": "2023-09",
+      "year": 2023,
+      "month": 9,
+      "month_name": "September",
+      "category": "Books",
+      "units_sold": 1121.0,
+      "revenue": 1049303.99
+    },
+    {
+      "year_month": "2023-09",
+      "year": 2023,
+      "month": 9,
+      "month_name": "September",
+      "category": "Clothing",
+      "units_sold": 1751.0,
+      "revenue": 5114098.32
+    },
+    {
+      "year_month": "2023-09",
+      "year": 2023,
+      "month": 9,
+      "month_name": "September",
+      "category": "Electronics",
+      "units_sold": 1692.0,
+      "revenue": 37366199.809999995
+    },
+    {
+      "year_month": "2023-09",
+      "year": 2023,
+      "month": 9,
+      "month_name": "September",
+      "category": "Groceries",
+      "units_sold": 2023.0,
+      "revenue": 974485.6400000006
+    },
+    {
+      "year_month": "2023-09",
+      "year": 2023,
+      "month": 9,
+      "month_name": "September",
+      "category": "Home & Kitchen",
+      "units_sold": 1394.0,
+      "revenue": 10348356.510000004
+    },
+    {
+      "year_month": "2023-09",
+      "year": 2023,
+      "month": 9,
+      "month_name": "September",
+      "category": "Sports",
+      "units_sold": 1353.0,
+      "revenue": 5999364.899999999
+    },
+    {
+      "year_month": "2023-09",
+      "year": 2023,
+      "month": 9,
+      "month_name": "September",
+      "category": "Toys",
+      "units_sold": 1207.0,
+      "revenue": 2671529.7199999993
+    },
+    {
+      "year_month": "2023-10",
+      "year": 2023,
+      "month": 10,
+      "month_name": "October",
+      "category": "Beauty",
+      "units_sold": 3153.0,
+      "revenue": 6472380.160000006
+    },
+    {
+      "year_month": "2023-10",
+      "year": 2023,
+      "month": 10,
+      "month_name": "October",
+      "category": "Books",
+      "units_sold": 1288.0,
+      "revenue": 1195863.1099999996
+    },
+    {
+      "year_month": "2023-10",
+      "year": 2023,
+      "month": 10,
+      "month_name": "October",
+      "category": "Clothing",
+      "units_sold": 4078.0,
+      "revenue": 10963146.95000001
+    },
+    {
+      "year_month": "2023-10",
+      "year": 2023,
+      "month": 10,
+      "month_name": "October",
+      "category": "Electronics",
+      "units_sold": 4035.0,
+      "revenue": 79978839.28000015
+    },
+    {
+      "year_month": "2023-10",
+      "year": 2023,
+      "month": 10,
+      "month_name": "October",
+      "category": "Groceries",
+      "units_sold": 2642.0,
+      "revenue": 1302890.4999999993
+    },
+    {
+      "year_month": "2023-10",
+      "year": 2023,
+      "month": 10,
+      "month_name": "October",
+      "category": "Home & Kitchen",
+      "units_sold": 2597.0,
+      "revenue": 19078694.17999999
+    },
+    {
+      "year_month": "2023-10",
+      "year": 2023,
+      "month": 10,
+      "month_name": "October",
+      "category": "Sports",
+      "units_sold": 2276.0,
+      "revenue": 10012288.230000008
+    },
+    {
+      "year_month": "2023-10",
+      "year": 2023,
+      "month": 10,
+      "month_name": "October",
+      "category": "Toys",
+      "units_sold": 1792.0,
+      "revenue": 3704956.6600000006
+    },
+    {
+      "year_month": "2023-11",
+      "year": 2023,
+      "month": 11,
+      "month_name": "November",
+      "category": "Beauty",
+      "units_sold": 3434.0,
+      "revenue": 7546953.039999996
+    },
+    {
+      "year_month": "2023-11",
+      "year": 2023,
+      "month": 11,
+      "month_name": "November",
+      "category": "Books",
+      "units_sold": 1732.0,
+      "revenue": 1442632.8499999999
+    },
+    {
+      "year_month": "2023-11",
+      "year": 2023,
+      "month": 11,
+      "month_name": "November",
+      "category": "Clothing",
+      "units_sold": 3750.0,
+      "revenue": 10509676.079999989
+    },
+    {
+      "year_month": "2023-11",
+      "year": 2023,
+      "month": 11,
+      "month_name": "November",
+      "category": "Electronics",
+      "units_sold": 4944.0,
+      "revenue": 88288483.76999998
+    },
+    {
+      "year_month": "2023-11",
+      "year": 2023,
+      "month": 11,
+      "month_name": "November",
+      "category": "Groceries",
+      "units_sold": 3643.0,
+      "revenue": 1735486.9200000006
+    },
+    {
+      "year_month": "2023-11",
+      "year": 2023,
+      "month": 11,
+      "month_name": "November",
+      "category": "Home & Kitchen",
+      "units_sold": 3864.0,
+      "revenue": 29115526.439999975
+    },
+    {
+      "year_month": "2023-11",
+      "year": 2023,
+      "month": 11,
+      "month_name": "November",
+      "category": "Sports",
+      "units_sold": 1635.0,
+      "revenue": 6764661.630000003
+    },
+    {
+      "year_month": "2023-11",
+      "year": 2023,
+      "month": 11,
+      "month_name": "November",
+      "category": "Toys",
+      "units_sold": 2633.0,
+      "revenue": 5267178.240000003
+    },
+    {
+      "year_month": "2023-12",
+      "year": 2023,
+      "month": 12,
+      "month_name": "December",
+      "category": "Beauty",
+      "units_sold": 1688.0,
+      "revenue": 4432515.620000002
+    },
+    {
+      "year_month": "2023-12",
+      "year": 2023,
+      "month": 12,
+      "month_name": "December",
+      "category": "Books",
+      "units_sold": 1984.0,
+      "revenue": 1889211.4900000012
+    },
+    {
+      "year_month": "2023-12",
+      "year": 2023,
+      "month": 12,
+      "month_name": "December",
+      "category": "Clothing",
+      "units_sold": 3741.0,
+      "revenue": 10841615.960000003
+    },
+    {
+      "year_month": "2023-12",
+      "year": 2023,
+      "month": 12,
+      "month_name": "December",
+      "category": "Electronics",
+      "units_sold": 3062.0,
+      "revenue": 68606382.51999998
+    },
+    {
+      "year_month": "2023-12",
+      "year": 2023,
+      "month": 12,
+      "month_name": "December",
+      "category": "Groceries",
+      "units_sold": 3061.0,
+      "revenue": 1542534.2400000007
+    },
+    {
+      "year_month": "2023-12",
+      "year": 2023,
+      "month": 12,
+      "month_name": "December",
+      "category": "Home & Kitchen",
+      "units_sold": 2985.0,
+      "revenue": 20720784.310000002
+    },
+    {
+      "year_month": "2023-12",
+      "year": 2023,
+      "month": 12,
+      "month_name": "December",
+      "category": "Sports",
+      "units_sold": 1866.0,
+      "revenue": 9230672.419999996
+    },
+    {
+      "year_month": "2023-12",
+      "year": 2023,
+      "month": 12,
+      "month_name": "December",
+      "category": "Toys",
+      "units_sold": 2948.0,
+      "revenue": 6577796.609999999
+    },
+    {
+      "year_month": "2024-01",
+      "year": 2024,
+      "month": 1,
+      "month_name": "January",
+      "category": "Beauty",
+      "units_sold": 1426.0,
+      "revenue": 4156256.8100000015
+    },
+    {
+      "year_month": "2024-01",
+      "year": 2024,
+      "month": 1,
+      "month_name": "January",
+      "category": "Books",
+      "units_sold": 1131.0,
+      "revenue": 1114247.4399999995
+    },
+    {
+      "year_month": "2024-01",
+      "year": 2024,
+      "month": 1,
+      "month_name": "January",
+      "category": "Clothing",
+      "units_sold": 1343.0,
+      "revenue": 4158376.3400000003
+    },
+    {
+      "year_month": "2024-01",
+      "year": 2024,
+      "month": 1,
+      "month_name": "January",
+      "category": "Electronics",
+      "units_sold": 1498.0,
+      "revenue": 33037941.500000007
+    },
+    {
+      "year_month": "2024-01",
+      "year": 2024,
+      "month": 1,
+      "month_name": "January",
+      "category": "Groceries",
+      "units_sold": 1474.0,
+      "revenue": 764847.9599999994
+    },
+    {
+      "year_month": "2024-01",
+      "year": 2024,
+      "month": 1,
+      "month_name": "January",
+      "category": "Home & Kitchen",
+      "units_sold": 1621.0,
+      "revenue": 10517258.82
+    },
+    {
+      "year_month": "2024-01",
+      "year": 2024,
+      "month": 1,
+      "month_name": "January",
+      "category": "Sports",
+      "units_sold": 1785.0,
+      "revenue": 7832256.109999996
+    },
+    {
+      "year_month": "2024-01",
+      "year": 2024,
+      "month": 1,
+      "month_name": "January",
+      "category": "Toys",
+      "units_sold": 983.0,
+      "revenue": 2125488.099999999
+    },
+    {
+      "year_month": "2024-02",
+      "year": 2024,
+      "month": 2,
+      "month_name": "February",
+      "category": "Beauty",
+      "units_sold": 1270.0,
+      "revenue": 3271892.470000001
+    },
+    {
+      "year_month": "2024-02",
+      "year": 2024,
+      "month": 2,
+      "month_name": "February",
+      "category": "Books",
+      "units_sold": 1482.0,
+      "revenue": 1077120.0199999998
+    },
+    {
+      "year_month": "2024-02",
+      "year": 2024,
+      "month": 2,
+      "month_name": "February",
+      "category": "Clothing",
+      "units_sold": 1724.0,
+      "revenue": 4930899.069999998
+    },
+    {
+      "year_month": "2024-02",
+      "year": 2024,
+      "month": 2,
+      "month_name": "February",
+      "category": "Electronics",
+      "units_sold": 1704.0,
+      "revenue": 36271017.91000002
+    },
+    {
+      "year_month": "2024-02",
+      "year": 2024,
+      "month": 2,
+      "month_name": "February",
+      "category": "Groceries",
+      "units_sold": 1560.0,
+      "revenue": 796756.9500000008
+    },
+    {
+      "year_month": "2024-02",
+      "year": 2024,
+      "month": 2,
+      "month_name": "February",
+      "category": "Home & Kitchen",
+      "units_sold": 1738.0,
+      "revenue": 14236368.280000009
+    },
+    {
+      "year_month": "2024-02",
+      "year": 2024,
+      "month": 2,
+      "month_name": "February",
+      "category": "Sports",
+      "units_sold": 1320.0,
+      "revenue": 5773090.649999997
+    },
+    {
+      "year_month": "2024-02",
+      "year": 2024,
+      "month": 2,
+      "month_name": "February",
+      "category": "Toys",
+      "units_sold": 1162.0,
+      "revenue": 2409973.2699999996
+    },
+    {
+      "year_month": "2024-03",
+      "year": 2024,
+      "month": 3,
+      "month_name": "March",
+      "category": "Beauty",
+      "units_sold": 2479.0,
+      "revenue": 7686290.839999995
+    },
+    {
+      "year_month": "2024-03",
+      "year": 2024,
+      "month": 3,
+      "month_name": "March",
+      "category": "Books",
+      "units_sold": 1254.0,
+      "revenue": 1168802.2699999996
+    },
+    {
+      "year_month": "2024-03",
+      "year": 2024,
+      "month": 3,
+      "month_name": "March",
+      "category": "Clothing",
+      "units_sold": 2726.0,
+      "revenue": 7883654.009999999
+    },
+    {
+      "year_month": "2024-03",
+      "year": 2024,
+      "month": 3,
+      "month_name": "March",
+      "category": "Electronics",
+      "units_sold": 2236.0,
+      "revenue": 52256240.169999965
+    },
+    {
+      "year_month": "2024-03",
+      "year": 2024,
+      "month": 3,
+      "month_name": "March",
+      "category": "Groceries",
+      "units_sold": 2234.0,
+      "revenue": 1103178.0599999998
+    },
+    {
+      "year_month": "2024-03",
+      "year": 2024,
+      "month": 3,
+      "month_name": "March",
+      "category": "Home & Kitchen",
+      "units_sold": 2548.0,
+      "revenue": 20562881.740000013
+    },
+    {
+      "year_month": "2024-03",
+      "year": 2024,
+      "month": 3,
+      "month_name": "March",
+      "category": "Sports",
+      "units_sold": 1213.0,
+      "revenue": 5462863.770000001
+    },
+    {
+      "year_month": "2024-03",
+      "year": 2024,
+      "month": 3,
+      "month_name": "March",
+      "category": "Toys",
+      "units_sold": 1643.0,
+      "revenue": 3561681.5499999975
+    },
+    {
+      "year_month": "2024-04",
+      "year": 2024,
+      "month": 4,
+      "month_name": "April",
+      "category": "Beauty",
+      "units_sold": 1862.0,
+      "revenue": 4940504.609999999
+    },
+    {
+      "year_month": "2024-04",
+      "year": 2024,
+      "month": 4,
+      "month_name": "April",
+      "category": "Books",
+      "units_sold": 1180.0,
+      "revenue": 1155256.780000001
+    },
+    {
+      "year_month": "2024-04",
+      "year": 2024,
+      "month": 4,
+      "month_name": "April",
+      "category": "Clothing",
+      "units_sold": 2877.0,
+      "revenue": 8638026.550000006
+    },
+    {
+      "year_month": "2024-04",
+      "year": 2024,
+      "month": 4,
+      "month_name": "April",
+      "category": "Electronics",
+      "units_sold": 2379.0,
+      "revenue": 48975189.530000016
+    },
+    {
+      "year_month": "2024-04",
+      "year": 2024,
+      "month": 4,
+      "month_name": "April",
+      "category": "Groceries",
+      "units_sold": 1779.0,
+      "revenue": 949632.0899999999
+    },
+    {
+      "year_month": "2024-04",
+      "year": 2024,
+      "month": 4,
+      "month_name": "April",
+      "category": "Home & Kitchen",
+      "units_sold": 1365.0,
+      "revenue": 11378400.570000011
+    },
+    {
+      "year_month": "2024-04",
+      "year": 2024,
+      "month": 4,
+      "month_name": "April",
+      "category": "Sports",
+      "units_sold": 1211.0,
+      "revenue": 5320737.810000001
+    },
+    {
+      "year_month": "2024-04",
+      "year": 2024,
+      "month": 4,
+      "month_name": "April",
+      "category": "Toys",
+      "units_sold": 1417.0,
+      "revenue": 3408947.0899999994
+    },
+    {
+      "year_month": "2024-05",
+      "year": 2024,
+      "month": 5,
+      "month_name": "May",
+      "category": "Beauty",
+      "units_sold": 2016.0,
+      "revenue": 4166698.5200000023
+    },
+    {
+      "year_month": "2024-05",
+      "year": 2024,
+      "month": 5,
+      "month_name": "May",
+      "category": "Books",
+      "units_sold": 1318.0,
+      "revenue": 1156091.4100000006
+    },
+    {
+      "year_month": "2024-05",
+      "year": 2024,
+      "month": 5,
+      "month_name": "May",
+      "category": "Clothing",
+      "units_sold": 2068.0,
+      "revenue": 6562726.859999999
+    },
+    {
+      "year_month": "2024-05",
+      "year": 2024,
+      "month": 5,
+      "month_name": "May",
+      "category": "Electronics",
+      "units_sold": 2450.0,
+      "revenue": 58962869.86000001
+    },
+    {
+      "year_month": "2024-05",
+      "year": 2024,
+      "month": 5,
+      "month_name": "May",
+      "category": "Groceries",
+      "units_sold": 2387.0,
+      "revenue": 1214614.0099999993
+    },
+    {
+      "year_month": "2024-05",
+      "year": 2024,
+      "month": 5,
+      "month_name": "May",
+      "category": "Home & Kitchen",
+      "units_sold": 1947.0,
+      "revenue": 13171728.530000007
+    },
+    {
+      "year_month": "2024-05",
+      "year": 2024,
+      "month": 5,
+      "month_name": "May",
+      "category": "Sports",
+      "units_sold": 1103.0,
+      "revenue": 5182850.280000003
+    },
+    {
+      "year_month": "2024-05",
+      "year": 2024,
+      "month": 5,
+      "month_name": "May",
+      "category": "Toys",
+      "units_sold": 1261.0,
+      "revenue": 2752561.280000001
+    },
+    {
+      "year_month": "2024-06",
+      "year": 2024,
+      "month": 6,
+      "month_name": "June",
+      "category": "Beauty",
+      "units_sold": 1436.0,
+      "revenue": 3624764.9500000007
+    },
+    {
+      "year_month": "2024-06",
+      "year": 2024,
+      "month": 6,
+      "month_name": "June",
+      "category": "Books",
+      "units_sold": 1581.0,
+      "revenue": 1721907.08
+    },
+    {
+      "year_month": "2024-06",
+      "year": 2024,
+      "month": 6,
+      "month_name": "June",
+      "category": "Clothing",
+      "units_sold": 1367.0,
+      "revenue": 4230045.770000001
+    },
+    {
+      "year_month": "2024-06",
+      "year": 2024,
+      "month": 6,
+      "month_name": "June",
+      "category": "Electronics",
+      "units_sold": 1429.0,
+      "revenue": 32565733.560000025
+    },
+    {
+      "year_month": "2024-06",
+      "year": 2024,
+      "month": 6,
+      "month_name": "June",
+      "category": "Groceries",
+      "units_sold": 1659.0,
+      "revenue": 846254.89
+    },
+    {
+      "year_month": "2024-06",
+      "year": 2024,
+      "month": 6,
+      "month_name": "June",
+      "category": "Home & Kitchen",
+      "units_sold": 1458.0,
+      "revenue": 11408419.73
+    },
+    {
+      "year_month": "2024-06",
+      "year": 2024,
+      "month": 6,
+      "month_name": "June",
+      "category": "Sports",
+      "units_sold": 970.0,
+      "revenue": 4545540.21
+    },
+    {
+      "year_month": "2024-06",
+      "year": 2024,
+      "month": 6,
+      "month_name": "June",
+      "category": "Toys",
+      "units_sold": 1410.0,
+      "revenue": 2463165.5199999996
+    },
+    {
+      "year_month": "2024-07",
+      "year": 2024,
+      "month": 7,
+      "month_name": "July",
+      "category": "Beauty",
+      "units_sold": 1286.0,
+      "revenue": 3245734.0800000005
+    },
+    {
+      "year_month": "2024-07",
+      "year": 2024,
+      "month": 7,
+      "month_name": "July",
+      "category": "Books",
+      "units_sold": 1112.0,
+      "revenue": 1030148.3499999997
+    },
+    {
+      "year_month": "2024-07",
+      "year": 2024,
+      "month": 7,
+      "month_name": "July",
+      "category": "Clothing",
+      "units_sold": 1770.0,
+      "revenue": 5108909.690000001
+    },
+    {
+      "year_month": "2024-07",
+      "year": 2024,
+      "month": 7,
+      "month_name": "July",
+      "category": "Electronics",
+      "units_sold": 1759.0,
+      "revenue": 37352399.75000001
+    },
+    {
+      "year_month": "2024-07",
+      "year": 2024,
+      "month": 7,
+      "month_name": "July",
+      "category": "Groceries",
+      "units_sold": 1559.0,
+      "revenue": 818185.7100000001
+    },
+    {
+      "year_month": "2024-07",
+      "year": 2024,
+      "month": 7,
+      "month_name": "July",
+      "category": "Home & Kitchen",
+      "units_sold": 2395.0,
+      "revenue": 18267286.03999999
+    },
+    {
+      "year_month": "2024-07",
+      "year": 2024,
+      "month": 7,
+      "month_name": "July",
+      "category": "Sports",
+      "units_sold": 1636.0,
+      "revenue": 6182843.340000001
+    },
+    {
+      "year_month": "2024-07",
+      "year": 2024,
+      "month": 7,
+      "month_name": "July",
+      "category": "Toys",
+      "units_sold": 1077.0,
+      "revenue": 2296543.7100000004
+    },
+    {
+      "year_month": "2024-08",
+      "year": 2024,
+      "month": 8,
+      "month_name": "August",
+      "category": "Beauty",
+      "units_sold": 1644.0,
+      "revenue": 4257454.040000001
+    },
+    {
+      "year_month": "2024-08",
+      "year": 2024,
+      "month": 8,
+      "month_name": "August",
+      "category": "Books",
+      "units_sold": 1184.0,
+      "revenue": 1220559.379999999
+    },
+    {
+      "year_month": "2024-08",
+      "year": 2024,
+      "month": 8,
+      "month_name": "August",
+      "category": "Clothing",
+      "units_sold": 2802.0,
+      "revenue": 7494605.770000002
+    },
+    {
+      "year_month": "2024-08",
+      "year": 2024,
+      "month": 8,
+      "month_name": "August",
+      "category": "Electronics",
+      "units_sold": 2551.0,
+      "revenue": 51354991.849999994
+    },
+    {
+      "year_month": "2024-08",
+      "year": 2024,
+      "month": 8,
+      "month_name": "August",
+      "category": "Groceries",
+      "units_sold": 2204.0,
+      "revenue": 981332.8999999998
+    },
+    {
+      "year_month": "2024-08",
+      "year": 2024,
+      "month": 8,
+      "month_name": "August",
+      "category": "Home & Kitchen",
+      "units_sold": 2000.0,
+      "revenue": 19931341.740000006
+    },
+    {
+      "year_month": "2024-08",
+      "year": 2024,
+      "month": 8,
+      "month_name": "August",
+      "category": "Sports",
+      "units_sold": 1751.0,
+      "revenue": 8273229.8500000015
+    },
+    {
+      "year_month": "2024-08",
+      "year": 2024,
+      "month": 8,
+      "month_name": "August",
+      "category": "Toys",
+      "units_sold": 1148.0,
+      "revenue": 2416689.4899999998
+    },
+    {
+      "year_month": "2024-09",
+      "year": 2024,
+      "month": 9,
+      "month_name": "September",
+      "category": "Beauty",
+      "units_sold": 2044.0,
+      "revenue": 4552317.459999997
+    },
+    {
+      "year_month": "2024-09",
+      "year": 2024,
+      "month": 9,
+      "month_name": "September",
+      "category": "Books",
+      "units_sold": 1360.0,
+      "revenue": 1452416.3700000006
+    },
+    {
+      "year_month": "2024-09",
+      "year": 2024,
+      "month": 9,
+      "month_name": "September",
+      "category": "Clothing",
+      "units_sold": 2310.0,
+      "revenue": 6477268.709999994
+    },
+    {
+      "year_month": "2024-09",
+      "year": 2024,
+      "month": 9,
+      "month_name": "September",
+      "category": "Electronics",
+      "units_sold": 2736.0,
+      "revenue": 61194022.01999999
+    },
+    {
+      "year_month": "2024-09",
+      "year": 2024,
+      "month": 9,
+      "month_name": "September",
+      "category": "Groceries",
+      "units_sold": 2849.0,
+      "revenue": 1727297.339999999
+    },
+    {
+      "year_month": "2024-09",
+      "year": 2024,
+      "month": 9,
+      "month_name": "September",
+      "category": "Home & Kitchen",
+      "units_sold": 2133.0,
+      "revenue": 18195297.759999998
+    },
+    {
+      "year_month": "2024-09",
+      "year": 2024,
+      "month": 9,
+      "month_name": "September",
+      "category": "Sports",
+      "units_sold": 1964.0,
+      "revenue": 8651153.059999999
+    },
+    {
+      "year_month": "2024-09",
+      "year": 2024,
+      "month": 9,
+      "month_name": "September",
+      "category": "Toys",
+      "units_sold": 1444.0,
+      "revenue": 3010576.4799999986
+    },
+    {
+      "year_month": "2024-10",
+      "year": 2024,
+      "month": 10,
+      "month_name": "October",
+      "category": "Beauty",
+      "units_sold": 3795.0,
+      "revenue": 10185634.859999996
+    },
+    {
+      "year_month": "2024-10",
+      "year": 2024,
+      "month": 10,
+      "month_name": "October",
+      "category": "Books",
+      "units_sold": 1534.0,
+      "revenue": 1403297.76
+    },
+    {
+      "year_month": "2024-10",
+      "year": 2024,
+      "month": 10,
+      "month_name": "October",
+      "category": "Clothing",
+      "units_sold": 4444.0,
+      "revenue": 12538632.900000004
+    },
+    {
+      "year_month": "2024-10",
+      "year": 2024,
+      "month": 10,
+      "month_name": "October",
+      "category": "Electronics",
+      "units_sold": 4180.0,
+      "revenue": 80579981.22000003
+    },
+    {
+      "year_month": "2024-10",
+      "year": 2024,
+      "month": 10,
+      "month_name": "October",
+      "category": "Groceries",
+      "units_sold": 3171.0,
+      "revenue": 1469593.440000002
+    },
+    {
+      "year_month": "2024-10",
+      "year": 2024,
+      "month": 10,
+      "month_name": "October",
+      "category": "Home & Kitchen",
+      "units_sold": 4003.0,
+      "revenue": 30870044.379999984
+    },
+    {
+      "year_month": "2024-10",
+      "year": 2024,
+      "month": 10,
+      "month_name": "October",
+      "category": "Sports",
+      "units_sold": 1842.0,
+      "revenue": 8246819.250000002
+    },
+    {
+      "year_month": "2024-10",
+      "year": 2024,
+      "month": 10,
+      "month_name": "October",
+      "category": "Toys",
+      "units_sold": 2395.0,
+      "revenue": 3776553.079999999
+    },
+    {
+      "year_month": "2024-11",
+      "year": 2024,
+      "month": 11,
+      "month_name": "November",
+      "category": "Beauty",
+      "units_sold": 3444.0,
+      "revenue": 7934102.980000001
+    },
+    {
+      "year_month": "2024-11",
+      "year": 2024,
+      "month": 11,
+      "month_name": "November",
+      "category": "Books",
+      "units_sold": 1838.0,
+      "revenue": 1629979.1199999987
+    },
+    {
+      "year_month": "2024-11",
+      "year": 2024,
+      "month": 11,
+      "month_name": "November",
+      "category": "Clothing",
+      "units_sold": 4337.0,
+      "revenue": 12438803.609999994
+    },
+    {
+      "year_month": "2024-11",
+      "year": 2024,
+      "month": 11,
+      "month_name": "November",
+      "category": "Electronics",
+      "units_sold": 5892.0,
+      "revenue": 125856573.93999991
+    },
+    {
+      "year_month": "2024-11",
+      "year": 2024,
+      "month": 11,
+      "month_name": "November",
+      "category": "Groceries",
+      "units_sold": 3943.0,
+      "revenue": 1978819.689999999
+    },
+    {
+      "year_month": "2024-11",
+      "year": 2024,
+      "month": 11,
+      "month_name": "November",
+      "category": "Home & Kitchen",
+      "units_sold": 3993.0,
+      "revenue": 28563067.769999992
+    },
+    {
+      "year_month": "2024-11",
+      "year": 2024,
+      "month": 11,
+      "month_name": "November",
+      "category": "Sports",
+      "units_sold": 1749.0,
+      "revenue": 7865061.400000002
+    },
+    {
+      "year_month": "2024-11",
+      "year": 2024,
+      "month": 11,
+      "month_name": "November",
+      "category": "Toys",
+      "units_sold": 2688.0,
+      "revenue": 5528623.329999996
+    },
+    {
+      "year_month": "2024-12",
+      "year": 2024,
+      "month": 12,
+      "month_name": "December",
+      "category": "Beauty",
+      "units_sold": 2642.0,
+      "revenue": 6826350.250000005
+    },
+    {
+      "year_month": "2024-12",
+      "year": 2024,
+      "month": 12,
+      "month_name": "December",
+      "category": "Books",
+      "units_sold": 2246.0,
+      "revenue": 2554514.4699999997
+    },
+    {
+      "year_month": "2024-12",
+      "year": 2024,
+      "month": 12,
+      "month_name": "December",
+      "category": "Clothing",
+      "units_sold": 3597.0,
+      "revenue": 10113298.420000002
+    },
+    {
+      "year_month": "2024-12",
+      "year": 2024,
+      "month": 12,
+      "month_name": "December",
+      "category": "Electronics",
+      "units_sold": 4007.0,
+      "revenue": 82500063.91000001
+    },
+    {
+      "year_month": "2024-12",
+      "year": 2024,
+      "month": 12,
+      "month_name": "December",
+      "category": "Groceries",
+      "units_sold": 2745.0,
+      "revenue": 1397178.4200000009
+    },
+    {
+      "year_month": "2024-12",
+      "year": 2024,
+      "month": 12,
+      "month_name": "December",
+      "category": "Home & Kitchen",
+      "units_sold": 2818.0,
+      "revenue": 22758095.130000014
+    },
+    {
+      "year_month": "2024-12",
+      "year": 2024,
+      "month": 12,
+      "month_name": "December",
+      "category": "Sports",
+      "units_sold": 1596.0,
+      "revenue": 7335202.290000002
+    },
+    {
+      "year_month": "2024-12",
+      "year": 2024,
+      "month": 12,
+      "month_name": "December",
+      "category": "Toys",
+      "units_sold": 3404.0,
+      "revenue": 7383035.24
+    },
+    {
+      "year_month": "2025-01",
+      "year": 2025,
+      "month": 1,
+      "month_name": "January",
+      "category": "Beauty",
+      "units_sold": 1232.0,
+      "revenue": 3123706.7
+    },
+    {
+      "year_month": "2025-01",
+      "year": 2025,
+      "month": 1,
+      "month_name": "January",
+      "category": "Books",
+      "units_sold": 1021.0,
+      "revenue": 936490.3499999997
+    },
+    {
+      "year_month": "2025-01",
+      "year": 2025,
+      "month": 1,
+      "month_name": "January",
+      "category": "Clothing",
+      "units_sold": 1571.0,
+      "revenue": 4621916.95
+    },
+    {
+      "year_month": "2025-01",
+      "year": 2025,
+      "month": 1,
+      "month_name": "January",
+      "category": "Electronics",
+      "units_sold": 1791.0,
+      "revenue": 40329897.81000003
+    },
+    {
+      "year_month": "2025-01",
+      "year": 2025,
+      "month": 1,
+      "month_name": "January",
+      "category": "Groceries",
+      "units_sold": 1879.0,
+      "revenue": 1001560.1299999998
+    },
+    {
+      "year_month": "2025-01",
+      "year": 2025,
+      "month": 1,
+      "month_name": "January",
+      "category": "Home & Kitchen",
+      "units_sold": 1408.0,
+      "revenue": 11727324.749999994
+    },
+    {
+      "year_month": "2025-01",
+      "year": 2025,
+      "month": 1,
+      "month_name": "January",
+      "category": "Sports",
+      "units_sold": 1638.0,
+      "revenue": 7110361.6800000025
+    },
+    {
+      "year_month": "2025-01",
+      "year": 2025,
+      "month": 1,
+      "month_name": "January",
+      "category": "Toys",
+      "units_sold": 1195.0,
+      "revenue": 2533176.1300000013
+    }
+  ],
+  "reorder_alerts": [
+    {
+      "store_city": "Kolkata",
+      "store_id": "STR-KOL-02",
+      "product_name": "Biscuit Variety Pack",
+      "category": "Groceries",
+      "quantity_on_hand": 1,
+      "reorder_level": 50,
+      "units_to_order": 49,
+      "unit_cost": 414.99,
+      "reorder_cost": 20334.51
+    },
+    {
+      "store_city": "Bangalore",
+      "store_id": "STR-BAN-02",
+      "product_name": "Protein Shaker 700ml",
+      "category": "Sports",
+      "quantity_on_hand": 0,
+      "reorder_level": 49,
+      "units_to_order": 49,
+      "unit_cost": 1603.94,
+      "reorder_cost": 78593.06
+    },
+    {
+      "store_city": "Chennai",
+      "store_id": "STR-CHE-03",
+      "product_name": "Photo Frame Set 5pc",
+      "category": "Home & Kitchen",
+      "quantity_on_hand": 0,
+      "reorder_level": 49,
+      "units_to_order": 49,
+      "unit_cost": 3976.29,
+      "reorder_cost": 194838.21
+    },
+    {
+      "store_city": "Pune",
+      "store_id": "STR-PUN-04",
+      "product_name": "Non-Stick Pan 24cm",
+      "category": "Home & Kitchen",
+      "quantity_on_hand": 0,
+      "reorder_level": 49,
+      "units_to_order": 49,
+      "unit_cost": 1216.6,
+      "reorder_cost": 59613.4
+    },
+    {
+      "store_city": "Jaipur",
+      "store_id": "STR-JAI-05",
+      "product_name": "Drone Mini Kids",
+      "category": "Toys",
+      "quantity_on_hand": 0,
+      "reorder_level": 48,
+      "units_to_order": 48,
+      "unit_cost": 2366.63,
+      "reorder_cost": 113598.24
+    },
+    {
+      "store_city": "Chennai",
+      "store_id": "STR-CHE-01",
+      "product_name": "Photo Frame Set 5pc",
+      "category": "Home & Kitchen",
+      "quantity_on_hand": 0,
+      "reorder_level": 47,
+      "units_to_order": 47,
+      "unit_cost": 4657.88,
+      "reorder_cost": 218920.36
+    },
+    {
+      "store_city": "Ahmedabad",
+      "store_id": "STR-AHM-04",
+      "product_name": "Saffron 1g",
+      "category": "Groceries",
+      "quantity_on_hand": 0,
+      "reorder_level": 47,
+      "units_to_order": 47,
+      "unit_cost": 312.71,
+      "reorder_cost": 14697.37
+    },
+    {
+      "store_city": "Chennai",
+      "store_id": "STR-CHE-03",
+      "product_name": "Kids T-Shirt Pack",
+      "category": "Clothing",
+      "quantity_on_hand": 0,
+      "reorder_level": 46,
+      "units_to_order": 46,
+      "unit_cost": 2712.11,
+      "reorder_cost": 124757.06
+    },
+    {
+      "store_city": "Delhi",
+      "store_id": "STR-DEL-02",
+      "product_name": "Board Game Monopoly",
+      "category": "Toys",
+      "quantity_on_hand": 0,
+      "reorder_level": 46,
+      "units_to_order": 46,
+      "unit_cost": 1303.48,
+      "reorder_cost": 59960.08
+    },
+    {
+      "store_city": "Bangalore",
+      "store_id": "STR-BAN-04",
+      "product_name": "Mixed Dry Fruits 500g",
+      "category": "Groceries",
+      "quantity_on_hand": 0,
+      "reorder_level": 45,
+      "units_to_order": 45,
+      "unit_cost": 210.65,
+      "reorder_cost": 9479.25
+    },
+    {
+      "store_city": "Mumbai",
+      "store_id": "STR-MUM-05",
+      "product_name": "Zero to One",
+      "category": "Books",
+      "quantity_on_hand": 0,
+      "reorder_level": 45,
+      "units_to_order": 45,
+      "unit_cost": 1318.65,
+      "reorder_cost": 59339.25
+    },
+    {
+      "store_city": "Delhi",
+      "store_id": "STR-DEL-02",
+      "product_name": "Pillow Memory Foam",
+      "category": "Home & Kitchen",
+      "quantity_on_hand": 0,
+      "reorder_level": 45,
+      "units_to_order": 45,
+      "unit_cost": 781.0,
+      "reorder_cost": 35145.0
+    },
+    {
+      "store_city": "Delhi",
+      "store_id": "STR-DEL-02",
+      "product_name": "Chemistry Kit Kids",
+      "category": "Toys",
+      "quantity_on_hand": 0,
+      "reorder_level": 45,
+      "units_to_order": 45,
+      "unit_cost": 736.72,
+      "reorder_cost": 33152.4
+    },
+    {
+      "store_city": "Pune",
+      "store_id": "STR-PUN-03",
+      "product_name": "Winter Sweater",
+      "category": "Clothing",
+      "quantity_on_hand": 0,
+      "reorder_level": 45,
+      "units_to_order": 45,
+      "unit_cost": 1097.15,
+      "reorder_cost": 49371.75
+    },
+    {
+      "store_city": "Pune",
+      "store_id": "STR-PUN-02",
+      "product_name": "Wireless Charging Pad",
+      "category": "Electronics",
+      "quantity_on_hand": 1,
+      "reorder_level": 46,
+      "units_to_order": 45,
+      "unit_cost": 20876.2,
+      "reorder_cost": 939429.0
+    },
+    {
+      "store_city": "Jaipur",
+      "store_id": "STR-JAI-01",
+      "product_name": "Hot Wheels 5 Car Pack",
+      "category": "Toys",
+      "quantity_on_hand": 0,
+      "reorder_level": 45,
+      "units_to_order": 45,
+      "unit_cost": 411.09,
+      "reorder_cost": 18499.05
+    },
+    {
+      "store_city": "Mumbai",
+      "store_id": "STR-MUM-02",
+      "product_name": "Door Mat Coir",
+      "category": "Home & Kitchen",
+      "quantity_on_hand": 0,
+      "reorder_level": 44,
+      "units_to_order": 44,
+      "unit_cost": 6861.41,
+      "reorder_cost": 301902.04
+    },
+    {
+      "store_city": "Chennai",
+      "store_id": "STR-CHE-01",
+      "product_name": "Wheat Flour 5kg",
+      "category": "Groceries",
+      "quantity_on_hand": 0,
+      "reorder_level": 44,
+      "units_to_order": 44,
+      "unit_cost": 565.67,
+      "reorder_cost": 24889.48
+    },
+    {
+      "store_city": "Mumbai",
+      "store_id": "STR-MUM-01",
+      "product_name": "Knife Set 6pc",
+      "category": "Home & Kitchen",
+      "quantity_on_hand": 0,
+      "reorder_level": 43,
+      "units_to_order": 43,
+      "unit_cost": 9946.4,
+      "reorder_cost": 427695.2
+    },
+    {
+      "store_city": "Delhi",
+      "store_id": "STR-DEL-04",
+      "product_name": "Hand Cream 75ml",
+      "category": "Beauty",
+      "quantity_on_hand": 0,
+      "reorder_level": 43,
+      "units_to_order": 43,
+      "unit_cost": 1197.83,
+      "reorder_cost": 51506.69
+    }
+  ]
+}

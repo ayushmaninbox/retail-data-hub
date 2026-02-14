@@ -1,0 +1,614 @@
+{
+  "computed_at": "2026-02-14T13:41:24.491003",
+  "summary": {
+    "total_transactions": 69123,
+    "flagged_transactions": 37065,
+    "fraud_rate_pct": 53.62,
+    "risk_distribution": [
+      {
+        "level": "Critical",
+        "count": 6
+      },
+      {
+        "level": "High",
+        "count": 332
+      },
+      {
+        "level": "Medium",
+        "count": 4282
+      },
+      {
+        "level": "Low",
+        "count": 32445
+      }
+    ],
+    "avg_fraud_score": 24.0
+  },
+  "top_transactions": [
+    {
+      "transaction_id": "INV-000024",
+      "customer_id": "CUST-2287",
+      "product_name": "Lipstick Matte",
+      "category": "Beauty",
+      "city": "Kolkata",
+      "channel": "POS",
+      "date": "2023-01-02",
+      "quantity": 67,
+      "unit_price": 3665.27,
+      "total_amount": 245573.09,
+      "fraud_score": 80,
+      "risk_level": "Critical",
+      "signals": [
+        "Velocity: 6 txns in 1 day",
+        "Qty stuffing: 67 units",
+        "New customer burst: \u20b9245,573 on first day",
+        "High value: \u20b9245,573 (avg \u20b933,083)"
+      ]
+    },
+    {
+      "transaction_id": "INV-000726",
+      "customer_id": "CUST-1458",
+      "product_name": "Dinner Set 24pc",
+      "category": "Home & Kitchen",
+      "city": "Chennai",
+      "channel": "POS",
+      "date": "2023-02-25",
+      "quantity": 433,
+      "unit_price": 8019.96,
+      "total_amount": 3472642.68,
+      "fraud_score": 80,
+      "risk_level": "Critical",
+      "signals": [
+        "Velocity: 5 txns in 1 day",
+        "Qty stuffing: 433 units",
+        "New customer burst: \u20b93,472,643 on first day",
+        "High value: \u20b93,472,643 (avg \u20b933,083)"
+      ]
+    },
+    {
+      "transaction_id": "INV-000776",
+      "customer_id": "CUST-1185",
+      "product_name": "Shampoo Anti-Dandruff 300ml",
+      "category": "Beauty",
+      "city": "Kolkata",
+      "channel": "POS",
+      "date": "2023-03-01",
+      "quantity": 168,
+      "unit_price": 3635.92,
+      "total_amount": 610834.56,
+      "fraud_score": 80,
+      "risk_level": "Critical",
+      "signals": [
+        "Velocity: 6 txns in 1 day",
+        "Qty stuffing: 168 units",
+        "New customer burst: \u20b9610,835 on first day",
+        "High value: \u20b9610,835 (avg \u20b933,083)"
+      ]
+    },
+    {
+      "transaction_id": "INV-001390",
+      "customer_id": "CUST-0916",
+      "product_name": "USB-C Hub",
+      "category": "Electronics",
+      "city": "Delhi",
+      "channel": "POS",
+      "date": "2023-04-07",
+      "quantity": 257,
+      "unit_price": 14660.86,
+      "total_amount": 3767841.02,
+      "fraud_score": 80,
+      "risk_level": "Critical",
+      "signals": [
+        "Velocity: 5 txns in 1 day",
+        "Qty stuffing: 257 units",
+        "New customer burst: \u20b93,767,841 on first day",
+        "High value: \u20b93,767,841 (avg \u20b933,083)"
+      ]
+    },
+    {
+      "transaction_id": "INV-002172",
+      "customer_id": "CUST-3234",
+      "product_name": "Resistance Bands Set",
+      "category": "Sports",
+      "city": "Chennai",
+      "channel": "POS",
+      "date": "2023-05-29",
+      "quantity": 54,
+      "unit_price": 6171.62,
+      "total_amount": 333267.48,
+      "fraud_score": 80,
+      "risk_level": "Critical",
+      "signals": [
+        "Velocity: 5 txns in 1 day",
+        "Qty stuffing: 54 units",
+        "New customer burst: \u20b9333,267 on first day",
+        "High value: \u20b9333,267 (avg \u20b933,083)"
+      ]
+    },
+    {
+      "transaction_id": "INV-003010",
+      "customer_id": "CUST-3426",
+      "product_name": "Yoga Mat 6mm",
+      "category": "Sports",
+      "city": "Bangalore",
+      "channel": "POS",
+      "date": "2023-08-03",
+      "quantity": 341,
+      "unit_price": 4162.09,
+      "total_amount": 1419272.69,
+      "fraud_score": 80,
+      "risk_level": "Critical",
+      "signals": [
+        "Velocity: 6 txns in 1 day",
+        "Qty stuffing: 341 units",
+        "New customer burst: \u20b91,419,273 on first day",
+        "High value: \u20b91,419,273 (avg \u20b933,083)"
+      ]
+    },
+    {
+      "transaction_id": "INV-000152",
+      "customer_id": "CUST-0030",
+      "product_name": "Blender 750W",
+      "category": "Home & Kitchen",
+      "city": "Mumbai",
+      "channel": "POS",
+      "date": "2023-01-13",
+      "quantity": 268,
+      "unit_price": 11224.34,
+      "total_amount": 3008123.12,
+      "fraud_score": 65,
+      "risk_level": "High",
+      "signals": [
+        "Velocity: 6 txns in 1 day",
+        "Qty stuffing: 268 units",
+        "High value: \u20b93,008,123 (avg \u20b933,083)"
+      ]
+    },
+    {
+      "transaction_id": "INV-000476",
+      "customer_id": "CUST-0384",
+      "product_name": "Sweatband Wrist 2pc",
+      "category": "Sports",
+      "city": "Kolkata",
+      "channel": "POS",
+      "date": "2023-02-06",
+      "quantity": 406,
+      "unit_price": 4497.37,
+      "total_amount": 1825932.22,
+      "fraud_score": 65,
+      "risk_level": "High",
+      "signals": [
+        "Velocity: 5 txns in 1 day",
+        "Qty stuffing: 406 units",
+        "High value: \u20b91,825,932 (avg \u20b933,083)"
+      ]
+    },
+    {
+      "transaction_id": "INV-000847",
+      "customer_id": "CUST-2707",
+      "product_name": "Board Game Monopoly",
+      "category": "Toys",
+      "city": "Kolkata",
+      "channel": "POS",
+      "date": "2023-03-05",
+      "quantity": 264,
+      "unit_price": 1831.39,
+      "total_amount": 483486.96,
+      "fraud_score": 65,
+      "risk_level": "High",
+      "signals": [
+        "Velocity: 6 txns in 1 day",
+        "Qty stuffing: 264 units",
+        "High value: \u20b9483,487 (avg \u20b933,083)"
+      ]
+    },
+    {
+      "transaction_id": "WEB-001603",
+      "customer_id": "CUST-1632",
+      "product_name": "Kids T-Shirt Pack",
+      "category": "Clothing",
+      "city": "Online",
+      "channel": "Web",
+      "date": "2023-03-26",
+      "quantity": 110,
+      "unit_price": 4541.73,
+      "total_amount": 499590.3,
+      "fraud_score": 65,
+      "risk_level": "High",
+      "signals": [
+        "Qty stuffing: 110 units",
+        "Off-hours: Weekend web order",
+        "New customer burst: \u20b9499,590 on first day",
+        "High value: \u20b9499,590 (avg \u20b933,083)"
+      ]
+    },
+    {
+      "transaction_id": "WEB-002224",
+      "customer_id": "CUST-3373",
+      "product_name": "Laundry Basket Foldable",
+      "category": "Home & Kitchen",
+      "city": "Online",
+      "channel": "Web",
+      "date": "2023-04-23",
+      "quantity": 103,
+      "unit_price": 7539.43,
+      "total_amount": 776561.29,
+      "fraud_score": 65,
+      "risk_level": "High",
+      "signals": [
+        "Qty stuffing: 103 units",
+        "Off-hours: Weekend web order",
+        "New customer burst: \u20b9776,561 on first day",
+        "High value: \u20b9776,561 (avg \u20b933,083)"
+      ]
+    },
+    {
+      "transaction_id": "INV-002413",
+      "customer_id": "CUST-1467",
+      "product_name": "Doll House Furniture",
+      "category": "Toys",
+      "city": "Ahmedabad",
+      "channel": "POS",
+      "date": "2023-06-17",
+      "quantity": 147,
+      "unit_price": 1281.96,
+      "total_amount": 188448.12,
+      "fraud_score": 65,
+      "risk_level": "High",
+      "signals": [
+        "Velocity: 5 txns in 1 day",
+        "Qty stuffing: 147 units",
+        "High value: \u20b9188,448 (avg \u20b933,083)"
+      ]
+    },
+    {
+      "transaction_id": "INV-002497",
+      "customer_id": "CUST-3727",
+      "product_name": "Night Suit",
+      "category": "Clothing",
+      "city": "Mumbai",
+      "channel": "POS",
+      "date": "2023-06-24",
+      "quantity": 398,
+      "unit_price": 1128.06,
+      "total_amount": 448967.88,
+      "fraud_score": 65,
+      "risk_level": "High",
+      "signals": [
+        "Velocity: 5 txns in 1 day",
+        "Qty stuffing: 398 units",
+        "High value: \u20b9448,968 (avg \u20b933,083)"
+      ]
+    },
+    {
+      "transaction_id": "INV-002815",
+      "customer_id": "CUST-3765",
+      "product_name": "Hair Gel Strong Hold",
+      "category": "Beauty",
+      "city": "Jaipur",
+      "channel": "POS",
+      "date": "2023-07-18",
+      "quantity": 223,
+      "unit_price": 445.39,
+      "total_amount": 99321.97,
+      "fraud_score": 65,
+      "risk_level": "High",
+      "signals": [
+        "Velocity: 6 txns in 1 day",
+        "Qty stuffing: 223 units",
+        "High value: \u20b999,322 (avg \u20b933,083)"
+      ]
+    },
+    {
+      "transaction_id": "INV-002849",
+      "customer_id": "CUST-1464",
+      "product_name": "Screen Protector",
+      "category": "Electronics",
+      "city": "Bangalore",
+      "channel": "POS",
+      "date": "2023-07-21",
+      "quantity": 99,
+      "unit_price": 2536.99,
+      "total_amount": 251162.01,
+      "fraud_score": 65,
+      "risk_level": "High",
+      "signals": [
+        "Velocity: 5 txns in 1 day",
+        "Qty stuffing: 99 units",
+        "High value: \u20b9251,162 (avg \u20b933,083)"
+      ]
+    }
+  ],
+  "top_customers": [
+    {
+      "customer_id": "CUST-3407",
+      "total_risk_score": 1040,
+      "avg_score": 25.4,
+      "flagged_transactions": 41,
+      "total_amount": 1565599.93
+    },
+    {
+      "customer_id": "CUST-1599",
+      "total_risk_score": 970,
+      "avg_score": 30.3,
+      "flagged_transactions": 32,
+      "total_amount": 2304037.73
+    },
+    {
+      "customer_id": "CUST-2217",
+      "total_risk_score": 955,
+      "avg_score": 29.8,
+      "flagged_transactions": 32,
+      "total_amount": 1649428.93
+    },
+    {
+      "customer_id": "CUST-3261",
+      "total_risk_score": 955,
+      "avg_score": 25.8,
+      "flagged_transactions": 37,
+      "total_amount": 811138.45
+    },
+    {
+      "customer_id": "CUST-0764",
+      "total_risk_score": 935,
+      "avg_score": 27.5,
+      "flagged_transactions": 34,
+      "total_amount": 1817994.96
+    },
+    {
+      "customer_id": "CUST-3633",
+      "total_risk_score": 910,
+      "avg_score": 26.0,
+      "flagged_transactions": 35,
+      "total_amount": 1772135.12
+    },
+    {
+      "customer_id": "CUST-1464",
+      "total_risk_score": 885,
+      "avg_score": 25.3,
+      "flagged_transactions": 35,
+      "total_amount": 990395.67
+    },
+    {
+      "customer_id": "CUST-1528",
+      "total_risk_score": 875,
+      "avg_score": 29.2,
+      "flagged_transactions": 30,
+      "total_amount": 1482820.94
+    },
+    {
+      "customer_id": "CUST-2843",
+      "total_risk_score": 845,
+      "avg_score": 28.2,
+      "flagged_transactions": 30,
+      "total_amount": 1520762.24
+    },
+    {
+      "customer_id": "CUST-0978",
+      "total_risk_score": 840,
+      "avg_score": 25.5,
+      "flagged_transactions": 33,
+      "total_amount": 1016431.07
+    }
+  ],
+  "by_channel": [
+    {
+      "channel": "POS",
+      "flagged_count": 29482,
+      "avg_score": 26.7,
+      "total_amount": 1537865980.73
+    },
+    {
+      "channel": "Web",
+      "flagged_count": 7583,
+      "avg_score": 13.2,
+      "total_amount": 263635626.43
+    }
+  ],
+  "by_city": [
+    {
+      "city": "Online",
+      "flagged_count": 7583,
+      "avg_score": 13.2
+    },
+    {
+      "city": "Delhi",
+      "flagged_count": 3232,
+      "avg_score": 26.6
+    },
+    {
+      "city": "Ahmedabad",
+      "flagged_count": 3190,
+      "avg_score": 26.8
+    },
+    {
+      "city": "Pune",
+      "flagged_count": 3106,
+      "avg_score": 27.1
+    },
+    {
+      "city": "Lucknow",
+      "flagged_count": 3066,
+      "avg_score": 26.6
+    },
+    {
+      "city": "Hyderabad",
+      "flagged_count": 3016,
+      "avg_score": 26.7
+    },
+    {
+      "city": "Kolkata",
+      "flagged_count": 2978,
+      "avg_score": 26.2
+    },
+    {
+      "city": "Jaipur",
+      "flagged_count": 2868,
+      "avg_score": 26.8
+    },
+    {
+      "city": "Mumbai",
+      "flagged_count": 2805,
+      "avg_score": 27.0
+    },
+    {
+      "city": "Bangalore",
+      "flagged_count": 2680,
+      "avg_score": 27.0
+    },
+    {
+      "city": "Chennai",
+      "flagged_count": 2541,
+      "avg_score": 26.4
+    }
+  ],
+  "fraud_timeline": [
+    {
+      "month": "2023-01",
+      "flagged_count": 1450,
+      "avg_score": 26.0
+    },
+    {
+      "month": "2023-02",
+      "flagged_count": 1223,
+      "avg_score": 25.6
+    },
+    {
+      "month": "2023-03",
+      "flagged_count": 1683,
+      "avg_score": 25.3
+    },
+    {
+      "month": "2023-04",
+      "flagged_count": 1450,
+      "avg_score": 25.0
+    },
+    {
+      "month": "2023-05",
+      "flagged_count": 1256,
+      "avg_score": 24.7
+    },
+    {
+      "month": "2023-06",
+      "flagged_count": 944,
+      "avg_score": 24.4
+    },
+    {
+      "month": "2023-07",
+      "flagged_count": 1147,
+      "avg_score": 24.1
+    },
+    {
+      "month": "2023-08",
+      "flagged_count": 1283,
+      "avg_score": 24.9
+    },
+    {
+      "month": "2023-09",
+      "flagged_count": 1247,
+      "avg_score": 23.2
+    },
+    {
+      "month": "2023-10",
+      "flagged_count": 2060,
+      "avg_score": 23.7
+    },
+    {
+      "month": "2023-11",
+      "flagged_count": 2474,
+      "avg_score": 23.6
+    },
+    {
+      "month": "2023-12",
+      "flagged_count": 1967,
+      "avg_score": 23.4
+    },
+    {
+      "month": "2024-01",
+      "flagged_count": 934,
+      "avg_score": 23.5
+    },
+    {
+      "month": "2024-02",
+      "flagged_count": 1038,
+      "avg_score": 23.3
+    },
+    {
+      "month": "2024-03",
+      "flagged_count": 1565,
+      "avg_score": 23.2
+    },
+    {
+      "month": "2024-04",
+      "flagged_count": 1208,
+      "avg_score": 23.4
+    },
+    {
+      "month": "2024-05",
+      "flagged_count": 1224,
+      "avg_score": 23.9
+    },
+    {
+      "month": "2024-06",
+      "flagged_count": 1094,
+      "avg_score": 23.3
+    },
+    {
+      "month": "2024-07",
+      "flagged_count": 1099,
+      "avg_score": 23.8
+    },
+    {
+      "month": "2024-08",
+      "flagged_count": 1245,
+      "avg_score": 23.3
+    },
+    {
+      "month": "2024-09",
+      "flagged_count": 1428,
+      "avg_score": 23.5
+    },
+    {
+      "month": "2024-10",
+      "flagged_count": 2134,
+      "avg_score": 23.8
+    },
+    {
+      "month": "2024-11",
+      "flagged_count": 2680,
+      "avg_score": 23.7
+    },
+    {
+      "month": "2024-12",
+      "flagged_count": 2097,
+      "avg_score": 23.4
+    },
+    {
+      "month": "2025-01",
+      "flagged_count": 1135,
+      "avg_score": 23.5
+    }
+  ],
+  "signal_frequency": [
+    {
+      "signal": "Velocity",
+      "count": 25561
+    },
+    {
+      "signal": "Off-hours",
+      "count": 6256
+    },
+    {
+      "signal": "New customer burst",
+      "count": 5409
+    },
+    {
+      "signal": "High value",
+      "count": 5019
+    },
+    {
+      "signal": "Qty stuffing",
+      "count": 233
+    }
+  ]
+}

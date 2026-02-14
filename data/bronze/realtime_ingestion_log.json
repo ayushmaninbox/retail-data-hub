@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-02-14T13:40:28.510627",
+  "dataset": "web_orders",
+  "source": "/Users/ayushmaninbox/Documents/Hackathon/retail-data-hub/data/raw/web_orders.json",
+  "output": "/Users/ayushmaninbox/Documents/Hackathon/retail-data-hub/data/bronze/web_orders/web_orders.parquet",
+  "rows": 19568,
+  "columns": 13,
+  "status": "SUCCESS",
+  "error": null,
+  "ingested_at": "2026-02-14T13:40:28.510634"
+}
