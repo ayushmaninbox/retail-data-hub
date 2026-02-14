@@ -35,6 +35,9 @@ Run these one by one as you narrate the Medallion Architecture.
 
 # 6. DEMAND FORECAST (🧠 The LSTM AI Brain)
 ./scripts/forecast.sh
+
+# 7. LIVE SIMULATOR (🟢 Real-time Stream)
+./scripts/live_simulator.sh
 ```
 
 ---
@@ -62,7 +65,7 @@ Keep this running to show the final visualization.
 ## 🎯 Pitch Highlights for Judges
 
 1.  **Medallion Architecture**: Explain how we move from Raw CSV → Bronze (Storage) → Silver (Cleanup) → Gold (Analytics).
-2.  **Data Quality**: Show the "Dirty Data" we catch (negative prices, null IDs) and quarantine.
-3.  **LSTM Forecasting**: Highlight the **Forecast** page. "We don't just show history; we use a 2-layer LSTM to predict the next 30 days of demand."
-4.  **Cross-Channel Insight**: Mention how we join Online and POS data to see a single view of the customer.
+2.  **Autonomous Security**: Show **Anomaly Detection** & **Fraud Prevention**. "The system automatically flags suspicious behavior using both statistical rules and ML (Isolation Forest)."
+3.  **Real-Time Pulse**: Demonstrate the **Live Transactions** feed. "We use WebSockets to stream POS data directly to the dashboard, providing an instant pulse of the business."
+4.  **LSTM Forecasting**: Highlight the **Forecast** page. "We don't just show history; we use a 2-layer LSTM to predict the next 30 days of demand."
 5.  **Tech Stack**: DuckDB (Speed), PyTorch (AI Brain), FastAPI (Service), Next.js (Visuals).

@@ -12,7 +12,10 @@ import {
   Activity,
   Settings,
   TrendingUp,
-  Database
+  Database,
+  Shield,
+  AlertTriangle,
+  Radio,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -51,6 +54,16 @@ export default function Sidebar() {
 
         <div>
           <div className="px-3 mb-5 text-xs font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
+            <div className="w-1.5 h-4 bg-cyan-500 rounded-full" />
+            Real-Time
+          </div>
+          <div className="space-y-1">
+            <NavItem href="/live" icon={Radio} label="Live Transactions" active={pathname === "/live"} />
+          </div>
+        </div>
+
+        <div>
+          <div className="px-3 mb-5 text-xs font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
             <div className="w-1.5 h-4 bg-emerald-500 rounded-full" />
             Intelligence
           </div>
@@ -58,6 +71,17 @@ export default function Sidebar() {
             <NavItem href="/chat" icon={Brain} label="Retail Brain AI" active={pathname === "/chat"} />
             <NavItem href="/forecast" icon={TrendingUp} label="Forecasting" active={pathname === "/forecast"} />
             <NavItem href="/market-basket" icon={Activity} label="Product Analysis" active={pathname === "/market-basket"} />
+          </div>
+        </div>
+
+        <div>
+          <div className="px-3 mb-5 text-xs font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
+            <div className="w-1.5 h-4 bg-red-500 rounded-full" />
+            Security
+          </div>
+          <div className="space-y-1">
+            <NavItem href="/anomalies" icon={AlertTriangle} label="Anomaly Detection" active={pathname === "/anomalies"} />
+            <NavItem href="/fraud" icon={Shield} label="Fraud Monitor" active={pathname === "/fraud"} />
           </div>
         </div>
 

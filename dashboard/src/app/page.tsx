@@ -15,6 +15,7 @@ import ExecutiveSummary from "@/components/ExecutiveSummary";
 import KpiCard from "@/components/KpiCard";
 import ChartCard from "@/components/ChartCard";
 import DetailsModal from "@/components/DetailsModal";
+import LiveFeed from "@/components/LiveFeed";
 import {
     AreaChart,
     Area,
@@ -190,7 +191,12 @@ export default function OverviewPage() {
                 />
             </div>
 
-            <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 animate-slide-up" style={{ animationDelay: "0.1s" }}>
+            {/* ── Live Feed ── */}
+            <div className="animate-slide-up" style={{ animationDelay: "0.05s" }}>
+                <LiveFeed />
+            </div>
+
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 animate-slide-up" style={{ animationDelay: "0.15s" }}>
                 <ChartCard
                     title="Revenue Trend"
                     subtitle="Monthly revenue across all channels"

@@ -21,9 +21,10 @@ import os
 import io
 import json
 import math
-from typing import Optional
+import asyncio
+from typing import Optional, Set
 import pandas as pd
-from fastapi import FastAPI, Query, Body
+from fastapi import FastAPI, Query, Body, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
@@ -151,6 +152,18 @@ def data_quality():
 def demand_forecast():
     """LSTM demand forecast — 30-day revenue predictions by category."""
     return load_json("demand_forecast.json")
+
+
+@app.get("/api/anomalies")
+def anomalies():
+    """Anomaly detection report — Z-Score, IQR, Isolation Forest."""
+    return load_json("anomaly_report.json")
+
+
+@app.get("/api/fraud")
+def fraud():
+    """Fraud detection report — rule-based scoring engine."""
+    return load_json("fraud_report.json")
 
 
 @app.get("/api/sales")
@@ -441,6 +454,80 @@ def download_table(
             media_type="text/csv",
             headers={"Content-Disposition": f"attachment; filename={table_name}.csv"},
         )
+
+
+# ══════════════════════════════════════════════════════════════════════
+# WEBSOCKET — Live Transaction Feed
+# ══════════════════════════════════════════════════════════════════════
+
+# Set of connected dashboard clients
+live_clients: Set[WebSocket] = set()
+
+# Rolling micro-KPIs for live session
+live_stats = {
+    "total_revenue": 0.0,
+    "total_transactions": 0,
+    "anomaly_count": 0,
+    "fraud_count": 0,
+}
+
+
+async def broadcast_to_clients(message: dict):
+    """Send a message to all connected dashboard clients."""
+    dead = set()
+    for client in live_clients:
+        try:
+            await client.send_json(message)
+        except Exception:
+            dead.add(client)
+    live_clients.difference_update(dead)
+
+
+@app.websocket("/ws/live")
+async def ws_live(websocket: WebSocket):
+    """Dashboard clients connect here to receive live transaction updates."""
+    await websocket.accept()
+    live_clients.add(websocket)
+    print(f"📡 Dashboard client connected ({len(live_clients)} total)")
+    try:
+        # Send current stats on connect
+        await websocket.send_json({"type": "stats", "data": live_stats})
+        # Keep connection alive, listen for pings
+        while True:
+            data = await websocket.receive_text()
+            if data == "ping":
+                await websocket.send_json({"type": "pong"})
+    except WebSocketDisconnect:
+        live_clients.discard(websocket)
+        print(f"📡 Dashboard client disconnected ({len(live_clients)} total)")
+
+
+@app.websocket("/ws/simulator")
+async def ws_simulator(websocket: WebSocket):
+    """Simulator sends transactions here; they are broadcast to dashboard clients."""
+    await websocket.accept()
+    print("⚡ Simulator connected")
+    try:
+        while True:
+            raw = await websocket.receive_text()
+            txn = json.loads(raw)
+
+            # Update rolling stats
+            live_stats["total_revenue"] += txn.get("total_amount", 0)
+            live_stats["total_transactions"] += 1
+            if txn.get("event_type") == "anomaly":
+                live_stats["anomaly_count"] += 1
+            if txn.get("event_type") == "fraud":
+                live_stats["fraud_count"] += 1
+
+            # Broadcast to all dashboard clients
+            await broadcast_to_clients({
+                "type": "transaction",
+                "data": txn,
+                "stats": live_stats,
+            })
+    except WebSocketDisconnect:
+        print("⚡ Simulator disconnected")
 
 
 # ══════════════════════════════════════════════════════════════════════

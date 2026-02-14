@@ -22,8 +22,13 @@ echo ""
 python3 src/analytics/market_basket.py
 echo ""
 python3 src/analytics/executive_summary.py
+echo ""
+python3 src/analytics/anomaly_detection.py
+echo ""
+python3 src/analytics/fraud_detection.py
 
 echo ""
 echo "============================================================"
 echo "✅ KPI analytics complete → data/analytics/"
 echo "============================================================"
+

@@ -20,6 +20,8 @@
 | **Ingestion** | Batch (CSV) + near real-time (JSON) with schema validation |
 | **Data Quality** | 7 automated checks with JSON evidence reports |
 | **Analytics** | Commercial, Operations, Customer KPIs + Market Basket (Apriori) |
+| **Security** | Automated **Anomaly Detection** & **Fraud Prevention** engine |
+| **Real-Time** | Live Transaction Simulator with **WebSocket** streaming feed |
 | **API** | FastAPI backend serving Gold layer KPIs with Swagger docs |
 | **Dashboard** | Interactive Next.js 14 app with Recharts & Tailwind CSS |
 | **Query Engine** | DuckDB — in-process SQL directly on Parquet files |
@@ -64,8 +66,7 @@ retail-data-hub/
 ├── data/                              # Data layers (Raw → Bronze → Silver → Gold)
 ├── src/                               # Python source (ETL, Quality, ML, API)
 ├── dashboard/                         # Next.js 14 Dashboard
-├── scripts/                           # Automation scripts
-└── docs/                              # Technical documentation
+└── scripts/                           # Automation scripts
 ```
 
 ---
@@ -124,7 +125,10 @@ The dashboard is a **Next.js 14** app built with **TypeScript**, **Tailwind CSS*
 | 4 | 🚚 **Logistics** | `/logistics` | Avg delivery time, delay distribution, seasonal demand |
 | 5 | 👥 **Customers** | `/customers` | New vs returning, CLV distribution, RFM segments |
 | 6 | 🛒 **Market Basket** | `/market-basket` | Item associations, confidence scores, recommendation pairs |
-| 7 | ✅ **Data Quality** | `/data-quality` | Pipeline health, row counts, check pass/fail status |
+| 7 | 🔍 **Anomalies** | `/anomalies` | Statistical & ML-detected outliers (Z-Score, Isolation Forest) |
+| 8 | 🛡️ **Fraud Monitor** | `/fraud` | Rule-based fraud scoring with 6-signal risk engine |
+| 9 | 🟢 **Real-Time** | `/live` | Live-streaming transaction feed via WebSockets |
+| 10 | ✅ **Data Quality** | `/data-quality` | Pipeline health, row counts, check pass/fail status |
 
 ---
 
@@ -141,6 +145,10 @@ The FastAPI backend serves pre-computed KPI data from the Gold layer as JSON:
 | `GET` | `/api/customers` | CLV, RFM segmentation, new vs returning |
 | `GET` | `/api/market-basket` | Market Basket Analysis (Apriori) results |
 | `GET` | `/api/data-quality` | Data quality report |
+| `GET` | `/api/anomalies` | Anomaly detection report (Z-Score, ML) |
+| `GET` | `/api/fraud` | Fraud detection report (Scoring engine) |
+| `WS` | `/ws/live` | WebSocket: Stream live transactions to dashboard |
+| `WS` | `/ws/simulator` | WebSocket: Receive live transactions from simulator |
 | `GET` | `/api/sales` | Sales-specific data (derived from commercial) |
 | `GET` | `/api/inventory` | Inventory-specific data (derived from operations) |
 | `GET` | `/api/logistics` | Logistics-specific data (derived from operations) |
@@ -171,7 +179,14 @@ The FastAPI backend serves pre-computed KPI data from the Gold layer as JSON:
 ### 🛒 AI / ML
 - Market basket analysis using **Apriori algorithm**
 - Standard, cross-channel, and category-level association rules
+- **Anomaly Detection**: Z-Score, IQR, and Isolation Forest ML
+- **Fraud Engine**: Velocity, Price, and Off-hours abuse scoring
 - Support, confidence & lift scores
+
+### 🟢 Real-Time
+- WebSocket-powered live transaction feed
+- Simulated POS transaction stream with signal injection
+- Real-time rolling KPI aggregates
 
 ---
 
@@ -224,23 +239,14 @@ All scripts live in `scripts/` and auto-detect the project root + activate the v
 | `ingestion.sh` | Ingests raw CSV/JSON into Bronze layer Parquet files |
 | `transform.sh` | Runs Bronze → Silver → Gold transformations (incl. SCD2) |
 | `quality_checks.sh` | Runs 7 data quality checks, generates report |
-| `kpi_analysis.sh` | Executes all 4 KPI analytics scripts, outputs JSON |
+| `kpi_analysis.sh` | Executes all 6 KPI analytics scripts (incl. Anomaly/Fraud) |
 | `forecast.sh` | Trains LSTM AI brain and generates demand forecasts |
+| `live_simulator.sh` | Starts the real-time POS transaction generator |
 | `api.sh` | Starts the FastAPI server on port 8000 |
 | `dashboard.sh` | Starts the Next.js dev server on port 3000 |
 
 ---
 
-## 📄 Documentation
-
-Detailed docs live in the [`docs/`](docs/) directory:
-
-| Document | Description |
-|---|---|
-| [architecture.md](docs/architecture.md) | Medallion Architecture deep-dive, design decisions, trade-offs |
-| [architecture_diagram.png](docs/architecture_diagram.png) | Visual system architecture diagram |
-| [data_quality.md](docs/data_quality.md) | Full DQ rule catalog, thresholds, and sample evidence |
-| [storage_security_plan.md](docs/storage_security_plan.md) | Parquet partitioning strategy, RBAC, encryption, audit logging |
 
 ---
 
