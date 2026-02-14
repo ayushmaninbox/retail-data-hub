@@ -74,7 +74,9 @@ export default function KpiCard({
                 {subtitle && (
                     <p className={`text-sm font-medium leading-relaxed ${subtitle.toLowerCase().startsWith("click") ? "text-accent-purple font-bold" : "text-slate-500"}`}>
                         {subtitle}
-                        {clickable && !subtitle.toLowerCase().startsWith("click") && <span className="ml-1 text-accent-purple/70">· Click for details</span>}
+                        {clickable && !subtitle.toLowerCase().includes("click") && (
+                            <span className="ml-1 text-accent-purple font-bold">· click to expand</span>
+                        )}
                     </p>
                 )}
             </div>

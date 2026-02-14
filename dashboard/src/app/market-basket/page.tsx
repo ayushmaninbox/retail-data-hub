@@ -293,11 +293,11 @@ export default function MarketBasketPage() {
                                 <TIcon className="w-5 h-5" style={{ color: tc.color }} />
                             </div>
                             <div>
-                                <p className="text-xl font-black text-slate-900">{tc.count}</p>
-                                <p className="text-xs text-slate-700 font-bold">{tc.type} Rules</p>
+                                <p className="text-xl font-bold text-slate-900">{tc.count}</p>
+                                <p className="text-xs text-slate-600 font-semibold">{tc.type} Rules</p>
                             </div>
                             {tc.count === 0 && (
-                                <span className="ml-auto text-[10px] text-slate-700 font-bold bg-black/[0.08] px-2 py-0.5 rounded">No data</span>
+                                <span className="ml-auto text-[10px] text-slate-600 font-semibold bg-black/[0.05] px-2 py-0.5 rounded">No data</span>
                             )}
                         </div>
                     );
@@ -326,19 +326,19 @@ export default function MarketBasketPage() {
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-4">
                                             <div>
-                                                <p className="text-[10px] text-slate-600 uppercase font-black">Confidence</p>
-                                                <p className="text-sm font-black text-emerald-500">{(pair.confidence * 100).toFixed(0)}%</p>
+                                                <p className="text-[10px] text-slate-500 uppercase font-bold">Confidence</p>
+                                                <p className="text-sm font-bold text-emerald-500">{(pair.confidence * 100).toFixed(0)}%</p>
                                             </div>
                                             <div>
-                                                <p className="text-[10px] text-slate-600 uppercase font-black">Lift</p>
-                                                <p className={`text-sm font-black ${getLiftColor(pair.lift)}`}>{pair.lift.toFixed(2)}x</p>
+                                                <p className="text-[10px] text-slate-500 uppercase font-bold">Lift</p>
+                                                <p className={`text-sm font-bold ${getLiftColor(pair.lift)}`}>{pair.lift.toFixed(2)}x</p>
                                             </div>
                                             <div>
-                                                <p className="text-[10px] text-slate-600 uppercase font-black">Support</p>
-                                                <p className="text-sm font-black text-slate-500">{(pair.support * 100).toFixed(1)}%</p>
+                                                <p className="text-[10px] text-slate-500 uppercase font-bold">Support</p>
+                                                <p className="text-sm font-bold text-slate-500">{(pair.support * 100).toFixed(1)}%</p>
                                             </div>
                                         </div>
-                                        <span className="text-[10px] px-2 py-0.5 rounded-md font-black" style={{ color: TYPE_COLORS[pair.type], background: `${TYPE_COLORS[pair.type]}25` }}>{pair.type}</span>
+                                        <span className="text-[10px] px-2 py-0.5 rounded-md font-bold" style={{ color: TYPE_COLORS[pair.type], background: `${TYPE_COLORS[pair.type]}20` }}>{pair.type}</span>
                                     </div>
                                 </div>
                             ))}
@@ -375,15 +375,15 @@ export default function MarketBasketPage() {
                         <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
                             <table className="w-full">
                                 <thead>
-                                    <tr style={{ background: "rgba(139,92,246,0.1)" }}>
-                                        <th className="text-left px-4 py-3 text-[10px] font-black text-slate-700 uppercase tracking-wider w-8">#</th>
-                                        <th className="text-left px-4 py-3 text-[10px] font-black text-slate-700 uppercase tracking-wider">If Customer Buys</th>
+                                    <tr style={{ background: "rgba(139,92,246,0.08)" }}>
+                                        <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-600 uppercase tracking-wider w-8">#</th>
+                                        <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-600 uppercase tracking-wider">If Customer Buys</th>
                                         <th className="text-center px-2 py-3 w-6"></th>
-                                        <th className="text-left px-4 py-3 text-[10px] font-black text-slate-700 uppercase tracking-wider">They Also Buy</th>
-                                        <th className="text-left px-4 py-3 text-[10px] font-black text-slate-700 uppercase tracking-wider">Support</th>
-                                        <th className="text-left px-4 py-3 text-[10px] font-black text-slate-700 uppercase tracking-wider">Confidence</th>
-                                        <th className="text-left px-4 py-3 text-[10px] font-black text-slate-700 uppercase tracking-wider">Lift</th>
-                                        <th className="text-left px-4 py-3 text-[10px] font-black text-slate-700 uppercase tracking-wider">Type</th>
+                                        <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-600 uppercase tracking-wider">They Also Buy</th>
+                                        <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-600 uppercase tracking-wider">Support</th>
+                                        <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-600 uppercase tracking-wider">Confidence</th>
+                                        <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-600 uppercase tracking-wider">Lift</th>
+                                        <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-600 uppercase tracking-wider">Type</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -431,7 +431,7 @@ export default function MarketBasketPage() {
                                                     </span>
                                                 </td>
                                                 <td className="px-4 py-3">
-                                                    <span className="text-[10px] px-2 py-0.5 rounded-md font-black" style={{ color: typeColor, background: `${typeColor}25` }}>{rule.type}</span>
+                                                    <span className="text-[10px] px-2 py-0.5 rounded-md font-bold" style={{ color: typeColor, background: `${typeColor}20` }}>{rule.type}</span>
                                                 </td>
                                             </tr>
                                         );
@@ -485,9 +485,9 @@ export default function MarketBasketPage() {
                     <div className="h-72">
                         <ResponsiveContainer width="100%" height="100%">
                             <ScatterChart margin={{ bottom: 10, left: 5, right: 10 }}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.1)" />
-                                <XAxis type="number" dataKey="x" name="Support" unit="%" axisLine={false} tickLine={false} tick={{ fill: "#334155", fontSize: 10, fontWeight: 800 }} label={{ value: "Support %", position: "bottom", offset: 0, style: { fill: "#334155", fontSize: 10, fontWeight: 800 } }} />
-                                <YAxis type="number" dataKey="y" name="Confidence" unit="%" axisLine={false} tickLine={false} tick={{ fill: "#334155", fontSize: 10, fontWeight: 800 }} />
+                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
+                                <XAxis type="number" dataKey="x" name="Support" unit="%" axisLine={false} tickLine={false} tick={{ fill: "#475569", fontSize: 10, fontWeight: 700 }} label={{ value: "Support %", position: "bottom", offset: 0, style: { fill: "#475569", fontSize: 10, fontWeight: 700 } }} />
+                                <YAxis type="number" dataKey="y" name="Confidence" unit="%" axisLine={false} tickLine={false} tick={{ fill: "#475569", fontSize: 10, fontWeight: 700 }} />
                                 <ZAxis type="number" dataKey="z" range={[40, 300]} />
                                 <Tooltip
                                     content={({ active, payload }: any) => {
@@ -530,9 +530,9 @@ export default function MarketBasketPage() {
                         <div className="h-40" style={{ overflow: "visible" }}>
                             <ResponsiveContainer width="100%" height="100%">
                                 <BarChart data={confBands} layout="vertical">
-                                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.1)" horizontal={false} />
-                                    <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#334155", fontSize: 10, fontWeight: 800 }} />
-                                    <YAxis dataKey="range" type="category" axisLine={false} tickLine={false} tick={{ fill: "#475569", fontSize: 10, fontWeight: 800 }} width={55} />
+                                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" horizontal={false} />
+                                    <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#475569", fontSize: 10, fontWeight: 700 }} />
+                                    <YAxis dataKey="range" type="category" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10, fontWeight: 700 }} width={55} />
                                     <Tooltip
                                         contentStyle={{ background: "rgba(15,23,42,0.9)", backdropFilter: "blur(12px)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", color: "#fff", fontSize: "12px", fontWeight: 600, padding: "10px 14px", boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1)" }}
                                         wrapperStyle={{ zIndex: 99999, pointerEvents: "none" }}

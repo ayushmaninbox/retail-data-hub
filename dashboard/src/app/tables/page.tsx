@@ -119,18 +119,18 @@ function PaginatedTable({
             <div className="overflow-x-auto rounded-xl" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
                 <table className="w-full text-xs">
                     <thead>
-                        <tr style={{ background: "rgba(139,92,246,0.08)" }}>
-                            <th className="text-center px-2 py-2.5 text-[10px] font-semibold text-slate-500 border-b border-black/[0.06] w-12">#</th>
+                        <tr style={{ background: "rgba(139,92,246,0.1)" }}>
+                            <th className="text-center px-2 py-2.5 text-[10px] font-bold text-slate-700 border-b border-black/[0.1] w-12">#</th>
                             {columns.map((col: any, i: number) => (
                                 <th
                                     key={i}
-                                    className="text-left px-3 py-2.5 text-[10px] font-bold text-slate-500 uppercase tracking-wider whitespace-nowrap border-b border-black/[0.06]"
+                                    className="text-left px-3 py-2.5 text-[10px] font-bold text-slate-700 uppercase tracking-wider whitespace-nowrap border-b border-black/[0.1]"
                                 >
                                     <div className="flex items-center gap-1">
-                                        {col.is_pk && <Key className="w-3 h-3 text-yellow-400" />}
+                                        {col.is_pk && <Key className="w-3 h-3 text-yellow-500" />}
                                         {col.fk_to && (
                                             <button onClick={() => onNavigate(col.fk_to)} title={`Jump to ${col.fk_to}`}>
-                                                <Link2 className="w-3 h-3 text-blue-400 hover:text-blue-300" />
+                                                <Link2 className="w-3 h-3 text-blue-500 hover:text-blue-400" />
                                             </button>
                                         )}
                                         {col.name}
@@ -149,7 +149,7 @@ function PaginatedTable({
                                     return (
                                         <td
                                             key={ci}
-                                            className={`px-3 py-2 whitespace-nowrap font-mono text-[11px] ${val === null ? "text-slate-500 italic" : "text-slate-800 font-medium"
+                                            className={`px-3 py-2 whitespace-nowrap font-mono text-[11px] ${val === null ? "text-slate-500 italic font-semibold" : "text-slate-900 font-semibold"
                                                 }`}
                                             title={display}
                                         >
@@ -165,8 +165,8 @@ function PaginatedTable({
 
             {/* Pagination controls */}
             <div className="flex items-center justify-between mt-4 px-1">
-                <p className="text-xs text-slate-500">
-                    Showing <span className="text-slate-800 font-semibold">{fmtNum(startRow)}</span> – <span className="text-slate-800 font-semibold">{fmtNum(endRow)}</span> of <span className="text-slate-800 font-semibold">{fmtNum(totalRows)}</span> rows
+                <p className="text-xs text-slate-600 font-semibold">
+                    Showing <span className="text-slate-900 font-bold">{fmtNum(startRow)}</span> – <span className="text-slate-900 font-bold">{fmtNum(endRow)}</span> of <span className="text-slate-900 font-bold">{fmtNum(totalRows)}</span> rows
                 </p>
 
                 <div className="flex items-center gap-1">
@@ -311,7 +311,7 @@ export default function DataTablesPage() {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search tables by name or description..."
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl text-sm bg-black/[0.02] border border-black/[0.06] text-slate-800 placeholder-slate-500 focus:outline-none focus:border-accent-purple/40 transition-all"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl text-sm bg-black/[0.03] border border-black/10 text-slate-900 font-semibold placeholder-slate-600 focus:outline-none focus:border-accent-purple/50 transition-all"
                 />
             </div>
 
@@ -327,10 +327,10 @@ export default function DataTablesPage() {
                         <div className="flex items-center gap-3 mb-4">
                             <meta.icon className="w-5 h-5" style={{ color: meta.color }} />
                             <div>
-                                <h2 className="text-base font-bold text-slate-800">{meta.label} Layer</h2>
-                                <p className="text-xs text-slate-500">{meta.description}</p>
+                                <h2 className="text-base font-bold text-slate-900">{meta.label} Layer</h2>
+                                <p className="text-xs text-slate-600 font-semibold">{meta.description}</p>
                             </div>
-                            <span className="ml-auto text-xs text-slate-600 font-mono">{tables.length} tables</span>
+                            <span className="ml-auto text-xs text-slate-700 font-bold font-mono">{tables.length} tables</span>
                         </div>
 
                         {/* Table list — clean horizontal cards */}
@@ -363,27 +363,27 @@ export default function DataTablesPage() {
                                         {/* Name + description */}
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center gap-2">
-                                                <span className="text-sm font-semibold text-slate-800">{tbl.name}</span>
+                                                <span className="text-sm font-bold text-slate-900">{tbl.name}</span>
                                                 {(isFact || isDim) && (
-                                                    <span className={`text-[9px] font-bold uppercase px-1.5 py-0.5 rounded ${isFact ? "text-yellow-400 bg-yellow-400/15" : "text-blue-400 bg-blue-400/15"
+                                                    <span className={`text-[9px] font-bold uppercase px-1.5 py-0.5 rounded ${isFact ? "text-yellow-600 bg-yellow-400/15" : "text-blue-600 bg-blue-400/15"
                                                         }`}>
                                                         {tbl.table_type}
                                                     </span>
                                                 )}
-                                                <span className="text-[10px] px-1.5 py-0.5 rounded bg-black/[0.04] text-slate-500 font-mono">{tbl.format}</span>
+                                                <span className="text-[10px] px-1.5 py-0.5 rounded bg-black/[0.05] text-slate-600 font-bold font-mono">{tbl.format}</span>
                                             </div>
-                                            <p className="text-xs text-slate-500 mt-0.5 truncate">{tbl.description}</p>
+                                            <p className="text-xs text-slate-600 font-medium mt-0.5 truncate">{tbl.description}</p>
                                         </div>
 
                                         {/* Stats */}
                                         <div className="flex items-center gap-6 flex-shrink-0">
                                             <div className="text-right">
-                                                <p className="text-sm font-bold text-slate-800">{fmtNum(tbl.rows)}</p>
-                                                <p className="text-[10px] text-slate-500">rows</p>
+                                                <p className="text-sm font-bold text-slate-900">{fmtNum(tbl.rows)}</p>
+                                                <p className="text-[10px] text-slate-600 font-semibold">rows</p>
                                             </div>
                                             <div className="text-right">
-                                                <p className="text-sm font-bold text-slate-800">{tbl.columns}</p>
-                                                <p className="text-[10px] text-slate-500">cols</p>
+                                                <p className="text-sm font-bold text-slate-900">{tbl.columns}</p>
+                                                <p className="text-[10px] text-slate-600 font-semibold">cols</p>
                                             </div>
                                             {tbl.pk && (
                                                 <span className="text-[10px] px-2 py-1 rounded-lg bg-yellow-500/10 text-yellow-400 border border-yellow-500/15 font-mono whitespace-nowrap">
@@ -419,17 +419,17 @@ export default function DataTablesPage() {
                         <div>
                             <div className="flex items-center gap-2 mb-1">
                                 <Database className="w-4 h-4 text-accent-purple" />
-                                <h3 className="text-base font-bold text-slate-800">
+                                <h3 className="text-base font-bold text-slate-900">
                                     {(() => {
                                         const Icon = LAYER_META[selectedTable!.layer].icon;
                                         return <Icon className="w-5 h-5 inline-block mr-2 align-text-bottom" style={{ color: LAYER_META[selectedTable!.layer].color }} />;
                                     })()} {selectedMeta.name}
                                 </h3>
-                                <span className="text-[10px] px-2 py-0.5 rounded-full bg-accent-purple/15 text-accent-purple font-semibold uppercase">
+                                <span className="text-[10px] px-2 py-0.5 rounded-full bg-accent-purple/20 text-accent-purple font-bold uppercase">
                                     {LAYER_META[selectedTable!.layer].label}
                                 </span>
                             </div>
-                            <p className="text-xs text-slate-500">{selectedMeta.description}</p>
+                            <p className="text-xs text-slate-600 font-semibold">{selectedMeta.description}</p>
                         </div>
                         <div className="flex items-center gap-2">
                             {/* Download controls */}

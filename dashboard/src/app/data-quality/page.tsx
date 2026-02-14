@@ -93,14 +93,6 @@ export default function DataQualityPage() {
     const passedChecks = checkResults.filter((c: any) => c.status === "PASS");
     const failedChecks = checkResults.filter((c: any) => c.status === "FAIL");
 
-    // Column completeness data from check 7
-    const completenessCheck = checkResults.find((c: any) => c.check_name === "Column Completeness");
-    const allColumns = completenessCheck?.all_columns || [];
-    const columnsBySource = allColumns.reduce((acc: any, col: any) => {
-        if (!acc[col.source]) acc[col.source] = [];
-        acc[col.source].push(col);
-        return acc;
-    }, {} as Record<string, any[]>);
 
     // Violations by check (bar chart data)
     const violationsByCheck = checkResults
@@ -158,14 +150,26 @@ export default function DataQualityPage() {
                     <KpiCard icon={Activity} title="Quality Score" value={`${overallScore}%`} change={summary.overall_status === "ALL_PASSED" ? "All passed" : "Issues detected"} trend={scoreNum >= 80 ? "up" : "down"} accentColor="from-emerald-500 to-accent-teal" subtitle="Checks pass rate" />
 
                     {/* Checks Passed — clickable */}
-                    <div className="cursor-pointer" onClick={() => toggleKpi("passed")}>
-                        <KpiCard icon={CheckCircle2} title="Checks Passed" value={`${summary.passed || 0}/${summary.total_checks || 0}`} change={`Click to ${expandedKpi === "passed" ? "collapse" : "expand"}`} trend="up" accentColor="from-accent-purple to-accent-blue" subtitle="Automated DQ rules" />
-                    </div>
+                    <KpiCard
+                        icon={CheckCircle2}
+                        title="Checks Passed"
+                        value={`${summary.passed || 0}/${summary.total_checks || 0}`}
+                        trend="up"
+                        accentColor="from-accent-purple to-accent-blue"
+                        subtitle="Automated DQ rules"
+                        onClick={() => toggleKpi("passed")}
+                    />
 
                     {/* Failed — clickable */}
-                    <div className="cursor-pointer" onClick={() => toggleKpi("failed")}>
-                        <KpiCard icon={XCircle} title="Total Violations" value={(summary.total_violations || 0).toLocaleString()} change={`${summary.failed || 0} failed checks — click to expand`} trend={summary.total_violations === 0 ? "up" : "down"} accentColor="from-amber-500 to-accent-orange" subtitle="Across all checks" />
-                    </div>
+                    <KpiCard
+                        icon={XCircle}
+                        title="Total Violations"
+                        value={(summary.total_violations || 0).toLocaleString()}
+                        trend={summary.total_violations === 0 ? "up" : "down"}
+                        accentColor="from-amber-500 to-accent-orange"
+                        subtitle={`Across all checks — ${summary.failed || 0} failed`}
+                        onClick={() => toggleKpi("failed")}
+                    />
 
                     <KpiCard icon={Layers} title="Datasets Checked" value={`${Object.keys(datasets).length}`} change={`${Object.values(datasets).reduce((s: number, d: any) => s + d.rows, 0).toLocaleString()} total rows`} trend="neutral" accentColor="from-accent-blue to-accent-teal" subtitle="Source datasets" />
                 </div>
@@ -433,113 +437,6 @@ export default function DataQualityPage() {
                 </ChartCard>
             </div>
 
-            {/* ── Column Completeness Section ── */}
-            {Object.keys(columnsBySource).length > 0 && (() => {
-                const totalCols = allColumns.length;
-                const perfectCols = allColumns.filter((c: any) => c.completeness_pct >= 100).length;
-                const imperfectCols = allColumns.filter((c: any) => c.completeness_pct < 100);
-                const overallPct = totalCols > 0 ? (allColumns.reduce((s: number, c: any) => s + c.completeness_pct, 0) / totalCols) : 100;
-
-                return (
-                    <div id="completeness">
-                        <ChartCard title="Column Completeness" subtitle={`${perfectCols} of ${totalCols} columns are 100% complete`} className="animate-slide-up">
-                            {/* Summary row */}
-                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
-                                {(Object.entries(columnsBySource) as [string, any[]][]).map(([source, cols]) => {
-                                    const srcPerfect = cols.filter((c: any) => c.completeness_pct >= 100).length;
-                                    const srcPct = cols.length > 0 ? (cols.reduce((s: number, c: any) => s + c.completeness_pct, 0) / cols.length) : 100;
-                                    const allPerfect = srcPerfect === cols.length;
-
-                                    return (
-                                        <div key={source} className="p-4 rounded-xl border border-black/[0.06] bg-gradient-to-br from-black/[0.02] to-transparent">
-                                            <div className="flex items-center gap-3 mb-3">
-                                                <span className="text-xl">{datasetIcons[source] || "📊"}</span>
-                                                <div className="flex-1">
-                                                    <p className="text-sm font-semibold text-slate-800 capitalize">{source.replace(/_/g, " ")}</p>
-                                                    <p className="text-[10px] text-slate-500">{cols.length} columns</p>
-                                                </div>
-                                                <span className={`text-lg font-bold tabular-nums ${allPerfect ? "text-emerald-400" : "text-amber-400"}`}>
-                                                    {allPerfect ? "100%" : `${(Math.floor(srcPct * 10) / 10).toFixed(1)}%`}
-                                                </span>
-                                            </div>
-                                            {/* Compact bar */}
-                                            <div className="h-2 rounded-full overflow-hidden" style={{ background: "rgba(0,0,0,0.06)" }}>
-                                                <div className="h-full rounded-full transition-all duration-700" style={{ width: `${srcPct}%`, background: allPerfect ? "#10b981" : "#f59e0b" }} />
-                                            </div>
-                                            <div className="flex items-center justify-between mt-2">
-                                                <span className="text-[10px] text-slate-500">{srcPerfect}/{cols.length} perfect</span>
-                                                {allPerfect ? (
-                                                    <span className="text-[10px] text-emerald-400 bg-emerald-400/10 px-1.5 py-0.5 rounded-full flex items-center gap-1">
-                                                        <CheckCircle2 className="w-2.5 h-2.5" /> All complete
-                                                    </span>
-                                                ) : (
-                                                    <span className="text-[10px] text-amber-400 bg-amber-400/10 px-1.5 py-0.5 rounded-full">
-                                                        {cols.length - srcPerfect} below 100%
-                                                    </span>
-                                                )}
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-
-                            {/* Only show columns below 100% */}
-                            {imperfectCols.length > 0 ? (
-                                <div>
-                                    <div className="flex items-center gap-2 mb-3">
-                                        <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
-                                        <p className="text-xs font-semibold text-slate-800">Columns Below 100% Completeness</p>
-                                        <span className="text-[10px] text-amber-400 bg-amber-400/10 px-1.5 py-0.5 rounded-full ml-auto">{imperfectCols.length} columns</span>
-                                    </div>
-                                    <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
-                                        <table className="w-full">
-                                            <thead>
-                                                <tr style={{ background: "rgba(245,158,11,0.05)" }}>
-                                                    <th className="text-left px-4 py-2.5 text-[10px] font-semibold text-slate-500 uppercase">Dataset</th>
-                                                    <th className="text-left px-4 py-2.5 text-[10px] font-semibold text-slate-500 uppercase">Column</th>
-                                                    <th className="text-right px-4 py-2.5 text-[10px] font-semibold text-slate-500 uppercase">Completeness</th>
-                                                    <th className="text-right px-4 py-2.5 text-[10px] font-semibold text-slate-500 uppercase">Null Rows</th>
-                                                    <th className="text-left px-4 py-2.5 text-[10px] font-semibold text-slate-500 uppercase w-32">Progress</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {imperfectCols.map((col: any, i: number) => {
-                                                    const nullRows = col.total_rows - col.non_null_rows;
-                                                    return (
-                                                        <tr key={i} className="border-t border-black/[0.04]">
-                                                            <td className="px-4 py-2.5 text-xs text-slate-400">
-                                                                {datasetIcons[col.source] || "📊"} {col.source.replace(/_/g, " ")}
-                                                            </td>
-                                                            <td className="px-4 py-2.5 text-xs text-slate-800 font-mono font-medium">{col.column}</td>
-                                                            <td className="px-4 py-2.5 text-right">
-                                                                <span className={`text-xs font-bold tabular-nums ${col.completeness_pct >= 99 ? "text-amber-400" : "text-red-400"}`}>
-                                                                    {col.completeness_pct}%
-                                                                </span>
-                                                            </td>
-                                                            <td className="px-4 py-2.5 text-right text-xs text-slate-400">{nullRows.toLocaleString()}</td>
-                                                            <td className="px-4 py-2.5">
-                                                                <div className="h-2 rounded-full overflow-hidden" style={{ background: "rgba(0,0,0,0.06)" }}>
-                                                                    <div className="h-full rounded-full transition-all duration-500" style={{ width: `${col.completeness_pct}%`, background: col.completeness_pct >= 99 ? "#f59e0b" : "#ef4444" }} />
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    );
-                                                })}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            ) : (
-                                <div className="text-center py-4">
-                                    <CheckCircle2 className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
-                                    <p className="text-sm font-semibold text-slate-800">All columns are 100% complete</p>
-                                    <p className="text-xs text-slate-500">No null values detected across any dataset</p>
-                                </div>
-                            )}
-                        </ChartCard>
-                    </div>
-                );
-            })()}
 
             {/* ── Scroll to Top ── */}
             <button
