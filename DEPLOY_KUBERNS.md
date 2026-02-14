@@ -19,7 +19,7 @@ This guide explains how to get the **Retail Data Hub** live on [Kuberns.com](htt
 6.  **Commands**:
     -   **Start Command**: `uvicorn src.api.api:app --host 0.0.0.0 --port 8000`
 7.  **Port**: Set to `8000`.
-8.  **Deploy**: Click **Deploy**. Copy the provided URL (e.g., `https://retail-api.kuberns.com`).
+8.  **Deploy**: Click **Deploy**. Copy the provided URL (e.g., `https://retail-data-hub-main-2a82b44.kuberns.cloud`).
 
 ---
 
@@ -29,8 +29,8 @@ This guide explains how to get the **Retail Data Hub** live on [Kuberns.com](htt
 2.  **Service Type**: Kuberns will auto-detect **Next.js**.
 3.  **Root Directory**: `/dashboard` (point to the dashboard folder).
 4.  **Environment Variables**:
-    -   `NEXT_PUBLIC_API_URL`: Use the Backend URL (e.g., `https://retail-api.kuberns.com`).
-    -   `NEXT_PUBLIC_WS_URL`: Use the Backend URL with `wss://` (e.g., `wss://retail-api.kuberns.com/ws/live`).
+    -   `NEXT_PUBLIC_API_URL`: Use `https://retail-data-hub-main-2a82b44.kuberns.cloud`
+    -   `NEXT_PUBLIC_WS_URL`: Use `wss://retail-api.kuberns.cloud/ws/live` (Note: Use your actual Backend Domain with `wss://`)
 5.  **Commands**:
     -   **Start Command**: `npm start`
 6.  **Port**: Set to `3000`.
