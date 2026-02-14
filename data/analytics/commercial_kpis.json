@@ -1,5 +1,5 @@
 {
-  "computed_at": "2026-02-14T13:41:08.445141",
+  "computed_at": "2026-02-14T14:57:19.538852",
   "revenue": {
     "summary": {
       "total_revenue": 2314914533.9999967,
@@ -5879,16 +5879,20 @@
   "festive_analysis": [
     {
       "period": "Normal",
-      "revenue": 1234766084.610003,
+      "total_revenue": 1234766084.610003,
       "transactions": 37083,
       "units_sold": 208949.0,
+      "total_days": 485,
+      "avg_daily_revenue": 2545909.45,
       "avg_transaction_value": 33297.36
     },
     {
       "period": "Festive (Oct-Jan)",
-      "revenue": 1080148449.3899992,
+      "total_revenue": 1080148449.3899992,
       "transactions": 32822,
       "units_sold": 177506.0,
+      "total_days": 277,
+      "avg_daily_revenue": 3899452.89,
       "avg_transaction_value": 32909.28
     }
   ]
