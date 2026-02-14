@@ -166,6 +166,37 @@ export default function CustomersPage() {
         Lost: { desc: "Lowest recency, frequency and monetary scores.", action: "Revive interest with reach out campaign. Ignore otherwise.", icon: Users },
     };
 
+    const Medal = ({ className, style }: any) => (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} style={style}>
+            <circle cx="12" cy="8" r="6" />
+            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+        </svg>
+    );
+
+    // CLV Tier insights
+    const clvTierInsights: Record<string, { desc: string; action: string; icon: any }> = {
+        Platinum: {
+            desc: "Highest value customers with long-term loyalty and high spend.",
+            action: "VIP exclusive perks, early access to premium collections, and high-touch support.",
+            icon: Award
+        },
+        Gold: {
+            desc: "High-value customers who spend consistently above average.",
+            action: "Tiered rewards, personalized recommendations, and periodic complimentary benefits.",
+            icon: Star
+        },
+        Silver: {
+            desc: "Regular customers with potential for high lifetime value.",
+            action: "Growth incentives, cross-sell relevant categories, and loyalty program nudges.",
+            icon: Medal
+        },
+        Bronze: {
+            desc: "Occasional buyers or new customers with entry-level spend.",
+            action: "Engagement campaigns, first-order bonuses, and educational content to increase frequency.",
+            icon: Target
+        }
+    };
+
     return (
         <div className="space-y-6">
             <PageHeader icon={Users} title="Customer Analytics" subtitle="Customer lifetime value, RFM segmentation & retention analysis" />
@@ -188,8 +219,8 @@ export default function CustomersPage() {
                             <ResponsiveContainer width="100%" height="100%">
                                 <BarChart data={rfmSegments} layout="vertical" margin={{ left: 20 }}>
                                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" horizontal={false} />
-                                    <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 11 }} />
-                                    <YAxis dataKey="segment" type="category" axisLine={false} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 11 }} width={130} />
+                                    <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#475569", fontSize: 11, fontWeight: 600 }} />
+                                    <YAxis dataKey="segment" type="category" axisLine={false} tickLine={false} tick={{ fill: "#334155", fontSize: 11, fontWeight: 600 }} width={130} />
                                     <Tooltip
                                         content={({ active, payload }: any) => {
                                             if (active && payload && payload.length) {
@@ -216,7 +247,7 @@ export default function CustomersPage() {
                         </div>
 
                         {/* Segment cards */}
-                        <div className="space-y-1.5 max-h-80 overflow-y-auto pr-1">
+                        <div className="space-y-2 max-h-80 overflow-y-auto p-1 -m-1">
                             <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-2">Segments</p>
                             {rfmSegments.map((seg: any) => {
                                 const isActive = activeSeg === seg.segment;
@@ -232,14 +263,14 @@ export default function CustomersPage() {
                                         <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: seg.color }} />
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center justify-between">
-                                                <span className="text-xs font-semibold text-slate-800">{seg.segment}</span>
-                                                <span className="text-[10px] font-bold text-slate-400">{fmtNum(seg.count)}</span>
+                                                <span className="text-xs font-bold text-slate-900">{seg.segment}</span>
+                                                <span className="text-[10px] font-bold text-slate-500">{fmtNum(seg.count)}</span>
                                             </div>
                                             <div className="flex items-center gap-2 mt-1">
                                                 <div className="flex-1 h-1 rounded-full overflow-hidden" style={{ background: "rgba(0,0,0,0.06)" }}>
                                                     <div className="h-full rounded-full" style={{ width: `${pct}%`, background: seg.color }} />
                                                 </div>
-                                                <span className="text-[9px] text-slate-500">{pct}%</span>
+                                                <span className="text-[9px] font-bold text-slate-600">{pct}%</span>
                                             </div>
                                         </div>
                                         <ChevronRight className={`w-3 h-3 text-slate-600 transition-transform ${isActive ? "rotate-90" : ""}`} />
@@ -261,8 +292,8 @@ export default function CustomersPage() {
                                         })()}
                                     </div>
                                     <div>
-                                        <h4 className="text-sm font-bold text-slate-800">{selectedSegData.segment}</h4>
-                                        <p className="text-xs text-slate-500">{segInsights[selectedSegData.segment]?.desc || ""}</p>
+                                        <h4 className="text-sm font-bold text-slate-900">{selectedSegData.segment}</h4>
+                                        <p className="text-xs text-slate-600 font-medium">{segInsights[selectedSegData.segment]?.desc || ""}</p>
                                     </div>
                                 </div>
                                 <button onClick={() => setActiveSeg(null)} className="w-6 h-6 rounded-lg flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-black/[0.06]">
@@ -271,29 +302,29 @@ export default function CustomersPage() {
                             </div>
 
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
-                                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.06)" }}>
-                                    <p className="text-lg font-bold text-slate-800">{fmtNum(selectedSegData.count)}</p>
-                                    <p className="text-[10px] text-slate-500 uppercase">Customers</p>
+                                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.08)" }}>
+                                    <p className="text-lg font-bold text-slate-900">{selectedSegData.count?.toLocaleString()}</p>
+                                    <p className="text-[10px] text-slate-600 font-bold uppercase tracking-wider">Customers</p>
                                 </div>
-                                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.06)" }}>
-                                    <p className="text-lg font-bold text-slate-800">{fmt(selectedSegData.avg_monetary || 0)}</p>
-                                    <p className="text-[10px] text-slate-500 uppercase">Avg Spend</p>
+                                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.08)" }}>
+                                    <p className="text-lg font-bold text-slate-900">{fmt(selectedSegData.avg_monetary || 0)}</p>
+                                    <p className="text-[10px] text-slate-600 font-bold uppercase tracking-wider">Avg Spend</p>
                                 </div>
-                                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.06)" }}>
-                                    <p className="text-lg font-bold text-slate-800">{selectedSegData.avg_frequency?.toFixed(1) || "—"}</p>
-                                    <p className="text-[10px] text-slate-500 uppercase">Avg Frequency</p>
+                                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.08)" }}>
+                                    <p className="text-lg font-bold text-slate-900">{selectedSegData.avg_frequency?.toFixed(1) || "—"}</p>
+                                    <p className="text-[10px] text-slate-600 font-bold uppercase tracking-wider">Avg Frequency</p>
                                 </div>
-                                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.06)" }}>
-                                    <p className="text-lg font-bold text-slate-800">{selectedSegData.avg_recency?.toFixed(0) || "—"} days</p>
-                                    <p className="text-[10px] text-slate-500 uppercase">Avg Recency</p>
+                                <div className="p-3 rounded-xl text-center" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.08)" }}>
+                                    <p className="text-lg font-bold text-slate-900">{selectedSegData.avg_recency?.toFixed(0) || "—"} d</p>
+                                    <p className="text-[10px] text-slate-600 font-bold uppercase tracking-wider">Avg Recency</p>
                                 </div>
                             </div>
 
-                            <div className="p-3 rounded-xl flex items-start gap-3" style={{ background: `${selectedSegData.color}10`, border: `1px solid ${selectedSegData.color}15` }}>
+                            <div className="p-3 rounded-xl flex items-start gap-4" style={{ background: `${selectedSegData.color}10`, border: `1px solid ${selectedSegData.color}20` }}>
                                 <Sparkles className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: selectedSegData.color }} />
                                 <div>
-                                    <p className="text-[10px] text-slate-500 uppercase font-semibold mb-1">Recommended Action</p>
-                                    <p className="text-xs text-slate-300">{segInsights[selectedSegData.segment]?.action || ""}</p>
+                                    <p className="text-[10px] text-slate-600 uppercase font-black tracking-widest mb-1.5" style={{ color: selectedSegData.color }}>Recommended Action</p>
+                                    <p className="text-[13px] text-slate-800 font-semibold leading-relaxed">{segInsights[selectedSegData.segment]?.action || ""}</p>
                                 </div>
                             </div>
                         </div>
@@ -363,6 +394,37 @@ export default function CustomersPage() {
                             })}
                         </div>
                     </div>
+
+                    {/* ── CLV Tier Drill-Down Panel ── */}
+                    {activeCLV && (
+                        <div className="mt-6 p-5 rounded-2xl animate-slide-up" style={{ background: `${CLV_COLORS[activeCLV]}08`, border: `1px solid ${CLV_COLORS[activeCLV]}20` }}>
+                            <div className="flex items-start justify-between mb-5">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{ background: `${CLV_COLORS[activeCLV]}20` }}>
+                                        {(() => {
+                                            const TierIcon = clvTierInsights[activeCLV]?.icon || Award;
+                                            return <TierIcon className="w-6 h-6" style={{ color: CLV_COLORS[activeCLV] }} />;
+                                        })()}
+                                    </div>
+                                    <div>
+                                        <h4 className="text-base font-black text-slate-900 leading-none mb-1">{activeCLV} Tier</h4>
+                                        <p className="text-sm text-slate-600 font-medium">{clvTierInsights[activeCLV]?.desc || ""}</p>
+                                    </div>
+                                </div>
+                                <button onClick={() => setActiveCLV(null)} className="w-8 h-8 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-900 hover:bg-black/[0.06] transition-all">
+                                    <XCircle className="w-5 h-5" />
+                                </button>
+                            </div>
+
+                            <div className="p-4 rounded-2xl flex items-start gap-4" style={{ background: `${CLV_COLORS[activeCLV]}10`, border: `1px solid ${CLV_COLORS[activeCLV]}25` }}>
+                                <Sparkles className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: CLV_COLORS[activeCLV] }} />
+                                <div>
+                                    <p className="text-[11px] text-slate-700 uppercase font-black tracking-[0.1em] mb-2" style={{ color: CLV_COLORS[activeCLV] }}>Strategic Recommendation</p>
+                                    <p className="text-[14px] text-slate-800 font-bold leading-relaxed">{clvTierInsights[activeCLV]?.action || ""}</p>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </ChartCard>
 
                 <ChartCard title="CLV Stats" subtitle="Key lifetime value metrics" className="animate-slide-up">
@@ -375,9 +437,9 @@ export default function CustomersPage() {
                             { label: "75th Percentile", value: fmt(clvStats.p75 || 0), color: "#ec4899" },
                             { label: "Repeat Rate", value: `${summary.repeat_rate_pct || 0}%`, color: "#14b8a6" },
                         ].map(({ label, value, color }) => (
-                            <div key={label} className="p-4 rounded-xl text-center" style={{ background: `${color}08`, border: `1px solid ${color}15` }}>
-                                <p className="text-lg font-bold text-slate-800">{value}</p>
-                                <p className="text-[10px] text-slate-500 uppercase">{label}</p>
+                            <div key={label} className="p-4 rounded-xl text-center" style={{ background: `${color}15`, border: `1px solid ${color}30` }}>
+                                <p className="text-lg font-bold text-slate-900">{value}</p>
+                                <p className="text-[10px] text-slate-700 font-bold uppercase tracking-wider">{label}</p>
                             </div>
                         ))}
                     </div>
@@ -487,12 +549,12 @@ export default function CustomersPage() {
                             <table className="w-full">
                                 <thead>
                                     <tr style={{ background: "rgba(139,92,246,0.06)" }}>
-                                        <th className="text-left px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider w-8">#</th>
-                                        <th className="text-left px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">City</th>
-                                        <th className="text-right px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Customers</th>
-                                        <th className="text-left px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Share</th>
-                                        <th className="text-right px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Total Spend</th>
-                                        <th className="text-right px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Avg Transaction</th>
+                                        <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-700 uppercase tracking-wider w-8">#</th>
+                                        <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-700 uppercase tracking-wider">City</th>
+                                        <th className="text-right px-4 py-3 text-[10px] font-bold text-slate-700 uppercase tracking-wider">Customers</th>
+                                        <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-700 uppercase tracking-wider">Share</th>
+                                        <th className="text-right px-4 py-3 text-[10px] font-bold text-slate-700 uppercase tracking-wider">Total Spend</th>
+                                        <th className="text-right px-4 py-3 text-[10px] font-bold text-slate-700 uppercase tracking-wider">Avg Transaction</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -506,21 +568,21 @@ export default function CustomersPage() {
                                                         <MapPin className="w-3.5 h-3.5" style={{ color: city.color }} />
                                                         <div>
                                                             <span className="text-sm font-semibold text-slate-800">{city.city}</span>
-                                                            {city.state && <span className="text-[10px] text-slate-500 ml-1.5">{city.state}</span>}
+                                                            {city.state && <span className="text-[10px] text-slate-600 font-medium ml-1.5">{city.state}</span>}
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td className="px-4 py-3 text-sm text-slate-800 text-right font-mono font-semibold">{fmtNum(city.customers)}</td>
                                                 <td className="px-4 py-3 w-32">
                                                     <div className="flex items-center gap-2">
-                                                        <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: "rgba(0,0,0,0.06)" }}>
+                                                        <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: "rgba(0,0,0,0.08)" }}>
                                                             <div className="h-full rounded-full" style={{ width: `${share}%`, background: city.color }} />
                                                         </div>
-                                                        <span className="text-[10px] text-slate-400 w-10 text-right">{share}%</span>
+                                                        <span className="text-[10px] text-slate-600 font-bold w-10 text-right">{share}%</span>
                                                     </div>
                                                 </td>
-                                                <td className="px-4 py-3 text-sm text-emerald-400 text-right font-mono">{fmt(city.total_spend || 0)}</td>
-                                                <td className="px-4 py-3 text-xs text-slate-400 text-right font-mono">{fmt(city.avg_transaction || 0)}</td>
+                                                <td className="px-4 py-3 text-sm text-emerald-500 text-right font-mono font-bold">{fmt(city.total_spend || 0)}</td>
+                                                <td className="px-4 py-3 text-xs text-slate-600 text-right font-mono font-bold">{fmt(city.avg_transaction || 0)}</td>
                                             </tr>
                                         );
                                     })}

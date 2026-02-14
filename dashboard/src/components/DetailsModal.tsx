@@ -67,10 +67,10 @@ export default function DetailsModal({
             onClick={(e) => {
                 if (e.target === overlayRef.current) onClose();
             }}
-            className="fixed inset-0 z-50 flex items-center justify-center"
+            className="fixed -inset-1 z-[100] flex items-center justify-center"
             style={{
-                background: animateIn ? "rgba(0,0,0,0.25)" : "rgba(0,0,0,0)",
-                backdropFilter: animateIn ? "blur(6px)" : "blur(0px)",
+                background: animateIn ? "rgba(0,0,0,0.35)" : "rgba(0,0,0,0)",
+                backdropFilter: animateIn ? "blur(8px)" : "blur(0px)",
                 transition: "background 0.3s ease, backdrop-filter 0.3s ease",
             }}
         >

@@ -478,10 +478,10 @@ export default function LogisticsPage() {
                                     type="number"
                                     axisLine={false}
                                     tickLine={false}
-                                    tick={{ fill: "#64748b", fontSize: 11, fontWeight: 600 }}
+                                    tick={{ fill: "#334155", fontSize: 11, fontWeight: 700 }}
                                     tickFormatter={(v) => carrierSort === "avgDays" ? `${v}d` : carrierSort === "shipments" ? fmtNum(v) : `${v}%`}
                                 />
-                                <YAxis dataKey="carrier" type="category" axisLine={false} tickLine={false} tick={{ fill: "#475569", fontSize: 11, fontWeight: 700 }} width={110} />
+                                <YAxis dataKey="carrier" type="category" axisLine={false} tickLine={false} tick={{ fill: "#334155", fontSize: 11, fontWeight: 700 }} width={110} />
                                 <Tooltip content={<GlassTooltip />} cursor={{ fill: "rgba(0,0,0,0.02)" }} />
                                 <Bar
                                     dataKey={carrierSort}
@@ -510,12 +510,12 @@ export default function LogisticsPage() {
                             <table className="w-full">
                                 <thead>
                                     <tr style={{ background: "rgba(139,92,246,0.12)" }}>
-                                        <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-700 uppercase tracking-wider">#</th>
-                                        <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-700 uppercase tracking-wider">Destination</th>
-                                        <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-700 uppercase tracking-wider">Avg Days</th>
-                                        <th className="text-right px-4 py-3 text-[10px] font-bold text-slate-700 uppercase tracking-wider">Shipments</th>
-                                        <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-700 uppercase tracking-wider">On-Time Rate</th>
-                                        <th className="text-right px-4 py-3 text-[10px] font-bold text-slate-700 uppercase tracking-wider">Bottleneck</th>
+                                        <th className="text-left px-4 py-3 text-[10px] font-black text-slate-950 uppercase tracking-wider">#</th>
+                                        <th className="text-left px-4 py-3 text-[10px] font-black text-slate-950 uppercase tracking-wider">Destination</th>
+                                        <th className="text-left px-4 py-3 text-[10px] font-black text-slate-950 uppercase tracking-wider">Avg Days</th>
+                                        <th className="text-right px-4 py-3 text-[10px] font-black text-slate-950 uppercase tracking-wider">Shipments</th>
+                                        <th className="text-left px-4 py-3 text-[10px] font-black text-slate-950 uppercase tracking-wider">On-Time Rate</th>
+                                        <th className="text-right px-4 py-3 text-[10px] font-black text-slate-950 uppercase tracking-wider">Bottleneck</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -529,12 +529,12 @@ export default function LogisticsPage() {
                                                 </div>
                                             </td>
                                             <td className="px-4 py-3">
-                                                <span className={`text-sm font-bold ${route.avgDays >= 5 ? "text-red-400" : route.avgDays >= 4 ? "text-amber-400" : "text-emerald-400"
+                                                <span className={`text-sm font-black ${route.avgDays >= 5 ? "text-red-500" : route.avgDays >= 4 ? "text-amber-500" : "text-emerald-500"
                                                     }`}>
                                                     {route.avgDays}d
                                                 </span>
                                             </td>
-                                            <td className="px-4 py-3 text-sm text-slate-400 text-right font-mono">{fmtNum(route.shipments)}</td>
+                                            <td className="px-4 py-3 text-sm text-slate-800 text-right font-black font-mono">{fmtNum(route.shipments)}</td>
                                             <td className="px-4 py-3 w-40">
                                                 <div className="flex items-center gap-2">
                                                     <div className="flex-1 h-2 bg-black/[0.06] rounded-full">
@@ -546,11 +546,11 @@ export default function LogisticsPage() {
                                                             }}
                                                         />
                                                     </div>
-                                                    <span className="text-[10px] font-bold text-slate-400 w-10 text-right">{route.onTimeRate}%</span>
+                                                    <span className="text-[10px] font-black text-slate-700 w-10 text-right">{route.onTimeRate}%</span>
                                                 </div>
                                             </td>
                                             <td className="px-4 py-3 text-right">
-                                                <span className="text-xs font-semibold text-red-400">{route.bottleneckPct}%</span>
+                                                <span className="text-xs font-black text-red-500">{route.bottleneckPct}%</span>
                                             </td>
                                         </tr>
                                     ))}

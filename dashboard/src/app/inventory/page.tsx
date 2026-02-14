@@ -102,6 +102,7 @@ type ModalType = "stockoutDetail" | null;
 export default function InventoryPage() {
     const { data, loading } = useApi<any>("/api/operations");
     const [activeModal, setActiveModal] = useState<ModalType>(null);
+    const [invMetric, setInvMetric] = useState<"turnover" | "stockout">("turnover");
 
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [alertFilter, setAlertFilter] = useState<"all" | "stockout" | "low">("all");
@@ -205,12 +206,9 @@ export default function InventoryPage() {
     }));
 
 
-    // Radar data for stockout
-    const maxStockoutPct = Math.max(...stockoutByCategory.map((c: any) => c.pct), 1);
-    const stockoutRadar = stockoutByCategory.map((c: any) => ({
-        category: c.category,
-        "Stockout Rate": Math.round((c.pct / maxStockoutPct) * 100),
-    }));
+
+    // CLV stats summary
+    const clvStats = data.clv?.overall_stats || {};
 
     return (
         <div className="space-y-6">
@@ -427,34 +425,68 @@ export default function InventoryPage() {
                 </ChartCard>
             </div>
 
-            {/* ── Row 2: Turnover Chart + Stockout Radar ── */}
-            <div id="turnover" className="grid grid-cols-1 xl:grid-cols-2 gap-4 animate-slide-up" style={{ animationDelay: "0.1s" }}>
-                <ChartCard title="Inventory Turnover by Category" subtitle="Higher ratio = faster cycling — Groceries & Electronics lead">
-                    <div className="h-80">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <BarChart data={turnoverData}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
-                                <XAxis dataKey="category" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} angle={-20} textAnchor="end" height={50} />
-                                <YAxis axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 11 }} tickFormatter={(v) => `${v}x`} />
-                                <Tooltip content={<GlassTooltip />} />
-                                <Bar
-                                    dataKey="turnover"
-                                    name="Turnover Ratio"
-                                    radius={[6, 6, 0, 0]}
-                                    barSize={32}
-                                    activeBar={{ fillOpacity: 1, stroke: "white", strokeWidth: 1.5 }}
-                                >
-                                    {turnoverData.map((entry: any, index: number) => (
-                                        <Cell key={index} fill={entry.color} fillOpacity={0.75} />
-                                    ))}
-                                </Bar>
-                            </BarChart>
-                        </ResponsiveContainer>
+            {/* ── Row 2: Merged Performance Chart + Details ── */}
+            <div id="performance" className="grid grid-cols-1 xl:grid-cols-5 gap-4 animate-slide-up" style={{ animationDelay: "0.1s" }}>
+                <ChartCard
+                    title="Inventory Performance"
+                    subtitle={invMetric === "turnover" ? "Turnover Ratio — Higher is better" : "Stockout Rate — Percentage of zero-stock records"}
+                    className="xl:col-span-3 transition-all duration-500"
+                    action={
+                        <div className="flex p-1 rounded-xl bg-black/[0.04] border border-black/[0.08] backdrop-blur-md">
+                            {(["turnover", "stockout"] as const).map((m) => {
+                                const isActive = invMetric === m;
+                                return (
+                                    <button
+                                        key={m}
+                                        onClick={() => setInvMetric(m)}
+                                        className={`px-4 py-1.5 text-[10px] font-black uppercase tracking-widest transition-all duration-300 rounded-lg flex items-center gap-2 ${isActive
+                                            ? "bg-white shadow-sm text-slate-900 scale-[1.02]"
+                                            : "text-slate-500 hover:text-slate-700 hover:bg-white/40"
+                                            }`}
+                                    >
+                                        <div className={`w-1.5 h-1.5 rounded-full ${isActive ? (m === "turnover" ? "bg-accent-purple" : "bg-red-500") : "bg-transparent"}`} />
+                                        {m === "turnover" ? "Turnover" : "Stockouts"}
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    }
+                >
+                    <div className="h-80 relative overflow-hidden" key={invMetric}>
+                        <div className="absolute inset-0 animate-slide-up">
+                            <ResponsiveContainer width="100%" height="100%">
+                                <BarChart data={invMetric === "turnover" ? turnoverData : stockoutByCategory} layout={invMetric === "stockout" ? "vertical" : "horizontal"} margin={invMetric === "stockout" ? { left: 10, right: 20 } : { bottom: 20 }}>
+                                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" vertical={invMetric === "turnover"} horizontal={invMetric === "stockout"} />
+                                    {invMetric === "turnover" ? (
+                                        <>
+                                            <XAxis dataKey="category" axisLine={false} tickLine={false} tick={{ fill: "#334155", fontSize: 10, fontWeight: 700 }} angle={-20} textAnchor="end" height={50} />
+                                            <YAxis axisLine={false} tickLine={false} tick={{ fill: "#334155", fontSize: 11, fontWeight: 700 }} tickFormatter={(v) => `${v}x`} />
+                                            <Bar dataKey="turnover" name="Turnover Ratio" radius={[6, 6, 0, 0]} barSize={32}>
+                                                {turnoverData.map((entry: any, index: number) => (
+                                                    <Cell key={index} fill={entry.color} fillOpacity={0.8} />
+                                                ))}
+                                            </Bar>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#334155", fontSize: 10, fontWeight: 700 }} tickFormatter={(v) => `${v}%`} />
+                                            <YAxis dataKey="category" type="category" axisLine={false} tickLine={false} tick={{ fill: "#334155", fontSize: 11, fontWeight: 700 }} width={90} />
+                                            <Bar dataKey="pct" name="Stockout %" radius={[0, 8, 8, 0]} barSize={18}>
+                                                {stockoutByCategory.map((entry: any, index: number) => (
+                                                    <Cell key={index} fill={entry.color} fillOpacity={0.8} />
+                                                ))}
+                                            </Bar>
+                                        </>
+                                    )}
+                                    <Tooltip content={<GlassTooltip />} cursor={{ fill: "rgba(0,0,0,0.02)" }} />
+                                </BarChart>
+                            </ResponsiveContainer>
+                        </div>
                     </div>
                 </ChartCard>
 
-                <ChartCard title="Category Turnover Details" subtitle="Sold units vs avg inventory by category">
-                    <div className="space-y-2 max-h-80 overflow-y-auto pr-1">
+                <ChartCard title="Category Turnover Details" subtitle="Sold units vs avg inventory" className="xl:col-span-2">
+                    <div className="space-y-2 max-h-[340px] overflow-y-auto pr-1">
                         {turnoverData.map((cat: any, i: number) => (
                             <div
                                 key={i}
@@ -464,13 +496,13 @@ export default function InventoryPage() {
                                 <div className="flex items-center gap-3">
                                     <div className="w-3 h-3 rounded-full" style={{ background: cat.color }} />
                                     <div>
-                                        <p className="text-sm font-medium text-slate-800">{cat.category}</p>
-                                        <p className="text-xs text-slate-500">Avg inv: {fmtNum(cat.avg_inventory)} · Sold: {fmtNum(cat.total_sold)}</p>
+                                        <p className="text-sm font-semibold text-slate-800">{cat.category}</p>
+                                        <p className="text-[10px] text-slate-500 font-medium">Avg Inv: {fmtNum(cat.avg_inventory)}</p>
                                     </div>
                                 </div>
                                 <div className="text-right">
-                                    <p className="text-lg font-bold text-slate-800">{cat.turnover}x</p>
-                                    <div className="h-1 w-20 rounded-full overflow-hidden mt-1" style={{ background: "rgba(0,0,0,0.06)" }}>
+                                    <p className="text-sm font-bold text-slate-800">{cat.turnover}x</p>
+                                    <div className="h-1 w-16 rounded-full overflow-hidden mt-1" style={{ background: "rgba(0,0,0,0.06)" }}>
                                         <div
                                             className="h-full rounded-full"
                                             style={{
@@ -482,47 +514,6 @@ export default function InventoryPage() {
                                 </div>
                             </div>
                         ))}
-                    </div>
-                </ChartCard>
-            </div>
-
-            {/* ── Row 3: Stockout by Category ── */}
-            <div id="stockouts" className="grid grid-cols-1 xl:grid-cols-2 gap-4 animate-slide-up" style={{ animationDelay: "0.15s" }}>
-                <ChartCard title="Stockout Rate by Category" subtitle="Percentage of zero-stock records per category">
-                    <div className="h-80">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <BarChart data={stockoutByCategory} layout="vertical" margin={{ left: 5 }}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" horizontal={false} />
-                                <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} tickFormatter={(v) => `${v}%`} />
-                                <YAxis dataKey="category" type="category" axisLine={false} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 11 }} width={100} />
-                                <Tooltip content={<GlassTooltip />} cursor={{ fill: "rgba(0,0,0,0.02)" }} />
-                                <Bar
-                                    dataKey="pct"
-                                    name="Stockout %"
-                                    radius={[0, 8, 8, 0]}
-                                    barSize={18}
-                                    activeBar={{ fillOpacity: 1, stroke: "white", strokeWidth: 1.5 }}
-                                >
-                                    {stockoutByCategory.map((entry: any, index: number) => (
-                                        <Cell key={index} fill={entry.color} fillOpacity={0.75} />
-                                    ))}
-                                </Bar>
-                            </BarChart>
-                        </ResponsiveContainer>
-                    </div>
-                </ChartCard>
-
-                <ChartCard title="Stockout Radar" subtitle="Relative stockout severity across categories">
-                    <div className="h-80">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <RadarChart data={stockoutRadar} outerRadius="70%">
-                                <PolarGrid stroke="rgba(0,0,0,0.08)" />
-                                <PolarAngleAxis dataKey="category" tick={{ fill: "#94a3b8", fontSize: 10 }} />
-                                <PolarRadiusAxis angle={90} domain={[0, 100]} tick={false} axisLine={false} />
-                                <Radar name="Stockout Rate" dataKey="Stockout Rate" stroke="#ef4444" fill="#ef4444" fillOpacity={0.15} strokeWidth={2} />
-                                <Tooltip contentStyle={{ background: "rgba(255,255,255,0.97)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "12px", color: "#334155", fontSize: "12px" }} formatter={(value: number) => `${value}%`} />
-                            </RadarChart>
-                        </ResponsiveContainer>
                     </div>
                 </ChartCard>
             </div>
