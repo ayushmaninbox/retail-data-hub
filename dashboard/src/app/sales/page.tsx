@@ -247,8 +247,8 @@ export default function SalesPage() {
     }));
 
     const festive = data.festive_analysis || [];
-    const festivePeriod = festive.find((f: any) => f.period?.includes("Festive")) || {};
-    const normalPeriod = festive.find((f: any) => f.period?.includes("Normal")) || {};
+    const festivePeriod = festive.find((f: any) => f.period?.toLowerCase().includes("festive")) || {};
+    const normalPeriod = festive.find((f: any) => f.period?.toLowerCase().includes("normal")) || {};
 
     const topCity = citySales[0] || {};
     const topProduct = topByRevenue[0] || {};
@@ -314,14 +314,14 @@ export default function SalesPage() {
                     icon={Sparkles}
                     title="Festive Uplift"
                     value={
-                        festivePeriod.avg_transaction_value && normalPeriod.avg_transaction_value
-                            ? `${(((festivePeriod.avg_transaction_value - normalPeriod.avg_transaction_value) / normalPeriod.avg_transaction_value) * 100).toFixed(1)}%`
+                        festivePeriod.avg_daily_revenue && normalPeriod.avg_daily_revenue
+                            ? `${(((festivePeriod.avg_daily_revenue - normalPeriod.avg_daily_revenue) / normalPeriod.avg_daily_revenue) * 100).toFixed(1)}%`
                             : "N/A"
                     }
-                    change={`Festive AOV ${fmt(festivePeriod.avg_transaction_value || 0)}`}
-                    trend={festivePeriod.avg_transaction_value > normalPeriod.avg_transaction_value ? "up" : "down"}
+                    change={`Sales up from daily normal`}
+                    trend={festivePeriod.avg_daily_revenue > normalPeriod.avg_daily_revenue ? "up" : "down"}
                     accentColor="from-accent-pink to-accent-orange"
-                    subtitle="Oct–Jan vs rest"
+                    subtitle="Oct–Jan vs rest (Daily Avg)"
                 />
             </div>
 
@@ -376,11 +376,11 @@ export default function SalesPage() {
                                     <div className="flex items-center gap-2 mb-2">
                                         <Store className="w-4 h-4 text-purple-400" />
                                         <span className="text-xs font-bold text-slate-700">POS</span>
-                                        <span className="ml-auto text-xs font-black text-purple-500">{posData.revenue_pct || 0}%</span>
+                                        <span className="ml-auto text-xs font-bold text-purple-500">{posData.revenue_pct || 0}%</span>
                                     </div>
                                     <div className="flex justify-between">
                                         <p className="text-[10px] text-slate-500 uppercase font-bold tracking-tight">Revenue</p>
-                                        <p className="text-xs font-black text-slate-900">{fmt(posData.revenue || 0)}</p>
+                                        <p className="text-xs font-bold text-slate-900">{fmt(posData.revenue || 0)}</p>
                                     </div>
                                 </div>
                                 {/* Web */}
@@ -388,11 +388,11 @@ export default function SalesPage() {
                                     <div className="flex items-center gap-2 mb-2">
                                         <Globe className="w-4 h-4 text-teal-400" />
                                         <span className="text-xs font-bold text-slate-700">WEB</span>
-                                        <span className="ml-auto text-xs font-black text-teal-500">{webData.revenue_pct || 0}%</span>
+                                        <span className="ml-auto text-xs font-bold text-teal-500">{webData.revenue_pct || 0}%</span>
                                     </div>
                                     <div className="flex justify-between">
                                         <p className="text-[10px] text-slate-500 uppercase font-bold tracking-tight">Revenue</p>
-                                        <p className="text-xs font-black text-slate-900">{fmt(webData.revenue || 0)}</p>
+                                        <p className="text-xs font-bold text-slate-900">{fmt(webData.revenue || 0)}</p>
                                     </div>
                                 </div>
                             </div>
@@ -400,7 +400,7 @@ export default function SalesPage() {
                             <div>
                                 <div className="flex justify-between items-center mb-1.5">
                                     <p className="text-[10px] text-slate-500 uppercase font-bold tracking-tight">Split</p>
-                                    <span className="text-[10px] font-black text-slate-700">{posData.revenue_pct || 50}% / {webData.revenue_pct || 50}%</span>
+                                    <span className="text-[10px] font-bold text-slate-700">{posData.revenue_pct || 50}% / {webData.revenue_pct || 50}%</span>
                                 </div>
                                 <div className="h-2 rounded-full bg-slate-100 flex overflow-hidden">
                                     <div className="h-full bg-purple-500" style={{ width: `${posData.revenue_pct || 50}%` }} />
@@ -415,14 +415,14 @@ export default function SalesPage() {
                                 </div>
                                 <div className="flex justify-between items-end">
                                     <div>
-                                        <p className="text-[10px] text-slate-500">AOV Increase</p>
-                                        <p className="text-sm font-black text-emerald-600">
-                                            +{(((festivePeriod.avg_transaction_value - normalPeriod.avg_transaction_value) / Math.max(normalPeriod.avg_transaction_value, 1)) * 100).toFixed(1)}%
+                                        <p className="text-[10px] text-slate-500">Revenue Uplift</p>
+                                        <p className="text-sm font-bold text-emerald-600">
+                                            +{(((festivePeriod.avg_daily_revenue - normalPeriod.avg_daily_revenue) / Math.max(normalPeriod.avg_daily_revenue, 1)) * 100).toFixed(1)}%
                                         </p>
                                     </div>
                                     <div className="text-right">
                                         <p className="text-[10px] text-slate-500">Festive Revenue</p>
-                                        <p className="text-xs font-black text-slate-900">{fmt(festivePeriod.revenue || 0)}</p>
+                                        <p className="text-xs font-bold text-slate-900">{fmt(festivePeriod.total_revenue || 0)}</p>
                                     </div>
                                 </div>
                             </div>
@@ -452,7 +452,7 @@ export default function SalesPage() {
                                 <div className="w-2.5 h-2.5 rounded-full" style={{ background: cat.color }} />
                                 <p className="text-xs font-bold text-slate-950 truncate">{cat.name}</p>
                             </div>
-                            <p className="text-lg font-black text-slate-950 mb-1">{fmt(cat.revenue)}</p>
+                            <p className="text-lg font-bold text-slate-950 mb-1">{fmt(cat.revenue)}</p>
                             <div className="flex gap-3 text-xs text-slate-700 font-medium">
                                 <span>{fmtNum(cat.units_sold)} units</span>
                                 <span>·</span>

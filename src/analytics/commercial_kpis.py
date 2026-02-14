@@ -208,18 +208,20 @@ def kpi_category_revenue(con):
 # ══════════════════════════════════════════════════════════════════════
 
 def kpi_festive_analysis(con):
-    """Compare festive season (Oct-Jan) vs normal period performance."""
+    """Compare festive season (Oct-Jan) vs normal period performance based on daily averages."""
     return query_to_dict(con, """
         SELECT
             CASE WHEN d.is_festive_season THEN 'Festive (Oct-Jan)' ELSE 'Normal' END AS period,
-            SUM(f.total_amount)     AS revenue,
+            SUM(f.total_amount)     AS total_revenue,
             COUNT(*)               AS transactions,
             SUM(f.quantity)        AS units_sold,
+            COUNT(DISTINCT d.date_key) AS total_days,
+            ROUND(SUM(f.total_amount) / COUNT(DISTINCT d.date_key), 2) AS avg_daily_revenue,
             ROUND(AVG(f.total_amount), 2) AS avg_transaction_value
         FROM fact_sales f
         JOIN dim_date d ON f.date_key = d.date_key
         GROUP BY d.is_festive_season
-        ORDER BY revenue DESC
+        ORDER BY total_revenue DESC
     """)
 
 

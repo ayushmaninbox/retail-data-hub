@@ -154,7 +154,7 @@ export default function DetailsModal({
                                 </div>
                             </div>
                             <div className="text-right">
-                                <p className="text-base font-black text-slate-900">{row.value}</p>
+                                <p className="text-base font-bold text-slate-900">{row.value}</p>
                                 {row.percentage !== undefined && (
                                     <p className="text-sm text-slate-500 font-bold mt-1">
                                         {row.percentage.toFixed(1)}%
