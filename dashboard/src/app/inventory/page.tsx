@@ -260,36 +260,52 @@ export default function InventoryPage() {
                     title="⚠️ Reorder Alerts — Actionable Breakdown"
                     subtitle={`${allAlerts.length} items need attention · Total reorder cost: ${fmt(totalReorderCost)}`}
                     action={
-                        <div className="flex items-center gap-2">
-                            {/* Filter */}
-                            <div className="flex rounded-lg overflow-hidden border border-black/10">
-                                {(["all", "stockout", "low"] as const).map((f) => (
-                                    <button
-                                        key={f}
-                                        onClick={() => setAlertFilter(f)}
-                                        className={`px-3 py-1.5 text-[10px] font-semibold uppercase transition-all ${alertFilter === f
-                                            ? "bg-accent-purple/30 text-accent-purple"
-                                            : "text-slate-500 hover:text-slate-800 hover:bg-black/[0.04]"
-                                            }`}
-                                    >
-                                        {f === "all" ? "All" : f === "stockout" ? "🔴 Stockout" : "🟡 Low"}
-                                    </button>
-                                ))}
+                        <div className="flex items-center gap-3">
+                            {/* Filter Segmented Control */}
+                            <div className="flex p-0.5 rounded-xl bg-black/[0.04] border border-black/[0.06] backdrop-blur-md">
+                                {([
+                                    { id: "all", label: "All", icon: "💎", color: "bg-accent-purple/20 text-accent-purple" },
+                                    { id: "stockout", label: "Stockout", icon: "🔴", color: "bg-red-500/15 text-red-500" },
+                                    { id: "low", label: "Low", icon: "🟡", color: "bg-amber-500/15 text-amber-500" }
+                                ] as const).map((f) => {
+                                    const isActive = alertFilter === f.id;
+                                    return (
+                                        <button
+                                            key={f.id}
+                                            onClick={() => setAlertFilter(f.id)}
+                                            className={`px-3 py-1.5 text-[10px] font-black uppercase tracking-wider transition-all duration-300 rounded-lg flex items-center gap-1.5 ${isActive
+                                                ? `${f.color} shadow-sm scale-[1.02]`
+                                                : "text-slate-500 hover:text-slate-800 hover:bg-white/40"
+                                                }`}
+                                        >
+                                            {f.icon && <span className="text-xs">{f.icon}</span>}
+                                            {f.label}
+                                        </button>
+                                    );
+                                })}
                             </div>
-                            {/* Group by */}
-                            <div className="flex rounded-lg overflow-hidden border border-black/10">
-                                {(["city", "category"] as const).map((g) => (
-                                    <button
-                                        key={g}
-                                        onClick={() => { setAlertGroupBy(g); setExpandedGroups(new Set()); }}
-                                        className={`px-3 py-1.5 text-[10px] font-semibold uppercase transition-all ${alertGroupBy === g
-                                            ? "bg-accent-teal/20 text-accent-teal"
-                                            : "text-slate-500 hover:text-slate-800 hover:bg-black/[0.04]"
-                                            }`}
-                                    >
-                                        {g === "city" ? "📍 City" : "📦 Category"}
-                                    </button>
-                                ))}
+
+                            {/* Group By Segmented Control */}
+                            <div className="flex p-0.5 rounded-xl bg-black/[0.04] border border-black/[0.06] backdrop-blur-md">
+                                {[
+                                    { id: "city", label: "City", icon: <MapPin className="w-3 h-3" />, color: "bg-accent-teal/15 text-accent-teal" },
+                                    { id: "category", label: "Category", icon: <Package className="w-3 h-3" />, color: "bg-accent-teal/15 text-accent-teal" }
+                                ].map((g) => {
+                                    const isActive = alertGroupBy === g.id;
+                                    return (
+                                        <button
+                                            key={g.id}
+                                            onClick={() => { setAlertGroupBy(g.id as any); setExpandedGroups(new Set()); }}
+                                            className={`px-3 py-1.5 text-[10px] font-black uppercase tracking-wider transition-all duration-300 rounded-lg flex items-center gap-2 ${isActive
+                                                ? `${g.color} shadow-sm scale-[1.02]`
+                                                : "text-slate-500 hover:text-slate-800 hover:bg-white/40"
+                                                }`}
+                                        >
+                                            <span className={`${isActive ? "text-accent-teal" : "text-slate-400"}`}>{g.icon}</span>
+                                            {g.label}
+                                        </button>
+                                    );
+                                })}
                             </div>
                         </div>
                     }

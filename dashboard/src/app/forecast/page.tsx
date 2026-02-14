@@ -139,10 +139,10 @@ export default function ForecastPage() {
 
             {/* ── KPI Cards ── */}
             <div id="kpis" className="grid grid-cols-1 md:grid-cols-4 gap-4 animate-slide-up">
-                <KpiCard icon={TrendingUp} title="30-Day Predicted Revenue" value={fmt(summary.total_30d_predicted_revenue || 0)} change={`Across ${summary.categories_trained || 0} categories`} trend="up" accentColor="from-accent-purple to-accent-blue" subtitle="LSTM forecast" />
+                <KpiCard icon={TrendingUp} title="30-Day Predicted Revenue" value={fmt(summary.total_30d_predicted_revenue || 0)} change={`Across ${summary.categories_trained || 0} categories`} trend="up" accentColor="from-accent-purple to-accent-blue" subtitle="LSTM forecast (verified)" />
                 <KpiCard icon={ArrowUpRight} title="Top Growth Category" value={summary.top_growth_category || "N/A"} change={`+${summary.top_growth_pct || 0}% predicted increase`} trend="up" accentColor="from-emerald-500 to-accent-teal" subtitle="Highest predicted growth" />
                 <KpiCard icon={Target} title="Model Accuracy (R²)" value={`${((metrics.avg_r2 || 0) * 100).toFixed(1)}%`} change="Avg across all categories" trend={metrics.avg_r2 > 0 ? "up" : "down"} accentColor="from-accent-purple to-accent-blue" subtitle="Coefficient of determination" />
-                <KpiCard icon={Activity} title="Mean Abs Error" value={fmt(metrics.avg_mae || 0)} change="Average prediction deviation" trend="neutral" accentColor="from-amber-500 to-accent-orange" subtitle="Model precision" />
+                <KpiCard icon={Activity} title="Mean Abs Error" value={fmt(metrics.avg_mae || 0)} change="Average Prediction Deviation" trend="neutral" accentColor="from-amber-500 to-accent-orange" subtitle="Model Precision metric" />
             </div>
 
             {/* ── Model Config Card ── */}
@@ -170,9 +170,9 @@ export default function ForecastPage() {
                     <div className="h-80">
                         <ResponsiveContainer width="100%" height="100%">
                             <AreaChart data={dailyForecast}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
-                                <XAxis dataKey="date" tick={{ fill: "#94a3b8", fontSize: 11 }} />
-                                <YAxis tick={{ fill: "#94a3b8", fontSize: 11 }}
+                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.1)" />
+                                <XAxis dataKey="date" tick={{ fill: "#475569", fontSize: 11, fontWeight: 700 }} />
+                                <YAxis tick={{ fill: "#475569", fontSize: 11, fontWeight: 700 }}
                                     tickFormatter={(v: number) => `₹${(v / 1e7).toFixed(0)}Cr`} />
                                 <Tooltip
                                     contentStyle={{ background: "rgba(15,23,42,0.9)", backdropFilter: "blur(12px)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", color: "#fff", fontSize: "12px", fontWeight: 600, padding: "10px 14px", boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1)" }}
@@ -210,22 +210,22 @@ export default function ForecastPage() {
                                         <div className="w-2.5 h-2.5 rounded-full"
                                             style={{ backgroundColor: COLORS[i % COLORS.length] }} />
                                         <div>
-                                            <p className="text-sm font-medium text-slate-800">
+                                            <p className="text-sm font-bold text-slate-900">
                                                 {cat.category}
                                             </p>
-                                            <p className="text-xs text-slate-500">
+                                            <p className="text-xs text-slate-700 font-bold">
                                                 {fmt(cat.next_30d_predicted)}
                                             </p>
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-1.5">
                                         <TrendIcon trend={cat.trend} />
-                                        <span className={`text-xs font-medium ${cat.change_pct > 0 ? "text-emerald-400" :
-                                            cat.change_pct < 0 ? "text-red-400" : "text-slate-400"
+                                        <span className={`text-xs font-bold ${cat.change_pct > 0 ? "text-emerald-500" :
+                                            cat.change_pct < 0 ? "text-red-500" : "text-slate-500"
                                             }`}>
                                             {cat.change_pct > 0 ? "+" : ""}{cat.change_pct}%
                                         </span>
-                                        {isSelected ? <ChevronUp className="w-3 h-3 text-accent-purple ml-1" /> : <ChevronDown className="w-3 h-3 text-slate-600 ml-1" />}
+                                        {isSelected ? <ChevronUp className="w-3 h-3 text-accent-purple ml-1" /> : <ChevronDown className="w-3 h-3 text-slate-800 ml-1" />}
                                     </div>
                                 </div>
                             );
@@ -249,9 +249,9 @@ export default function ForecastPage() {
                                     <TrendingUp className="w-4.5 h-4.5" style={{ color: catColor }} />
                                 </div>
                                 <div>
-                                    <h4 className="text-sm font-bold text-slate-800">{selectedCategory} — 30-Day Forecast</h4>
-                                    <p className="text-xs text-slate-500">
-                                        Predicted: {fmt(catInfo?.next_30d_predicted || 0)} · Actual (last 30d): {fmt(catInfo?.last_30d_actual || 0)} · Change: <span className={catInfo?.change_pct > 0 ? "text-emerald-400" : "text-red-400"}>{catInfo?.change_pct > 0 ? "+" : ""}{catInfo?.change_pct}%</span>
+                                    <h4 className="text-sm font-bold text-slate-900">{selectedCategory} — 30-Day Forecast</h4>
+                                    <p className="text-xs text-slate-600 font-bold">
+                                        Predicted: {fmt(catInfo?.next_30d_predicted || 0)} · Actual (last 30d): {fmt(catInfo?.last_30d_actual || 0)} · Change: <span className={catInfo?.change_pct > 0 ? "text-emerald-500 font-black" : "text-red-500 font-black"}>{catInfo?.change_pct > 0 ? "+" : ""}{catInfo?.change_pct}%</span>
                                     </p>
                                 </div>
                             </div>
@@ -265,9 +265,9 @@ export default function ForecastPage() {
                             <div className="lg:col-span-3 h-64">
                                 <ResponsiveContainer width="100%" height="100%">
                                     <AreaChart data={catData}>
-                                        <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
-                                        <XAxis dataKey="date" tick={{ fill: "#94a3b8", fontSize: 10 }} />
-                                        <YAxis tick={{ fill: "#94a3b8", fontSize: 10 }} tickFormatter={(v: number) => fmt(v)} />
+                                        <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.1)" />
+                                        <XAxis dataKey="date" tick={{ fill: "#475569", fontSize: 10, fontWeight: 700 }} />
+                                        <YAxis tick={{ fill: "#475569", fontSize: 10, fontWeight: 700 }} tickFormatter={(v: number) => fmt(v)} />
                                         <Tooltip
                                             contentStyle={{ background: "rgba(255,255,255,0.97)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "12px", color: "#334155", fontSize: "13px", fontWeight: 600, padding: "10px 14px", boxShadow: "0 8px 32px rgba(0,0,0,0.6)" }}
                                             wrapperStyle={{ zIndex: 99999 }}
@@ -295,21 +295,21 @@ export default function ForecastPage() {
                                             </div>
                                         </div>
                                         <div className="p-3 rounded-xl" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.04)" }}>
-                                            <p className="text-[10px] text-slate-500 uppercase font-semibold">MAE</p>
-                                            <p className="text-lg font-bold text-slate-800 mt-1">{fmt(catMetrics.mae)}</p>
+                                            <p className="text-[10px] text-slate-600 uppercase font-bold">MAE</p>
+                                            <p className="text-lg font-bold text-slate-900 mt-1">{fmt(catMetrics.mae)}</p>
                                         </div>
                                         <div className="p-3 rounded-xl" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.04)" }}>
-                                            <p className="text-[10px] text-slate-500 uppercase font-semibold">MSE</p>
-                                            <p className="text-sm font-bold text-slate-800 mt-1">{fmt(catMetrics.mse)}</p>
+                                            <p className="text-[10px] text-slate-600 uppercase font-bold">MSE</p>
+                                            <p className="text-sm font-bold text-slate-900 mt-1">{fmt(catMetrics.mse)}</p>
                                         </div>
                                     </>
                                 )}
                                 <div className="p-3 rounded-xl" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.04)" }}>
-                                    <p className="text-[10px] text-slate-500 uppercase font-semibold">Trend</p>
+                                    <p className="text-[10px] text-slate-600 uppercase font-bold">Trend</p>
                                     <div className="flex items-center gap-2 mt-1">
                                         <TrendIcon trend={catInfo?.trend || "stable"} />
-                                        <span className={`text-sm font-bold capitalize ${catInfo?.trend === "rising" ? "text-emerald-400" :
-                                            catInfo?.trend === "falling" ? "text-red-400" : "text-slate-400"
+                                        <span className={`text-sm font-black capitalize ${catInfo?.trend === "rising" ? "text-emerald-500" :
+                                            catInfo?.trend === "falling" ? "text-red-500" : "text-slate-500"
                                             }`}>{catInfo?.trend || "stable"}</span>
                                     </div>
                                 </div>
@@ -322,15 +322,15 @@ export default function ForecastPage() {
             {/* ── Per-category bar chart + Model metrics ── */}
             <div id="model" className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Category revenue bar chart */}
-                <ChartCard title="🏆 Predicted vs Actual" subtitle="Last 30d actual vs next 30d predicted" className="animate-slide-up">
-                    <div className="h-72">
+                <ChartCard title="🏆 Predicted vs Actual" subtitle="Last 30d actual vs next 30d predicted" className="animate-slide-up h-full flex flex-col">
+                    <div className="h-72 flex-1">
                         <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={catSummary} layout="vertical">
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
-                                <XAxis type="number" tick={{ fill: "#94a3b8", fontSize: 11 }}
+                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.1)" />
+                                <XAxis type="number" tick={{ fill: "#475569", fontSize: 11, fontWeight: 700 }}
                                     tickFormatter={(v: number) => `₹${(v / 1e7).toFixed(0)}Cr`} />
                                 <YAxis type="category" dataKey="category" width={100}
-                                    tick={{ fill: "#94a3b8", fontSize: 11 }} />
+                                    tick={{ fill: "#334155", fontSize: 11, fontWeight: 800 }} />
                                 <Tooltip
                                     contentStyle={{ background: "rgba(255,255,255,0.97)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "12px", color: "#334155", fontSize: "13px", fontWeight: 600, padding: "10px 14px", boxShadow: "0 8px 32px rgba(0,0,0,0.6)" }}
                                     wrapperStyle={{ zIndex: 99999 }}
@@ -347,14 +347,14 @@ export default function ForecastPage() {
                 </ChartCard>
 
                 {/* Model performance per category */}
-                <ChartCard title="🧠 Model Performance by Category" subtitle="R², MAE and MSE per category" className="animate-slide-up">
+                <ChartCard title="🧠 Model Performance by Category" subtitle="R², MAE and MSE per category" className="animate-slide-up h-full flex flex-col">
                     {metrics.per_category ? (
-                        <div className="space-y-2">
-                            <div className="grid grid-cols-4 gap-2 text-xs text-slate-500 font-medium px-3 pb-2 border-b border-black/[0.06]">
-                                <span>Category</span>
-                                <span className="text-right">R²</span>
-                                <span className="text-right">MAE</span>
-                                <span className="text-right">MSE</span>
+                        <div className="space-y-2 flex-1 overflow-y-auto pr-1 max-h-[300px]">
+                            <div className="grid grid-cols-4 gap-2 text-xs text-slate-700 font-bold px-3 pb-2 border-b border-black/[0.1] items-center">
+                                <span className="uppercase tracking-wider">Category</span>
+                                <span className="text-right uppercase tracking-wider">R²</span>
+                                <span className="text-right uppercase tracking-wider">MAE</span>
+                                <span className="text-right uppercase tracking-wider">MSE</span>
                             </div>
                             {Object.entries(metrics.per_category).map(([cat, m]: [string, any], i: number) => (
                                 <div
@@ -368,15 +368,15 @@ export default function ForecastPage() {
                                             style={{ backgroundColor: COLORS[i % COLORS.length] }} />
                                         {cat}
                                     </span>
-                                    <span className={`text-right font-mono ${m.r2 > 0.1 ? "text-emerald-400" :
-                                        m.r2 > 0 ? "text-amber-400" : "text-red-400"
+                                    <span className={`text-right font-mono font-bold ${m.r2 > 0.1 ? "text-emerald-500" :
+                                        m.r2 > 0 ? "text-amber-500" : "text-red-500"
                                         }`}>
                                         {(m.r2 * 100).toFixed(1)}%
                                     </span>
-                                    <span className="text-right text-slate-400 font-mono text-xs">
+                                    <span className="text-right text-slate-700 font-mono text-xs font-bold">
                                         {fmt(m.mae)}
                                     </span>
-                                    <span className="text-right text-slate-400 font-mono text-xs">
+                                    <span className="text-right text-slate-700 font-mono text-xs font-bold">
                                         {fmt(m.mse)}
                                     </span>
                                 </div>
@@ -395,16 +395,16 @@ export default function ForecastPage() {
                         <div className="h-52">
                             <ResponsiveContainer width="100%" height="100%">
                                 <LineChart data={history}>
-                                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
-                                    <XAxis dataKey="epoch" tick={{ fill: "#94a3b8", fontSize: 11 }} />
-                                    <YAxis tick={{ fill: "#94a3b8", fontSize: 11 }} />
+                                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.1)" />
+                                    <XAxis dataKey="epoch" tick={{ fill: "#475569", fontSize: 11, fontWeight: 700 }} />
+                                    <YAxis tick={{ fill: "#475569", fontSize: 11, fontWeight: 700 }} />
                                     <Tooltip
                                         contentStyle={{ background: "rgba(255,255,255,0.97)", border: "1px solid rgba(0,0,0,0.08)", borderRadius: "12px", color: "#334155", fontSize: "13px", fontWeight: 600, padding: "10px 14px", boxShadow: "0 8px 32px rgba(0,0,0,0.6)" }}
                                         wrapperStyle={{ zIndex: 99999 }}
-                                        labelStyle={{ color: "#94a3b8", fontSize: "11px" }}
+                                        labelStyle={{ color: "#475569", fontSize: "11px", fontWeight: 700 }}
                                     />
                                     <Line type="monotone" dataKey="loss" stroke="#f59e0b"
-                                        strokeWidth={2} dot={{ r: 2, fill: "#f59e0b" }}
+                                        strokeWidth={3} dot={{ r: 3, fill: "#f59e0b" }}
                                         name="Loss (MSE)" />
                                 </LineChart>
                             </ResponsiveContainer>

@@ -199,12 +199,15 @@ export default function ChatPage() {
     const [thoughtLog, setThoughtLog] = useState<string[]>([]);
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
-    const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    const scrollToBottom = (smooth = true) => {
+        if (!messagesEndRef.current) return;
+        messagesEndRef.current.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "end" });
     };
 
     useEffect(() => {
-        scrollToBottom();
+        if (messages.length > 1 || isLoading) {
+            scrollToBottom();
+        }
     }, [messages, isLoading]);
 
     useEffect(() => {
@@ -290,8 +293,8 @@ export default function ChatPage() {
                         <Sparkles className="w-5 h-5 text-accent-purple" />
                     </div>
                     <div>
-                        <h1 className="text-lg font-bold text-slate-900">Retail Hub Brain</h1>
-                        <p className="text-[10px] text-slate-400 font-mono flex items-center gap-1">
+                        <h1 className="text-lg font-bold text-slate-900 uppercase tracking-tight">Retail Hub Brain</h1>
+                        <p className="text-[10px] text-slate-500 font-semibold font-mono flex items-center gap-1 uppercase tracking-tighter">
                             <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
                             Synchronized with Medallion Pipeline
                         </p>
@@ -339,7 +342,7 @@ export default function ChatPage() {
                     <button
                         key={i}
                         onClick={() => handleSend(s.text)}
-                        className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 hover:bg-slate-50 whitespace-nowrap text-xs text-slate-700 transition-all hover:-translate-y-0.5 active:translate-y-0 rounded-lg shadow-sm"
+                        className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 hover:bg-slate-50 whitespace-nowrap text-xs text-slate-800 font-semibold transition-all hover:-translate-y-0.5 active:translate-y-0 rounded-lg shadow-sm uppercase tracking-tighter"
                     >
                         {s.icon}
                         {s.label}
@@ -357,15 +360,15 @@ export default function ChatPage() {
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         placeholder="Ask about strategy, architecture, or deep analytics..."
-                        className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-accent-purple/20 focus:border-accent-purple/50 transition-all"
+                        className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 font-medium placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-accent-purple/20 focus:border-accent-purple/50 transition-all"
                     />
                     <button
                         type="submit"
                         disabled={isLoading || !input.trim()}
-                        className="bg-accent-purple hover:bg-accent-purple/80 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-3 rounded-xl transition-all shadow-lg shadow-accent-purple/20 flex items-center gap-2"
+                        className="bg-indigo-700 hover:bg-indigo-800 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-3 rounded-xl transition-all shadow-lg shadow-indigo-700/20 flex items-center gap-2"
                     >
                         <Send className="w-4 h-4" />
-                        <span className="hidden sm:inline">Send</span>
+                        <span className="hidden sm:inline font-bold">Send</span>
                     </button>
                 </form>
                 <div className="mt-3 flex items-center justify-center gap-4 text-[10px] text-slate-500">
