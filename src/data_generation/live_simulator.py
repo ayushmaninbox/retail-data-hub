@@ -67,7 +67,8 @@ STORES = [f"STR-{city[:3].upper()}-{i:02d}" for city, _ in CITIES for i in range
 CUSTOMERS = [f"CUST-{i:05d}" for i in range(1, 4001)]
 CHANNELS = ["POS", "Web"]
 
-WS_URL = "ws://localhost:8000/ws/simulator"
+# WS_URL can be set via environment variable for cloud demo syncing
+WS_URL = os.getenv("WS_URL", "ws://localhost:8000/ws/simulator")
 
 # ── Transaction Generator ──────────────────────────────────────────
 
