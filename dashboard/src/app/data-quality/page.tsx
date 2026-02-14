@@ -54,6 +54,7 @@ export default function DataQualityPage() {
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [expandedKpi, setExpandedKpi] = useState<string | null>(null);
     const [expandedCheck, setExpandedCheck] = useState<number | null>(null);
+    const [violationPage, setViolationPage] = useState(1);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -132,6 +133,13 @@ export default function DataQualityPage() {
                 status: "fail" as const,
             })),
         },
+        "datasets": {
+            items: pipelineHealth.map((ds: any) => ({
+                label: `${datasetIcons[ds.layer] || "📊"} ${ds.layer.replace(/_/g, " ")}`,
+                value: `${ds.rows.toLocaleString()} rows`,
+                status: "neutral" as const,
+            })),
+        },
     };
 
     const toggleKpi = (kpi: string) => {
@@ -171,20 +179,42 @@ export default function DataQualityPage() {
                         onClick={() => toggleKpi("failed")}
                     />
 
-                    <KpiCard icon={Layers} title="Datasets Checked" value={`${Object.keys(datasets).length}`} change={`${Object.values(datasets).reduce((s: number, d: any) => s + d.rows, 0).toLocaleString()} total rows`} trend="neutral" accentColor="from-accent-blue to-accent-teal" subtitle="Source datasets" />
+                    {/* Datasets Checked — clickable */}
+                    <KpiCard
+                        icon={Layers}
+                        title="Datasets Checked"
+                        value={`${Object.keys(datasets).length}`}
+                        trend="neutral"
+                        accentColor="from-accent-blue to-accent-teal"
+                        subtitle="Source datasets"
+                        onClick={() => toggleKpi("datasets")}
+                    />
                 </div>
 
                 {/* ── KPI Drill-Down Panel ── */}
-                {expandedKpi && kpiDrilldowns[expandedKpi] && (
-                    <div className="glass-card-static p-5 animate-slide-up" style={{ border: expandedKpi === "failed" ? "1px solid rgba(239,68,68,0.15)" : "1px solid rgba(16,185,129,0.15)" }}>
+                {expandedKpi && kpiDrilldowns[expandedKpi as keyof typeof kpiDrilldowns] && (
+                    <div
+                        className="glass-card-static p-5 animate-slide-up"
+                        style={{
+                            border: expandedKpi === "failed"
+                                ? "1px solid rgba(239,68,68,0.15)"
+                                : expandedKpi === "passed"
+                                    ? "1px solid rgba(16,185,129,0.15)"
+                                    : "1px solid rgba(0,0,0,0.08)"
+                        }}
+                    >
                         <div className="flex items-center justify-between mb-4">
                             <div className="flex items-center gap-3">
-                                <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${expandedKpi === "failed" ? "bg-red-500/10" : "bg-emerald-500/10"}`}>
-                                    {expandedKpi === "failed" ? <AlertTriangle className="w-4.5 h-4.5 text-red-400" /> : <CheckCircle2 className="w-4.5 h-4.5 text-emerald-400" />}
+                                <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${expandedKpi === "failed" ? "bg-red-500/10" : expandedKpi === "passed" ? "bg-emerald-500/10" : "bg-slate-500/10"}`}>
+                                    {expandedKpi === "failed" ? <AlertTriangle className="w-4.5 h-4.5 text-red-400" /> : expandedKpi === "passed" ? <CheckCircle2 className="w-4.5 h-4.5 text-emerald-400" /> : <Layers className="w-4.5 h-4.5 text-slate-500" />}
                                 </div>
                                 <div>
-                                    <h4 className="text-sm font-bold text-slate-800">{expandedKpi === "failed" ? "Failed Checks Detail" : "Passed Checks Detail"}</h4>
-                                    <p className="text-xs text-slate-500">{expandedKpi === "failed" ? "Checks with violations that need attention" : "Checks that passed all validation rules"}</p>
+                                    <h4 className="text-sm font-bold text-slate-800">
+                                        {expandedKpi === "failed" ? "Failed Checks Detail" : expandedKpi === "passed" ? "Passed Checks Detail" : "Source Datasets Details"}
+                                    </h4>
+                                    <p className="text-xs text-slate-500">
+                                        {expandedKpi === "failed" ? "Checks with violations that need attention" : expandedKpi === "passed" ? "Checks that passed all validation rules" : "Overview of datasets processed in this run"}
+                                    </p>
                                 </div>
                             </div>
                             <button onClick={() => setExpandedKpi(null)} className="text-slate-500 hover:text-slate-800 transition-colors">
@@ -196,11 +226,15 @@ export default function DataQualityPage() {
                                 <div key={i} className="flex items-center gap-3 p-3 rounded-xl hover:bg-black/[0.02] transition-colors" style={{ border: "1px solid rgba(0,0,0,0.04)" }}>
                                     {item.status === "pass" ? (
                                         <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                                    ) : item.status === "neutral" ? (
+                                        <Database className="w-4 h-4 text-slate-400 flex-shrink-0" />
                                     ) : (
                                         <XCircle className="w-4 h-4 text-red-400 flex-shrink-0" />
                                     )}
                                     <span className="text-sm text-slate-800 font-medium flex-1">{item.label}</span>
-                                    <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${item.status === "pass" ? "text-emerald-400 bg-emerald-400/10" : "text-red-400 bg-red-400/10"
+                                    <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${item.status === "pass" ? "text-emerald-400 bg-emerald-400/10" :
+                                        item.status === "neutral" ? "text-slate-500 bg-slate-500/10" :
+                                            "text-red-400 bg-red-400/10"
                                         }`}>{item.value}</span>
                                 </div>
                             ))}
@@ -218,13 +252,19 @@ export default function DataQualityPage() {
                             const isExpanded = expandedCheck === idx;
                             const violations = check.violation_details || [];
                             const hasDetails = violations.length > 0 || check.all_columns;
+                            const canExpand = hasDetails && !(check.check_id === 7 && isPassed);
 
                             return (
                                 <div key={check.check_id}>
                                     <div
                                         className={`flex items-center gap-3 p-3 rounded-xl transition-all border border-black/[0.04] ${isExpanded ? "bg-black/[0.02]" : "hover:bg-black/[0.02]"
-                                            } ${hasDetails ? "cursor-pointer" : ""}`}
-                                        onClick={() => hasDetails && setExpandedCheck(isExpanded ? null : idx)}
+                                            } ${canExpand ? "cursor-pointer" : ""}`}
+                                        onClick={() => {
+                                            if (!canExpand) return;
+                                            const newExpanded = isExpanded ? null : idx;
+                                            setExpandedCheck(newExpanded);
+                                            setViolationPage(1); // Reset page on toggle
+                                        }}
                                     >
                                         {isPassed ? (
                                             <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0" />
@@ -233,22 +273,24 @@ export default function DataQualityPage() {
                                         )}
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center justify-between">
-                                                <p className="text-sm font-medium text-slate-800">{check.check_name}</p>
-                                                <div className="flex items-center gap-2">
-                                                    <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full ${isPassed ? "status-pass" : "status-fail"}`}>
+                                                <p className="text-sm font-semibold text-slate-800">{check.check_name}</p>
+                                                <div className="flex items-center gap-2 min-w-[80px] justify-end">
+                                                    <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full ${isPassed ? "text-emerald-500 bg-emerald-500/10" : "text-red-500 bg-red-500/10"}`}>
                                                         {check.status}
                                                     </span>
-                                                    {hasDetails && (
-                                                        isExpanded ? <ChevronUp className="w-3.5 h-3.5 text-slate-500" /> : <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
-                                                    )}
+                                                    <div className="w-4 flex items-center justify-center">
+                                                        {canExpand && (
+                                                            isExpanded ? <ChevronUp className="w-3.5 h-3.5 text-slate-500" /> : <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
+                                                        )}
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div className="flex items-center gap-4 mt-0.5">
-                                                <p className="text-xs text-slate-500 font-mono">{check.rule}</p>
+                                                <p className="text-xs text-slate-500 font-medium font-mono">{check.rule}</p>
                                                 {check.violations_found > 0 && (
-                                                    <p className="text-xs text-amber-400">{check.violations_found.toLocaleString()} violations</p>
+                                                    <p className="text-xs text-amber-500 font-semibold">{check.violations_found.toLocaleString()} violations</p>
                                                 )}
-                                                <p className="text-xs text-slate-600">{(check.total_rows_checked || 0).toLocaleString()} rows</p>
+                                                <p className="text-xs text-slate-600 font-medium">{(check.total_rows_checked || 0).toLocaleString()} rows</p>
                                             </div>
                                             <div className="flex gap-1.5 mt-1">
                                                 {(check.datasets || []).map((ds: string) => (
@@ -263,7 +305,9 @@ export default function DataQualityPage() {
                                         <div className="ml-8 mt-2 mb-3 p-4 rounded-xl animate-slide-up" style={{ background: "rgba(239,68,68,0.03)", border: "1px solid rgba(239,68,68,0.1)" }}>
                                             <div className="flex items-center gap-2 mb-3">
                                                 <Eye className="w-3.5 h-3.5 text-red-400" />
-                                                <p className="text-[10px] text-slate-500 uppercase font-semibold">Sample Violations (Top 10)</p>
+                                                <p className="text-[10px] text-slate-500 uppercase font-semibold">
+                                                    Violations {((violationPage - 1) * 10) + 1} - {Math.min(violationPage * 10, violations.length)} of {violations.length}
+                                                </p>
                                                 <span className="text-[10px] text-red-400 bg-red-400/10 px-1.5 py-0.5 rounded-full ml-auto">{check.action_on_failure}</span>
                                             </div>
                                             <div className="rounded-lg overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
@@ -282,7 +326,7 @@ export default function DataQualityPage() {
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        {violations.slice(0, 10).map((v: any, vi: number) => (
+                                                        {violations.slice((violationPage - 1) * 10, violationPage * 10).map((v: any, vi: number) => (
                                                             <tr key={vi} className="border-t border-black/[0.04]">
                                                                 <td className="px-3 py-2 text-xs text-slate-400">{datasetIcons[v.source] || ""} {v.source}</td>
                                                                 <td className="px-3 py-2 text-xs text-slate-800 font-mono">{v.row_id || `row ${v.row_index}`}</td>
@@ -300,6 +344,31 @@ export default function DataQualityPage() {
                                                     </tbody>
                                                 </table>
                                             </div>
+
+                                            {/* Pagination Controls */}
+                                            {violations.length > 10 && (
+                                                <div className="flex items-center justify-between mt-3 px-1">
+                                                    <p className="text-[10px] text-slate-500 font-medium">
+                                                        Page {violationPage} of {Math.ceil(violations.length / 10)}
+                                                    </p>
+                                                    <div className="flex items-center gap-1">
+                                                        <button
+                                                            onClick={(e) => { e.stopPropagation(); setViolationPage(p => Math.max(1, p - 1)); }}
+                                                            disabled={violationPage === 1}
+                                                            className="px-2 py-1 rounded-md text-[10px] font-bold bg-black/[0.04] text-slate-600 disabled:opacity-30 hover:bg-black/[0.08] transition-colors"
+                                                        >
+                                                            Prev
+                                                        </button>
+                                                        <button
+                                                            onClick={(e) => { e.stopPropagation(); setViolationPage(p => Math.min(Math.ceil(violations.length / 10), p + 1)); }}
+                                                            disabled={violationPage >= Math.ceil(violations.length / 10)}
+                                                            className="px-2 py-1 rounded-md text-[10px] font-bold bg-black/[0.04] text-slate-600 disabled:opacity-30 hover:bg-black/[0.08] transition-colors"
+                                                        >
+                                                            Next
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
                                     )}
                                 </div>
@@ -350,24 +419,29 @@ export default function DataQualityPage() {
                     <ChartCard title="Summary" subtitle="Quality check breakdown" className="animate-slide-up">
                         <div className="space-y-3 py-2">
                             <div className="flex items-center justify-between">
-                                <span className="text-sm text-slate-400">Total Checks</span>
+                                <span className="text-sm text-slate-500 font-medium">Total Checks</span>
                                 <span className="text-sm font-bold text-slate-800">{summary.total_checks || 0}</span>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-sm text-emerald-400">Passed</span>
-                                <span className="text-sm font-bold text-emerald-400">{summary.passed || 0}</span>
-                            </div>
-                            <div className="flex items-center justify-between">
-                                <span className="text-sm text-red-400">Failed</span>
-                                <span className="text-sm font-bold text-red-400">{summary.failed || 0}</span>
+                                <span className="text-sm text-slate-500 font-medium">Test Results</span>
+                                <div className="flex items-center gap-4">
+                                    <div className="flex items-center gap-1.5">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                        <span className="text-sm font-bold text-emerald-500">{summary.passed || 0} passed</span>
+                                    </div>
+                                    <div className="flex items-center gap-1.5">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                                        <span className="text-sm font-bold text-red-500">{summary.failed || 0} failed</span>
+                                    </div>
+                                </div>
                             </div>
                             <div className="border-t border-black/[0.06] pt-3 flex items-center justify-between">
-                                <span className="text-sm text-slate-400">Violations</span>
-                                <span className="text-sm font-bold text-amber-400">{(summary.total_violations || 0).toLocaleString()}</span>
+                                <span className="text-sm text-slate-500 font-medium">Violations</span>
+                                <span className="text-sm font-bold text-amber-500">{(summary.total_violations || 0).toLocaleString()}</span>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-sm text-slate-400">Status</span>
-                                <span className={`text-xs font-bold uppercase px-2 py-0.5 rounded-full ${summary.overall_status === "ALL_PASSED" ? "status-pass" : "text-amber-400 bg-amber-400/10"}`}>
+                                <span className="text-sm text-slate-500 font-medium">Status</span>
+                                <span className={`text-xs font-bold uppercase px-2 py-0.5 rounded-full ${summary.overall_status === "ALL_PASSED" ? "status-pass" : "text-amber-500 bg-amber-400/10"}`}>
                                     {summary.overall_status?.replace(/_/g, " ") || "N/A"}
                                 </span>
                             </div>
@@ -376,66 +450,6 @@ export default function DataQualityPage() {
                 </div>
             </div>
 
-            {/* ── Violations Chart + Datasets ── */}
-            <div id="datasets" className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-                {/* Violations by Check bar chart */}
-                {violationsByCheck.length > 0 && (
-                    <ChartCard title="Violations by Check" subtitle="Number of violations per failed check" className="animate-slide-up">
-                        <div className="h-56">
-                            <ResponsiveContainer width="100%" height="100%">
-                                <BarChart data={violationsByCheck} layout="vertical">
-                                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" horizontal={false} />
-                                    <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} />
-                                    <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 10 }} width={120} />
-                                    <Tooltip
-                                        contentStyle={{ background: "rgba(15,23,42,0.9)", backdropFilter: "blur(12px)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", color: "#fff", fontSize: "12px", fontWeight: 600, padding: "10px 14px", boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1)" }}
-                                        wrapperStyle={{ zIndex: 99999, pointerEvents: "none" }}
-                                        itemStyle={{ color: "#fff" }}
-                                        labelStyle={{ color: "#94a3b8", fontSize: "11px", marginBottom: "4px" }}
-                                        formatter={(value: number) => [`${value.toLocaleString()} violations`, "Count"]}
-                                        cursor={{ fill: "rgba(255,255,255,0.05)" }}
-                                    />
-                                    <Bar dataKey="violations" radius={[0, 6, 6, 0]} barSize={18}>
-                                        {violationsByCheck.map((entry: { name: string; violations: number; color: string }, i: number) => (
-                                            <Cell key={i} fill={entry.color} />
-                                        ))}
-                                    </Bar>
-                                </BarChart>
-                            </ResponsiveContainer>
-                        </div>
-                    </ChartCard>
-                )}
-
-                {/* Datasets Checked */}
-                <ChartCard title="Datasets Checked" subtitle="Source data overview" className="animate-slide-up">
-                    <div className="space-y-3">
-                        {pipelineHealth.map(ds => (
-                            <div key={ds.layer} className="p-4 rounded-xl border border-black/[0.06] bg-gradient-to-br from-black/[0.02] to-transparent relative overflow-hidden">
-                                <div className="absolute top-0 right-0 w-16 h-16 opacity-5 text-5xl">{datasetIcons[ds.layer] || "📊"}</div>
-                                <div className="relative z-10">
-                                    <div className="flex items-center justify-between mb-2">
-                                        <div className="flex items-center gap-2">
-                                            <span className="text-lg">{datasetIcons[ds.layer] || "📊"}</span>
-                                            <p className="text-sm font-semibold text-slate-800 capitalize">{ds.layer.replace(/_/g, " ")}</p>
-                                        </div>
-                                        <span className="status-pass text-[10px] font-bold uppercase px-2 py-0.5 rounded-full">loaded</span>
-                                    </div>
-                                    <div className="flex items-center gap-6 text-xs text-slate-400">
-                                        <div className="flex items-center gap-1.5">
-                                            <Table2 className="w-3 h-3 text-slate-600" />
-                                            <span>{(ds.rows || 0).toLocaleString()} rows</span>
-                                        </div>
-                                        <div className="flex items-center gap-1.5">
-                                            <Layers className="w-3 h-3 text-slate-600" />
-                                            <span>{ds.columns || 0} columns</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </ChartCard>
-            </div>
 
 
             {/* ── Scroll to Top ── */}

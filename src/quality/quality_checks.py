@@ -91,7 +91,7 @@ def check_1_no_negative_prices(datasets: dict) -> Dict[str, Any]:
         "violations_found": len(violations),
         "status": "PASS" if passed else "FAIL",
         "action_on_failure": "Quarantine row",
-        "violation_details": violations[:10],  # cap at 10 for readability
+        "violation_details": violations,
     }
 
 
@@ -138,7 +138,7 @@ def check_2_no_future_dates(datasets: dict) -> Dict[str, Any]:
         "violations_found": len(violations),
         "status": "PASS" if passed else "FAIL",
         "action_on_failure": "Reject row",
-        "violation_details": violations[:10],
+        "violation_details": violations,
     }
 
 
@@ -177,7 +177,7 @@ def check_3_no_null_customer_ids(datasets: dict) -> Dict[str, Any]:
         "violations_found": len(violations),
         "status": "PASS" if passed else "FAIL",
         "action_on_failure": "Fill 'UNKNOWN'",
-        "violation_details": violations[:10],
+        "violation_details": violations,
     }
 
 
@@ -307,7 +307,7 @@ def check_6_quantity_range(datasets: dict) -> Dict[str, Any]:
         "violations_found": len(violations),
         "status": "PASS" if passed else "FAIL",
         "action_on_failure": "Flag outlier",
-        "violation_details": violations[:10],
+        "violation_details": violations,
     }
 
 
