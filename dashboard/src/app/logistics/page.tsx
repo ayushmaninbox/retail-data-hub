@@ -58,6 +58,14 @@ function fmtNum(n: number | undefined | null): string {
     return (n ?? 0).toLocaleString("en-IN");
 }
 
+function fmtShort(n: number | undefined | null): string {
+    const v = n ?? 0;
+    if (v >= 10000000) return `${(v / 10000000).toFixed(1)}Cr`;
+    if (v >= 100000) return `${(v / 100000).toFixed(0)}L`;
+    if (v >= 1000) return `${(v / 1000).toFixed(1)}K`;
+    return v.toString();
+}
+
 const GlassTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
         return (
@@ -162,7 +170,7 @@ function DrillDownPanel({
     }));
 
     return (
-        <div className="glass-card-static p-6 animate-slide-up">
+        <div className="glass-card-static p-4 lg:p-6 animate-slide-up">
             <div className="flex items-start justify-between mb-5">
                 <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: `${cfg.color}15` }}>
@@ -184,8 +192,8 @@ function DrillDownPanel({
             <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
                 {/* Carrier breakdown table */}
                 <div className="xl:col-span-2">
-                    <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
-                        <table className="w-full">
+                    <div className="rounded-xl overflow-x-auto border border-black/[0.06]">
+                        <table className="w-full min-w-[600px]">
                             <thead>
                                 <tr style={{ background: `${cfg.color}08` }}>
                                     <th className="text-left px-4 py-3 text-[10px] font-black text-slate-950 uppercase tracking-wider w-8">#</th>
@@ -370,7 +378,7 @@ export default function LogisticsPage() {
 
 
             {/* ── KPI Cards (clickable) ── */}
-            <div id="kpis" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 animate-slide-up">
+            <div id="kpis" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 animate-slide-up">
                 <KpiCard
                     icon={CheckCircle}
                     title="Delivered"
@@ -466,18 +474,18 @@ export default function LogisticsPage() {
                         </div>
                     }
                 >
-                    <div className="h-80">
+                    <div className="h-64 lg:h-80">
                         <ResponsiveContainer width="100%" height="100%">
-                            <BarChart data={filteredCarriers} layout="vertical" margin={{ left: 40 }}>
+                            <BarChart data={filteredCarriers} layout="vertical" margin={{ left: 10, right: 20 }}>
                                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" horizontal={false} />
                                 <XAxis
                                     type="number"
                                     axisLine={false}
                                     tickLine={false}
-                                    tick={{ fill: "#334155", fontSize: 11, fontWeight: 700 }}
-                                    tickFormatter={(v) => carrierSort === "avgDays" ? `${v}d` : carrierSort === "shipments" ? fmtNum(v) : `${v}%`}
+                                    tick={{ fill: "#334155", fontSize: 10, fontWeight: 700 }}
+                                    tickFormatter={(v) => carrierSort === "avgDays" ? `${v}d` : carrierSort === "shipments" ? fmtShort(v) : `${v}%`}
                                 />
-                                <YAxis dataKey="carrier" type="category" axisLine={false} tickLine={false} tick={{ fill: "#334155", fontSize: 11, fontWeight: 700 }} width={110} />
+                                <YAxis dataKey="carrier" type="category" axisLine={false} tickLine={false} tick={{ fill: "#334155", fontSize: 10, fontWeight: 700 }} width={80} />
                                 <Tooltip content={<GlassTooltip />} cursor={{ fill: "rgba(0,0,0,0.02)" }} />
                                 <Bar
                                     dataKey={carrierSort}
@@ -502,8 +510,8 @@ export default function LogisticsPage() {
             {bottlenecks.length > 0 && (
                 <div id="destinations">
                     <ChartCard title="Delivery by Destination" subtitle="Top destinations by avg delivery time — click slow routes for details" className="animate-slide-up">
-                        <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
-                            <table className="w-full">
+                        <div className="rounded-xl overflow-x-auto" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
+                            <table className="w-full min-w-[700px]">
                                 <thead>
                                     <tr style={{ background: "rgba(139,92,246,0.12)" }}>
                                         <th className="text-left px-4 py-3 text-[10px] font-black text-slate-950 uppercase tracking-wider">#</th>

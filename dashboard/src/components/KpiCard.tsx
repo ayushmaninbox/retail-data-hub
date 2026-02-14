@@ -36,7 +36,7 @@ export default function KpiCard({
 
     return (
         <div
-            className={`glass-card p-5 relative overflow-hidden group ${clickable ? "cursor-pointer hover:ring-1 hover:ring-accent-purple/30" : ""}`}
+            className={`glass-card p-4 lg:p-5 relative overflow-hidden group ${clickable ? "cursor-pointer hover:ring-1 hover:ring-accent-purple/30" : ""}`}
             onClick={onClick}
             role={clickable ? "button" : undefined}
             tabIndex={clickable ? 0 : undefined}
@@ -69,8 +69,8 @@ export default function KpiCard({
                     </div>
                 </div>
 
-                <p className="text-base text-slate-500 font-semibold mb-1.5">{title}</p>
-                <p className="text-3xl font-bold text-slate-900 tracking-tight mb-2">{value}</p>
+                <p className="text-sm lg:text-base text-slate-500 font-semibold mb-1.5">{title}</p>
+                <p className="text-2xl lg:text-3xl font-bold text-slate-900 tracking-tight mb-2">{value}</p>
                 {subtitle && (
                     <p className={`text-sm font-medium leading-relaxed ${subtitle.toLowerCase().startsWith("click") ? "text-accent-purple font-bold" : "text-slate-500"}`}>
                         {subtitle}

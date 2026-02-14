@@ -16,25 +16,31 @@ import {
   Shield,
   AlertTriangle,
   Radio,
+  Menu,
+  X,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose?: () => void }) {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed left-0 top-0 h-full w-64 bg-slate-900 border-r border-slate-800 flex flex-col z-50">
-      <div className="p-6">
+    <aside className={`fixed left-0 top-0 h-full w-64 bg-slate-900 border-r border-slate-800 flex flex-col z-[100] transition-transform duration-300 transform lg:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
+      <div className="p-6 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-indigo-600 rounded-2xl shadow-lg shadow-indigo-900/20">
             <Brain className="w-6 h-6 text-white" />
           </div>
           <div>
             <h1 className="text-2xl font-bold tracking-tight text-white">Retail Hub</h1>
-            <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">Analytics System</p>
+            <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1 text-[8px]">Analytics System</p>
           </div>
         </div>
+        {/* Mobile Close Button */}
+        <button onClick={onClose} className="lg:hidden p-2 text-slate-400 hover:text-white">
+          <X className="w-6 h-6" />
+        </button>
       </div>
 
       <nav className="flex-1 px-4 space-y-8 overflow-y-auto py-4">

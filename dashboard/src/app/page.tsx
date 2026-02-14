@@ -32,9 +32,9 @@ import {
 const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
         return (
-            <div className="glass-card-dark p-4 border border-white/10 shadow-2xl rounded-2xl">
-                <p className="text-sm text-slate-400 mb-2 font-bold tracking-tight">{label}</p>
-                <p className="text-lg font-black text-white">
+            <div className="glass-card-dark p-3 lg:p-4 border border-white/10 shadow-2xl rounded-2xl">
+                <p className="text-[10px] lg:text-sm text-slate-400 mb-1 lg:mb-2 font-bold tracking-tight">{label}</p>
+                <p className="text-sm lg:text-lg font-black text-white">
                     ₹{(payload[0].value / 10000000).toFixed(2)} Cr
                 </p>
             </div>
@@ -148,7 +148,7 @@ export default function OverviewPage() {
 
             <ExecutiveSummary />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 animate-slide-up">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 animate-slide-up">
                 <KpiCard
                     icon={IndianRupee}
                     title="Total Revenue"
@@ -202,7 +202,7 @@ export default function OverviewPage() {
                     subtitle="Monthly revenue across all channels"
                     className="xl:col-span-2"
                 >
-                    <div className="h-72">
+                    <div className="h-64 lg:h-72">
                         <ResponsiveContainer width="100%" height="100%">
                             <AreaChart data={monthlyTrend}>
                                 <defs>
@@ -239,7 +239,7 @@ export default function OverviewPage() {
                 </ChartCard>
 
                 <ChartCard title="Channel Mix" subtitle="POS vs Web revenue split">
-                    <div className="h-72 flex flex-col items-center justify-center">
+                    <div className="h-64 lg:h-72 flex flex-col items-center justify-center">
                         <ResponsiveContainer width="100%" height="70%">
                             <PieChart>
                                 <Pie

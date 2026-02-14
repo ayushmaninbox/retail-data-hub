@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Sidebar from "@/components/Sidebar";
-import ScrollReset from "@/components/ScrollReset";
+import DashboardContainer from "@/components/DashboardContainer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -19,14 +18,10 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className={`flex min-h-screen bg-surface-200 ${inter.variable} font-sans selection:bg-accent-purple/30 selection:text-accent-purple`}>
-                <Sidebar />
-                <main className="flex-1 ml-64 min-h-screen relative z-10 p-4">
-                    <ScrollReset />
-                    <div id="main-scroll-container" className="h-[calc(100vh-2rem)] bg-surface-100 rounded-[2.5rem] shadow-sm border border-slate-200 overflow-y-auto">
-                        <div className="p-8 max-w-[1600px] mx-auto">{children}</div>
-                    </div>
-                </main>
+            <body className={`min-h-screen bg-surface-200 ${inter.variable} font-sans selection:bg-accent-purple/30 selection:text-accent-purple`}>
+                <DashboardContainer>
+                    {children}
+                </DashboardContainer>
             </body>
         </html>
     );

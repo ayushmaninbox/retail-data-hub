@@ -98,30 +98,30 @@ export default function LiveFeed() {
     return (
         <div className="glass-card rounded-2xl overflow-hidden border border-white/5">
             {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-slate-200/60">
-                <div className="flex items-center gap-3">
-                    <Zap className="w-5 h-5 text-indigo-500" />
-                    <h3 className="text-sm font-bold text-slate-800 tracking-tight">Live Transaction Feed</h3>
+            <div className="flex items-center justify-between p-3 lg:p-4 border-b border-slate-200/60">
+                <div className="flex items-center gap-2 lg:gap-3">
+                    <Zap className="w-4 h-4 lg:w-5 lg:h-5 text-indigo-500" />
+                    <h3 className="text-xs lg:text-sm font-bold text-slate-800 tracking-tight">Live Transaction Feed</h3>
                 </div>
                 <div className="flex items-center gap-2">
-                    <div className={`w-2.5 h-2.5 rounded-full ${connected ? "bg-green-500 animate-pulse" : "bg-red-500"}`} />
-                    <span className={`text-xs font-bold uppercase tracking-wider ${connected ? "text-green-600" : "text-red-500"}`}>
+                    <div className={`w-2 h-2 lg:w-2.5 lg:h-2.5 rounded-full ${connected ? "bg-green-500 animate-pulse" : "bg-red-500"}`} />
+                    <span className={`text-[10px] lg:text-xs font-bold uppercase tracking-wider ${connected ? "text-green-600" : "text-red-500"}`}>
                         {connected ? "Live" : "Offline"}
                     </span>
                 </div>
             </div>
 
             {/* Mini KPI bar */}
-            <div className="grid grid-cols-4 gap-px bg-slate-100/80">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-slate-100/80">
                 {[
                     { label: "Revenue", value: fmtCurrency(stats.total_revenue), color: "text-emerald-600" },
                     { label: "Transactions", value: stats.total_transactions.toLocaleString(), color: "text-indigo-600" },
                     { label: "Anomalies", value: String(stats.anomaly_count), color: "text-amber-600" },
                     { label: "Fraud Flags", value: String(stats.fraud_count), color: "text-red-600" },
                 ].map((kpi, i) => (
-                    <div key={i} className="bg-white/80 p-2.5 text-center">
-                        <p className="text-[10px] text-slate-500 uppercase font-bold tracking-wider">{kpi.label}</p>
-                        <p className={`text-sm font-black ${kpi.color} mt-0.5`}>{kpi.value}</p>
+                    <div key={i} className="bg-white/80 p-3 lg:p-2.5 text-center">
+                        <p className="text-[9px] lg:text-[10px] text-slate-500 uppercase font-bold tracking-wider">{kpi.label}</p>
+                        <p className={`text-xs lg:text-sm font-black ${kpi.color} mt-0.5`}>{kpi.value}</p>
                     </div>
                 ))}
             </div>

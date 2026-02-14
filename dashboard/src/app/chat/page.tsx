@@ -142,7 +142,7 @@ const DynamicChart = ({ config }: { config: any }) => {
     const COLORS = ["#8b5cf6", "#14b8a6", "#3b82f6", "#ec4899", "#f59e0b"];
 
     return (
-        <div className="glass-card-static p-6 border border-white/10 h-80">
+        <div className="glass-card-static p-4 lg:p-6 border border-white/10 h-64 sm:h-80">
             <div className="flex items-center gap-2 mb-4">
                 <BarChart3 className="w-4 h-4 text-accent-purple" />
                 <span className="text-xs font-bold text-slate-300 uppercase tracking-widest">
@@ -285,25 +285,25 @@ export default function ChatPage() {
     };
 
     return (
-        <div className="flex flex-col h-[calc(100vh-2rem)] space-y-4">
+        <div className="flex flex-col h-[calc(100vh-6rem)] lg:h-[calc(100vh-2rem)] space-y-3 lg:space-y-4">
             {/* Header */}
-            <div className="flex items-center justify-between glass-card p-4">
-                <div className="flex items-center gap-3">
-                    <div className="p-2 bg-accent-purple/10 rounded-xl">
-                        <Sparkles className="w-5 h-5 text-accent-purple" />
+            <div className="flex items-center justify-between glass-card p-3 lg:p-4">
+                <div className="flex items-center gap-2 lg:gap-3">
+                    <div className="p-1.5 lg:p-2 bg-accent-purple/10 rounded-xl">
+                        <Sparkles className="w-4 h-4 lg:w-5 lg:h-5 text-accent-purple" />
                     </div>
                     <div>
-                        <h1 className="text-lg font-bold text-slate-900 uppercase tracking-tight">Retail Hub Brain</h1>
-                        <p className="text-[10px] text-slate-500 font-semibold font-mono flex items-center gap-1 uppercase tracking-tighter">
+                        <h1 className="text-base lg:text-lg font-bold text-slate-900 uppercase tracking-tight">Retail Hub Brain</h1>
+                        <p className="text-[9px] text-slate-500 font-semibold font-mono flex items-center gap-1 uppercase tracking-tighter">
                             <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
-                            Synchronized with Medallion Pipeline
+                            Synchronized
                         </p>
                     </div>
                 </div>
             </div>
 
             {/* Chat Area */}
-            <div className="flex-1 glass-card p-4 overflow-y-auto space-y-6 custom-scrollbar scroll-smooth">
+            <div className="flex-1 glass-card p-3 lg:p-4 overflow-y-auto space-y-4 lg:space-y-6 custom-scrollbar scroll-smooth">
                 {messages.length === 0 && (
                     <div className="flex flex-col items-center justify-center h-full text-center space-y-4 opacity-50">
                         <Database className="w-12 h-12 text-slate-500" />
@@ -320,7 +320,7 @@ export default function ChatPage() {
                         <div className="bg-slate-900 border border-slate-800 p-4 rounded-2xl w-full max-w-sm shadow-2xl">
                             <div className="flex items-center gap-3 mb-3">
                                 <Cpu className="w-4 h-4 text-emerald-400 animate-pulse" />
-                                <span className="text-xs font-bold text-white uppercase tracking-widest">MCP Agent Logs</span>
+                                <span className="text-[11px] font-bold text-white uppercase tracking-widest">MCP Agent Logs</span>
                             </div>
                             <div className="space-y-1.5">
                                 {thoughtLog.map((step, idx) => (
@@ -359,13 +359,13 @@ export default function ChatPage() {
                     <input
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
-                        placeholder="Ask about strategy, architecture, or deep analytics..."
-                        className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 font-medium placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-accent-purple/20 focus:border-accent-purple/50 transition-all"
+                        placeholder="Analyze strategy or data..."
+                        className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3 lg:px-4 py-2.5 lg:py-3 text-xs lg:text-sm text-slate-900 font-medium placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-accent-purple/20 focus:border-accent-purple/50 transition-all"
                     />
                     <button
                         type="submit"
                         disabled={isLoading || !input.trim()}
-                        className="bg-indigo-700 hover:bg-indigo-800 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-3 rounded-xl transition-all shadow-lg shadow-indigo-700/20 flex items-center gap-2"
+                        className="bg-indigo-700 hover:bg-indigo-800 disabled:opacity-50 disabled:cursor-not-allowed text-white px-4 lg:px-6 py-2.5 lg:py-3 rounded-xl transition-all shadow-lg shadow-indigo-700/20 flex items-center gap-2"
                     >
                         <Send className="w-4 h-4" />
                         <span className="hidden sm:inline font-bold">Send</span>

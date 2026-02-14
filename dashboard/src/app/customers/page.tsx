@@ -203,7 +203,7 @@ export default function CustomersPage() {
 
 
             {/* ── KPI Cards ── */}
-            <div id="kpis" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 animate-slide-up">
+            <div id="kpis" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 animate-slide-up">
                 <KpiCard icon={UserPlus} title="Total Customers" value={fmtNum(totalCustomers)} change={`${summary.repeat_rate_pct || 0}% repeat buyers`} trend="up" accentColor="from-accent-purple to-accent-blue" subtitle="All time unique customers" />
                 <KpiCard icon={Heart} title="Avg CLV" value={fmt(clvStats.avg_clv || 0)} change={`Max: ${fmt(clvStats.max_clv || 0)}`} trend="up" accentColor="from-accent-teal to-emerald-400" subtitle="Customer lifetime value" />
                 <KpiCard icon={Crown} title="Champions" value={`${champPct}%`} change={`${fmtNum(champCount)} customers`} trend="up" accentColor="from-accent-pink to-accent-purple" subtitle="Best RFM segment" />
@@ -215,12 +215,12 @@ export default function CustomersPage() {
                 <ChartCard title="RFM Segmentation" subtitle="Click any segment to see insights & recommended actions" className="animate-slide-up">
                     <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
                         {/* Chart */}
-                        <div className="xl:col-span-2 h-80">
+                        <div className="xl:col-span-2 h-64 lg:h-80">
                             <ResponsiveContainer width="100%" height="100%">
                                 <BarChart data={rfmSegments} layout="vertical" margin={{ left: 20 }}>
                                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" horizontal={false} />
-                                    <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#475569", fontSize: 11, fontWeight: 600 }} />
-                                    <YAxis dataKey="segment" type="category" axisLine={false} tickLine={false} tick={{ fill: "#334155", fontSize: 11, fontWeight: 600 }} width={130} />
+                                    <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#475569", fontSize: 10, fontWeight: 600 }} />
+                                    <YAxis dataKey="segment" type="category" axisLine={false} tickLine={false} tick={{ fill: "#334155", fontSize: 10, fontWeight: 600 }} width={100} />
                                     <Tooltip
                                         content={({ active, payload }: any) => {
                                             if (active && payload && payload.length) {
@@ -301,7 +301,7 @@ export default function CustomersPage() {
                                 </button>
                             </div>
 
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 mb-4">
                                 <div className="p-3 rounded-xl text-center" style={{ background: "rgba(0,0,0,0.02)", border: "1px solid rgba(0,0,0,0.08)" }}>
                                     <p className="text-lg font-bold text-slate-900">{selectedSegData.count?.toLocaleString()}</p>
                                     <p className="text-[10px] text-slate-600 font-bold uppercase tracking-wider">Customers</p>
@@ -428,7 +428,7 @@ export default function CustomersPage() {
                 </ChartCard>
 
                 <ChartCard title="CLV Stats" subtitle="Key lifetime value metrics" className="animate-slide-up">
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {[
                             { label: "Average CLV", value: fmt(clvStats.avg_clv || 0), color: "#8b5cf6" },
                             { label: "Median CLV", value: fmt(clvStats.median_clv || 0), color: "#3b82f6" },
@@ -448,8 +448,8 @@ export default function CustomersPage() {
                     {topCustomers.length > 0 && (
                         <div className="mt-4">
                             <p className="text-[10px] text-slate-500 uppercase font-semibold tracking-wider mb-2">Top Customers</p>
-                            <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
-                                <table className="w-full">
+                            <div className="rounded-xl overflow-x-auto border border-black/[0.06]">
+                                <table className="w-full min-w-[400px]">
                                     <thead>
                                         <tr style={{ background: "rgba(139,92,246,0.06)" }}>
                                             <th className="text-left px-3 py-2 text-[10px] font-semibold text-slate-500 uppercase">#</th>
@@ -545,8 +545,8 @@ export default function CustomersPage() {
             {customerCities.length > 0 && (
                 <div id="cities">
                     <ChartCard title="Customers by City" subtitle="Top cities by customer count and total spend" className="animate-slide-up">
-                        <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
-                            <table className="w-full">
+                        <div className="rounded-xl overflow-x-auto border border-black/[0.06]">
+                            <table className="w-full min-w-[600px]">
                                 <thead>
                                     <tr style={{ background: "rgba(139,92,246,0.06)" }}>
                                         <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-700 uppercase tracking-wider w-8">#</th>

@@ -221,7 +221,7 @@ export default function InventoryPage() {
 
 
             {/* ── KPI Row ── */}
-            <div id="kpis" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 animate-slide-up">
+            <div id="kpis" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4 animate-slide-up">
                 <KpiCard
                     icon={RotateCcw}
                     title="Avg Turnover Ratio"
@@ -260,7 +260,7 @@ export default function InventoryPage() {
                     title="⚠️ Reorder Alerts — Actionable Breakdown"
                     subtitle={`${allAlerts.length} items need attention · Total reorder cost: ${fmt(totalReorderCost)}`}
                     action={
-                        <div className="flex items-center gap-3">
+                        <div className="flex flex-wrap items-center gap-3">
                             {/* Filter Segmented Control */}
                             <div className="flex p-0.5 rounded-xl bg-black/[0.04] border border-black/[0.06] backdrop-blur-md">
                                 {([
@@ -383,7 +383,7 @@ export default function InventoryPage() {
                                                         </div>
 
                                                         {/* Metrics row */}
-                                                        <div className="grid grid-cols-4 gap-3 mb-3">
+                                                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-3">
                                                             <div>
                                                                 <p className="text-[10px] text-slate-500 uppercase">On Hand</p>
                                                                 <p className={`text-sm font-bold ${alert.isStockout ? "text-red-400" : "text-amber-400"}`}>
@@ -468,16 +468,16 @@ export default function InventoryPage() {
                         </div>
                     }
                 >
-                    <div className="h-80 relative overflow-hidden" key={invMetric}>
+                    <div className="h-64 lg:h-80 relative overflow-hidden" key={invMetric}>
                         <div className="absolute inset-0 animate-slide-up">
                             <ResponsiveContainer width="100%" height="100%">
                                 <BarChart data={invMetric === "turnover" ? turnoverData : stockoutByCategory} layout={invMetric === "stockout" ? "vertical" : "horizontal"} margin={invMetric === "stockout" ? { left: 10, right: 20 } : { bottom: 20 }}>
                                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" vertical={invMetric === "turnover"} horizontal={invMetric === "stockout"} />
                                     {invMetric === "turnover" ? (
                                         <>
-                                            <XAxis dataKey="category" axisLine={false} tickLine={false} tick={{ fill: "#334155", fontSize: 10, fontWeight: 700 }} angle={-20} textAnchor="end" height={50} />
-                                            <YAxis axisLine={false} tickLine={false} tick={{ fill: "#334155", fontSize: 11, fontWeight: 700 }} tickFormatter={(v) => `${v}x`} />
-                                            <Bar dataKey="turnover" name="Turnover Ratio" radius={[6, 6, 0, 0]} barSize={32}>
+                                            <XAxis dataKey="category" axisLine={false} tickLine={false} tick={{ fill: "#334155", fontSize: 9, fontWeight: 700 }} angle={-30} textAnchor="end" height={60} />
+                                            <YAxis axisLine={false} tickLine={false} tick={{ fill: "#334155", fontSize: 10, fontWeight: 700 }} tickFormatter={(v) => `${v}x`} />
+                                            <Bar dataKey="turnover" name="Turnover Ratio" radius={[6, 6, 0, 0]} barSize={24}>
                                                 {turnoverData.map((entry: any, index: number) => (
                                                     <Cell key={index} fill={entry.color} fillOpacity={0.8} />
                                                 ))}
@@ -485,9 +485,9 @@ export default function InventoryPage() {
                                         </>
                                     ) : (
                                         <>
-                                            <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#334155", fontSize: 10, fontWeight: 700 }} tickFormatter={(v) => `${v}%`} />
-                                            <YAxis dataKey="category" type="category" axisLine={false} tickLine={false} tick={{ fill: "#334155", fontSize: 11, fontWeight: 700 }} width={90} />
-                                            <Bar dataKey="pct" name="Stockout %" radius={[0, 8, 8, 0]} barSize={18}>
+                                            <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#334155", fontSize: 9, fontWeight: 700 }} tickFormatter={(v) => `${v}%`} />
+                                            <YAxis dataKey="category" type="category" axisLine={false} tickLine={false} tick={{ fill: "#334155", fontSize: 10, fontWeight: 700 }} width={80} />
+                                            <Bar dataKey="pct" name="Stockout %" radius={[0, 8, 8, 0]} barSize={14}>
                                                 {stockoutByCategory.map((entry: any, index: number) => (
                                                     <Cell key={index} fill={entry.color} fillOpacity={0.8} />
                                                 ))}

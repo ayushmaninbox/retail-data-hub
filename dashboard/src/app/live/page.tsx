@@ -209,22 +209,22 @@ export default function LivePage() {
     return (
         <div className="space-y-6">
             {/* Header */}
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
                 <PageHeader
                     icon={Radio}
                     title="Live Transactions"
                     subtitle="Real-time transaction monitoring & analytics"
                 />
-                <div className="flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-white/5">
-                    <div className={`w-3 h-3 rounded-full ${connected ? "bg-green-500 animate-pulse" : "bg-red-500"}`} />
-                    <span className={`text-sm font-bold uppercase tracking-wider ${connected ? "text-green-600" : "text-red-500"}`}>
+                <div className="flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-card border border-white/5 self-start sm:self-auto mb-4 sm:mb-0">
+                    <div className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${connected ? "bg-green-500 animate-pulse" : "bg-red-500"}`} />
+                    <span className={`text-[10px] sm:text-xs font-bold uppercase tracking-wider ${connected ? "text-green-600" : "text-red-500"}`}>
                         {connected ? "Live" : "Offline"}
                     </span>
                 </div>
             </div>
 
             {/* ── KPI Row ── */}
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 animate-slide-up">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-4 animate-slide-up">
                 <KpiCard
                     icon={IndianRupee}
                     title="Live Revenue"
@@ -275,7 +275,7 @@ export default function LivePage() {
             {/* ── Revenue Timeline ── */}
             <div className="animate-slide-up" style={{ animationDelay: "0.05s" }}>
                 <ChartCard title="Revenue Stream" subtitle="Live transaction amounts over time (last 50)">
-                    <div className="h-72">
+                    <div className="h-64 lg:h-72">
                         {revenueTimeline.length === 0 ? (
                             <div className="h-full flex items-center justify-center">
                                 <div className="text-center">
@@ -331,7 +331,7 @@ export default function LivePage() {
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 animate-slide-up" style={{ animationDelay: "0.1s" }}>
                 {/* Category Distribution */}
                 <ChartCard title="Category Mix" subtitle="Live distribution by product category">
-                    <div className="h-72 flex items-center justify-center">
+                    <div className="h-64 lg:h-72 flex items-center justify-center">
                         {categoryData.length === 0 ? (
                             <p className="text-sm text-slate-400">Waiting for data…</p>
                         ) : (
@@ -341,8 +341,8 @@ export default function LivePage() {
                                         data={categoryData}
                                         cx="50%"
                                         cy="50%"
-                                        innerRadius={55}
-                                        outerRadius={90}
+                                        innerRadius={45}
+                                        outerRadius={75}
                                         paddingAngle={3}
                                         dataKey="value"
                                         nameKey="name"
@@ -362,7 +362,7 @@ export default function LivePage() {
 
                 {/* City Activity */}
                 <ChartCard title="City Activity" subtitle="Live transaction count by city">
-                    <div className="h-72">
+                    <div className="h-64 lg:h-72">
                         {cityData.length === 0 ? (
                             <div className="h-full flex items-center justify-center">
                                 <p className="text-sm text-slate-400">Waiting for data…</p>
@@ -428,26 +428,26 @@ export default function LivePage() {
                                         {/* Product + meta */}
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center gap-2">
-                                                <span className="text-sm font-semibold text-slate-800 truncate">
+                                                <span className="text-xs sm:text-sm font-semibold text-slate-800 truncate">
                                                     {txn.product_name}
                                                 </span>
                                                 {txn.event_type !== "normal" && (
                                                     <span
-                                                        className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase text-white shadow-sm"
+                                                        className="px-1.5 py-0.5 rounded-md text-[9px] sm:text-[10px] font-bold uppercase text-white shadow-sm"
                                                         style={{ background: style.color }}
                                                     >
                                                         {style.label}
                                                     </span>
                                                 )}
                                             </div>
-                                            <div className="flex items-center gap-3 mt-0.5">
-                                                <span className="text-xs text-slate-500">{txn.city}</span>
-                                                <span className="text-[10px] text-slate-400">·</span>
-                                                <span className="text-xs text-slate-500">{txn.channel}</span>
-                                                <span className="text-[10px] text-slate-400">·</span>
-                                                <span className="text-xs text-slate-500">Qty {txn.quantity}</span>
-                                                <span className="text-[10px] text-slate-400">·</span>
-                                                <span className="text-xs text-slate-400">{txn.category}</span>
+                                            <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 mt-0.5">
+                                                <span className="text-[10px] sm:text-xs text-slate-500 font-medium">{txn.city}</span>
+                                                <span className="text-[10px] text-slate-300">·</span>
+                                                <span className="text-[10px] sm:text-xs text-slate-500 font-medium">{txn.channel}</span>
+                                                <span className="text-[10px] text-slate-300">·</span>
+                                                <span className="text-[10px] sm:text-xs text-slate-500 font-medium whitespace-nowrap">Qty {txn.quantity}</span>
+                                                <span className="hidden sm:inline text-[10px] text-slate-300">·</span>
+                                                <span className="hidden sm:inline text-[10px] sm:text-xs text-slate-400 font-medium">{txn.category}</span>
                                             </div>
                                         </div>
 

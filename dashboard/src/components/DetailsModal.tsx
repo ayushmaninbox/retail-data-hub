@@ -98,16 +98,16 @@ export default function DetailsModal({
                 }}
             >
                 {/* Header — fixed */}
-                <div className="flex items-center justify-between p-6 pb-4 border-b border-black/[0.06] flex-shrink-0">
-                    <div className="flex items-center gap-3">
+                <div className="flex items-center justify-between p-4 lg:p-6 pb-2 lg:pb-4 border-b border-black/[0.06] flex-shrink-0">
+                    <div className="flex items-center gap-2 lg:gap-3">
                         {Icon && (
                             <div
-                                className={`w-10 h-10 rounded-xl bg-gradient-to-br ${accentColor} flex items-center justify-center opacity-90`}
+                                className={`w-8 h-8 lg:w-10 lg:h-10 rounded-xl bg-gradient-to-br ${accentColor} flex items-center justify-center opacity-90`}
                             >
-                                <Icon className="w-5 h-5 text-white" />
+                                <Icon className="w-4 h-4 lg:w-5 lg:h-5 text-white" />
                             </div>
                         )}
-                        <h2 className="text-xl font-bold text-slate-900 tracking-tight">
+                        <h2 className="text-lg lg:text-xl font-bold text-slate-900 tracking-tight">
                             {title}
                         </h2>
                     </div>
@@ -120,11 +120,11 @@ export default function DetailsModal({
                 </div>
 
                 {/* Body — scrollable */}
-                <div className="p-6 space-y-3 overflow-y-auto flex-1 min-h-0">
+                <div className="p-4 lg:p-6 space-y-3 overflow-y-auto flex-1 min-h-0">
                     {rows.map((row, i) => (
                         <div
                             key={i}
-                            className="flex items-center justify-between p-4 rounded-xl transition-all hover:bg-black/[0.02]"
+                            className="flex items-center justify-between p-3 lg:p-4 rounded-xl transition-all hover:bg-black/[0.02]"
                             style={{
                                 background: "rgba(0,0,0,0.015)",
                                 border: "1px solid rgba(0,0,0,0.05)",
@@ -135,28 +135,28 @@ export default function DetailsModal({
                                 transition: `opacity 0.35s cubic-bezier(0.16,1,0.3,1) ${0.05 + i * 0.04}s, transform 0.35s cubic-bezier(0.16,1,0.3,1) ${0.05 + i * 0.04}s`,
                             }}
                         >
-                            <div className="flex items-center gap-3">
+                            <div className="flex items-center gap-2 lg:gap-3">
                                 {row.color && (
                                     <div
-                                        className="w-3 h-3 rounded-full flex-shrink-0"
+                                        className="w-2.5 h-2.5 lg:w-3 lg:h-3 rounded-full flex-shrink-0"
                                         style={{ background: row.color }}
                                     />
                                 )}
                                 <div>
-                                    <p className="text-base font-bold text-slate-800">
+                                    <p className="text-sm lg:text-base font-bold text-slate-800">
                                         {row.label}
                                     </p>
                                     {row.subValue && (
-                                        <p className="text-sm text-slate-500 font-medium mt-1 leading-relaxed">
+                                        <p className="text-[11px] lg:text-sm text-slate-500 font-medium mt-0.5 lg:mt-1 leading-relaxed">
                                             {row.subValue}
                                         </p>
                                     )}
                                 </div>
                             </div>
                             <div className="text-right">
-                                <p className="text-base font-bold text-slate-900">{row.value}</p>
+                                <p className="text-sm lg:text-base font-bold text-slate-900">{row.value}</p>
                                 {row.percentage !== undefined && (
-                                    <p className="text-sm text-slate-500 font-bold mt-1">
+                                    <p className="text-[11px] lg:text-sm text-slate-500 font-bold mt-0.5 lg:mt-1">
                                         {row.percentage.toFixed(1)}%
                                     </p>
                                 )}

@@ -280,7 +280,7 @@ export default function SalesPage() {
             />
 
             {/* ── KPI Row ── */}
-            <div id="kpis" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 animate-slide-up">
+            <div id="kpis" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 animate-slide-up">
                 <KpiCard
                     icon={Activity}
                     title="Total Revenue"
@@ -332,7 +332,7 @@ export default function SalesPage() {
                         title="Revenue & Transactions Trend"
                         subtitle="Monthly dual-axis performance"
                     >
-                        <div className="h-80">
+                        <div className="h-64 lg:h-80">
                             <ResponsiveContainer width="100%" height="100%">
                                 <ComposedChart data={monthlyTrend}>
                                     <defs>
@@ -370,7 +370,7 @@ export default function SalesPage() {
                 <div id="products">
                     <ChartCard title="Channel Comparison" subtitle="POS (In-Store) vs Web (Online)">
                         <div className="space-y-4 pt-1">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3">
                                 {/* POS */}
                                 <div className="p-3 rounded-xl bg-purple-500/5 border border-purple-500/10">
                                     <div className="flex items-center gap-2 mb-2">
@@ -438,7 +438,7 @@ export default function SalesPage() {
                     <h3 className="text-sm font-semibold text-slate-800">Category Breakdown</h3>
                     <span className="text-xs text-slate-500">— {categories.length} categories</span>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                     {categories.map((cat: any, i: number) => (
                         <div
                             key={i}

@@ -123,7 +123,7 @@ export default function FraudPage() {
             />
 
             {/* ── KPI Row ── */}
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 animate-slide-up">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 animate-slide-up">
                 <KpiCard
                     icon={Shield}
                     title="Transactions Analyzed"
@@ -165,19 +165,20 @@ export default function FraudPage() {
             {/* ── Row 2: Risk Distribution Pie + Signal Frequency ── */}
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 animate-slide-up" style={{ animationDelay: "0.05s" }}>
                 <ChartCard title="Risk Distribution" subtitle="Flagged transactions by risk level">
-                    <div className="h-72 flex items-center justify-center">
+                    <div className="h-64 lg:h-72 flex items-center justify-center">
                         <ResponsiveContainer width="100%" height="100%">
                             <PieChart>
                                 <Pie
                                     data={riskPieData}
                                     cx="50%"
                                     cy="50%"
-                                    innerRadius={60}
-                                    outerRadius={100}
+                                    innerRadius={50}
+                                    outerRadius={80}
                                     paddingAngle={4}
                                     dataKey="value"
                                     nameKey="name"
                                     label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                                    labelLine={false}
                                 >
                                     {riskPieData.map((entry: any, index: number) => (
                                         <Cell key={index} fill={entry.color} fillOpacity={0.85} />
@@ -190,12 +191,12 @@ export default function FraudPage() {
                 </ChartCard>
 
                 <ChartCard title="Fraud Signal Frequency" subtitle="Most triggered fraud detection rules">
-                    <div className="h-72">
+                    <div className="h-64 lg:h-72">
                         <ResponsiveContainer width="100%" height="100%">
-                            <BarChart data={signalBarData} layout="vertical" margin={{ left: 15 }}>
+                            <BarChart data={signalBarData} layout="vertical" margin={{ left: 10 }}>
                                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" horizontal={false} />
                                 <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} />
-                                <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 11 }} width={130} />
+                                <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 10 }} width={90} />
                                 <Tooltip content={<GlassTooltip />} cursor={{ fill: "rgba(0,0,0,0.02)" }} />
                                 <Bar dataKey="count" name="Triggers" radius={[0, 8, 8, 0]} barSize={22}>
                                     {signalBarData.map((entry: any, index: number) => (
@@ -211,7 +212,7 @@ export default function FraudPage() {
             {/* ── Row 3: Fraud Timeline ── */}
             <div className="animate-slide-up" style={{ animationDelay: "0.1s" }}>
                 <ChartCard title="Fraud Timeline" subtitle="Monthly distribution of flagged transactions">
-                    <div className="h-64">
+                    <div className="h-56 lg:h-64">
                         <ResponsiveContainer width="100%" height="100%">
                             <AreaChart data={timeline}>
                                 <defs>
@@ -268,14 +269,14 @@ export default function FraudPage() {
 
                 {/* City bar chart */}
                 <ChartCard title="Fraud by City" subtitle="Top cities by number of flagged transactions">
-                    <div className="h-72">
+                    <div className="h-64 lg:h-72">
                         <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={byCity}>
                                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
-                                <XAxis dataKey="city" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} />
+                                <XAxis dataKey="city" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 9 }} />
                                 <YAxis axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} />
                                 <Tooltip content={<GlassTooltip />} cursor={{ fill: "rgba(0,0,0,0.02)" }} />
-                                <Bar dataKey="flagged_count" name="Flagged" radius={[8, 8, 0, 0]} barSize={32} fill="#f97316" fillOpacity={0.75} />
+                                <Bar dataKey="flagged_count" name="Flagged" radius={[6, 6, 0, 0]} barSize={24} fill="#f97316" fillOpacity={0.75} />
                             </BarChart>
                         </ResponsiveContainer>
                     </div>
@@ -291,19 +292,18 @@ export default function FraudPage() {
                             <button
                                 key={level}
                                 onClick={() => setRiskFilter(level)}
-                                className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
-                                    riskFilter === level
+                                className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${riskFilter === level
                                         ? "bg-indigo-600 text-white shadow-md"
                                         : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-                                }`}
+                                    }`}
                             >
                                 {level}
                             </button>
                         ))}
                     </div>
 
-                    <div className="overflow-x-auto">
-                        <table className="w-full text-sm">
+                    <div className="overflow-x-auto border border-slate-100 rounded-xl">
+                        <table className="w-full text-sm min-w-[700px]">
                             <thead>
                                 <tr className="border-b border-slate-200">
                                     <th className="text-left py-2 px-3 text-xs font-bold text-slate-500 uppercase">Risk</th>
@@ -362,7 +362,7 @@ export default function FraudPage() {
             {/* ── Row 6: Top Risk Customers ── */}
             <div className="animate-slide-up" style={{ animationDelay: "0.25s" }}>
                 <ChartCard title="Top Risk Customers" subtitle="Customers with the highest cumulative fraud risk scores">
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
                         {topCustomers.slice(0, 10).map((c: any, i: number) => (
                             <div
                                 key={i}

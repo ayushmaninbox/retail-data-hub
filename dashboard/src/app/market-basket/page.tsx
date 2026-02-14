@@ -276,7 +276,7 @@ export default function MarketBasketPage() {
 
 
             {/* ── KPI Cards ── */}
-            <div id="kpis" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 animate-slide-up">
+            <div id="kpis" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 animate-slide-up">
                 <KpiCard icon={Zap} title="Rules Discovered" value={`${totalRulesCount}`} change={`${itemsets.length} frequent itemsets`} trend="neutral" accentColor="from-accent-purple to-accent-blue" subtitle="Apriori algorithm" />
                 <KpiCard icon={Target} title="Avg Confidence" value={`${avgConfidence}%`} change={`${strongRules} strong rules (>50%)`} trend="up" accentColor="from-accent-blue to-accent-teal" subtitle="Higher = stronger" />
                 <KpiCard icon={TrendingUp} title="Avg Lift" value={`${avgLift}x`} change={`Max: ${maxLift.toFixed(2)}x`} trend="up" accentColor="from-accent-teal to-emerald-400" subtitle={`${allRulesRaw.filter(r => r.lift > 1).length} positive associations`} />
@@ -284,7 +284,7 @@ export default function MarketBasketPage() {
             </div>
 
             {/* ── Type breakdown cards ── */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 animate-slide-up">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4 animate-slide-up">
                 {typeCounts.map(tc => {
                     const TIcon = tc.icon;
                     return (
@@ -308,7 +308,7 @@ export default function MarketBasketPage() {
             {topPairs.length > 0 && (
                 <div id="top-pairs">
                     <ChartCard title="🎯 Top Recommendation Pairs" subtitle="Highest confidence rules — best candidates for cross-sell and promotions" className="animate-slide-up">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {topPairs.map((pair, index) => (
                                 <div key={index} className="p-4 rounded-xl border border-black/[0.06] bg-gradient-to-br from-black/[0.02] to-transparent hover:border-accent-purple/30 transition-all group">
                                     <div className="flex items-center gap-2 mb-3">
@@ -372,8 +372,8 @@ export default function MarketBasketPage() {
                     }
                 >
                     {allRules.length > 0 ? (
-                        <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
-                            <table className="w-full">
+                        <div className="rounded-xl overflow-x-auto border border-black/[0.06]">
+                            <table className="w-full min-w-[800px]">
                                 <thead>
                                     <tr style={{ background: "rgba(139,92,246,0.08)" }}>
                                         <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-600 uppercase tracking-wider w-8">#</th>
@@ -482,7 +482,7 @@ export default function MarketBasketPage() {
             <div id="insights" className="grid grid-cols-1 xl:grid-cols-2 gap-4">
                 {/* Confidence vs Support Scatter */}
                 <ChartCard title="Confidence vs Support" subtitle="Each dot is a rule — size indicates lift strength" className="animate-slide-up">
-                    <div className="h-72">
+                    <div className="h-64 lg:h-72">
                         <ResponsiveContainer width="100%" height="100%">
                             <ScatterChart margin={{ bottom: 10, left: 5, right: 10 }}>
                                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />

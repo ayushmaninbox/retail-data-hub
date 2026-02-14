@@ -138,7 +138,7 @@ export default function ForecastPage() {
 
 
             {/* ── KPI Cards ── */}
-            <div id="kpis" className="grid grid-cols-1 md:grid-cols-4 gap-4 animate-slide-up">
+            <div id="kpis" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 animate-slide-up">
                 <KpiCard icon={TrendingUp} title="30-Day Predicted Revenue" value={fmt(summary.total_30d_predicted_revenue || 0)} change={`Across ${summary.categories_trained || 0} categories`} trend="up" accentColor="from-accent-purple to-accent-blue" subtitle="LSTM forecast (verified)" />
                 <KpiCard icon={ArrowUpRight} title="Top Growth Category" value={summary.top_growth_category || "N/A"} change={`+${summary.top_growth_pct || 0}% predicted increase`} trend="up" accentColor="from-emerald-500 to-accent-teal" subtitle="Highest predicted growth" />
                 <KpiCard icon={Target} title="Model Accuracy (R²)" value={`${((metrics.avg_r2 || 0) * 100).toFixed(1)}%`} change="Avg across all categories" trend={metrics.avg_r2 > 0 ? "up" : "down"} accentColor="from-accent-purple to-accent-blue" subtitle="Coefficient of determination" />
@@ -147,7 +147,7 @@ export default function ForecastPage() {
 
             {/* ── Model Config Card ── */}
             <ChartCard title="Model Architecture" subtitle="LSTM neural network configuration" className="animate-slide-up">
-                <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                     {configItems.map(item => {
                         const Icon = item.icon;
                         return (
@@ -167,7 +167,7 @@ export default function ForecastPage() {
             <div id="forecast" className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Main forecast area chart */}
                 <ChartCard title="📈 30-Day Revenue Forecast" subtitle="All categories combined with confidence bands" className="lg:col-span-2 animate-slide-up">
-                    <div className="h-80">
+                    <div className="h-64 lg:h-80">
                         <ResponsiveContainer width="100%" height="100%">
                             <AreaChart data={dailyForecast}>
                                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.1)" />
@@ -349,8 +349,8 @@ export default function ForecastPage() {
                 {/* Model performance per category */}
                 <ChartCard title="🧠 Model Performance by Category" subtitle="R², MAE and MSE per category" className="animate-slide-up h-full flex flex-col">
                     {metrics.per_category ? (
-                        <div className="space-y-2 flex-1 overflow-y-auto pr-1 max-h-[300px]">
-                            <div className="grid grid-cols-4 gap-2 text-xs text-slate-700 font-bold px-3 pb-2 border-b border-black/[0.1] items-center">
+                        <div className="space-y-2 flex-1 overflow-x-auto pr-1">
+                            <div className="grid grid-cols-4 gap-2 text-xs text-slate-700 font-bold px-3 pb-2 border-b border-black/[0.1] items-center min-w-[360px]">
                                 <span className="uppercase tracking-wider">Category</span>
                                 <span className="text-right uppercase tracking-wider">R²</span>
                                 <span className="text-right uppercase tracking-wider">MAE</span>
@@ -359,7 +359,7 @@ export default function ForecastPage() {
                             {Object.entries(metrics.per_category).map(([cat, m]: [string, any], i: number) => (
                                 <div
                                     key={cat}
-                                    className={`grid grid-cols-4 gap-2 text-sm px-3 py-2.5 rounded-lg transition-all cursor-pointer ${selectedCategory === cat ? "bg-black/[0.04] border border-accent-purple/20" : "hover:bg-black/[0.02] border border-transparent"
+                                    className={`grid grid-cols-4 gap-2 text-sm px-3 py-2.5 rounded-lg transition-all cursor-pointer min-w-[360px] ${selectedCategory === cat ? "bg-black/[0.04] border border-accent-purple/20" : "hover:bg-black/[0.02] border border-transparent"
                                         }`}
                                     onClick={() => setSelectedCategory(selectedCategory === cat ? null : cat)}
                                 >
@@ -392,7 +392,7 @@ export default function ForecastPage() {
             {history.length > 0 && (
                 <div id="training">
                     <ChartCard title="📉 Training Loss" subtitle="Last 5 epochs per category (MSE loss)" className="animate-slide-up">
-                        <div className="h-52">
+                        <div className="h-48 lg:h-52">
                             <ResponsiveContainer width="100%" height="100%">
                                 <LineChart data={history}>
                                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.1)" />

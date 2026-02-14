@@ -154,7 +154,7 @@ export default function DataQualityPage() {
 
             {/* ── KPI Cards with Dropdowns ── */}
             <div id="kpis" className="space-y-4 animate-slide-up">
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
                     <KpiCard icon={Activity} title="Quality Score" value={`${overallScore}%`} change={summary.overall_status === "ALL_PASSED" ? "All passed" : "Issues detected"} trend={scoreNum >= 80 ? "up" : "down"} accentColor="from-emerald-500 to-accent-teal" subtitle="Checks pass rate" />
 
                     {/* Checks Passed — clickable */}
@@ -310,8 +310,8 @@ export default function DataQualityPage() {
                                                 </p>
                                                 <span className="text-[10px] text-red-400 bg-red-400/10 px-1.5 py-0.5 rounded-full ml-auto">{check.action_on_failure}</span>
                                             </div>
-                                            <div className="rounded-lg overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
-                                                <table className="w-full">
+                                            <div className="rounded-lg overflow-x-auto border border-black/[0.06]">
+                                                <table className="w-full min-w-[500px]">
                                                     <thead>
                                                         <tr style={{ background: "rgba(239,68,68,0.05)" }}>
                                                             <th className="text-left px-3 py-2 text-[10px] font-semibold text-slate-500 uppercase">Source</th>
@@ -381,7 +381,7 @@ export default function DataQualityPage() {
                     {/* Quality Score Ring */}
                     <ChartCard title="Overall Quality Score" subtitle="Latest pipeline run" className="animate-slide-up">
                         <div className="flex flex-col items-center py-4">
-                            <div className="relative w-36 h-36">
+                            <div className="relative w-32 h-32 lg:w-36 lg:h-36">
                                 <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
                                     <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(0,0,0,0.06)" strokeWidth="8" />
                                     <circle cx="50" cy="50" r="42" fill="none" stroke="url(#scoreGrad)" strokeWidth="8" strokeLinecap="round" strokeDasharray={`${scoreNum * 2.64} ${264 - scoreNum * 2.64}`} />

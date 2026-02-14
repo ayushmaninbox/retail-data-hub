@@ -34,32 +34,32 @@ export default function ExecutiveSummary() {
             {/* Background Glow */}
             <div className="absolute -inset-0.5 bg-gradient-to-r from-accent-purple/50 to-accent-teal/50 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
 
-            <div className="relative p-8 rounded-2xl border border-white/10 shadow-2xl bg-[#0f172a]/80 backdrop-blur-xl">
-                <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-accent-purple/30 to-accent-teal/20 flex items-center justify-center border border-accent-purple/30 shadow-lg shadow-accent-purple/10">
-                            <Brain className="w-6 h-6 text-accent-purple" />
+            <div className="relative p-4 lg:p-8 rounded-2xl border border-white/10 shadow-2xl bg-[#0f172a]/80 backdrop-blur-xl">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+                    <div className="flex items-center gap-3 lg:gap-4">
+                        <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-xl lg:rounded-2xl bg-gradient-to-br from-accent-purple/30 to-accent-teal/20 flex items-center justify-center border border-accent-purple/30 shadow-lg shadow-accent-purple/10 flex-shrink-0">
+                            <Brain className="w-5 h-5 lg:w-6 lg:h-6 text-accent-purple" />
                         </div>
                         <div>
-                            <h2 className="text-xl font-bold text-white tracking-tight">Executive Summary</h2>
-                            <p className="text-[11px] text-slate-400 uppercase tracking-widest font-bold mt-1">Retail Data Hub Intelligence</p>
+                            <h2 className="text-lg lg:text-xl font-bold text-white tracking-tight">Executive Summary</h2>
+                            <p className="text-[9px] lg:text-[11px] text-slate-400 uppercase tracking-widest font-bold mt-1">Retail Data Hub Intelligence</p>
                         </div>
                     </div>
 
-                    <div className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg ${isAI
-                            ? "bg-accent-purple/20 text-accent-purple border border-accent-purple/30 shadow-accent-purple/20"
-                            : "bg-slate-800 text-slate-400 border border-white/10"
+                    <div className={`flex items-center gap-2 px-3 lg:px-4 py-1.5 rounded-full text-[10px] lg:text-xs font-bold uppercase tracking-wider shadow-lg ${isAI
+                        ? "bg-accent-purple/20 text-accent-purple border border-accent-purple/30 shadow-accent-purple/20"
+                        : "bg-slate-800 text-slate-400 border border-white/10"
                         }`}>
                         <Sparkles className={`w-3.5 h-3.5 ${isAI ? "animate-pulse" : ""}`} />
                         {isAI ? "AI Generated Insights" : "System Insights"}
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
                     {insights.map((insight: string, idx: number) => (
-                        <div key={idx} className="relative flex gap-4 items-start p-5 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] hover:border-accent-purple/30 transition-all duration-300 group/item hover:-translate-y-0.5 hover:shadow-lg">
-                            <div className="mt-2 w-2.5 h-2.5 rounded-full bg-accent-purple shrink-0 group-hover/item:scale-150 group-hover/item:shadow-[0_0_8px_rgba(168,85,247,0.6)] transition-all duration-300" />
-                            <p className="text-base text-slate-200 leading-relaxed font-semibold">
+                        <div key={idx} className="relative flex gap-3 lg:gap-4 items-start p-4 lg:p-5 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] hover:border-accent-purple/30 transition-all duration-300 group/item hover:-translate-y-0.5 hover:shadow-lg">
+                            <div className="mt-2 w-2 h-2 lg:w-2.5 lg:h-2.5 rounded-full bg-accent-purple shrink-0 group-hover/item:scale-150 group-hover/item:shadow-[0_0_8px_rgba(168,85,247,0.6)] transition-all duration-300" />
+                            <p className="text-sm lg:text-base text-slate-200 leading-relaxed font-semibold">
                                 {insight}
                             </p>
                         </div>

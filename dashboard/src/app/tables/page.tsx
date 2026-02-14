@@ -116,8 +116,8 @@ function PaginatedTable({
     return (
         <div>
             {/* Data grid */}
-            <div className="overflow-x-auto rounded-xl" style={{ border: "1px solid rgba(0,0,0,0.06)" }}>
-                <table className="w-full text-xs">
+            <div className="overflow-x-auto rounded-xl border border-black/[0.06]">
+                <table className="w-full text-xs min-w-[800px]">
                     <thead>
                         <tr style={{ background: "rgba(139,92,246,0.1)" }}>
                             <th className="text-center px-2 py-2.5 text-[10px] font-bold text-slate-700 border-b border-black/[0.1] w-12">#</th>
@@ -164,17 +164,17 @@ function PaginatedTable({
             </div>
 
             {/* Pagination controls */}
-            <div className="flex items-center justify-between mt-4 px-1">
-                <p className="text-xs text-slate-600 font-semibold">
+            <div className="flex flex-col sm:flex-row items-center justify-between mt-4 gap-4 px-1">
+                <p className="text-[10px] sm:text-xs text-slate-600 font-semibold order-2 sm:order-1">
                     Showing <span className="text-slate-900 font-bold">{fmtNum(startRow)}</span> – <span className="text-slate-900 font-bold">{fmtNum(endRow)}</span> of <span className="text-slate-900 font-bold">{fmtNum(totalRows)}</span> rows
                 </p>
 
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1 order-1 sm:order-2">
                     {/* First */}
                     <button
                         onClick={() => fetchPage(1)}
                         disabled={page <= 1}
-                        className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-800 hover:bg-black/[0.04] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-800 hover:bg-black/[0.04] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                         title="First page"
                     >
                         <ChevronsLeft className="w-4 h-4" />
@@ -183,22 +183,22 @@ function PaginatedTable({
                     <button
                         onClick={() => fetchPage(page - 1)}
                         disabled={page <= 1}
-                        className="px-3 h-8 rounded-lg flex items-center gap-1 text-xs font-medium text-slate-400 hover:text-slate-800 hover:bg-black/[0.04] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                        className="px-2 sm:px-3 h-7 sm:h-8 rounded-lg flex items-center gap-1 text-[10px] sm:text-xs font-medium text-slate-400 hover:text-slate-800 hover:bg-black/[0.04] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                     >
-                        <ChevronLeft className="w-3.5 h-3.5" /> Prev
+                        <ChevronLeft className="w-3.5 h-3.5" /> <span className="hidden sm:inline">Prev</span>
                     </button>
 
                     {/* Page numbers */}
                     {(() => {
                         const pages: number[] = [];
-                        const start = Math.max(1, page - 2);
-                        const end = Math.min(totalPages, page + 2);
+                        const start = Math.max(1, page - 1);
+                        const end = Math.min(totalPages, page + 1);
                         for (let i = start; i <= end; i++) pages.push(i);
                         return pages.map((p) => (
                             <button
                                 key={p}
                                 onClick={() => fetchPage(p)}
-                                className={`w-8 h-8 rounded-lg text-xs font-semibold transition-all ${p === page
+                                className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg text-[10px] sm:text-xs font-semibold transition-all ${p === page
                                     ? "bg-accent-purple/25 text-accent-purple"
                                     : "text-slate-500 hover:text-slate-800 hover:bg-black/[0.04]"
                                     }`}
@@ -212,15 +212,15 @@ function PaginatedTable({
                     <button
                         onClick={() => fetchPage(page + 1)}
                         disabled={page >= totalPages}
-                        className="px-3 h-8 rounded-lg flex items-center gap-1 text-xs font-medium text-slate-400 hover:text-slate-800 hover:bg-black/[0.04] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                        className="px-2 sm:px-3 h-7 sm:h-8 rounded-lg flex items-center gap-1 text-[10px] sm:text-xs font-medium text-slate-400 hover:text-slate-800 hover:bg-black/[0.04] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                     >
-                        Next <ChevronRight className="w-3.5 h-3.5" />
+                        <span className="hidden sm:inline">Next</span> <ChevronRight className="w-3.5 h-3.5" />
                     </button>
                     {/* Last */}
                     <button
                         onClick={() => fetchPage(totalPages)}
                         disabled={page >= totalPages}
-                        className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-800 hover:bg-black/[0.04] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-800 hover:bg-black/[0.04] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                         title="Last page"
                     >
                         <ChevronsRight className="w-4 h-4" />
@@ -304,7 +304,7 @@ export default function DataTablesPage() {
             />
 
             {/* Search bar */}
-            <div className="relative max-w-md">
+            <div className="relative w-full lg:max-w-md">
                 <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
                 <input
                     type="text"
@@ -376,28 +376,19 @@ export default function DataTablesPage() {
                                         </div>
 
                                         {/* Stats */}
-                                        <div className="flex items-center gap-6 flex-shrink-0">
-                                            <div className="text-right">
+                                        <div className="flex items-center gap-4 sm:gap-6 flex-shrink-0">
+                                            <div className="text-right hidden sm:block">
                                                 <p className="text-sm font-bold text-slate-900">{fmtNum(tbl.rows)}</p>
                                                 <p className="text-[10px] text-slate-600 font-semibold">rows</p>
                                             </div>
-                                            <div className="text-right">
+                                            <div className="text-right hidden sm:block">
                                                 <p className="text-sm font-bold text-slate-900">{tbl.columns}</p>
                                                 <p className="text-[10px] text-slate-600 font-semibold">cols</p>
                                             </div>
                                             {tbl.pk && (
-                                                <span className="text-[10px] px-2 py-1 rounded-lg bg-yellow-500/10 text-yellow-400 border border-yellow-500/15 font-mono whitespace-nowrap">
+                                                <span className="hidden lg:block text-[10px] px-2 py-1 rounded-lg bg-yellow-500/10 text-yellow-400 border border-yellow-500/15 font-mono whitespace-nowrap">
                                                     PK: {tbl.pk}
                                                 </span>
-                                            )}
-                                            {tbl.fk_links && (
-                                                <div className="flex gap-1">
-                                                    {Object.values(tbl.fk_links).map((dim: any) => (
-                                                        <span key={dim} className="text-[9px] px-1.5 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/15 font-mono">
-                                                            → {dim}
-                                                        </span>
-                                                    ))}
-                                                </div>
                                             )}
                                             <Eye className={`w-4 h-4 ${isSelected ? "text-accent-purple" : "text-slate-600"}`} />
                                         </div>
@@ -415,45 +406,45 @@ export default function DataTablesPage() {
             {selectedMeta && (
                 <div id="table-viewer" className="glass-card-static p-6 animate-slide-up">
                     {/* Header */}
-                    <div className="flex items-start justify-between mb-5">
+                    <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-4 lg:gap-2 mb-5">
                         <div>
                             <div className="flex items-center gap-2 mb-1">
                                 <Database className="w-4 h-4 text-accent-purple" />
-                                <h3 className="text-base font-bold text-slate-900">
+                                <h3 className="text-sm lg:text-base font-bold text-slate-900">
                                     {(() => {
                                         const Icon = LAYER_META[selectedTable!.layer].icon;
-                                        return <Icon className="w-5 h-5 inline-block mr-2 align-text-bottom" style={{ color: LAYER_META[selectedTable!.layer].color }} />;
+                                        return <Icon className="w-4 h-4 lg:w-5 lg:h-5 inline-block mr-2 align-text-bottom" style={{ color: LAYER_META[selectedTable!.layer].color }} />;
                                     })()} {selectedMeta.name}
                                 </h3>
-                                <span className="text-[10px] px-2 py-0.5 rounded-full bg-accent-purple/20 text-accent-purple font-bold uppercase">
+                                <span className="text-[9px] lg:text-[10px] px-2 py-0.5 rounded-full bg-accent-purple/20 text-accent-purple font-bold uppercase">
                                     {LAYER_META[selectedTable!.layer].label}
                                 </span>
                             </div>
                             <p className="text-xs text-slate-600 font-semibold">{selectedMeta.description}</p>
                         </div>
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 self-end lg:self-auto">
                             {/* Download controls */}
                             <div className="flex rounded-lg overflow-hidden border border-black/10">
                                 <button
                                     onClick={() => setDlFormat("csv")}
-                                    className={`px-3 py-1.5 text-[10px] font-semibold uppercase flex items-center gap-1 transition-all ${dlFormat === "csv" ? "bg-accent-teal/20 text-accent-teal" : "text-slate-500 hover:text-slate-800"
+                                    className={`px-2 py-1.5 text-[9px] lg:text-[10px] font-semibold uppercase flex items-center gap-1 transition-all ${dlFormat === "csv" ? "bg-accent-teal/20 text-accent-teal" : "text-slate-500 hover:text-slate-800"
                                         }`}
                                 >
-                                    <FileSpreadsheet className="w-3 h-3" /> CSV
+                                    <FileSpreadsheet className="w-2.5 h-2.5 lg:w-3 lg:h-3" /> CSV
                                 </button>
                                 <button
                                     onClick={() => setDlFormat("json")}
-                                    className={`px-3 py-1.5 text-[10px] font-semibold uppercase flex items-center gap-1 transition-all ${dlFormat === "json" ? "bg-accent-purple/20 text-accent-purple" : "text-slate-500 hover:text-slate-800"
+                                    className={`px-2 py-1.5 text-[9px] lg:text-[10px] font-semibold uppercase flex items-center gap-1 transition-all ${dlFormat === "json" ? "bg-accent-purple/20 text-accent-purple" : "text-slate-500 hover:text-slate-800"
                                         }`}
                                 >
-                                    <FileJson className="w-3 h-3" /> JSON
+                                    <FileJson className="w-2.5 h-2.5 lg:w-3 lg:h-3" /> JSON
                                 </button>
                             </div>
                             <button
                                 onClick={handleDownload}
-                                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] font-semibold uppercase bg-accent-purple/20 text-accent-purple hover:bg-accent-purple/30 transition-all"
+                                className="flex items-center gap-1 px-2 py-1.5 rounded-lg text-[9px] lg:text-[10px] font-semibold uppercase bg-accent-purple/20 text-accent-purple hover:bg-accent-purple/30 transition-all"
                             >
-                                <Download className="w-3 h-3" /> Download All
+                                <Download className="w-2.5 h-2.5 lg:w-3 lg:h-3" /> <span className="hidden sm:inline">Download</span>
                             </button>
                             <button
                                 onClick={() => setSelectedTable(null)}

@@ -14,7 +14,7 @@ export default function ChartCard({
     action,
 }: ChartCardProps) {
     return (
-        <div className={`glass-card-static p-6 ${className}`}>
+        <div className={`glass-card-static p-4 lg:p-6 ${className}`}>
             <div className="flex items-start justify-between mb-5">
                 <div>
                     <h3 className="text-base font-bold text-slate-800 tracking-tight mb-0.5">{title}</h3>

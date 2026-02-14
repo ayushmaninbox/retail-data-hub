@@ -126,7 +126,7 @@ export default function AnomaliesPage() {
             />
 
             {/* ── KPI Row ── */}
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 animate-slide-up">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 animate-slide-up">
                 <KpiCard
                     icon={AlertTriangle}
                     title="Total Anomalies"
@@ -168,19 +168,20 @@ export default function AnomaliesPage() {
             {/* ── Row 2: Severity Pie + Detection Type Bar ── */}
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 animate-slide-up" style={{ animationDelay: "0.05s" }}>
                 <ChartCard title="Severity Distribution" subtitle="Breakdown of anomalies by risk level">
-                    <div className="h-72 flex items-center justify-center">
+                    <div className="h-64 lg:h-72 flex items-center justify-center">
                         <ResponsiveContainer width="100%" height="100%">
                             <PieChart>
                                 <Pie
                                     data={severityPieData}
                                     cx="50%"
                                     cy="50%"
-                                    innerRadius={60}
-                                    outerRadius={100}
+                                    innerRadius={50}
+                                    outerRadius={80}
                                     paddingAngle={4}
                                     dataKey="value"
                                     nameKey="name"
                                     label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                                    labelLine={false}
                                 >
                                     {severityPieData.map((entry, index) => (
                                         <Cell key={index} fill={entry.color} fillOpacity={0.85} />
@@ -193,12 +194,12 @@ export default function AnomaliesPage() {
                 </ChartCard>
 
                 <ChartCard title="Detection Methods" subtitle="Anomalies found by each detection technique">
-                    <div className="h-72">
+                    <div className="h-64 lg:h-72">
                         <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={typeBarData} layout="vertical" margin={{ left: 10 }}>
                                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" horizontal={false} />
                                 <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} />
-                                <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 11 }} width={120} />
+                                <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 10 }} width={90} />
                                 <Tooltip content={<GlassTooltip />} cursor={{ fill: "rgba(0,0,0,0.02)" }} />
                                 <Bar dataKey="count" name="Anomalies" radius={[0, 8, 8, 0]} barSize={22}>
                                     {typeBarData.map((entry: any, index: number) => (
@@ -214,7 +215,7 @@ export default function AnomaliesPage() {
             {/* ── Row 3: Timeline ── */}
             <div className="animate-slide-up" style={{ animationDelay: "0.1s" }}>
                 <ChartCard title="Anomaly Timeline" subtitle="Daily distribution of detected anomalies">
-                    <div className="h-64">
+                    <div className="h-56 lg:h-64">
                         <ResponsiveContainer width="100%" height="100%">
                             <AreaChart data={timeline}>
                                 <defs>
@@ -237,14 +238,14 @@ export default function AnomaliesPage() {
             {/* ── Row 4: City breakdown ── */}
             <div className="animate-slide-up" style={{ animationDelay: "0.15s" }}>
                 <ChartCard title="Anomalies by City" subtitle="Geographic distribution of detected anomalies">
-                    <div className="h-64">
+                    <div className="h-56 lg:h-64">
                         <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={byCity}>
                                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
-                                <XAxis dataKey="city" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} />
+                                <XAxis dataKey="city" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 9 }} />
                                 <YAxis axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} />
                                 <Tooltip content={<GlassTooltip />} cursor={{ fill: "rgba(0,0,0,0.02)" }} />
-                                <Bar dataKey="count" name="Anomalies" radius={[8, 8, 0, 0]} barSize={32} fill="#8b5cf6" fillOpacity={0.75} />
+                                <Bar dataKey="count" name="Anomalies" radius={[6, 6, 0, 0]} barSize={24} fill="#8b5cf6" fillOpacity={0.75} />
                             </BarChart>
                         </ResponsiveContainer>
                     </div>
@@ -264,19 +265,18 @@ export default function AnomaliesPage() {
                             <button
                                 key={sev}
                                 onClick={() => setSeverityFilter(sev)}
-                                className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
-                                    severityFilter === sev
+                                className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${severityFilter === sev
                                         ? "bg-indigo-600 text-white shadow-md"
                                         : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-                                }`}
+                                    }`}
                             >
                                 {sev}
                             </button>
                         ))}
                     </div>
 
-                    <div className="overflow-x-auto">
-                        <table className="w-full text-sm">
+                    <div className="overflow-x-auto border border-slate-100 rounded-xl">
+                        <table className="w-full text-sm min-w-[700px]">
                             <thead>
                                 <tr className="border-b border-slate-200">
                                     <th className="text-left py-2 px-3 text-xs font-bold text-slate-500 uppercase">Severity</th>
