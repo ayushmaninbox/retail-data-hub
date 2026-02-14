@@ -21,8 +21,6 @@ import KpiCard from "@/components/KpiCard";
 import ChartCard from "@/components/ChartCard";
 import DetailsModal from "@/components/DetailsModal";
 import {
-    BarChart,
-    Bar,
     XAxis,
     YAxis,
     CartesianGrid,
@@ -30,14 +28,7 @@ import {
     ResponsiveContainer,
     AreaChart,
     Area,
-    RadarChart,
-    Radar,
-    PolarGrid,
-    PolarAngleAxis,
-    PolarRadiusAxis,
     Treemap,
-    Cell,
-    Legend,
     ComposedChart,
     Line,
 } from "recharts";
@@ -159,7 +150,6 @@ type ModalType = "topCity" | "topProduct" | null;
 const SECTIONS = [
     { id: "kpis", label: "KPIs", icon: Activity },
     { id: "trends", label: "Trends", icon: TrendingUp },
-    { id: "cities", label: "Cities", icon: MapPin },
     { id: "products", label: "Products", icon: ShoppingBag },
     { id: "categories", label: "Categories", icon: Layers },
 ];
@@ -245,17 +235,6 @@ export default function SalesPage() {
         color: CATEGORY_COLORS[i % CATEGORY_COLORS.length],
     }));
 
-    // Radar data — normalize city metrics for comparison
-    const maxRev = Math.max(...citySales.map((c: any) => c.revenue), 1);
-    const maxTxns = Math.max(...citySales.map((c: any) => c.transactions), 1);
-    const maxCust = Math.max(...citySales.map((c: any) => c.customers), 1);
-    const radarData = citySales.slice(0, 8).map((c: any) => ({
-        city: c.city,
-        Revenue: Math.round((c.revenue / maxRev) * 100),
-        Transactions: Math.round((c.transactions / maxTxns) * 100),
-        Customers: Math.round((c.customers / maxCust) * 100),
-    }));
-
     const channelMix = (data.channel_mix || []);
     const posData = channelMix.find((c: any) => c.channel === "POS") || {};
     const webData = channelMix.find((c: any) => c.channel === "Web") || {};
@@ -300,11 +279,10 @@ export default function SalesPage() {
                 subtitle="Deep dive into revenue streams, product mix & geographic performance"
             />
 
-
             {/* ── KPI Row ── */}
             <div id="kpis" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 animate-slide-up">
                 <KpiCard
-                    icon={TrendingUp}
+                    icon={Activity}
                     title="Total Revenue"
                     value={fmt(totalRev)}
                     change={`${fmtNum(data.revenue?.summary?.total_transactions || 0)} txns`}
@@ -323,7 +301,7 @@ export default function SalesPage() {
                     onClick={() => setActiveModal("topCity")}
                 />
                 <KpiCard
-                    icon={Tag}
+                    icon={ShoppingBag}
                     title="Top Product"
                     value={topProduct.name || "N/A"}
                     change={`${fmtNum(topProduct.qty || 0)} units`}
@@ -347,218 +325,110 @@ export default function SalesPage() {
                 />
             </div>
 
-            {/* ── Row 2: Revenue Trend (ComposedChart) ── */}
-            <div id="trends" className="grid grid-cols-1 gap-4 animate-slide-up" style={{ animationDelay: "0.05s" }}>
-                <ChartCard
-                    title="Revenue & Transactions Trend"
-                    subtitle="Monthly dual-axis: revenue (area) and transactions (line)"
-                >
-                    <div className="h-80">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <ComposedChart data={monthlyTrend}>
-                                <defs>
-                                    <linearGradient id="salesRevGrad" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="0%" stopColor="#8b5cf6" stopOpacity={0.3} />
-                                        <stop offset="100%" stopColor="#8b5cf6" stopOpacity={0} />
-                                    </linearGradient>
-                                </defs>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
-                                <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} />
-                                <YAxis
-                                    yAxisId="left"
-                                    axisLine={false}
-                                    tickLine={false}
-                                    tick={{ fill: "#64748b", fontSize: 10 }}
-                                    tickFormatter={(v) => `₹${fmtShort(v)}`}
-                                />
-                                <YAxis
-                                    yAxisId="right"
-                                    orientation="right"
-                                    axisLine={false}
-                                    tickLine={false}
-                                    tick={{ fill: "#64748b", fontSize: 10 }}
-                                    tickFormatter={(v) => fmtShort(v)}
-                                />
-                                <Tooltip content={<GlassTooltip />} />
-                                <Area yAxisId="left" type="monotone" dataKey="revenue" name="Revenue" stroke="#8b5cf6" strokeWidth={2.5} fill="url(#salesRevGrad)" />
-                                <Line yAxisId="right" type="monotone" dataKey="transactions" name="Transactions" stroke="#14b8a6" strokeWidth={2} dot={false} strokeDasharray="6 3" />
-                            </ComposedChart>
-                        </ResponsiveContainer>
-                    </div>
-                </ChartCard>
-            </div>
+            {/* ── Trend & Channel Side-by-Side ── */}
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 animate-slide-up" style={{ animationDelay: "0.05s" }}>
+                <div id="trends">
+                    <ChartCard
+                        title="Revenue & Transactions Trend"
+                        subtitle="Monthly dual-axis performance"
+                    >
+                        <div className="h-80">
+                            <ResponsiveContainer width="100%" height="100%">
+                                <ComposedChart data={monthlyTrend}>
+                                    <defs>
+                                        <linearGradient id="salesRevGrad" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stopColor="#8b5cf6" stopOpacity={0.3} />
+                                            <stop offset="100%" stopColor="#8b5cf6" stopOpacity={0} />
+                                        </linearGradient>
+                                    </defs>
+                                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
+                                    <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} />
+                                    <YAxis
+                                        yAxisId="left"
+                                        axisLine={false}
+                                        tickLine={false}
+                                        tick={{ fill: "#64748b", fontSize: 10 }}
+                                        tickFormatter={(v) => `₹${fmtShort(v)}`}
+                                    />
+                                    <YAxis
+                                        yAxisId="right"
+                                        orientation="right"
+                                        axisLine={false}
+                                        tickLine={false}
+                                        tick={{ fill: "#64748b", fontSize: 10 }}
+                                        tickFormatter={(v) => fmtShort(v)}
+                                    />
+                                    <Tooltip content={<GlassTooltip />} />
+                                    <Area yAxisId="left" type="monotone" dataKey="revenue" name="Revenue" stroke="#8b5cf6" strokeWidth={2.5} fill="url(#salesRevGrad)" />
+                                    <Line yAxisId="right" type="monotone" dataKey="transactions" name="Transactions" stroke="#14b8a6" strokeWidth={2} dot={false} strokeDasharray="6 3" />
+                                </ComposedChart>
+                            </ResponsiveContainer>
+                        </div>
+                    </ChartCard>
+                </div>
 
-            {/* ── Row 3: City Race Bar + City Radar ── */}
-            <div id="cities" className="grid grid-cols-1 xl:grid-cols-2 gap-4 animate-slide-up" style={{ animationDelay: "0.1s" }}>
-                <ChartCard title="City Revenue Ranking" subtitle="Top 10 cities by total revenue">
-                    <div className="h-96">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <BarChart data={citySales} layout="vertical" margin={{ left: 5 }}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" horizontal={false} />
-                                <XAxis
-                                    type="number"
-                                    axisLine={false}
-                                    tickLine={false}
-                                    tick={{ fill: "#64748b", fontSize: 10 }}
-                                    tickFormatter={(v) => `₹${fmtShort(v)}`}
-                                />
-                                <YAxis
-                                    dataKey="city"
-                                    type="category"
-                                    axisLine={false}
-                                    tickLine={false}
-                                    tick={{ fill: "#94a3b8", fontSize: 12, fontWeight: 500 }}
-                                    width={90}
-                                />
-                                <Tooltip content={<GlassTooltip />} cursor={{ fill: "rgba(0,0,0,0.02)" }} />
-                                <Bar
-                                    dataKey="revenue"
-                                    name="Revenue"
-                                    radius={[0, 8, 8, 0]}
-                                    barSize={22}
-                                    activeBar={{ fillOpacity: 1, stroke: "white", strokeWidth: 1.5 }}
-                                >
-                                    {citySales.map((entry: any, index: number) => (
-                                        <Cell key={index} fill={entry.color} fillOpacity={0.8} />
-                                    ))}
-                                </Bar>
-                            </BarChart>
-                        </ResponsiveContainer>
-                    </div>
-                </ChartCard>
-
-                <ChartCard title="City Performance Radar" subtitle="Normalized comparison — revenue, transactions, customers">
-                    <div className="h-96">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <RadarChart data={radarData} outerRadius="70%">
-                                <PolarGrid stroke="rgba(0,0,0,0.08)" />
-                                <PolarAngleAxis dataKey="city" tick={{ fill: "#64748b", fontSize: 11 }} />
-                                <PolarRadiusAxis angle={90} domain={[0, 100]} tick={false} axisLine={false} />
-                                <Radar name="Revenue" dataKey="Revenue" stroke="#8b5cf6" fill="#8b5cf6" fillOpacity={0.15} strokeWidth={2} />
-                                <Radar name="Transactions" dataKey="Transactions" stroke="#14b8a6" fill="#14b8a6" fillOpacity={0.1} strokeWidth={2} />
-                                <Radar name="Customers" dataKey="Customers" stroke="#ec4899" fill="#ec4899" fillOpacity={0.08} strokeWidth={2} />
-                                <Legend
-                                    iconType="circle"
-                                    wrapperStyle={{ fontSize: "11px", color: "#64748b", paddingTop: "8px" }}
-                                />
-                                <Tooltip content={<GlassTooltip />} />
-                            </RadarChart>
-                        </ResponsiveContainer>
-                    </div>
-                </ChartCard>
-            </div>
-
-            {/* ── Row 4: Top Products + Channel Comparison ── */}
-            <div id="products" className="grid grid-cols-1 xl:grid-cols-3 gap-4 animate-slide-up" style={{ animationDelay: "0.15s" }}>
-                <ChartCard title="Top 10 Products by Revenue" subtitle="Star performers across all channels" className="xl:col-span-2">
-                    <div className="h-96">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <BarChart data={topByRevenue} layout="vertical" margin={{ left: 10 }}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" horizontal={false} />
-                                <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: "#64748b", fontSize: 10 }} tickFormatter={(v) => `₹${fmtShort(v)}`} />
-                                <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 11 }} width={140} />
-                                <Tooltip content={<GlassTooltip />} cursor={{ fill: "rgba(0,0,0,0.02)" }} />
-                                <Bar
-                                    dataKey="revenue"
-                                    name="Revenue"
-                                    radius={[0, 8, 8, 0]}
-                                    barSize={18}
-                                    activeBar={{ fillOpacity: 1, stroke: "white", strokeWidth: 1.5 }}
-                                >
-                                    {topByRevenue.map((entry: any, index: number) => (
-                                        <Cell key={index} fill={entry.color} fillOpacity={0.75} />
-                                    ))}
-                                </Bar>
-                            </BarChart>
-                        </ResponsiveContainer>
-                    </div>
-                </ChartCard>
-
-                {/* Channel Comparison Card */}
-                <ChartCard title="Channel Comparison" subtitle="POS (In-Store) vs Web (Online)">
-                    <div className="space-y-5 pt-2">
-                        {/* POS */}
-                        <div className="p-4 rounded-xl" style={{ background: "rgba(139,92,246,0.08)", border: "1px solid rgba(139,92,246,0.15)" }}>
-                            <div className="flex items-center gap-2 mb-3">
-                                <Store className="w-4 h-4 text-purple-400" />
-                                <span className="text-sm font-semibold text-slate-800">POS (In-Store)</span>
-                                <span className="ml-auto text-xs font-bold text-purple-400">{posData.revenue_pct || 0}%</span>
+                <div id="products">
+                    <ChartCard title="Channel Comparison" subtitle="POS (In-Store) vs Web (Online)">
+                        <div className="space-y-4 pt-1">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                {/* POS */}
+                                <div className="p-3 rounded-xl bg-purple-500/5 border border-purple-500/10">
+                                    <div className="flex items-center gap-2 mb-2">
+                                        <Store className="w-4 h-4 text-purple-400" />
+                                        <span className="text-xs font-bold text-slate-700">POS</span>
+                                        <span className="ml-auto text-xs font-black text-purple-500">{posData.revenue_pct || 0}%</span>
+                                    </div>
+                                    <div className="flex justify-between">
+                                        <p className="text-[10px] text-slate-500 uppercase font-bold tracking-tight">Revenue</p>
+                                        <p className="text-xs font-black text-slate-900">{fmt(posData.revenue || 0)}</p>
+                                    </div>
+                                </div>
+                                {/* Web */}
+                                <div className="p-3 rounded-xl bg-teal-500/5 border border-teal-500/10">
+                                    <div className="flex items-center gap-2 mb-2">
+                                        <Globe className="w-4 h-4 text-teal-400" />
+                                        <span className="text-xs font-bold text-slate-700">WEB</span>
+                                        <span className="ml-auto text-xs font-black text-teal-500">{webData.revenue_pct || 0}%</span>
+                                    </div>
+                                    <div className="flex justify-between">
+                                        <p className="text-[10px] text-slate-500 uppercase font-bold tracking-tight">Revenue</p>
+                                        <p className="text-xs font-black text-slate-900">{fmt(webData.revenue || 0)}</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="grid grid-cols-2 gap-3">
-                                <div>
-                                    <p className="text-xs text-slate-500">Revenue</p>
-                                    <p className="text-sm font-bold text-slate-800">{fmt(posData.revenue || 0)}</p>
+
+                            <div>
+                                <div className="flex justify-between items-center mb-1.5">
+                                    <p className="text-[10px] text-slate-500 uppercase font-bold tracking-tight">Split</p>
+                                    <span className="text-[10px] font-black text-slate-700">{posData.revenue_pct || 50}% / {webData.revenue_pct || 50}%</span>
                                 </div>
-                                <div>
-                                    <p className="text-xs text-slate-500">Transactions</p>
-                                    <p className="text-sm font-bold text-slate-800">{fmtNum(posData.transactions || 0)}</p>
+                                <div className="h-2 rounded-full bg-slate-100 flex overflow-hidden">
+                                    <div className="h-full bg-purple-500" style={{ width: `${posData.revenue_pct || 50}%` }} />
+                                    <div className="h-full bg-teal-500" style={{ width: `${webData.revenue_pct || 50}%` }} />
                                 </div>
-                                <div>
-                                    <p className="text-xs text-slate-500">Units Sold</p>
-                                    <p className="text-sm font-bold text-slate-800">{fmtNum(posData.units_sold || 0)}</p>
+                            </div>
+
+                            <div className="p-3 rounded-xl bg-amber-500/5 border border-amber-500/10">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                                    <span className="text-[10px] font-bold text-slate-700 uppercase">Festive Uplift</span>
                                 </div>
-                                <div>
-                                    <p className="text-xs text-slate-500">AOV</p>
-                                    <p className="text-sm font-bold text-slate-800">{fmt(posData.transactions ? posData.revenue / posData.transactions : 0)}</p>
+                                <div className="flex justify-between items-end">
+                                    <div>
+                                        <p className="text-[10px] text-slate-500">AOV Increase</p>
+                                        <p className="text-sm font-black text-emerald-600">
+                                            +{(((festivePeriod.avg_transaction_value - normalPeriod.avg_transaction_value) / Math.max(normalPeriod.avg_transaction_value, 1)) * 100).toFixed(1)}%
+                                        </p>
+                                    </div>
+                                    <div className="text-right">
+                                        <p className="text-[10px] text-slate-500">Festive Revenue</p>
+                                        <p className="text-xs font-black text-slate-900">{fmt(festivePeriod.revenue || 0)}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        {/* Web */}
-                        <div className="p-4 rounded-xl" style={{ background: "rgba(20,184,166,0.08)", border: "1px solid rgba(20,184,166,0.15)" }}>
-                            <div className="flex items-center gap-2 mb-3">
-                                <Globe className="w-4 h-4 text-teal-400" />
-                                <span className="text-sm font-semibold text-slate-800">Web (Online)</span>
-                                <span className="ml-auto text-xs font-bold text-teal-400">{webData.revenue_pct || 0}%</span>
-                            </div>
-                            <div className="grid grid-cols-2 gap-3">
-                                <div>
-                                    <p className="text-xs text-slate-500">Revenue</p>
-                                    <p className="text-sm font-bold text-slate-800">{fmt(webData.revenue || 0)}</p>
-                                </div>
-                                <div>
-                                    <p className="text-xs text-slate-500">Transactions</p>
-                                    <p className="text-sm font-bold text-slate-800">{fmtNum(webData.transactions || 0)}</p>
-                                </div>
-                                <div>
-                                    <p className="text-xs text-slate-500">Units Sold</p>
-                                    <p className="text-sm font-bold text-slate-800">{fmtNum(webData.units_sold || 0)}</p>
-                                </div>
-                                <div>
-                                    <p className="text-xs text-slate-500">AOV</p>
-                                    <p className="text-sm font-bold text-slate-800">{fmt(webData.transactions ? webData.revenue / webData.transactions : 0)}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Split bar */}
-                        <div>
-                            <p className="text-xs text-slate-500 mb-2">Revenue Split</p>
-                            <div className="h-3 rounded-full overflow-hidden flex" style={{ background: "rgba(0,0,0,0.05)" }}>
-                                <div className="h-full rounded-l-full" style={{ width: `${posData.revenue_pct || 50}%`, background: "#8b5cf6", transition: "width 0.6s ease" }} />
-                                <div className="h-full rounded-r-full" style={{ width: `${webData.revenue_pct || 50}%`, background: "#14b8a6", transition: "width 0.6s ease" }} />
-                            </div>
-                        </div>
-
-                        {/* Festive comparison */}
-                        <div className="p-4 rounded-xl" style={{ background: "rgba(245,158,11,0.06)", border: "1px solid rgba(245,158,11,0.12)" }}>
-                            <div className="flex items-center gap-2 mb-2">
-                                <Sparkles className="w-4 h-4 text-amber-400" />
-                                <span className="text-sm font-semibold text-slate-800">Festive Season Impact</span>
-                            </div>
-                            <div className="grid grid-cols-2 gap-3">
-                                <div>
-                                    <p className="text-xs text-slate-500">Festive Revenue</p>
-                                    <p className="text-sm font-bold text-slate-800">{fmt(festivePeriod.revenue || 0)}</p>
-                                </div>
-                                <div>
-                                    <p className="text-xs text-slate-500">Normal Revenue</p>
-                                    <p className="text-sm font-bold text-slate-800">{fmt(normalPeriod.revenue || 0)}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ChartCard>
+                    </ChartCard>
+                </div>
             </div>
 
             {/* ── Category Detail Cards ── */}
@@ -574,16 +444,16 @@ export default function SalesPage() {
                             key={i}
                             className="p-4 rounded-xl transition-all hover:scale-[1.02] group"
                             style={{
-                                background: `linear-gradient(135deg, ${cat.color}10, ${cat.color}05)`,
-                                border: `1px solid ${cat.color}20`,
+                                background: `linear-gradient(135deg, ${cat.color}15, ${cat.color}10)`,
+                                border: `1px solid ${cat.color}30`,
                             }}
                         >
                             <div className="flex items-center gap-2 mb-2">
                                 <div className="w-2.5 h-2.5 rounded-full" style={{ background: cat.color }} />
-                                <p className="text-xs font-semibold text-slate-800 truncate">{cat.name}</p>
+                                <p className="text-xs font-bold text-slate-950 truncate">{cat.name}</p>
                             </div>
-                            <p className="text-lg font-bold text-slate-800 mb-1">{fmt(cat.revenue)}</p>
-                            <div className="flex gap-3 text-xs text-slate-500">
+                            <p className="text-lg font-black text-slate-950 mb-1">{fmt(cat.revenue)}</p>
+                            <div className="flex gap-3 text-xs text-slate-700 font-medium">
                                 <span>{fmtNum(cat.units_sold)} units</span>
                                 <span>·</span>
                                 <span>Avg ₹{cat.avg_price?.toLocaleString("en-IN")}</span>

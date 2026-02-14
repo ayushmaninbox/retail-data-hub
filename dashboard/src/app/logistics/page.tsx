@@ -169,8 +169,8 @@ function DrillDownPanel({
                         <CfgIcon className="w-5 h-5" style={{ color: cfg.color }} />
                     </div>
                     <div>
-                        <h3 className="text-sm font-bold text-slate-800">{cfg.title}</h3>
-                        <p className="text-xs text-slate-500">{cfg.description} · <span className="font-semibold" style={{ color: cfg.color }}>{fmtNum(totalField)}</span> total</p>
+                        <h3 className="text-sm font-bold text-slate-950 uppercase tracking-tight">{cfg.title}</h3>
+                        <p className="text-xs text-slate-600 tracking-tight">{cfg.description} · <span className="font-bold whitespace-nowrap" style={{ color: cfg.color }}>{fmtNum(totalField)}</span> total</p>
                     </div>
                 </div>
                 <button
@@ -188,12 +188,12 @@ function DrillDownPanel({
                         <table className="w-full">
                             <thead>
                                 <tr style={{ background: `${cfg.color}08` }}>
-                                    <th className="text-left px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider w-8">#</th>
-                                    <th className="text-left px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Carrier</th>
-                                    <th className="text-left px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Count</th>
-                                    <th className="text-left px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Share</th>
-                                    <th className="text-right px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Total Shipments</th>
-                                    <th className="text-right px-4 py-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Rate</th>
+                                    <th className="text-left px-4 py-3 text-[10px] font-black text-slate-950 uppercase tracking-wider w-8">#</th>
+                                    <th className="text-left px-4 py-3 text-[10px] font-black text-slate-950 uppercase tracking-wider">Carrier</th>
+                                    <th className="text-left px-4 py-3 text-[10px] font-black text-slate-950 uppercase tracking-wider">Count</th>
+                                    <th className="text-left px-4 py-3 text-[10px] font-black text-slate-950 uppercase tracking-wider">Share</th>
+                                    <th className="text-right px-4 py-3 text-[10px] font-black text-slate-950 uppercase tracking-wider">Total Shipments</th>
+                                    <th className="text-right px-4 py-3 text-[10px] font-black text-slate-950 uppercase tracking-wider">Rate</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -213,13 +213,13 @@ function DrillDownPanel({
                                             </td>
                                             <td className="px-4 py-3 w-36">
                                                 <div className="flex items-center gap-2">
-                                                    <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: "rgba(0,0,0,0.06)" }}>
+                                                    <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: "rgba(0,0,0,0.08)" }}>
                                                         <div className="h-full rounded-full transition-all duration-500" style={{ width: `${share}%`, background: c.color }} />
                                                     </div>
-                                                    <span className="text-[10px] text-slate-400 w-10 text-right">{share}%</span>
+                                                    <span className="text-[10px] text-slate-700 font-bold w-10 text-right">{share}%</span>
                                                 </div>
                                             </td>
-                                            <td className="px-4 py-3 text-sm text-slate-400 text-right font-mono">{fmtNum(c.shipments)}</td>
+                                            <td className="px-4 py-3 text-sm text-slate-800 text-right font-black font-mono">{fmtNum(c.shipments)}</td>
                                             <td className="px-4 py-3 text-right">
                                                 <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${drill === "delivered" ? "text-emerald-400 bg-emerald-400/10" :
                                                     drill === "delayed" ? "text-red-400 bg-red-400/10" :
@@ -371,50 +371,46 @@ export default function LogisticsPage() {
 
             {/* ── KPI Cards (clickable) ── */}
             <div id="kpis" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 animate-slide-up">
-                <div onClick={() => handleDrill("delivered")} className={`cursor-pointer rounded-2xl transition-all hover:scale-[1.02] ${activeDrill === "delivered" ? "ring-2 ring-emerald-500/40" : ""}`}>
-                    <KpiCard
-                        icon={CheckCircle}
-                        title="Delivered"
-                        value={fmtNum(delivered)}
-                        change={`${onTimePct}% of total`}
-                        trend="up"
-                        accentColor="from-accent-teal to-emerald-400"
-                        subtitle="Click to see carrier breakdown"
-                    />
-                </div>
-                <div onClick={() => handleDrill("delayed")} className={`cursor-pointer rounded-2xl transition-all hover:scale-[1.02] ${activeDrill === "delayed" ? "ring-2 ring-red-500/40" : ""}`}>
-                    <KpiCard
-                        icon={AlertCircle}
-                        title="Delayed"
-                        value={fmtNum(delayed)}
-                        change={`${totalShipments > 0 ? ((delayed / totalShipments) * 100).toFixed(1) : 0}% delay rate`}
-                        trend="down"
-                        accentColor="from-red-500 to-accent-orange"
-                        subtitle="Click to see carrier breakdown"
-                    />
-                </div>
-                <div onClick={() => handleDrill("intransit")} className={`cursor-pointer rounded-2xl transition-all hover:scale-[1.02] ${activeDrill === "intransit" ? "ring-2 ring-amber-500/40" : ""}`}>
-                    <KpiCard
-                        icon={Truck}
-                        title="In Transit"
-                        value={fmtNum(inTransit)}
-                        change={`Avg ${overall.avg_delivery_days || 0} days`}
-                        trend="up"
-                        accentColor="from-amber-500 to-yellow-400"
-                        subtitle="Click to see carrier breakdown"
-                    />
-                </div>
-                <div onClick={() => handleDrill("returned")} className={`cursor-pointer rounded-2xl transition-all hover:scale-[1.02] ${activeDrill === "returned" ? "ring-2 ring-purple-500/40" : ""}`}>
-                    <KpiCard
-                        icon={RotateCcw}
-                        title="Returned"
-                        value={fmtNum(returned)}
-                        change={`${totalShipments > 0 ? ((returned / totalShipments) * 100).toFixed(1) : 0}% return rate`}
-                        trend="down"
-                        accentColor="from-accent-purple to-violet-400"
-                        subtitle="Click to see carrier breakdown"
-                    />
-                </div>
+                <KpiCard
+                    icon={CheckCircle}
+                    title="Delivered"
+                    value={fmtNum(delivered)}
+                    change={`${onTimePct}% of total`}
+                    trend="up"
+                    accentColor="from-accent-teal to-emerald-400"
+                    subtitle="Click to see carrier breakdown"
+                    onClick={() => handleDrill("delivered")}
+                />
+                <KpiCard
+                    icon={AlertCircle}
+                    title="Delayed"
+                    value={fmtNum(delayed)}
+                    change={`${totalShipments > 0 ? ((delayed / totalShipments) * 100).toFixed(1) : 0}% delay rate`}
+                    trend="down"
+                    accentColor="from-red-500 to-accent-orange"
+                    subtitle="Click to see carrier breakdown"
+                    onClick={() => handleDrill("delayed")}
+                />
+                <KpiCard
+                    icon={Truck}
+                    title="In Transit"
+                    value={fmtNum(inTransit)}
+                    change={`Avg ${overall.avg_delivery_days || 0} days`}
+                    trend="up"
+                    accentColor="from-amber-500 to-yellow-400"
+                    subtitle="Click to see carrier breakdown"
+                    onClick={() => handleDrill("intransit")}
+                />
+                <KpiCard
+                    icon={RotateCcw}
+                    title="Returned"
+                    value={fmtNum(returned)}
+                    change={`${totalShipments > 0 ? ((returned / totalShipments) * 100).toFixed(1) : 0}% return rate`}
+                    trend="down"
+                    accentColor="from-accent-purple to-violet-400"
+                    subtitle="Click to see carrier breakdown"
+                    onClick={() => handleDrill("returned")}
+                />
             </div>
 
             {/* ── Drill-Down Panel ── */}

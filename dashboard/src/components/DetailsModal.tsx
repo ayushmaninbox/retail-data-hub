@@ -2,6 +2,7 @@
 
 import { X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import type { LucideIcon } from "lucide-react";
 
 interface DetailRow {
@@ -34,6 +35,11 @@ export default function DetailsModal({
     const overlayRef = useRef<HTMLDivElement>(null);
     const [visible, setVisible] = useState(false);
     const [animateIn, setAnimateIn] = useState(false);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     /* Animate open */
     useEffect(() => {
@@ -59,15 +65,15 @@ export default function DetailsModal({
         return () => window.removeEventListener("keydown", handler);
     }, [open, onClose]);
 
-    if (!visible) return null;
+    if (!visible || !mounted) return null;
 
-    return (
+    return createPortal(
         <div
             ref={overlayRef}
             onClick={(e) => {
                 if (e.target === overlayRef.current) onClose();
             }}
-            className="fixed -inset-1 z-[100] flex items-center justify-center"
+            className="fixed inset-0 z-[9999] flex items-center justify-center"
             style={{
                 background: animateIn ? "rgba(0,0,0,0.35)" : "rgba(0,0,0,0)",
                 backdropFilter: animateIn ? "blur(8px)" : "blur(0px)",
@@ -188,6 +194,7 @@ export default function DetailsModal({
                     </div>
                 )}
             </div>
-        </div>
+        </div>,
+        document.body
     );
 }
