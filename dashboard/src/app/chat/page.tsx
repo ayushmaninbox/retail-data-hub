@@ -18,6 +18,7 @@ import {
     AlertTriangle,
     Search
 } from "lucide-react";
+import { API_BASE } from "@/config";
 import PageHeader from "@/components/PageHeader";
 import {
     BarChart,
@@ -252,8 +253,7 @@ export default function ChatPage() {
                 setThoughtLog(prev => [...prev, step]);
             }
 
-            const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-            const response = await fetch(`${API_URL}/api/chat`, {
+            const response = await fetch(`${API_BASE}/api/chat`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ message: query, history: [] })

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000").replace(/\/$/, "");
+import { API_BASE } from "@/config";
 
 export function useApi<T>(endpoint: string) {
     const [data, setData] = useState<T | null>(null);

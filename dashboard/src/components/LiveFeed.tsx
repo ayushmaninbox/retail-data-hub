@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import { Activity, Zap, AlertTriangle, Shield } from "lucide-react";
+import { WS_URL } from "@/config";
 
 interface Transaction {
     event_type: "normal" | "anomaly" | "fraud";
@@ -25,7 +26,7 @@ interface LiveStats {
     fraud_count: number;
 }
 
-const WS_URL = process.env.NEXT_PUBLIC_WS_URL || "ws://localhost:8000/ws/live";
+
 
 const EVENT_STYLES: Record<string, { color: string; bg: string; icon: any; label: string }> = {
     normal: { color: "#22c55e", bg: "rgba(34,197,94,0.08)", icon: Activity, label: "Normal" },

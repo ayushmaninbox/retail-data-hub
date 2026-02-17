@@ -11,6 +11,7 @@ import {
     TrendingUp,
     Clock,
 } from "lucide-react";
+import { WS_URL } from "@/config";
 import PageHeader from "@/components/PageHeader";
 import KpiCard from "@/components/KpiCard";
 import ChartCard from "@/components/ChartCard";
@@ -55,7 +56,7 @@ interface LiveStats {
 
 /* ── Constants ── */
 
-const WS_URL = process.env.NEXT_PUBLIC_WS_URL || "ws://localhost:8000/ws/live";
+
 
 const EVENT_STYLES: Record<string, { color: string; bg: string; icon: any; label: string }> = {
     normal: { color: "#22c55e", bg: "rgba(34,197,94,0.08)", icon: Activity, label: "Normal" },
