@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: retail-data-hub-api
+    env: python
+    buildCommand: "./scripts/installation.sh && ./scripts/transform.sh"
+    startCommand: "uvicorn src.api.api:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false # Set this in the Render UI
+      - key: PYTHONPATH
+        value: .
+      - key: PYTHON_VERSION
+        value: 3.9.6

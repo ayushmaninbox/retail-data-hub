@@ -21,21 +21,17 @@ The backend must be deployed first to provide the API URL for the frontend.
 - Your project pushed to GitHub/GitLab.
 
 ### Steps on Render
-1. **New Web Service**: Connect your repository.
-2. **Environment**: Select `Python`.
-3. **Build Command**: 
+1. **New Web Service**: Connect your repository. Render will automatically detect the `render.yaml` file.
+2. **Environment Variables**:
+   - `GEMINI_API_KEY`: Set your Gemini API key in the Render dashboard.
+3. **Build**: Render will run:
    ```bash
-   pip install -r requirements.txt && ./scripts/transform.sh
+   ./scripts/installation.sh && ./scripts/transform.sh
    ```
-   > [!NOTE]
-   > This build command ensures that the data is processed into Gold layer Parquet files during deployment.
-4. **Start Command**:
+4. **Start**: Render will run:
    ```bash
    uvicorn src.api.api:app --host 0.0.0.0 --port $PORT
    ```
-5. **Environment Variables**:
-   - `GEMINI_API_KEY`: Your Google Gemini API Key.
-   - `PYTHONPATH`: `.` (Ensure root is in path).
 
 ---
 
@@ -44,12 +40,8 @@ The backend must be deployed first to provide the API URL for the frontend.
 Once the backend is live (e.g., `https://retail-api.onrender.com`), proceed to Netlify.
 
 ### Steps on Netlify
-1. **Add New Site**: Import from GitHub.
-2. **Site Settings**:
-   - **Base directory**: `dashboard`
-   - **Build command**: `npm run build`
-   - **Publish directory**: `.next`
-3. **Environment Variables**:
+1. **Add New Site**: Import from GitHub. Netlify will use the `dashboard/netlify.toml` for configuration.
+2. **Environment Variables**:
    - `NEXT_PUBLIC_API_URL`: The URL of your deployed backend (e.g., `https://retail-api.onrender.com`).
    - `NEXT_PUBLIC_WS_URL`: The WebSocket URL (e.g., `wss://retail-api.onrender.com`).
 
