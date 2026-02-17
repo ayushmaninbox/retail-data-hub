@@ -1,5 +1,5 @@
 {
-  "computed_at": "2026-02-14T14:57:32.233296",
+  "computed_at": "2026-02-17T12:35:04.744495",
   "inventory_turnover": {
     "by_category": [
       {
@@ -255,17 +255,17 @@
         "stockout_pct": 8.6
       },
       {
-        "product_name": "Mouse Wireless",
-        "category": "Electronics",
-        "total_snapshots": 246,
-        "zero_stock_snapshots": 21.0,
-        "stockout_pct": 8.5
-      },
-      {
         "product_name": "HDMI Cable 2m",
         "category": "Electronics",
         "total_snapshots": 258,
         "zero_stock_snapshots": 22.0,
+        "stockout_pct": 8.5
+      },
+      {
+        "product_name": "Mouse Wireless",
+        "category": "Electronics",
+        "total_snapshots": 246,
+        "zero_stock_snapshots": 21.0,
         "stockout_pct": 8.5
       },
       {
@@ -290,17 +290,17 @@
         "stockout_pct": 8.2
       },
       {
-        "product_name": "Face Scrub 100g",
-        "category": "Beauty",
-        "total_snapshots": 223,
-        "zero_stock_snapshots": 18.0,
-        "stockout_pct": 8.1
-      },
-      {
         "product_name": "Night Suit",
         "category": "Clothing",
         "total_snapshots": 246,
         "zero_stock_snapshots": 20.0,
+        "stockout_pct": 8.1
+      },
+      {
+        "product_name": "Face Scrub 100g",
+        "category": "Beauty",
+        "total_snapshots": 223,
+        "zero_stock_snapshots": 18.0,
         "stockout_pct": 8.1
       },
       {
@@ -332,10 +332,10 @@
         "stockout_pct": 7.4
       },
       {
-        "product_name": "Doll House Furniture",
-        "category": "Toys",
-        "total_snapshots": 222,
-        "zero_stock_snapshots": 16.0,
+        "product_name": "Ethnic Dupatta",
+        "category": "Clothing",
+        "total_snapshots": 263,
+        "zero_stock_snapshots": 19.0,
         "stockout_pct": 7.2
       }
     ]
@@ -431,13 +431,6 @@
         "bottleneck_pct": 15.1
       },
       {
-        "destination_city": "Mumbai",
-        "shipments": 827,
-        "avg_days": 4.2,
-        "bottleneck_shipments": 127.0,
-        "bottleneck_pct": 15.4
-      },
-      {
         "destination_city": "Hyderabad",
         "shipments": 780,
         "avg_days": 4.2,
@@ -450,6 +443,13 @@
         "avg_days": 4.2,
         "bottleneck_shipments": 127.0,
         "bottleneck_pct": 15.6
+      },
+      {
+        "destination_city": "Mumbai",
+        "shipments": 827,
+        "avg_days": 4.2,
+        "bottleneck_shipments": 127.0,
+        "bottleneck_pct": 15.4
       },
       {
         "destination_city": "Chennai",
@@ -473,6 +473,13 @@
         "bottleneck_pct": 15.4
       },
       {
+        "destination_city": "Ahmedabad",
+        "shipments": 782,
+        "avg_days": 4.0,
+        "bottleneck_shipments": 105.0,
+        "bottleneck_pct": 13.4
+      },
+      {
         "destination_city": "Jaipur",
         "shipments": 834,
         "avg_days": 4.0,
@@ -485,13 +492,6 @@
         "avg_days": 4.0,
         "bottleneck_shipments": 106.0,
         "bottleneck_pct": 13.9
-      },
-      {
-        "destination_city": "Ahmedabad",
-        "shipments": 782,
-        "avg_days": 4.0,
-        "bottleneck_shipments": 105.0,
-        "bottleneck_pct": 13.4
       }
     ],
     "distribution": [

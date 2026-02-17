@@ -1,5 +1,5 @@
 {
-  "computed_at": "2026-02-14T13:41:12.462391",
+  "computed_at": "2026-02-17T12:35:21.611669",
   "standard_basket": {
     "itemsets": [
       {
@@ -188,17 +188,6 @@
       },
       {
         "if_category": [
-          "Beauty"
-        ],
-        "then_category": [
-          "Books"
-        ],
-        "support": 0.1213,
-        "confidence": 0.2914,
-        "lift": 0.9243
-      },
-      {
-        "if_category": [
           "Books"
         ],
         "then_category": [
@@ -206,6 +195,17 @@
         ],
         "support": 0.1213,
         "confidence": 0.3847,
+        "lift": 0.9243
+      },
+      {
+        "if_category": [
+          "Beauty"
+        ],
+        "then_category": [
+          "Books"
+        ],
+        "support": 0.1213,
+        "confidence": 0.2914,
         "lift": 0.9243
       },
       {

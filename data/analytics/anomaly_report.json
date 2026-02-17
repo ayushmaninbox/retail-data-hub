@@ -1,5 +1,5 @@
 {
-  "computed_at": "2026-02-14T13:46:47.884706",
+  "computed_at": "2026-02-17T12:35:41.160497",
   "summary": {
     "total_anomalies": 619,
     "severity_distribution": {
@@ -1784,18 +1784,6 @@
       "type": "revenue_spike",
       "store_id": "WEB-ONLINE",
       "city": "Online",
-      "date": "2023-08-14",
-      "daily_revenue": 7819727.64,
-      "mean_revenue": 528014.71,
-      "z_score": 12.19,
-      "severity": "Critical",
-      "score": 100,
-      "description": "Store WEB-ONLINE in Online had \u20b97,819,728 revenue on 2023-08-14 (Z=12.2\u03c3, mean \u20b9528,015)"
-    },
-    {
-      "type": "revenue_spike",
-      "store_id": "WEB-ONLINE",
-      "city": "Online",
       "date": "2023-04-11",
       "daily_revenue": 7211112.04,
       "mean_revenue": 528014.71,
@@ -1803,6 +1791,18 @@
       "severity": "Critical",
       "score": 100,
       "description": "Store WEB-ONLINE in Online had \u20b97,211,112 revenue on 2023-04-11 (Z=11.2\u03c3, mean \u20b9528,015)"
+    },
+    {
+      "type": "revenue_spike",
+      "store_id": "WEB-ONLINE",
+      "city": "Online",
+      "date": "2023-08-14",
+      "daily_revenue": 7819727.64,
+      "mean_revenue": 528014.71,
+      "z_score": 12.19,
+      "severity": "Critical",
+      "score": 100,
+      "description": "Store WEB-ONLINE in Online had \u20b97,819,728 revenue on 2023-08-14 (Z=12.2\u03c3, mean \u20b9528,015)"
     },
     {
       "type": "quantity_outlier",
@@ -5475,18 +5475,6 @@
       "type": "revenue_spike",
       "store_id": "STR-KOL-02",
       "city": "Kolkata",
-      "date": "2024-03-14",
-      "daily_revenue": 817789.99,
-      "mean_revenue": 140438.76,
-      "z_score": 4.53,
-      "severity": "Medium",
-      "score": 56,
-      "description": "Store STR-KOL-02 in Kolkata had \u20b9817,790 revenue on 2024-03-14 (Z=4.5\u03c3, mean \u20b9140,439)"
-    },
-    {
-      "type": "revenue_spike",
-      "store_id": "STR-KOL-02",
-      "city": "Kolkata",
       "date": "2024-07-11",
       "daily_revenue": 819745.24,
       "mean_revenue": 140438.76,
@@ -5494,6 +5482,18 @@
       "severity": "Medium",
       "score": 56,
       "description": "Store STR-KOL-02 in Kolkata had \u20b9819,745 revenue on 2024-07-11 (Z=4.5\u03c3, mean \u20b9140,439)"
+    },
+    {
+      "type": "revenue_spike",
+      "store_id": "STR-KOL-02",
+      "city": "Kolkata",
+      "date": "2024-03-14",
+      "daily_revenue": 817789.99,
+      "mean_revenue": 140438.76,
+      "z_score": 4.53,
+      "severity": "Medium",
+      "score": 56,
+      "description": "Store STR-KOL-02 in Kolkata had \u20b9817,790 revenue on 2024-03-14 (Z=4.5\u03c3, mean \u20b9140,439)"
     },
     {
       "type": "revenue_spike",
@@ -5799,18 +5799,6 @@
       "type": "revenue_spike",
       "store_id": "STR-PUN-05",
       "city": "Pune",
-      "date": "2023-05-10",
-      "daily_revenue": 775709.47,
-      "mean_revenue": 145819.59,
-      "z_score": 3.75,
-      "severity": "Medium",
-      "score": 50,
-      "description": "Store STR-PUN-05 in Pune had \u20b9775,709 revenue on 2023-05-10 (Z=3.8\u03c3, mean \u20b9145,820)"
-    },
-    {
-      "type": "revenue_spike",
-      "store_id": "STR-PUN-05",
-      "city": "Pune",
       "date": "2024-11-03",
       "daily_revenue": 781185.08,
       "mean_revenue": 145819.59,
@@ -5818,6 +5806,18 @@
       "severity": "Medium",
       "score": 50,
       "description": "Store STR-PUN-05 in Pune had \u20b9781,185 revenue on 2024-11-03 (Z=3.8\u03c3, mean \u20b9145,820)"
+    },
+    {
+      "type": "revenue_spike",
+      "store_id": "STR-PUN-05",
+      "city": "Pune",
+      "date": "2023-05-10",
+      "daily_revenue": 775709.47,
+      "mean_revenue": 145819.59,
+      "z_score": 3.75,
+      "severity": "Medium",
+      "score": 50,
+      "description": "Store STR-PUN-05 in Pune had \u20b9775,709 revenue on 2023-05-10 (Z=3.8\u03c3, mean \u20b9145,820)"
     },
     {
       "type": "revenue_spike",
@@ -5895,18 +5895,6 @@
       "type": "revenue_spike",
       "store_id": "STR-CHE-01",
       "city": "Chennai",
-      "date": "2024-01-14",
-      "daily_revenue": 689849.88,
-      "mean_revenue": 136584.47,
-      "z_score": 3.57,
-      "severity": "Medium",
-      "score": 48,
-      "description": "Store STR-CHE-01 in Chennai had \u20b9689,850 revenue on 2024-01-14 (Z=3.6\u03c3, mean \u20b9136,584)"
-    },
-    {
-      "type": "revenue_spike",
-      "store_id": "STR-CHE-01",
-      "city": "Chennai",
       "date": "2024-11-12",
       "daily_revenue": 694824.98,
       "mean_revenue": 136584.47,
@@ -5914,6 +5902,18 @@
       "severity": "Medium",
       "score": 48,
       "description": "Store STR-CHE-01 in Chennai had \u20b9694,825 revenue on 2024-11-12 (Z=3.6\u03c3, mean \u20b9136,584)"
+    },
+    {
+      "type": "revenue_spike",
+      "store_id": "STR-CHE-01",
+      "city": "Chennai",
+      "date": "2024-01-14",
+      "daily_revenue": 689849.88,
+      "mean_revenue": 136584.47,
+      "z_score": 3.57,
+      "severity": "Medium",
+      "score": 48,
+      "description": "Store STR-CHE-01 in Chennai had \u20b9689,850 revenue on 2024-01-14 (Z=3.6\u03c3, mean \u20b9136,584)"
     },
     {
       "type": "revenue_spike",
@@ -6159,18 +6159,6 @@
       "type": "revenue_spike",
       "store_id": "WEB-ONLINE",
       "city": "Online",
-      "date": "2024-07-28",
-      "daily_revenue": 2510149.13,
-      "mean_revenue": 528014.71,
-      "z_score": 3.31,
-      "severity": "Medium",
-      "score": 46,
-      "description": "Store WEB-ONLINE in Online had \u20b92,510,149 revenue on 2024-07-28 (Z=3.3\u03c3, mean \u20b9528,015)"
-    },
-    {
-      "type": "revenue_spike",
-      "store_id": "WEB-ONLINE",
-      "city": "Online",
       "date": "2024-11-12",
       "daily_revenue": 2505195.51,
       "mean_revenue": 528014.71,
@@ -6178,6 +6166,18 @@
       "severity": "Medium",
       "score": 46,
       "description": "Store WEB-ONLINE in Online had \u20b92,505,196 revenue on 2024-11-12 (Z=3.3\u03c3, mean \u20b9528,015)"
+    },
+    {
+      "type": "revenue_spike",
+      "store_id": "WEB-ONLINE",
+      "city": "Online",
+      "date": "2024-07-28",
+      "daily_revenue": 2510149.13,
+      "mean_revenue": 528014.71,
+      "z_score": 3.31,
+      "severity": "Medium",
+      "score": 46,
+      "description": "Store WEB-ONLINE in Online had \u20b92,510,149 revenue on 2024-07-28 (Z=3.3\u03c3, mean \u20b9528,015)"
     },
     {
       "type": "revenue_spike",
@@ -6231,18 +6231,6 @@
       "type": "revenue_spike",
       "store_id": "STR-CHE-01",
       "city": "Chennai",
-      "date": "2024-01-01",
-      "daily_revenue": 639749.39,
-      "mean_revenue": 136584.47,
-      "z_score": 3.25,
-      "severity": "Medium",
-      "score": 45,
-      "description": "Store STR-CHE-01 in Chennai had \u20b9639,749 revenue on 2024-01-01 (Z=3.2\u03c3, mean \u20b9136,584)"
-    },
-    {
-      "type": "revenue_spike",
-      "store_id": "STR-CHE-01",
-      "city": "Chennai",
       "date": "2023-03-23",
       "daily_revenue": 639178.67,
       "mean_revenue": 136584.47,
@@ -6253,15 +6241,27 @@
     },
     {
       "type": "revenue_spike",
-      "store_id": "STR-DEL-05",
-      "city": "Delhi",
-      "date": "2024-09-10",
-      "daily_revenue": 784650.34,
-      "mean_revenue": 159829.12,
+      "store_id": "STR-CHE-01",
+      "city": "Chennai",
+      "date": "2024-01-01",
+      "daily_revenue": 639749.39,
+      "mean_revenue": 136584.47,
       "z_score": 3.25,
       "severity": "Medium",
       "score": 45,
-      "description": "Store STR-DEL-05 in Delhi had \u20b9784,650 revenue on 2024-09-10 (Z=3.2\u03c3, mean \u20b9159,829)"
+      "description": "Store STR-CHE-01 in Chennai had \u20b9639,749 revenue on 2024-01-01 (Z=3.2\u03c3, mean \u20b9136,584)"
+    },
+    {
+      "type": "revenue_spike",
+      "store_id": "STR-DEL-05",
+      "city": "Delhi",
+      "date": "2024-10-23",
+      "daily_revenue": 761715.72,
+      "mean_revenue": 159829.12,
+      "z_score": 3.13,
+      "severity": "Medium",
+      "score": 45,
+      "description": "Store STR-DEL-05 in Delhi had \u20b9761,716 revenue on 2024-10-23 (Z=3.1\u03c3, mean \u20b9159,829)"
     },
     {
       "type": "revenue_spike",
@@ -6279,13 +6279,13 @@
       "type": "revenue_spike",
       "store_id": "STR-DEL-05",
       "city": "Delhi",
-      "date": "2024-10-23",
-      "daily_revenue": 761715.72,
+      "date": "2024-09-10",
+      "daily_revenue": 784650.34,
       "mean_revenue": 159829.12,
-      "z_score": 3.13,
+      "z_score": 3.25,
       "severity": "Medium",
       "score": 45,
-      "description": "Store STR-DEL-05 in Delhi had \u20b9761,716 revenue on 2024-10-23 (Z=3.1\u03c3, mean \u20b9159,829)"
+      "description": "Store STR-DEL-05 in Delhi had \u20b9784,650 revenue on 2024-09-10 (Z=3.2\u03c3, mean \u20b9159,829)"
     },
     {
       "type": "revenue_spike",
@@ -6592,18 +6592,6 @@
       "type": "revenue_spike",
       "store_id": "STR-JAI-02",
       "city": "Jaipur",
-      "date": "2023-09-16",
-      "daily_revenue": 589658.78,
-      "mean_revenue": 141303.94,
-      "z_score": 2.9,
-      "severity": "Medium",
-      "score": 43,
-      "description": "Store STR-JAI-02 in Jaipur had \u20b9589,659 revenue on 2023-09-16 (Z=2.9\u03c3, mean \u20b9141,304)"
-    },
-    {
-      "type": "revenue_spike",
-      "store_id": "STR-JAI-02",
-      "city": "Jaipur",
       "date": "2023-03-09",
       "daily_revenue": 600759.3,
       "mean_revenue": 141303.94,
@@ -6614,15 +6602,15 @@
     },
     {
       "type": "revenue_spike",
-      "store_id": "STR-MUM-04",
-      "city": "Mumbai",
-      "date": "2023-09-21",
-      "daily_revenue": 596365.63,
-      "mean_revenue": 145353.99,
-      "z_score": 2.93,
+      "store_id": "STR-JAI-02",
+      "city": "Jaipur",
+      "date": "2023-09-16",
+      "daily_revenue": 589658.78,
+      "mean_revenue": 141303.94,
+      "z_score": 2.9,
       "severity": "Medium",
       "score": 43,
-      "description": "Store STR-MUM-04 in Mumbai had \u20b9596,366 revenue on 2023-09-21 (Z=2.9\u03c3, mean \u20b9145,354)"
+      "description": "Store STR-JAI-02 in Jaipur had \u20b9589,659 revenue on 2023-09-16 (Z=2.9\u03c3, mean \u20b9141,304)"
     },
     {
       "type": "revenue_spike",
@@ -6635,6 +6623,18 @@
       "severity": "Medium",
       "score": 43,
       "description": "Store STR-MUM-04 in Mumbai had \u20b9588,900 revenue on 2024-02-10 (Z=2.9\u03c3, mean \u20b9145,354)"
+    },
+    {
+      "type": "revenue_spike",
+      "store_id": "STR-MUM-04",
+      "city": "Mumbai",
+      "date": "2023-09-21",
+      "daily_revenue": 596365.63,
+      "mean_revenue": 145353.99,
+      "z_score": 2.93,
+      "severity": "Medium",
+      "score": 43,
+      "description": "Store STR-MUM-04 in Mumbai had \u20b9596,366 revenue on 2023-09-21 (Z=2.9\u03c3, mean \u20b9145,354)"
     },
     {
       "type": "revenue_spike",
@@ -7228,13 +7228,13 @@
       "type": "revenue_spike",
       "store_id": "STR-DEL-04",
       "city": "Delhi",
-      "date": "2024-03-24",
-      "daily_revenue": 563924.0,
+      "date": "2025-01-10",
+      "daily_revenue": 559345.77,
       "mean_revenue": 144127.23,
-      "z_score": 2.72,
+      "z_score": 2.69,
       "severity": "Medium",
       "score": 41,
-      "description": "Store STR-DEL-04 in Delhi had \u20b9563,924 revenue on 2024-03-24 (Z=2.7\u03c3, mean \u20b9144,127)"
+      "description": "Store STR-DEL-04 in Delhi had \u20b9559,346 revenue on 2025-01-10 (Z=2.7\u03c3, mean \u20b9144,127)"
     },
     {
       "type": "revenue_spike",
@@ -7252,13 +7252,13 @@
       "type": "revenue_spike",
       "store_id": "STR-DEL-04",
       "city": "Delhi",
-      "date": "2025-01-10",
-      "daily_revenue": 559345.77,
+      "date": "2024-03-24",
+      "daily_revenue": 563924.0,
       "mean_revenue": 144127.23,
-      "z_score": 2.69,
+      "z_score": 2.72,
       "severity": "Medium",
       "score": 41,
-      "description": "Store STR-DEL-04 in Delhi had \u20b9559,346 revenue on 2025-01-10 (Z=2.7\u03c3, mean \u20b9144,127)"
+      "description": "Store STR-DEL-04 in Delhi had \u20b9563,924 revenue on 2024-03-24 (Z=2.7\u03c3, mean \u20b9144,127)"
     },
     {
       "type": "revenue_spike",
@@ -7271,6 +7271,18 @@
       "severity": "Medium",
       "score": 41,
       "description": "Store STR-HYD-03 in Hyderabad had \u20b9734,781 revenue on 2024-11-23 (Z=2.7\u03c3, mean \u20b9149,504)"
+    },
+    {
+      "type": "revenue_spike",
+      "store_id": "STR-HYD-04",
+      "city": "Hyderabad",
+      "date": "2024-11-16",
+      "daily_revenue": 529426.19,
+      "mean_revenue": 139201.71,
+      "z_score": 2.66,
+      "severity": "Medium",
+      "score": 41,
+      "description": "Store STR-HYD-04 in Hyderabad had \u20b9529,426 revenue on 2024-11-16 (Z=2.7\u03c3, mean \u20b9139,202)"
     },
     {
       "type": "revenue_spike",
@@ -7295,18 +7307,6 @@
       "severity": "Medium",
       "score": 41,
       "description": "Store STR-HYD-04 in Hyderabad had \u20b9540,915 revenue on 2023-08-27 (Z=2.7\u03c3, mean \u20b9139,202)"
-    },
-    {
-      "type": "revenue_spike",
-      "store_id": "STR-HYD-04",
-      "city": "Hyderabad",
-      "date": "2024-11-16",
-      "daily_revenue": 529426.19,
-      "mean_revenue": 139201.71,
-      "z_score": 2.66,
-      "severity": "Medium",
-      "score": 41,
-      "description": "Store STR-HYD-04 in Hyderabad had \u20b9529,426 revenue on 2024-11-16 (Z=2.7\u03c3, mean \u20b9139,202)"
     },
     {
       "type": "revenue_spike",
